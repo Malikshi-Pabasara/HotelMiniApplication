@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<navigator>
+  <categories>
+    <!-- Add zero or more categories in this section.-->
+    <!--<category id="mycomponent" name="My Component" description="Sample component category" icon="mycomponent.icon.component" order="999" />-->
+  </categories>
+
+  <entries>
+    <!-- Add zero or more entries here -->
+    <!--<entry id="mycomponent.first" category="mycomponent" name="First sample" description="Sample page description" page="mycomponent.page.first" />-->
+    <entry id="backoffice.rooms" category="backoffice" name="Manage Rooms" description="Management of rooms" />
+    <entry id="backoffice.rooms.Room" category="backoffice" name="Rooms" description="Rooms" page="rooms.page.room" />
+    <entry id="backoffice.rooms.Feature" category="backoffice" name="Features" description="Management of feature information" page="rooms.page.feature" />
+    <entry id="backoffice.rooms.Room Type" category="backoffice" name="RoomTypes" description="Management of roomtype information" page="rooms.page.roomtype" />
+
+  </entries>
+</navigator>

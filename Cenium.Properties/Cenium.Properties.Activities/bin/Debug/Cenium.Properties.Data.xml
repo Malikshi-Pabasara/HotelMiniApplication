@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cenium.Properties.Data</name>
+    </assembly>
+    <members>
+        <member name="T:Cenium.Properties.Data.PropertiesEntitiesContext">
+            <summary>
+            Provides facilities for querying and working with entities as objects
+            </summary>
+        </member>
+        <member name="M:Cenium.Properties.Data.PropertiesEntitiesContext.#ctor">
+            <summary>
+            Creates a new instance of the <c>PropertiesEntitiesContext</c> class.
+            </summary>
+        </member>
+        <member name="P:Cenium.Properties.Data.PropertiesEntitiesContext.Properties">
+            <summary>
+            Returns a typed EntityCollection of Property that is used to perform create, read, update, delete (CRUD) operations.
+            </summary>
+        </member>
+        <member name="M:Cenium.Properties.Data.PropertiesEntitiesContext.CreateDbContext(System.String)">
+            <summary>
+            Creates the underlying DbContext instance. 
+            </summary>
+            <param name="connection">The database connection string</param>
+            <returns>A new PropertiesEntitiesDbContext instance</returns>
+        </member>
+        <member name="T:Cenium.Properties.Data.PropertiesEntitiesDbContext">
+            <summary>
+            Provides facilities for querying and working with entities as objects.
+            </summary>
+            <remarks>
+            This is an internal infrastructure class and should not be called directly by the developer.
+            </remarks>
+        </member>
+        <member name="M:Cenium.Properties.Data.PropertiesEntitiesDbContext.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the PropertiesEntitiesDbContext class
+            </summary>
+            <param name="connection">The connection string to use when creating the context.</param>
+        </member>
+        <member name="P:Cenium.Properties.Data.PropertiesEntitiesDbContext.Properties">
+            <summary>
+            Returns a typed entity set of Property that is used to perform create, read, update, delete (CRUD) operations.
+            </summary>
+        </member>
+        <member name="T:Cenium.Properties.Data.NamespaceDoc">
+            <summary>
+            Contains entity classes that comprise the data access layer of the component Properties
+            </summary>
+        </member>
+        <member name="P:Cenium.Properties.Data.Property.TenantId">
+            <summary>
+            Tenant identifier, for internal framework usage only
+            </summary>
+        </member>
+        <member name="P:Cenium.Properties.Data.Property.RowVersion">
+            <summary>
+            Concurrency control version number
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ui>
+  <!-- Add panes here-->
+  <panes>
+
+  </panes>
+
+  <!-- Add dialogs here -->
+  <dialogs>
+
+    <!-- Add dialogs here -->
+
+  </dialogs>
+
+
+
+  <!-- Add pages here-->
+  <pages>
+    <page id="prices.page.price" name="Prices" description="Add and maintain prices information"
+    model="framework.pages.listviewmodel" type="framework.griddetailpage">
+
+      <modelProperties>
+        <property id="CreateMethod" value="Prices/Price/Create" />
+        <property id="QueryMethod" value="Prices/Price/Query" />
+        <property id="GetMethod" value="Prices/Price/Get/{PriceId}" />
+        <property id="UpdateMethod" value="Prices/Price/Update" />
+        <property id="RemoveMethod" value="Prices/Price/Delete" />
+        <property id="IncludeChildRecords" value="true" type="Bool" />
+      </modelProperties>
+
+
+      <layout>
+        <section id="listView" readOnly="true">
+          <items>
+            <item id="PriceCode" label="Price Code" type="Column" width="*"/>
+            <item id="Description" label="Description" type="Column" width="*"/>
+            <item id="Amount" label="Amount" type="Column" width="*"/>
+          </items>
+        </section>
+      </layout>
+    </page>
+  </pages>
+</ui>

@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cenium.Rooms.Activities</name>
+    </assembly>
+    <members>
+        <member name="T:Cenium.Rooms.Activities.FeaturesActivity">
+            <summary>
+            The FeaturesActivity class is an activity class that exposes data operation methods to the service layer. This class is responsible for applying business logic prior to making
+            updates in the data store.
+            </summary>
+            <seealso cref="T:Cenium.Rooms.Data.Feature"/>
+            <seealso cref="T:Cenium.Rooms.Data.RoomsEntitiesContext"/>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.FeaturesActivity.#ctor">
+            <summary>
+            Initializes a new instance of the FeaturesActivity class
+            </summary>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.FeaturesActivity.#ctor(Cenium.Rooms.Data.RoomsEntitiesContext)">
+            <summary>
+            Initializes a new instance of the FeaturesActivity class, sharing the context with other activities
+            </summary>
+            <param name="ctx">The shared context</param>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.FeaturesActivity.Query">
+            <summary>
+            Activity query method that returns an IEnumerable&lt;Feature&gt; instance. 
+            </summary>
+            <returns>A strongly type IEnumerable instance </returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.FeaturesActivity.Get(System.Int64)">
+            <summary>
+            Gets a Feature instance from the datastore based on Feature keys.
+            </summary>
+            <param name="featureId">The key for Feature</param>
+            <returns>A Feature instance, or null if there is no entities with the given key</returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.FeaturesActivity.Create(Cenium.Rooms.Data.Feature)">
+            <summary>
+            Adds a new instance of Feature to the data store
+            </summary>
+            <param name="feature">The instance to add</param>
+            <returns>The created instance</returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.FeaturesActivity.Update(Cenium.Rooms.Data.Feature)">
+            <summary>
+            Updates a Feature instance in the data store
+            </summary>
+            <param name="feature">The instance to update</param>
+            <returns>The updated instance</returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.FeaturesActivity.Delete(Cenium.Rooms.Data.Feature)">
+            <summary>
+            Deletes a Feature instance from the data store
+            </summary>
+            <param name="feature">The instance to delete</param>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.FeaturesActivity.GetFromDatastore(System.Int64)">
+            <summary>
+            Retrieves a single entity instance from the data store
+            </summary>
+            <param name="featureId">The key for Feature</param>
+            <returns>A single Feature instance, or null if the instance doesn't exist</returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.FeaturesActivity.Dispose">
+            <summary>
+            Releases all resources used by this FeaturesActivity instance.
+            </summary>
+        </member>
+        <member name="T:Cenium.Rooms.Activities.NamespaceDoc">
+            <summary>
+            Contains activity classes that comprise the application processing layer of the component Rooms
+            </summary>
+        </member>
+        <member name="T:Cenium.Rooms.Activities.RoomsActivity">
+            <summary>
+            The RoomsActivity class is an activity class that exposes data operation methods to the service layer. This class is responsible for applying business logic prior to making
+            updates in the data store.
+            </summary>
+            <seealso cref="T:Cenium.Rooms.Data.Room"/>
+            <seealso cref="T:Cenium.Rooms.Data.RoomsEntitiesContext"/>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomsActivity.#ctor">
+            <summary>
+            Initializes a new instance of the RoomsActivity class
+            </summary>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomsActivity.#ctor(Cenium.Rooms.Data.RoomsEntitiesContext)">
+            <summary>
+            Initializes a new instance of the RoomsActivity class, sharing the context with other activities
+            </summary>
+            <param name="ctx">The shared context</param>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomsActivity.Query">
+            <summary>
+            Activity query method that returns an IEnumerable&lt;Room&gt; instance. 
+            </summary>
+            <returns>A strongly type IEnumerable instance </returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomsActivity.Get(System.Int64)">
+            <summary>
+            Gets a Room instance from the datastore based on Room keys.
+            </summary>
+            <param name="roomId">The key for Room</param>
+            <returns>A Room instance, or null if there is no entities with the given key</returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomsActivity.Create(Cenium.Rooms.Data.Room)">
+            <summary>
+            Adds a new instance of Room to the data store
+            </summary>
+            <param name="room">The instance to add</param>
+            <returns>The created instance</returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomsActivity.Update(Cenium.Rooms.Data.Room)">
+            <summary>
+            Updates a Room instance in the data store
+            </summary>
+            <param name="room">The instance to update</param>
+            <returns>The updated instance</returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomsActivity.Delete(Cenium.Rooms.Data.Room)">
+            <summary>
+            Deletes a Room instance from the data store
+            </summary>
+            <param name="room">The instance to delete</param>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomsActivity.UpdateRoomReservationInfo(Cenium.Rooms.Data.Room)">
+            <summary>
+            Updates a Room instance in the data store
+            </summary>
+            <param name="room">The instance to update</param>
+            <returns>The updated instance</returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomsActivity.GetFromDatastore(System.Int64)">
+            <summary>
+            Retrieves a single entity instance from the data store
+            </summary>
+            <param name="roomId">The key for Room</param>
+            <returns>A single Room instance, or null if the instance doesn't exist</returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomsActivity.Dispose">
+            <summary>
+            Releases all resources used by this RoomsActivity instance.
+            </summary>
+        </member>
+        <member name="T:Cenium.Rooms.Activities.RoomTypesActivity">
+            <summary>
+            The RoomTypesActivity class is an activity class that exposes data operation methods to the service layer. This class is responsible for applying business logic prior to making
+            updates in the data store.
+            </summary>
+            <seealso cref="T:Cenium.Rooms.Data.RoomType"/>
+            <seealso cref="T:Cenium.Rooms.Data.RoomsEntitiesContext"/>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomTypesActivity.#ctor">
+            <summary>
+            Initializes a new instance of the RoomTypesActivity class
+            </summary>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomTypesActivity.#ctor(Cenium.Rooms.Data.RoomsEntitiesContext)">
+            <summary>
+            Initializes a new instance of the RoomTypesActivity class, sharing the context with other activities
+            </summary>
+            <param name="ctx">The shared context</param>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomTypesActivity.Query">
+            <summary>
+            Activity query method that returns an IEnumerable&lt;RoomType&gt; instance. 
+            </summary>
+            <returns>A strongly type IEnumerable instance </returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomTypesActivity.Get(System.Int64)">
+            <summary>
+            Gets a RoomType instance from the datastore based on RoomType keys.
+            </summary>
+            <param name="roomTypeId">The key for RoomType</param>
+            <returns>A RoomType instance, or null if there is no entities with the given key</returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomTypesActivity.Create(Cenium.Rooms.Data.RoomType)">
+            <summary>
+            Adds a new instance of RoomType to the data store
+            </summary>
+            <param name="roomType">The instance to add</param>
+            <returns>The created instance</returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomTypesActivity.Update(Cenium.Rooms.Data.RoomType)">
+            <summary>
+            Updates a RoomType instance in the data store
+            </summary>
+            <param name="roomType">The instance to update</param>
+            <returns>The updated instance</returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomTypesActivity.Delete(Cenium.Rooms.Data.RoomType)">
+            <summary>
+            Deletes a RoomType instance from the data store
+            </summary>
+            <param name="roomType">The instance to delete</param>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomTypesActivity.GetFromDatastore(System.Int64)">
+            <summary>
+            Retrieves a single entity instance from the data store
+            </summary>
+            <param name="roomTypeId">The key for RoomType</param>
+            <returns>A single RoomType instance, or null if the instance doesn't exist</returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomTypesActivity.Dispose">
+            <summary>
+            Releases all resources used by this RoomTypesActivity instance.
+            </summary>
+        </member>
+    </members>
+</doc>

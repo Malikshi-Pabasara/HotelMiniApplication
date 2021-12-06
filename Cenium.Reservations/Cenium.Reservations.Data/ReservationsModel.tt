@@ -1,0 +1,35 @@
+<#
+//
+// Copyright (c) Cenium AS. All Right Reserved
+//
+// This source is subject to the Cenium License.
+// Please see the License.txt file for more information.
+// All other rights reserved.
+// 
+// http://www.cenium.com
+// 
+// Change History:
+// 
+// User        Date          Comment
+// ----------- ------------- --------------------------------------------------------------------------------------------
+// samkje      02/01/2012    Created
+// samkje      09/04/2014    Changed to handle most processing internally in framework.
+#>
+<#@ template language="C#" debug="true" hostspecific="true"#>
+<#@ assembly name="Cenium.Framework.VisualStudio.Data.dll" #>
+<#@ import namespace="Cenium.Framework.VisualStudio.Data.Templates"#>
+<#@ include file="EF.Utility.CS.ttinclude"#>
+<#@ output extension=".cs"#>
+<#
+
+// Initialize file generator
+EdmTemplateFileGenerator.ComponentName              = @"Reservations";
+EdmTemplateFileGenerator.InputFileName              = @"ReservationsModel.edmx";
+EdmTemplateFileGenerator.FileManager                = EntityFrameworkTemplateFileManager.Create(this);
+EdmTemplateFileGenerator.MetadataLoader             = new MetadataLoader(this);
+EdmTemplateFileGenerator.TextTransformationTemplate = this;
+
+// Generate entities
+EdmTemplateFileGenerator.Generate();
+
+#>

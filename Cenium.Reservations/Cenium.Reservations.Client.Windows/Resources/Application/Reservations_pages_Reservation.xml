@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ui>
+  <!-- Add panes here-->
+  <panes>
+
+  </panes>
+
+  <!-- Add dialogs here -->
+  <dialogs>
+
+    <!-- Add dialogs here -->
+
+  </dialogs>
+
+
+
+  <!-- Add pages here-->
+  <pages>
+    <page id="reservations.page.reservation" name="Reservations" description="Add and maintain reservations information"
+    model="framework.pages.listviewmodel" type="framework.griddetailpage">
+
+      <modelProperties>
+        <property id="CreateMethod" value="Reservations/Reservation/Create" />
+        <property id="QueryMethod" value="Reservations/Reservation/Query" />
+        <property id="GetMethod" value="Reservations/Reservation/Get/{ReservationId}" />
+        <property id="UpdateMethod" value="Reservations/Reservation/Update" />
+        <property id="RemoveMethod" value="Reservations/Reservation/Delete" />
+        <property id="IncludeChildRecords" value="true" type="Bool" />
+      </modelProperties>
+
+
+      <layout>
+        <section id="listView" readOnly="true">
+          <items>
+            <item id="Number" label="Number" type="Column" width="*"/>
+            <item id="PropertyId" label="Property Id" type="Column" width="*"/>
+            <item id="RoomId" label="Room Id" type="Column" width="*"/>
+            <item id="ContactId" label="Contact Id" type="Column" width="*"/>
+            <item id="ArrivalDate" label="Arrival Date" type="Column" width="*"/>
+            <item id="DepartureDate" label="Departure Date" type="Column" width="*"/>
+            <item id="ReservationStatus" label="Reservation Status" type="Column" width="*"/>
+          </items>
+        </section>
+      </layout>
+    </page>
+  </pages>
+</ui>

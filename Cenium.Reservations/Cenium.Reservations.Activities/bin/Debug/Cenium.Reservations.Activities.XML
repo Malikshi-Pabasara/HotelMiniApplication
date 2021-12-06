@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cenium.Reservations.Activities</name>
+    </assembly>
+    <members>
+        <member name="T:Cenium.Reservations.Activities.Entities.Result">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.Entities.Result.#ctor">
+            <summary>
+            Initializes a new instance of the ReservationsResult class
+            </summary>
+        </member>
+        <member name="P:Cenium.Reservations.Activities.Entities.Result.Reservations">
+            <summary>
+            Gets and sets list of Reservation objects
+            </summary>
+        </member>
+        <member name="T:Cenium.Reservations.Activities.Helpers.ProxyWrapperBase">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.Helpers.ProxyWrapperBase.#ctor(Cenium.Framework.Component.Interface.IEntityProxy)">
+            <summary>
+            Initializes a new instance of the ProxyWrapperBase class
+            </summary>
+            <param name="proxy">The entity proxy to wrap</param>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.Helpers.ProxyWrapperBase.#ctor">
+            <summary>
+            Initializes a new instance of the ProxyWrapperBase class
+            </summary>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.Helpers.ProxyWrapperBase.GetValue``1(System.String)">
+            <summary>
+            Gets a strongly typed value from the proxy entity, if the property is available
+            </summary>
+            <typeparam name="T">The value type</typeparam>
+            <param name="name">The name of the property</param>
+            <returns>The value of the property, or default(T) if the property does not exist, is the wrong type or is null</returns>
+        </member>
+        <member name="T:Cenium.Reservations.Activities.Helpers.Rooms.RoomHelper">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.Helpers.Rooms.RoomHelper.UpdateRoomReservationInfo(Cenium.Reservations.Activities.Helpers.Rooms.RoomProxy)">
+            <summary>
+            Update room's reservation dates.
+            </summary>
+            <param name="roomProxy"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cenium.Reservations.Activities.Helpers.Rooms.RoomProxy">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.Helpers.Rooms.RoomProxy.#ctor(Cenium.Framework.Component.Interface.IEntityProxy)">
+            <summary>
+            Initializes a new instance of the RoomReservationProxy class
+            </summary>
+        </member>
+        <member name="T:Cenium.Reservations.Activities.NamespaceDoc">
+            <summary>
+            Contains activity classes that comprise the application processing layer of the component Reservations
+            </summary>
+        </member>
+        <member name="T:Cenium.Reservations.Activities.ReservationsActivity">
+            <summary>
+            The ReservationsActivity class is an activity class that exposes data operation methods to the service layer. This class is responsible for applying business logic prior to making
+            updates in the data store.
+            </summary>
+            <seealso cref="T:Cenium.Reservations.Data.Reservation"/>
+            <seealso cref="T:Cenium.Reservations.Data.ReservationsEntitiesContext"/>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.#ctor">
+            <summary>
+            Initializes a new instance of the ReservationsActivity class
+            </summary>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.#ctor(Cenium.Reservations.Data.ReservationsEntitiesContext)">
+            <summary>
+            Initializes a new instance of the ReservationsActivity class, sharing the context with other activities
+            </summary>
+            <param name="ctx">The shared context</param>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.Query">
+            <summary>
+            Activity query method that returns an IEnumerable&lt;Reservation&gt; instance. 
+            </summary>
+            <returns>A strongly type IEnumerable instance </returns>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.Get(System.Int64)">
+            <summary>
+            Gets a Reservation instance from the datastore based on Reservation keys.
+            </summary>
+            <param name="reservationId">The key for Reservation</param>
+            <returns>A Reservation instance, or null if there is no entities with the given key</returns>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.Create(Cenium.Reservations.Data.Reservation)">
+            <summary>
+            Adds a new instance of Reservation to the data store
+            </summary>
+            <param name="reservation">The instance to add</param>
+            <returns>The created instance</returns>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.Update(Cenium.Reservations.Data.Reservation)">
+            <summary>
+            Updates a Reservation instance in the data store
+            </summary>
+            <param name="reservation">The instance to update</param>
+            <returns>The updated instance</returns>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.Delete(Cenium.Reservations.Data.Reservation)">
+            <summary>
+            Deletes a Reservation instance from the data store
+            </summary>
+            <param name="reservation">The instance to delete</param>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.CheckIn(Cenium.Reservations.Data.Reservation)">
+            <summary>
+            Check-In a Reservation instance from the data store
+            </summary>
+            <param name="reservation">The instance to delete</param>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.CheckOut(Cenium.Reservations.Data.Reservation)">
+            <summary>
+            Check-Out a Reservation instance from the data store
+            </summary>
+            <param name="reservation">The instance to delete</param>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.GetFromDatastore(System.Int64)">
+            <summary>
+            Retrieves a single entity instance from the data store
+            </summary>
+            <param name="reservationId">The key for Reservation</param>
+            <returns>A single Reservation instance, or null if the instance doesn't exist</returns>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.Dispose">
+            <summary>
+            Releases all resources used by this ReservationsActivity instance.
+            </summary>
+        </member>
+    </members>
+</doc>

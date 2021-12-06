@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cenium.Prices.Activities</name>
+    </assembly>
+    <members>
+        <member name="T:Cenium.Prices.Activities.NamespaceDoc">
+            <summary>
+            Contains activity classes that comprise the application processing layer of the component Prices
+            </summary>
+        </member>
+        <member name="T:Cenium.Prices.Activities.PricesActivity">
+            <summary>
+            The PricesActivity class is an activity class that exposes data operation methods to the service layer. This class is responsible for applying business logic prior to making
+            updates in the data store.
+            </summary>
+            <seealso cref="T:Cenium.Prices.Data.Price"/>
+            <seealso cref="T:Cenium.Prices.Data.PricesEntitiesContext"/>
+        </member>
+        <member name="M:Cenium.Prices.Activities.PricesActivity.#ctor">
+            <summary>
+            Initializes a new instance of the PricesActivity class
+            </summary>
+        </member>
+        <member name="M:Cenium.Prices.Activities.PricesActivity.#ctor(Cenium.Prices.Data.PricesEntitiesContext)">
+            <summary>
+            Initializes a new instance of the PricesActivity class, sharing the context with other activities
+            </summary>
+            <param name="ctx">The shared context</param>
+        </member>
+        <member name="M:Cenium.Prices.Activities.PricesActivity.Query">
+            <summary>
+            Activity query method that returns an IEnumerable&lt;Price&gt; instance. 
+            </summary>
+            <returns>A strongly type IEnumerable instance </returns>
+        </member>
+        <member name="M:Cenium.Prices.Activities.PricesActivity.Get(System.Int64)">
+            <summary>
+            Gets a Price instance from the datastore based on Price keys.
+            </summary>
+            <param name="priceId">The key for Price</param>
+            <returns>A Price instance, or null if there is no entities with the given key</returns>
+        </member>
+        <member name="M:Cenium.Prices.Activities.PricesActivity.Create(Cenium.Prices.Data.Price)">
+            <summary>
+            Adds a new instance of Price to the data store
+            </summary>
+            <param name="price">The instance to add</param>
+            <returns>The created instance</returns>
+        </member>
+        <member name="M:Cenium.Prices.Activities.PricesActivity.Update(Cenium.Prices.Data.Price)">
+            <summary>
+            Updates a Price instance in the data store
+            </summary>
+            <param name="price">The instance to update</param>
+            <returns>The updated instance</returns>
+        </member>
+        <member name="M:Cenium.Prices.Activities.PricesActivity.Delete(Cenium.Prices.Data.Price)">
+            <summary>
+            Deletes a Price instance from the data store
+            </summary>
+            <param name="price">The instance to delete</param>
+        </member>
+        <member name="M:Cenium.Prices.Activities.PricesActivity.GetFromDatastore(System.Int64)">
+            <summary>
+            Retrieves a single entity instance from the data store
+            </summary>
+            <param name="priceId">The key for Price</param>
+            <returns>A single Price instance, or null if the instance doesn't exist</returns>
+        </member>
+        <member name="M:Cenium.Prices.Activities.PricesActivity.Dispose">
+            <summary>
+            Releases all resources used by this PricesActivity instance.
+            </summary>
+        </member>
+    </members>
+</doc>

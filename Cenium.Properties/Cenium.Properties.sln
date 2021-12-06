@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cenium.Properties.Data", "Cenium.Properties.Data\Cenium.Properties.Data.csproj", "{AD4EB119-998B-45C2-B935-F59CB9A14ECD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cenium.Properties.Activities", "Cenium.Properties.Activities\Cenium.Properties.Activities.csproj", "{498F686A-9192-410D-849C-BC0DA57D79A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cenium.Properties.Client.Windows", "Cenium.Properties.Client.Windows1\Cenium.Properties.Client.Windows.csproj", "{57CFF9C9-E410-4366-AB69-EDA0376EE10A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD4EB119-998B-45C2-B935-F59CB9A14ECD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD4EB119-998B-45C2-B935-F59CB9A14ECD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD4EB119-998B-45C2-B935-F59CB9A14ECD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD4EB119-998B-45C2-B935-F59CB9A14ECD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{498F686A-9192-410D-849C-BC0DA57D79A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{498F686A-9192-410D-849C-BC0DA57D79A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{498F686A-9192-410D-849C-BC0DA57D79A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{498F686A-9192-410D-849C-BC0DA57D79A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57CFF9C9-E410-4366-AB69-EDA0376EE10A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57CFF9C9-E410-4366-AB69-EDA0376EE10A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57CFF9C9-E410-4366-AB69-EDA0376EE10A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57CFF9C9-E410-4366-AB69-EDA0376EE10A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ui>
+  <!-- Add panes here-->
+  <panes>
+
+  </panes>
+  
+  <!-- Add dialogs here -->
+  <dialogs>
+
+<!-- Add dialogs here -->
+
+  </dialogs>
+
+
+
+  <!-- Add pages here-->
+  <pages>
+    <page id="contacts.page.contact" name="Contacts" description="Add and maintain contacts information"
+    model="framework.pages.listviewmodel" type="framework.griddetailpage">
+
+
+
+      <modelProperties>
+        <property id="CreateMethod" value="Contacts/Contact/Create" />
+        <property id="QueryMethod" value="Contacts/Contact/Query" />
+        <property id="GetMethod" value="Contacts/Contact/Get/{ContactId}" />
+        <property id="UpdateMethod" value="Contacts/Contact/Update" />
+        <property id="RemoveMethod" value="Contacts/Contact/Delete" />
+        <property id="IncludeChildRecords" value="true" type="Bool" />
+      </modelProperties>
+
+
+
+      <layout>
+        <section id="listView" readOnly="true">
+          <items>
+            <item id="Name" label="Contacts Name" type="Column" width="*"/>
+            <item id="Email" label="Email" type="Column" width="*"/>
+            <item id="PhoneNumber" label="Phone Number" type="Column" width="*"/>
+            <item id="IDNumber" label="ID Number" type="Column" width="*"/>
+            <item id="DoB" label="Date of birth" type="Column" format="ShortDate" width="*"/>
+          </items>
+        </section>
+      </layout>
+    </page>
+  </pages>
+</ui>

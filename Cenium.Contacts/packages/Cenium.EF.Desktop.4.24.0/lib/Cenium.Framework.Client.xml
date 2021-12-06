@@ -1,0 +1,3129 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cenium.Framework.Client</name>
+    </assembly>
+    <members>
+        <member name="T:Cenium.Framework.Client.AuthorizationRequest">
+            <summary>
+            Represents an authorization request, i.e. a request for another user to approve a server invocation request
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.ClientConnector">
+            <summary>
+            Provides a connection to Cenium service layer
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.ClientConnector.ServiceOperationCallback">
+            <summary>
+            References a method to be called when a corresponding asynchronous service operation completes
+            </summary>
+            <param name="result">The result of the asynchronous service operation</param>
+        </member>
+        <member name="E:Cenium.Framework.Client.ClientConnector.LoginCompleted">
+            <summary>
+            Occurs after a login has completed
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.ClientConnector.LogoutCompleted">
+            <summary>
+            Occurs after a logout has completed
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.ClientConnector.BeforeLogoutCompleted">
+            <summary>
+            Occurs before the logout completes
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.#ctor">
+            <summary>
+            Initializes a new instance of the ClientConnector class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ClientConnector.Logger">
+            <summary>
+            Gets or sets a client connector logger. When set all client connector network operations are sent to the logger
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ClientConnector.PropertyContext">
+            <summary>
+            Gets or sets the current property context
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ClientConnector.ServerName">
+            <summary>
+            Gets the name of the server the connector is connected to
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ClientConnector.UsePrintServer">
+            <summary>
+            Gets a value indicating report layouts are created using a separate print server
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ClientConnector.PrintServerAddress">
+            <summary>
+            Gets the server address for the print server
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ClientConnector.LoadPermissionsOnLogin">
+            <summary>
+            Gets or sets a value indicating whether user permissions should be loaded on login
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.IsReadPermittedForResource(System.String)">
+            <summary>
+            Determines whether the current user has has read access to the specified security resource.
+            </summary>
+            <param name="id">The identifier for the permission</param>
+            <returns><c>true</c> if current user has has read access to the specified security resource; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.IsWritePermittedForResource(System.String)">
+            <summary>
+            Determines whether the current user has has write access to the specified security resource.
+            </summary>
+            <param name="id">The identifier for the permission</param>
+            <returns><c>true</c> if current user has has read access to the specified security resource; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="P:Cenium.Framework.Client.ClientConnector.Metadata">
+            <summary>
+            Gets the metadata for the connector
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.Login(Cenium.Framework.Client.Connection)">
+            <summary>
+            Performs a login
+            </summary>
+            <param name="connection">The connection parameters to use when performing the login</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.Logout">
+            <summary>
+            Performs a logout
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ClientConnector.IsLoggedIn">
+            <summary>
+            Gets if the client login has been set or not
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.CreateRecord(System.String)">
+            <summary>
+            Creates a new Record instance for a given entity. This is the recommended method for creating new Record instances
+            </summary>
+            <param name="recordType">The identifier for the entity</param>
+            <returns>A new Record instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.Invoke(System.String,Cenium.Framework.Client.Model.Record,System.Boolean)">
+            <summary>
+            Invokes a service method
+            </summary>
+            <param name="service">The service to invoke</param>
+            <param name="rec">The service parameters</param>
+            <param name="includeChildren">Indicateds if child records should be serialized or not</param>
+            <returns>A Record containing the service invokation result</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.InvokeAsync(Cenium.Framework.Client.ServiceInvokeParameters,Cenium.Framework.Client.ClientConnector.ServiceOperationCallback)">
+            <summary>
+            Invokes a service method asynchronously
+            </summary>
+            <param name="parameters">The invokation parameters</param>
+            <param name="callback">The asynchronous method to call when the call completes</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.Get(System.String,Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Invokes a get service method
+            </summary>
+            <param name="service">The service to invoke</param>
+            <param name="parameters">The service parameters</param>
+            <returns>A Record containing the service invokation result</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.Get(System.String,System.Object[])">
+            <summary>
+            Invokes a get service method
+            </summary>
+            <param name="service">The service to invoke</param>
+            <param name="parameters">The service parameters</param>
+            <returns>A Record containing the service invokation result</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.GetAsync(Cenium.Framework.Client.ServiceParameters,Cenium.Framework.Client.ClientConnector.ServiceOperationCallback)">
+            <summary>
+            Invokes a get service method asynchronously
+            </summary>
+            <param name="service">The service to invoke</param>
+            <param name="parameters">The service parameters</param>
+            <param name="callback">The asynchronous method to call when the call completes</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.Query(System.String,System.Int32,System.Int32,System.String,System.String,System.Object[])">
+            <summary>
+            Invokes a service Query method
+            </summary>
+            <param name="service">The service to invoke</param>
+            <param name="pageSize">The pagesize</param>
+            <param name="offset">The offset</param>
+            <param name="query">Any additional query parameters</param>
+            <param name="orderBy">Specified ordering of results</param>
+            <param name="parameters">The service parameters</param>
+            <returns>A QueryResult instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.QueryAsync(Cenium.Framework.Client.ServiceQueryParameters,Cenium.Framework.Client.ClientConnector.ServiceOperationCallback)">
+            <summary>
+            Invokes a Query service method asynchronously
+            </summary>
+            <param name="parameters">The service parameters</param>
+            <param name="callback">The asynchronous method to call when the call completes</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.Query(System.String,System.Int32,System.Int32,System.String,System.String)">
+            <summary>
+            Invokes a service Query method
+            </summary>
+            <param name="service">The service to invoke</param>
+            <param name="pageSize">The pagesize</param>
+            <param name="offset">The offset</param>
+            <param name="query">Any additional query parameters</param>
+            <param name="orderBy">Specified ordering of results</param>
+            <returns>A QueryResult instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.GetReport(System.Int64,System.String,System.Int64)">
+            <summary>
+            Gets a report content as Stream.
+            </summary>
+            <param name="reportId">Report id</param>
+            <param name="rendererType">Type of renderer</param>
+            <param name="reportLayoutId">Layout id of report</param>
+            <returns>Report content stream</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.GetReportAsync(System.Int64,System.String,System.Int64)">
+            <summary>
+            Gets a rendered report as a byte array.
+            </summary>
+            <param name="reportId">Report id</param>
+            <param name="rendererType">Type of renderer</param>
+            <param name="reportLayoutId">Layout id of report</param>
+            <returns>A rendered report as a byte array.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.CreateWebClient(Cenium.Framework.Client.ServiceCallOptions,Cenium.Framework.Telemetry.TelemetryRequestEntry)">
+            <summary>
+            Creates a new WebClient instance by setting the necessary headers and credentials
+            </summary>
+            <returns>A new WebClient instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.CreateReportWebClient(System.String)">
+            <summary>
+            Creates a new report WebClient instance by setting the necessary headers and credentials
+            </summary>
+            <returns>A new WebClient instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.LoadMetadataCollection(System.String)">
+            <summary>
+            Loads metadata for a specific service
+            </summary>
+            <param name="service">The name of the service</param>
+            <returns>A MetadataCollection related to the specified service</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnector.LoadMetadata">
+            <summary>
+            Loads the component metadata
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ClientConnector.Current">
+            <summary>
+            Gets the current ClientConnector instance
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.ClientConnectorExtensions">
+            <summary>
+            Contains extension methods for the client connector
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnectorExtensions.QueryServerAsync(Cenium.Framework.Client.ClientConnector,Cenium.Framework.Client.ServiceQueryParameters)">
+            <summary>
+            Invokes a Query service method asynchronously
+            </summary>
+            <param name="connector">The client connector instance to use</param>
+            <param name="parameters">The query parameters to use</param>
+            <returns>A task containing the operation result</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnectorExtensions.InvokeServerAsync(Cenium.Framework.Client.ClientConnector,Cenium.Framework.Client.ServiceInvokeParameters)">
+            <summary>
+            Invokes an invoke service method asynchronously
+            </summary>
+            <param name="connector">The client connector instance to use</param>
+            <param name="parameters">The query parameters to use</param>
+            <returns>A task containing the operation result</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnectorExtensions.GetServerAsync(Cenium.Framework.Client.ClientConnector,Cenium.Framework.Client.ServiceParameters)">
+            <summary>
+            Invokes a Get service method asynchronously
+            </summary>
+            <param name="connector">The client connector instance to use</param>
+            <param name="parameters">The parameters to use</param>
+            <returns>A task containing the operation result</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnectorExtensions.CheckUserAccess(Cenium.Framework.Client.ClientConnector,System.String)">
+            <summary>
+            Checks if the current user has access to the specified method
+            </summary>
+            <param name="connector">The client connector instance</param>
+            <param name="method">The service method to check access for.</param>
+            <returns>true if the user has acccess; otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnectorExtensions.CheckUserAccess(Cenium.Framework.Client.ClientConnector,Cenium.Framework.Service.Metadata.ServiceMethodInfo)">
+            <summary>
+            Checks if the current user has access to the specified method
+            </summary>
+            <param name="connector">The client connector instance</param>
+            <param name="serviceMethod">The service method to check access for.</param>
+            <returns>true if the user has acccess; otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.ClientConnectorExtensions.GetUserPropertyContextsAsync(Cenium.Framework.Client.ClientConnector)">
+            <summary>
+            Gets the property contexts available to the current user
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Data.QueryHelper">
+            <summary>
+            Contains helper methods to construct queries
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Data.QueryHelper.OpGreaterThanOrEqualDate(System.String,System.Nullable{System.DateTime})">
+            <summary>
+            Creates a greater-than-or-equals expression
+            </summary>
+            <param name="property">The property to create the expression for</param>
+            <param name="value">The value to include in the expression</param>
+            <returns>A query expression</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Data.QueryHelper.OpLessThanOrEqualDate(System.String,System.Nullable{System.DateTime})">
+            <summary>
+            Creates a less-than-or-equals expression
+            </summary>
+            <param name="property">The property to create the expression for</param>
+            <param name="value">The value to include in the expression</param>
+            <returns>A query expression</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Data.QueryHelper.OpIn(System.String,System.String[])">
+            <summary>
+            Creates a In expression
+            </summary>
+            <param name="property">The property to create the expression for</param>
+            <param name="value">The value to include in the expression</param>
+            <returns>A query expression</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Data.QueryHelper.OpIn(System.String,System.Int64[])">
+            <summary>
+            Creates a In expression
+            </summary>
+            <param name="property">The property to create the expression for</param>
+            <param name="value">The value to include in the expression</param>
+            <returns>A query expression</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Data.QueryHelper.OpIn(System.String,System.Collections.Generic.IEnumerable{System.Int64})">
+            <summary>
+            Creates a In expression
+            </summary>
+            <param name="property">The property to create the expression for</param>
+            <param name="value">The value to include in the expression</param>
+            <returns>A query expression</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Data.QueryHelper.OpEquals(System.String,System.Object)">
+            <summary>
+            Creates an Equals expression
+            </summary>
+            <param name="property">The property to create the expression for</param>
+            <param name="value">The value to include in the expression</param>
+            <returns>A query expression</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Data.QueryHelper.AppendToQuery(System.Text.StringBuilder,System.String)">
+            <summary>
+            Appends a query expression to a StringBuilder instance
+            </summary>
+            <param name="buf">The StringBuilder instance to append the expression to</param>
+            <param name="query">The query expression to add</param>
+            <returns>The StringBuilder instance that was sent in</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.INetworkMonitor">
+            <summary>
+            Defines a mechanism for receiving log entries from the client connector
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.INetworkMonitor.LogRequest(System.Int32,System.String,System.String,Cenium.Framework.Client.NetworkMonitorEntryType,System.Byte[])">
+            <summary>
+            Logs a request event
+            </summary>
+            <param name="id">A unique identifier for the request. The identifier is used to know which response or error is associated with the request</param>
+            <param name="method">The method that issued the request</param>
+            <param name="url">The URL being called</param>
+            <param name="payloadType">Type of the payload.</param>
+            <param name="payload">The payload being sent with the request.</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.INetworkMonitor.LogResponse(System.Int32,System.String,Cenium.Framework.Client.NetworkMonitorEntryType,Cenium.Framework.Client.NetworkMonitorEntrySource,System.Byte[])">
+            <summary>
+            Logs a request response.
+            </summary>
+            <param name="id">A unique identifier for the request. The identifier is used to know which response or error is associated with the request</param>
+            <param name="method">The method that issued the request</param>
+            <param name="responseType">Type of the response.</param>
+            <param name="source">The source of the data</param>
+            <param name="result">The result from the call</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.INetworkMonitor.LogError(System.Int32,System.String,System.Exception)">
+            <summary>
+            Logs a request error
+            </summary>
+            <param name="id">A unique identifier for the request. The identifier is used to know which response or error is associated with the request</param>
+            <param name="method">The method that issued the request</param>
+            <param name="ex">The exception that occured.</param>
+        </member>
+        <member name="T:Cenium.Framework.Client.IManagedSetting">
+            <summary>
+            Defines a setting which is automatically loaded and saved by the client connector
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.IManagedSetting.SettingsLoaded">
+            <summary>
+            Triggered when settings have been loaded from the server
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.IManagedSetting.SettingsSaved">
+            <summary>
+            Triggered when the settings have been saved to the server
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.IManagedSetting.Load">
+            <summary>
+            Loads the user setting from the server
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.IManagedSetting.Save">
+            <summary>
+            Saves the user setting to the server
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Internal.ClientCache`1">
+            <summary>
+            Internal class for handling client cache operations
+            </summary>
+            <typeparam name="TCacheEntry">The type of the cache entry.</typeparam>
+        </member>
+        <member name="T:Cenium.Framework.Client.Internal.PropertyContextReferenceImpl">
+            <summary>
+            Provides an implementation of the <c>IPropertyContextReference</c> interface
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Internal.PropertyContextReferenceImpl.#ctor(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Instantiates the PropertyContextReferenceImpl class
+            </summary>
+            <param name="rec">A property context record</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Internal.PropertyContextReferenceImpl.PropertyContextId">
+            <summary>
+            Gets the property context identifier
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Internal.PropertyContextReferenceImpl.Name">
+            <summary>
+            Gets the name of the property context
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Internal.PropertyContextReferenceImpl.Description">
+            <summary>
+            Gets the description of the property context
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Internal.PropertyContextReferenceImpl.DisplayName">
+            <summary>
+            Gets the display name of the property context
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Internal.UserPropertyContextCollection">
+            <summary>
+            Provides an implementation of the <c>IPropertyContextReferenceCollection</c> interface
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Internal.UserPropertyContextCollection.IsAvailable">
+            <summary>
+            Gets if the collection has been loaded or not
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Internal.UserPropertyContextCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            A <see cref="T:System.Collections.Generic.IEnumerator`1" /> that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Internal.UserPropertyContextCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Internal.UserPropertyContextCollection.Refresh">
+            <summary>
+            Refresh the collection. This should be an asynchronous operation
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Internal.UserPropertyContextCollection.Clear">
+            <summary>
+            Clears this instance.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Internal.UserSettingGroupItem">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Internal.UserSettingGroupItem.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the UserSetting class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Internal.UserSettingGroup">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.Internal.UserSettingGroup.SettingsLoaded">
+            <summary>
+            Triggered when the settings have completed loading
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.Internal.UserSettingGroup.SettingsSaved">
+            <summary>
+            Triggered when the settings have completed saving
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Internal.UserSettingGroup.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the UserSettingGroup class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.IPropertyContextReference">
+            <summary>
+            Defines a property context reference
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.IPropertyContextReference.PropertyContextId">
+            <summary>
+            Gets the property context identifier
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.IPropertyContextReference.Name">
+            <summary>
+            Gets the name of the property context
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.IPropertyContextReference.Description">
+            <summary>
+            Gets the description of the property context
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.IPropertyContextReference.DisplayName">
+            <summary>
+            Gets the display name of the property context
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.IPropertyContextReferenceCollection">
+            <summary>
+            Defines the interface for a collection of property contexts
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.IPropertyContextReferenceCollection.Refresh">
+            <summary>
+            Refresh the collection. This should be an asynchronous operation
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.IUserFilter">
+            <summary>
+            Represents a filter expression assigned to a user
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.IUserFilter.Id">
+            <summary>
+            Gets the filter identifier
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.IUserFilter.Name">
+            <summary>
+            Gets or sets the name of the filter
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.IUserFilter.Description">
+            <summary>
+            Gets or sets the description of the filter
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.IUserFilter.FilterExpression">
+            <summary>
+            Gets or sets the filter expression
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.IUserSetting">
+            <summary>
+            Defines the interface for user settings
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.IUserSetting.Name">
+            <summary>
+            Gets the name of the setting
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.IUserSetting.Value">
+            <summary>
+            Gets or sets the value associated with the setting
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.IUserSettingCollection">
+            <summary>
+            Represents a collection of user settings
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.IUserSettingCollection.Name">
+            <summary>
+            Gets the name of the collection
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.IUserSettingCollection.Item(System.String)">
+            <summary>
+            Gets a named user setting
+            </summary>
+            <param name="name">The name of the setting</param>
+            <returns>The user setting associated with the specified name</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.CollectionCountPropertyExtension">
+            <summary>
+            Property extension that returns a count from a child property
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.CollectionCountPropertyExtension.#ctor">
+            <summary>
+            Initializes a new instance of the CollectionCountPropertyExtension class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.CollectionCountPropertyExtension.PropertyName">
+            <summary>
+            Gets or sets the property containing the collection
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.CollectionCountPropertyExtension.TextFormat">
+            <summary>
+            Gets or sets the format text to use
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.CollectionCountPropertyExtension.EmptyText">
+            <summary>
+            Gets or sets the text to use when the result is zero or null
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.CollectionCountPropertyExtension.Get(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Gets the specified value from the record.
+            </summary>
+            <param name="r">The record to get a value from.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.ComponentLookupPropertyExtension">
+            <summary>
+            A entity property extension that gets component information
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.ComponentLookupPropertyExtension.#ctor">
+            <summary>
+            Initializes a new instance of the ComponentLookupPropertyExtension class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.ComponentLookupPropertyExtension.ComponentProperty">
+            <summary>
+            Get or set which record property contains the component id
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.ComponentLookupPropertyExtension.Attribute">
+            <summary>
+            Gets or sets which component attribute to return
+            </summary>
+            <remarks>
+            The following component attributes are defined:
+            <list type="table">
+            <listheader><term>Value</term><description>Explanation</description></listheader>
+            <item><term>Name</term><description>Component name</description></item>
+            <item><term>Description</term><description>Component description</description></item>
+            <item><term>NameDescription</term><description>Component name and description (formatted as {name} - {description})</description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.ComponentLookupPropertyExtension.Get(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Gets the property value
+            </summary>
+            <param name="r">The Record instance to create an extension property for</param>
+            <returns>
+            The property value
+            </returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.CSharpCodePropertyExtension">
+            <summary>
+            A property extension capable of running a C# code fragment.
+            </summary>
+            <remarks>
+            This extension compiles the C# code fragment into a temporary assembly on demand.
+            </remarks>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.CSharpCodePropertyExtension.#ctor">
+            <summary>
+            Initializes a new instance of the CSharpCodePropertyExtension class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.CSharpCodePropertyExtension.Source">
+            <summary>
+            Gets or sets the source code
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.CSharpCodePropertyExtension.Get(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Gets the property value
+            </summary>
+            <param name="r">The Record instance to create an extension property for</param>
+            <returns>
+            The property value
+            </returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.DynamicPropertyExtension">
+            <summary>
+            Base class for all dynamic property extensions
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.DynamicPropertyExtension.GetValue(Cenium.Framework.Client.Model.Record,System.String)">
+            <summary>
+            Gets the value of the specified property.
+            </summary>
+            <param name="record">The <c>Record</c> that owns the property.</param>
+            <param name="propertyName">Name of the property.</param>
+            <returns>The value associated with the property</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.DynamicPropertyExtension.SetValue(Cenium.Framework.Client.Model.Record,System.String,System.Object)">
+            <summary>
+            Sets the value of the specified property.
+            </summary>
+            <param name="record">The <c>Record</c> that owns the property.</param>
+            <param name="propertyName">Name of the property.</param>
+            <param name="value">The value to set.</param>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.EntityConfiguration">
+            <summary>
+            Contains fluid methods for adding entities and properties
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.EntityConfiguration.AddCollectionProperty(Cenium.Framework.Service.Metadata.EntityInfo,System.String,System.String)">
+            <summary>
+            Adds a collection property to an entity
+            </summary>
+            <param name="entity">The entity to add the property to</param>
+            <param name="name">The property name</param>
+            <param name="entityRef">The name of the entity used in the collection.</param>
+            <returns>The <c>EntityInfo</c> instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.EntityConfiguration.AddToMetadata(Cenium.Framework.Service.Metadata.EntityInfo)">
+            <summary>
+            Adds an <c>EntityInfo</c> instance to the client metadata.
+            </summary>
+            <param name="entity">The entity instance to add</param>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.EntityQueryInfo">
+            <summary>
+            Contains metadata about an entity related to using queries for that entity
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.EntityQueryInfo.Properties">
+            <summary>
+            Gets a read-only collection of the queryable properties from the entity
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.EntityQueryInfo.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerator`1" /> that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.EntityQueryInfo.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.EntityQueryInfo.ToEntityQueryInfo(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Transforms a record into an EntityQueryInfo instance
+            </summary>
+            <param name="record">The record to transform</param>
+            <returns>A <c>EntityQueryInfo</c> instance.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.FacetInfo">
+            <summary>
+            Represents metadata about an entity query facet
+            </summary>
+            <seealso cref="T:Cenium.Framework.ComponentModel.NotifyPropertyChangedBase" />
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.FacetInfo.Name">
+            <summary>
+            Gets the name of the property
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.FacetKind">
+            <summary>
+            Specifies the kind of facet
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.Metadata.FacetKind.Unknown">
+            <summary>
+            The facet kind is unknown
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.Metadata.FacetKind.Lookup">
+            <summary>
+            The facet is a lookup facet
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.Metadata.FacetKind.Enumeration">
+            <summary>
+            The facet is an enumeration facet
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.Metadata.FacetKind.ServerEnumeration">
+            <summary>
+            The facet is a server-based enumeration facet
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.IEntityPropertyExtension">
+            <summary>
+            Represents a property extension.
+            </summary>
+            <remarks>
+            Property extensions are read-only properties that are being evaluated at runtime, but nevers stored (virtual or calculated).
+            </remarks>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.IEntityPropertyExtension.Get(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Gets the property value
+            </summary>
+            <param name="r">The Record instance to create an extension property for</param>
+            <returns>The property value</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.EntityPropertyExtensionDelegate">
+            <summary>
+            Represents a property extension delegate
+            </summary>
+            <param name="r">The Record instance to create an extension property for</param>
+            <returns>The property value</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.IEntityPropertyValue">
+            <summary>
+            Represents a default property value
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.IEntityPropertyValue.PropertyName">
+            <summary>
+            Gets the name of the property
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.IEntityPropertyValue.DefaultValue">
+            <summary>
+            Gets the default value of the property
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.IMetadataProvider">
+            <summary>
+            Defines the mechanism for loading and retriving service metadata
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.IMetadataProvider.Components">
+            <summary>
+            Retrieves a collection of all the components
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.IMetadataProvider.Entities">
+            <summary>
+            Retrieves a collection of all the entities
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.IMetadataProvider.ServiceMethods">
+            <summary>
+            Retrieves a collection of all the service methods available
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.IMetadataProvider.GetComponent(System.String)">
+            <summary>
+            Gets information about a named component
+            </summary>
+            <param name="name">The name of the component to get information about</param>
+            <returns>A ComponentInfo instance, or null if the component does not exist.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.IMetadataProvider.GetEntity(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="name"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.IMetadataProvider.GetServiceMethod(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="name"></param>
+             <returns></returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.IMetadataProvider.Load">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.IMetadataProvider.Clear">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.IQueryableEntityPropertyExtension">
+            <summary>
+            Represents an entity property extension that is queryable
+            </summary>
+            <seealso cref="T:Cenium.Framework.Client.Metadata.IEntityPropertyExtension" />
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.IQueryableEntityPropertyExtension.IsQueryable">
+            <summary>
+            Gets a value indicating whether this instance is queryable.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.IQueryableEntityPropertyExtension.PropertyType">
+            <summary>
+            Gets the Type of the value that the extension returns in the Get method.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.IQueryableEntityPropertyExtension.CreateExpression(Cenium.Framework.Data.ServiceQueryOperator,System.Object[])">
+            <summary>
+            Creates a query expression
+            </summary>
+            <param name="op">The operator to use</param>
+            <param name="operands">The operands to use</param>
+            <returns></returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.MetadataClientExtensions">
+            <summary>
+            Contains client extensions for the metadata
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.NamespaceDoc">
+            <summary>
+            The Cenium.Framework.Client.Metadata namespace contains types and interfaces for extending the entity metadata to allow for additional entity properties.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.PropertyQueryInfo">
+            <summary>
+            Represents query metadata about an entity property
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.PropertyQueryInfo.Name">
+            <summary>
+            Gets the name of the property
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.SimpleListEnumeratorPropertyExtension">
+            <summary>
+            An entity property extension that enumerates child records into a string
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.SimpleListEnumeratorPropertyExtension.#ctor">
+            <summary>
+            Initializes a new instance of the SimpleListEnumeratorPropertyExtension class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.SimpleListEnumeratorPropertyExtension.CollectionProperty">
+            <summary>
+            Gets or sets the record property that contains a collection of children
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.SimpleListEnumeratorPropertyExtension.DisplayProperty">
+            <summary>
+            Gets or sets the child record property to display
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.SimpleListEnumeratorPropertyExtension.RemoveEmptyValues">
+            <summary>
+            Gets or sets if empty values should be removed
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.SimpleListEnumeratorPropertyExtension.SortProperty">
+            <summary>
+            Gets or sets the property to sort the values by
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.SimpleListEnumeratorPropertyExtension.DefaultValue">
+            <summary>
+            Gets or sets the value to return when no value is returned
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.SimpleListEnumeratorPropertyExtension.Get(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Gets the specified rec.
+            </summary>
+            <param name="rec">The record</param>
+            <returns>A string</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Metadata.ValueMapPropertyExtension">
+            <summary>
+            A property extension capable of mapping a property value into another value. Used for instance to provide display-friendly values for internal identifiers
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.ValueMapPropertyExtension.#ctor">
+            <summary>
+            Initializes a new instance of the ValueMapPropertyExtension class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.ValueMapPropertyExtension.IsCaseSensitive">
+            <summary>
+            Gets or sets if the property extension is case-sensitive
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.ValueMapPropertyExtension.MapProperty">
+            <summary>
+            Gets or sets the name of the property who's values is being mapped
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.ValueMapPropertyExtension.DefaultValue">
+            <summary>
+            Gets or sets a default value if the mapping returns null
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Metadata.ValueMapPropertyExtension.MapValues">
+            <summary>
+            Gets or sets the values to map. These values are provided in a key-value pair string format
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Metadata.ValueMapPropertyExtension.Get(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Gets the property value
+            </summary>
+            <param name="r">The Record instance to create an extension property for</param>
+            <returns>
+            The property value
+            </returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Model.IRecord">
+            <summary>
+            Explain the purpose of the interface here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Model.IRecordEnumerator">
+            <summary>
+            Explain the purpose of the interface here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Model.NamespaceDoc">
+            <summary>
+            Contains classes that implements the client connector record object model
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Model.RecordChildList">
+            <summary>
+            Represents a collection of <c>Record</c> instances.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.#ctor(Cenium.Framework.Client.Model.Record,System.String)">
+            <summary>
+            Initializes a new instance of the RecordChildList class
+            </summary>
+            <param name="parent">The parent <c>Record</c> instance</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordChildList.Parent">
+            <summary>
+            Gets the parent <c>Record</c>
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.IndexOf(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Determines the index of a specific <c>Record</c>
+            </summary>
+            <param name="item">The Record instance to find the index for</param>
+            <returns>The index of item if found in the list; otherwise, -1.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.Insert(System.Int32,Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Inserts a Record at the specified index
+            </summary>
+            <param name="index">The zero-based index at which item should be inserted</param>
+            <param name="item">The Record instance to insert</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.RemoveAt(System.Int32)">
+            <summary>
+            Removes a Record at the specified index
+            </summary>
+            <param name="index">The zero-based index at which item should be removed</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordChildList.Item(System.Int32)">
+            <summary>
+            Gets or sets the Record at the specified index.
+            </summary>
+            <param name="index">The zero-based index of the element to get or set.</param>
+            <returns>The record at the specified index</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.Add(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Adds a Record to the list
+            </summary>
+            <param name="item">The Record to add</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.Clear">
+            <summary>
+            Removes all items from the list
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.Contains(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Determines if the list contains a specific Record
+            </summary>
+            <param name="item">The record to locate in the list</param>
+            <returns>True if found in the collection, otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.CopyTo(Cenium.Framework.Client.Model.Record[],System.Int32)">
+            <summary>
+            Copies the elements of the list to an Array, starting at a particular Array index.
+            </summary>
+            <param name="array">The one-dimensional Array that is the destination of the elements copied from RecordChildList. The Array must have zero-based indexing.</param>
+            <param name="arrayIndex">The zero-based index in array at which copying begins.</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordChildList.Count">
+            <summary>
+            Gets the number of elements contained in the RecordChildList
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordChildList.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the RecordChildList is read-only
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.MoveUp(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Moves a Record up in the RecordChildList
+            </summary>
+            <param name="record">The Record to move</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.MoveUp(Cenium.Framework.Client.Model.Record,System.Boolean)">
+            <summary>
+            Moves a Record up in the RecordChildList
+            </summary>
+            <param name="record">The Record to move</param>
+            <param name="setDirty">If <c>true</c>, sets the parent record to dirty</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.MoveDown(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Moves a Record down in the RecordChildList
+            </summary>
+            <param name="record">The Record to move</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.MoveDown(Cenium.Framework.Client.Model.Record,System.Boolean)">
+            <summary>
+            Moves a Record down in the RecordChildList
+            </summary>
+            <param name="record">The Record to move</param>
+            <param name="setDirty">If <c>true</c>, sets the parent record to dirty</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.Remove(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Removes the first occurrence of a specific object from the RecordChildList
+            </summary>
+            <param name="item">The Record to remove</param>
+            <returns>true if item was successfully removed from the RecordChildList; otherwise, false.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.ToArray">
+            <summary>
+            Converts the RecordChildList to an array of Record instances
+            </summary>
+            <returns>an array of Record instances</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection
+            </summary>
+            <returns>An IEnumerator&lt;Record&gt; object that can be used to iterate through the RecordChildList</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection
+            </summary>
+            <returns>An IEnumerator object that can be used to iterate through the RecordChildList</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.OnAddRecord(System.Int32,Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Called when a Record is added to the RecordChildList
+            </summary>
+            <param name="record">The Record being added</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.OnRemoveRecord(Cenium.Framework.Client.Model.Record,System.Int32)">
+            <summary>
+            Called when a Record is removed from the RecordChildList
+            </summary>
+            <param name="record">The Record being removed</param>
+            <param name="index">The index of the Record being removed</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.OnClear">
+            <summary>
+            Called when the RecordChildList is being cleared
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.Add(System.Object)">
+            <summary>
+            Adds an item to the RecordChildList.
+            </summary>
+            <param name="value">The Record to add</param>
+            <returns>The position into which the new element was inserted, or -1 to indicate that the item was not inserted into the collection.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.Contains(System.Object)">
+            <summary>
+            Determines whether the RecordChildList contains a specific value.
+            </summary>
+            <param name="value">The object to locate in the RecordChildList.</param>
+            <returns>
+            true if the Record is found in the RecordChildList; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.IndexOf(System.Object)">
+            <summary>
+            Determines the index of a specific item in the RecordChildList.
+            </summary>
+            <param name="value">The object to locate in the RecordChildList.</param>
+            <returns>
+            The index of Record if found in the list; otherwise, -1.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.Insert(System.Int32,System.Object)">
+            <summary>
+            Inserts an item to the RecordChildList at the specified index.
+            </summary>
+            <param name="index">The zero-based index at which <paramref name="value" /> should be inserted.</param>
+            <param name="value">The object to insert into the RecordChildList.</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordChildList.IsFixedSize">
+            <summary>
+            Gets a value indicating whether the RecordChildList has a fixed size. This always return false.
+            </summary>
+            <returns>true if the RecordChildList has a fixed size; otherwise, false.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.Remove(System.Object)">
+            <summary>
+            Removes the first occurrence of a specific object from the RecordChildList.
+            </summary>
+            <param name="value">The object to remove from the RecordChildList.</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordChildList.System#Collections#IList#Item(System.Int32)">
+            <summary>
+            Gets or sets the element at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <returns>The element at the specified index</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordChildList.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the elements of the RecordChildList to an <see cref="T:System.Array" />, starting at a particular <see cref="T:System.Array" /> index.
+            </summary>
+            <param name="array">The one-dimensional <see cref="T:System.Array" /> that is the destination of the elements copied from RecordChildList. The <see cref="T:System.Array" /> must have zero-based indexing.</param>
+            <param name="index">The zero-based index in <paramref name="array" /> at which copying begins.</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordChildList.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the RecordChildList is synchronized (thread safe). This implementation always return false
+            </summary>
+            <returns>true if access to the RecordChildList is synchronized (thread safe); otherwise, false.</returns>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordChildList.SyncRoot">
+            <summary>
+            Gets an object that can be used to synchronize access to the RecordChildList.
+            </summary>
+            <returns>An object that can be used to synchronize access to the RecordChildList.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Model.RecordItem">
+            <summary>
+            Manages state for a <c>Record</c> instance in a <c>RecordModel</c>
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.Model.RecordItem.ItemPropertyChanged">
+            <summary>
+            Occurs when a property value changes within the record.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItem.#ctor">
+            <summary>
+            Initializes a new instance of the RecordItem class
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItem.#ctor(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Initializes a new instance of the RecordItem class
+            </summary>
+            <param name="item">A record instance</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordItem.IsSelected">
+            <summary>
+            Gets or sets if the item is selected
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordItem.IsDirty">
+            <summary>
+            Gets or sets if the item is dirty (edited)
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItem.Clear">
+            <summary>
+            Clears the Record instance from the item
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordItem.IsDetailLoaded">
+            <summary>
+            Gets or sets if details have been loaded
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordItem.Item">
+            <summary>
+            Gets the current <c>Record</c> instance this item is associated with
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItem.OnRecordPropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Called when a property on the <c>Record</c> instance changes
+            </summary>
+            <param name="sender">The source of the event</param>
+            <param name="e">The property changed event data</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItem.OnDispose">
+            <summary>
+            Called when the <c>RecordItem</c> instance is disposed
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItem.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Model.RecordItemModel">
+            <summary>
+            A model representing a single <c>Record</c>
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.Model.RecordItemModel.Error">
+            <summary>
+            Occurs when the model raises an error
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.Model.RecordItemModel.SaveStarted">
+            <summary>
+            Occurs when the save process starts
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.Model.RecordItemModel.SaveCompleted">
+            <summary>
+            Occurs when the save process completes
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.Model.RecordItemModel.SaveProgressChanged">
+            <summary>
+            Occurs when the save process reports progress
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.Model.RecordItemModel.PopulateCompleted">
+            <summary>
+            Occurs when a populate process completes
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItemModel.#ctor">
+            <summary>
+            Initializes a new instance of the RecordItemModel class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordItemModel.Item">
+            <summary>
+            Gets or sets the record owned by the model
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordItemModel.Parameters">
+            <summary>
+            Gets or sets the parameters used by the GetMethod when invoking the server
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordItemModel.IncludeChildRecords">
+            <summary>
+            Gets or sets if children should be included in a save operation
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordItemModel.IsBusy">
+            <summary>
+            Gets or sets if the model is busy
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordItemModel.IsDirty">
+            <summary>
+            Gets or sets if the model is dirty
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordItemModel.GetMethod">
+            <summary>
+            Gets or sets the Get service method
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordItemModel.CreateMethod">
+            <summary>
+            Gets or sets the create service method
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordItemModel.UpdateMethod">
+            <summary>
+            Gets or sets the update service method
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordItemModel.RemoveMethod">
+            <summary>
+            Gets or sets the remove method
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItemModel.Populate">
+            <summary>
+            Populates the model with data using the specified get method
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItemModel.Clear">
+            <summary>
+            Clears the model
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItemModel.SaveChanges">
+            <summary>
+            Saves any changes to the record in the model
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItemModel.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItemModel.AttachItemEventHandlers(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Attaches event handlers to a record
+            </summary>
+            <param name="item">The <c>Record</c> instance to attach event handlers to</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItemModel.DetachItemEventHandlers(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Detaches any event handlers from a record
+            </summary>
+            <param name="item">The <c>Record</c> instance to detach event handlers from</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItemModel.OnItemPropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Called when a record property changes
+            </summary>
+            <param name="sender">The sender</param>
+            <param name="e">The <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItemModel.OnError(System.Exception)">
+            <summary>
+            Called when an error occurs
+            </summary>
+            <param name="e">The exception that raised the error</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItemModel.OnSaveProgressChanged(System.ComponentModel.ProgressChangedEventArgs)">
+            <summary>
+            Handles progress change event
+            </summary>
+            <param name="args">The event arguments</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItemModel.OnPopulateCompleted">
+            <summary>
+            Handles the PopulateCompleted event
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItemModel.OnSaveStarted">
+            <summary>
+            Called when a save starts
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItemModel.OnSaveCompleted(Cenium.Framework.ComponentModel.SaveCommandEventArgs)">
+            <summary>
+            Called when a save has completed
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordItemModel.OnDispose">
+            <summary>
+            Called when the Dispose method is called
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Model.RecordModel">
+            <summary>
+            A model representing a collection of records
+            </summary>
+            <remarks>
+            Internally this collection uses a paged collection. By default it will fetch 50 records at a time
+            </remarks>
+        </member>
+        <member name="E:Cenium.Framework.Client.Model.RecordModel.Error">
+            <summary>
+            Occurs when the implementing instance reports an error.
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.Model.RecordModel.SaveStarted">
+            <summary>
+            Occurs when the save operation starts
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.Model.RecordModel.SaveCompleted">
+            <summary>
+            Occurs when the save operation completes
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.Model.RecordModel.SaveProgressChanged">
+            <summary>
+            Occurs when the save progress changes
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.#ctor">
+            <summary>
+            Initializes a new instance of the RecordModel class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.IsAddEnabled">
+            <summary>
+            Gets a value that indicates whether a new item can be added to the model
+            </summary>
+            <value>
+            <c>true</c> if a new item can be added to the model; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.IsEditEnabled">
+            <summary>
+            Gets a value that indicates whether an item can be edited
+            </summary>
+            <value>
+              <c>true</c> if an item can be edited; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.IsRemoveEnabled">
+            <summary>
+            Gets a value that indicates whether an item can be removed from the model
+            </summary>
+            <value>
+            <c>true</c> if an item can be removed from the model; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.PageSize">
+            <summary>
+            Gets or sets the page size (how many records the QueryMethod will fetch in one operation).
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.QueryMethod">
+            <summary>
+            Gets or sets the name of the query method for querying
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.GetMethod">
+            <summary>
+            Gets or sets the name of the method for get operations
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.CreateMethod">
+            <summary>
+            Gets or sets the name of the create method for submitting newly created records
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.UpdateMethod">
+            <summary>
+            Gets or sets the name of the update method for submitting modified records
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.RemoveMethod">
+            <summary>
+            Gets or sets the name of the remove method for submitting removed records
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.IsSearchable">
+            <summary>
+            Gets if the model supports search expressions
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.IncludeChildRecords">
+            <summary>
+            Gets or sets whether the RecordModel should serialize children upon saving changes
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.IgnoreUserPropertyContext">
+            <summary>
+            Gets or sets whether the users property context should be ignored (calls the method with ServiceCallOptions.IgnoreCurrentPropertyContext)
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.SortOrder">
+            <summary>
+            Gets or sets the sort order used by the query method
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.Query">
+            <summary>
+            Gets or sets a query used with the query method
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.UserQuery">
+            <summary>
+            Gets or sets a user-query used with the query method. This query is appended to the <c>Query</c> property
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.Parameters">
+            <summary>
+            Gets or sets query parameters
+            </summary>
+            <remarks>
+            Parameters may be used in a query method that requires one or more parameters.
+            </remarks>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.IsBusy">
+            <summary>
+            Get if the RecordModel is busy. This property returns true when a query or any of the invocation methods are in progress
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.IsDirty">
+            <summary>
+            Get if the model is dirty, i.e. if any of the containing records have been updated
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.Populate">
+            <summary>
+            Performs a query
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.CreateServiceOperations">
+            <summary>
+            Creates a new ServiceOperationBuffer and fills it with the records that have been marked as dirty
+            </summary>
+            <returns>A new ServiceOperationBuffer instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.SaveChanges">
+            <summary>
+            Submits all the changes to the service methods
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.SaveChangesImpl">
+            <summary>
+            The implementation of the save method
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.BeforeSaveItem(Cenium.Framework.Client.ServiceOperationBuffer,Cenium.Framework.Client.Model.RecordItem)">
+            <summary>
+            Called before items are saved
+            </summary>
+            <param name="buffer">The <c>ServiceOperationBuffer</c> instance that contains the items to be saved</param>
+            <param name="item">The item being saved</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.GetDetails(Cenium.Framework.Client.Model.RecordItem)">
+            <summary>
+            Invokes the get method for a record
+            </summary>
+            <param name="item">The item to invoke the get method for</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.IndexOf(Cenium.Framework.Client.Model.RecordItem)">
+            <summary>
+            Determines the index of a specific item in the <see cref="T:System.Collections.Generic.IList`1" />.
+            </summary>
+            <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.IList`1" />.</param>
+            <returns>
+            The index of <paramref name="item" /> if found in the list; otherwise, -1.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.Insert(System.Int32,Cenium.Framework.Client.Model.RecordItem)">
+            <summary>
+            Inserts an item to the <see cref="T:System.Collections.Generic.IList`1" /> at the specified index.
+            </summary>
+            <param name="index">The zero-based index at which <paramref name="item" /> should be inserted.</param>
+            <param name="item">The object to insert into the <see cref="T:System.Collections.Generic.IList`1" />.</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.Insert(System.Int32,Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Inserts a Record instance at the specified index.
+            </summary>
+            <param name="index">The index to insert the record at.</param>
+            <param name="record">The record to insert.</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.RemoveAt(System.Int32)">
+            <summary>
+            Removes the <see cref="T:System.Collections.Generic.IList`1" /> item at the specified index.
+            </summary>
+            <param name="index">The zero-based index of the item to remove.</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.Item(System.Int32)">
+            <summary>
+            Gets or sets the element at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.Add(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Adds the specified record.
+            </summary>
+            <param name="record">The record.</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.Add(Cenium.Framework.Client.Model.RecordItem)">
+            <summary>
+            Adds an item to the <see cref="T:System.Collections.Generic.ICollection`1" />.
+            </summary>
+            <param name="item">The object to add to the <see cref="T:System.Collections.Generic.ICollection`1" />.</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.Clear">
+            <summary>
+            Removes all items from the <see cref="T:System.Collections.Generic.ICollection`1" />.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.ClearCore">
+            <summary>
+            Executes the logic for Clear
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.Contains(Cenium.Framework.Client.Model.RecordItem)">
+            <summary>
+            Determines whether the <see cref="T:System.Collections.Generic.ICollection`1" /> contains a specific value.
+            </summary>
+            <param name="item">The object to locate in the <see cref="T:System.Collections.Generic.ICollection`1" />.</param>
+            <returns>
+            true if <paramref name="item" /> is found in the <see cref="T:System.Collections.Generic.ICollection`1" />; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.CopyTo(Cenium.Framework.Client.Model.RecordItem[],System.Int32)">
+            <summary>
+            Copies to.
+            </summary>
+            <param name="array">The array.</param>
+            <param name="arrayIndex">Index of the array.</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.Count">
+            <summary>
+            Gets the number of elements contained in the RecordModel.
+            </summary>
+            <returns>The number of elements contained in the RecordModel</returns>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.IsEmpty">
+            <summary>
+            Returns true if the collection is empty; otherwise false
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.IsReadOnly">
+            <summary>
+            Gets a value indicating whether the RecordModel is read-only.
+            </summary>
+            <returns>true if the RecordModel is read-only; otherwise, false.
+              </returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.Remove(Cenium.Framework.Client.Model.RecordItem)">
+            <summary>
+            Removes the first occurrence of a specific object from the <see cref="T:System.Collections.Generic.ICollection`1" />.
+            </summary>
+            <param name="item">The object to remove from the <see cref="T:System.Collections.Generic.ICollection`1" />.</param>
+            <returns>
+            true if <paramref name="item" /> was successfully removed from the <see cref="T:System.Collections.Generic.ICollection`1" />; otherwise, false. This method also returns false if <paramref name="item" /> is not found in the original <see cref="T:System.Collections.Generic.ICollection`1" />.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            A <see cref="T:System.Collections.Generic.IEnumerator`1" /> that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.Add(System.Object)">
+            <summary>
+            Adds an item to the <see cref="T:System.Collections.IList" />.
+            </summary>
+            <param name="value">The object to add to the <see cref="T:System.Collections.IList" />.</param>
+            <returns>
+            The position into which the new element was inserted, or -1 to indicate that the item was not inserted into the collection,
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.Contains(System.Object)">
+            <summary>
+            Determines whether the <see cref="T:System.Collections.IList" /> contains a specific value.
+            </summary>
+            <param name="value">The object to locate in the <see cref="T:System.Collections.IList" />.</param>
+            <returns>
+            true if the <see cref="T:System.Object" /> is found in the <see cref="T:System.Collections.IList" />; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.IndexOf(System.Object)">
+            <summary>
+            Determines the index of a specific item in the <see cref="T:System.Collections.IList" />.
+            </summary>
+            <param name="value">The object to locate in the <see cref="T:System.Collections.IList" />.</param>
+            <returns>
+            The index of <paramref name="value" /> if found in the list; otherwise, -1.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.Insert(System.Int32,System.Object)">
+            <summary>
+            Inserts an item to the <see cref="T:System.Collections.IList" /> at the specified index.
+            </summary>
+            <param name="index">The zero-based index at which <paramref name="value" /> should be inserted.</param>
+            <param name="value">The object to insert into the <see cref="T:System.Collections.IList" />.</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.IsFixedSize">
+            <summary>
+            Gets a value indicating whether the RecordModel has a fixed size.
+            </summary>
+            <returns>true if the RecordModel has a fixed size; otherwise, false.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.Remove(System.Object)">
+            <summary>
+            Removes the first occurrence of a specific object from the RecordModel.
+            </summary>
+            <param name="value">The object to remove from the RecordModel.</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.System#Collections#IList#Item(System.Int32)">
+            <summary>
+            Gets or sets the element at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.CopyTo(System.Array,System.Int32)">
+            <summary>
+            Copies the elements of the RecordModel to an <see cref="T:System.Array" />, starting at a particular <see cref="T:System.Array" /> index.
+            </summary>
+            <param name="array">The one-dimensional <see cref="T:System.Array" /> that is the destination of the elements copied from RecordModel. The <see cref="T:System.Array" /> must have zero-based indexing.</param>
+            <param name="index">The zero-based index in <paramref name="array" /> at which copying begins.</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.IsSynchronized">
+            <summary>
+            Gets a value indicating whether access to the RecordModel is synchronized (thread safe).
+            </summary>
+            <returns>true if access to the RecordModel is synchronized (thread safe); otherwise, false.</returns>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordModel.SyncRoot">
+            <summary>
+            Gets an object that can be used to synchronize access to the RecordModel.
+            </summary>
+            <returns>An object that can be used to synchronize access to the RecordModel.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.CreateRecordItem">
+            <summary>
+            Creates a new <c>RecordItem</c> instance
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.IsAddEnabledCore">
+            <summary>
+            Determines whether an item can be added to the model
+            </summary>
+            <returns><c>true</c> if a new item can be added to the model; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.IsEditEnabledCore">
+            <summary>
+            Determines whether an item can be modified
+            </summary>
+            <value>
+              <c>true</c> if an item can be edited; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.IsRemoveEnabledCore">
+            <summary>
+            Determines whether an item can be removed from the model
+            </summary>
+            <value>
+            <c>true</c> if an item can be removed from the model; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.OnItemPropertyChanged(System.Object,System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Called when [item property changed].
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="e">The <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.GetItemsDirtyFlag">
+            <summary>
+            Gets the items dirty flag.
+            </summary>
+            <returns>True if the items are dirty; otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.SetBusy">
+            <summary>
+            Sets the busy flag
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.UnsetBusy">
+            <summary>
+            Unsets the busy flag
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.OnError(System.Exception)">
+            <summary>
+            Called when an error occurs
+            </summary>
+            <param name="e">The exception that triggered the error</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.OnSaveProgressChanged(System.ComponentModel.ProgressChangedEventArgs)">
+            <summary>
+            Raises the <see cref="E:SaveProgressChanged" /> event.
+            </summary>
+            <param name="args">The <see cref="T:System.ComponentModel.ProgressChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.OnSaveStarted">
+            <summary>
+            Called when [save started].
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.OnSaveCompleted(Cenium.Framework.ComponentModel.SaveCommandEventArgs)">
+            <summary>
+            Called when [save completed].
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.OnDispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources. Called by the Dispose method.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.OnPropertyChanged(System.String)">
+            <summary>
+            Raises the PropertyChanged event for a specified property name. Note that the property is not raised if the event is disabled, or if no event handler is attached.
+            </summary>
+            <param name="propertyName">The name of the property that changed</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordModel.OnPageLoaded(System.Collections.Generic.IReadOnlyCollection{Cenium.Framework.Client.Model.RecordItem})">
+            <summary>
+            Called after a page has been loaded into the collection
+            </summary>
+            <param name="pageIndex">The index of the page that was loaded</param>
+            <param name="page">a collection of <c>RecordItem</c>instances that has been loaded into memory</param>
+        </member>
+        <member name="T:Cenium.Framework.Client.Model.MetadataManager">
+            <summary>
+            The MetadataManager class exposes metadata services for the ClientConnector
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.Model.MetadataManager.InitializationCompleted">
+            <summary>
+            Occurs after metadata initialization has completed. This generally occurs just before a login is completed
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.#ctor">
+            <summary>
+            Initializes a new instance of the MetadataManager class
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.GetQueryConfigurationAsync(System.String)">
+            <summary>
+            Gets the query configuration metadata for an entity
+            </summary>
+            <param name="entityName">The entity name</param>
+            <returns>A <c>Task</c> object representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.GetEntityFromServiceMethod(System.String)">
+            <summary>
+            Gets the entity returned by a service method
+            </summary>
+            <param name="methodName">The service method to get the entity from</param>
+            <returns>An <c>EntityInfo</c> instance, or null if the method does not exist or does not return an entity.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.AddComponents(Cenium.Framework.Service.Metadata.ComponentInfo[])">
+            <summary>
+            Adds component(s) to the metadata store
+            </summary>
+            <param name="components">an array of ComponentInfo instances to add</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.AddComponent(Cenium.Framework.Service.Metadata.ComponentInfo)">
+            <summary>
+            Adds a single component to the metadata store
+            </summary>
+            <param name="component">The component to add</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.MetadataManager.Components">
+            <summary>
+            Gets a collection of components that are available
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.GetComponent(System.String)">
+            <summary>
+            Retrieves a ComponentInfo instance associated with the given name
+            </summary>
+            <param name="name">The component name to retrieve a ComponentInfo instance for</param>
+            <returns>A ComponentInfo instance associated with the given name if it exists; otherwise null</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.AddEntities(Cenium.Framework.Service.Metadata.EntityInfo[])">
+            <summary>
+            Adds entities to the metadata store
+            </summary>
+            <param name="entities">The entities to add</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.AddEntity(Cenium.Framework.Service.Metadata.EntityInfo)">
+            <summary>
+            Add a single entity to the metadata store
+            </summary>
+            <param name="entity">The entity to add</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.MetadataManager.Entities">
+            <summary>
+            Gets all the entities registered in the metadata store
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.GetEntity(System.String)">
+            <summary>
+            Gets a specific entity with a specified identifier
+            </summary>
+            <param name="id">The identifier for the entity to retrieve</param>
+            <returns>The <c>EntityInfo</c> instance associated with the identifier, or null if the entity does not exist.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.AddPropertyExtension(System.String,System.String,Cenium.Framework.Client.Metadata.IEntityPropertyExtension)">
+            <summary>
+            Adds a property extension to the metadata store
+            </summary>
+            <param name="entityName">The identifier of the entity to add the property extension to</param>
+            <param name="propertyName">The name of the extension property</param>
+            <param name="extension">A IEntityPropertyExtension instance</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.AddPropertyExtension(System.String,System.String,Cenium.Framework.Client.Metadata.EntityPropertyExtensionDelegate)">
+            <summary>
+            Adds a property extension to the metadata store
+            </summary>
+            <param name="entityName">The identifier of the entity to add the property extension to</param>
+            <param name="propertyName">The name of the extension property</param>
+            <param name="propertyMethod">A EntityPropertyExtensionDelegate delegate</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.AddPropertyDefaultValue(System.String,System.String,System.Object)">
+            <summary>
+            Adds a default value for a given entity property
+            </summary>
+            <param name="entityName">The identifier of the entity to add the property extension to</param>
+            <param name="propertyName">The property to set a default value for</param>
+            <param name="defaultValue">The default value</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.GetDefaultEntityValues(System.String)">
+            <summary>
+            Gets the default values for a specified entity
+            </summary>
+            <param name="entityName">The identifier of the entity to get default values for</param>
+            <returns>An IEnumerable&lt;IEntityPropertyValue&gt; with default property values for a given entity</returns>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.MetadataManager.ServiceMethods">
+            <summary>
+            Gets a collection of all service methods registered in the metadata store
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.GetComponentMethods(System.String)">
+            <summary>
+            Gets a collection of all service methods associated with a specific component
+            </summary>
+            <param name="component">The component id to retrieve methods for</param>
+            <returns>a collection of all service methods associated with the specified component</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.GetServiceMethod(System.String)">
+            <summary>
+            Gets a <c>ServiceMethodInfo</c> instance associated with a specific service name
+            </summary>
+            <param name="name">The service operation name</param>
+            <returns>a <c>ServiceMethodInfo</c> instance associated with a specific service name</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.GetRecordTypeFromMethod(System.String)">
+            <summary>
+            Returns the record type for a specific service operation
+            </summary>
+            <param name="methodName">The service operation</param>
+            <returns>The record type associated with the specified service operation</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.MetadataManager.CheckServiceMethodExist(System.String)">
+            <summary>
+            Checks if a service method exists or not
+            </summary>
+            <param name="methodName">The method to check for</param>
+            <returns>true if the method exists; otherwise false</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Model.Record">
+            <summary>
+            The Record class represents a collection of data elements
+            </summary>
+            <remarks>
+            A record is similar to a row in a database. However a single record can also have child records or even collections of child records. A record serves as a generic representation of a class that can
+            be transmitted over the network without knowing what that class looks like.
+            </remarks>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.Record.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the Record class
+            </summary>
+            <param name="name">The name of the record</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.Record.#ctor">
+            <summary>
+            Initializes a new instance of the Record class
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.Record.Notify">
+            <summary>
+            Notifies any property changed event listener that the record has changed
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.Record.Copy">
+            <summary>
+            Copies the values of a Record instance into a new Record instance. This is a deep copy
+            </summary>
+            <returns>A new Record instance that is a copy of this instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.Record.Validate">
+            <summary>
+            Validates the <c>Record</c> instance
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.Record.State">
+            <summary>
+            Gets or sets the record state
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.Record.IsDirty">
+            <summary>
+            Returns true if the <c>Record</c> instance is changed, otherwise false
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.Record.Name">
+            <summary>
+            Gets or sets the name of the record
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.Record.Key">
+            <summary>
+            Gets the key value for the record
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.Record.Duplicate">
+            <summary>
+            Performs a copy operation
+            </summary>
+            <returns>A new record instance</returns>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.Record.Item(System.String)">
+            <summary>
+            Gets or sets the value of a field in the record
+            </summary>
+            <remarks>
+            When a field is set, the record will try to convert the value into the correct datatype according to the metadata
+            </remarks>
+            <param name="field">Name of the field to retrieve</param>
+            <returns>The value of the field</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.Record.ResetState(System.Boolean)">
+            <summary>
+            Resets the state for the record to unchanged.
+            </summary>
+            <param name="includeChildren">if set to <c>true</c>, the state for all children will also be updated.</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.Record.GetValue``1(System.String)">
+            <summary>
+            Gets a value of a field
+            </summary>
+            <typeparam name="T">The type of the value</typeparam>
+            <param name="field">The name of the field</param>
+            <returns>The value of the field, or null if empty</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.Record.SetVersion(System.Object,System.Object)">
+            <summary>
+            Updates tenant identity and row version
+            </summary>
+            <param name="tenantId">The tenant identifier.</param>
+            <param name="rowVersion">The row version.</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.Record.Merge(Cenium.Framework.Client.Model.Record,System.Boolean)">
+            <summary>
+            Merges two records. The record being merged into this record is considered principal and will overwrite any values it may have if they are present in the merging record
+            </summary>
+            <param name="rec">The Record to merge with</param>
+            <param name="clearOldValues">True if the values in this record should be cleared first</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.Record.SetFieldValue(System.String,System.Object,System.Boolean)">
+            <summary>
+            Sets a property value
+            </summary>
+            <param name="name">The name of the property to set</param>
+            <param name="value">The value to set</param>
+            <param name="setDirty">Indicates if the record should change its state to dirty</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.Record.SetQueryState(System.Boolean)">
+            <summary>
+            When the enabled parameter is true, the state tracking of the record is disabled. When false state tracking is resumed and the state is set to Unchanged
+            </summary>
+            <param name="enabled">Whether to enable or disable state tracking</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.Record.SetStateChanged">
+            <summary>
+            Sets the state to Modified if state == Unchanged
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Model.RecordPropertyChangedEventHandler">
+            <summary>
+            Represents the method that will handle the RecordPropertyChanged event
+            </summary>
+            <param name="record">The record containing the property that was changed.</param>
+            <param name="args">The <see cref="T:Cenium.Framework.Client.Model.RecordPropertyChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="T:Cenium.Framework.Client.Model.RecordPropertyChangedEventArgs">
+            <summary>
+            Provides data for the RecordPropertyChanged event
+            </summary>
+            <seealso cref="T:System.ComponentModel.PropertyChangedEventArgs" />
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordPropertyChangedEventArgs.OldValue">
+            <summary>
+            Gets the old property value.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.RecordPropertyChangedEventArgs.NewValue">
+            <summary>
+            Gets the new property value.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Model.RecordState">
+            <summary>
+            Represents the state of a record
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.Model.RecordState.Unchanged">
+            <summary>
+            No changes have been made to a record
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.Model.RecordState.Added">
+            <summary>
+            The record was added
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.Model.RecordState.Modified">
+            <summary>
+            The record has been modified
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.Model.RecordState.Deleted">
+            <summary>
+            The record has been deleted
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Model.RecordUtility">
+            <summary>
+            Contains utility and helper methods for handling records and record structures
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.RecordUtility.ToRecordValue(System.Object)">
+            <summary>
+            Converts a value to a normalized record value.
+            </summary>
+            <param name="value">The value to convert</param>
+            <returns>A normalized record value</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Model.QueryResult">
+            <summary>
+            Contains the result of a service Query
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Model.QueryResult.#ctor">
+            <summary>
+            Initializes a new instance of the QueryResult class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.QueryResult.TotalCount">
+            <summary>
+            Gets or sets the total number of results
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.QueryResult.ResultCount">
+            <summary>
+            Gets or sets the number of results returned
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.QueryResult.PageSize">
+            <summary>
+            Gets or sets the page size (max results to return)
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.QueryResult.Offset">
+            <summary>
+            Gets or sets the offset (number of results to skip)
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.QueryResult.ErrorId">
+            <summary>
+            Gets or sets the error id
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.QueryResult.ErrorMessage">
+            <summary>
+            Gets or sets the error message
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Model.QueryResult.Items">
+            <summary>
+            Gets or sets an array of Records as the results
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.ConnectionMode">
+            <summary>
+            Indicates the type of connection to establish with the server
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ConnectionMode.Trusted">
+            <summary>
+            Trusted connection mode
+            </summary>
+            <remarks>
+            With a trusted connection mode the client adapter can impersonate another user. This connection mode requires the user connecting to setup as a trusted user
+            and is intended for server to server connections (for instance from a web server).
+            </remarks>
+        </member>
+        <member name="F:Cenium.Framework.Client.ConnectionMode.Client">
+            <summary>
+            Client connection mode
+            </summary>
+            <remarks>
+            Default connection mode, used by most applications
+            </remarks>
+        </member>
+        <member name="T:Cenium.Framework.Client.NamespaceDoc">
+            <summary>
+            Provides client access to the services layer using a record model
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.NetworkMonitorEntrySource">
+            <summary>
+            Defines the source of the network monitor data
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.NetworkMonitorEntrySource.Server">
+            <summary>
+            Data is loaded from the server
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.NetworkMonitorEntrySource.PrintServer">
+            <summary>
+            Data is loaded from the print server
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.NetworkMonitorEntrySource.Cache">
+            <summary>
+            Data is fetched from cache
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.NetworkMonitorEntryType">
+            <summary>
+            Defines the type of data being sent with a monitoring entry
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.NetworkMonitorEntryType.None">
+            <summary>
+            No data is being sent
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.NetworkMonitorEntryType.Text">
+            <summary>
+            The data is UTF-8 encoded text
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.NetworkMonitorEntryType.Binary">
+            <summary>
+            The data is binary
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.NetworkMonitorEntryType.Image">
+            <summary>
+            The data represents an image stream
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.NetworkMonitorEntryType.QueryResult">
+            <summary>
+            The data represents a query result
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.JsonRecordSerializer">
+            <summary>
+            JSON serialiser for serializing and deserializing records
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.JsonRecordSerializer.Deserialize(System.String,System.String)">
+            <summary>
+            Deserializes a json text into a <c>QueryResult</c>
+            </summary>
+            <param name="jsonText">The JSON formatted text to deserialize</param>
+            <param name="recordType">The record type to use</param>
+            <returns>A QueryResult instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.JsonRecordSerializer.Deserialize(System.Byte[],System.String)">
+            <summary>
+            Deserializes a byte array into a query result
+            </summary>
+            <param name="buf">a byte array containing a json formatted text encoded using utf-8</param>
+            <param name="recordType">The record type to use</param>
+            <returns>A QueryResult instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.JsonRecordSerializer.Deserialize(System.IO.Stream,System.String)">
+            <summary>
+            Deserializes a stream into a query result
+            </summary>
+            <param name="s">The stream to deserialize</param>
+            <param name="recordType">The record type to use</param>
+            <returns>A QueryResult instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.JsonRecordSerializer.SerializeAsUTF8(Cenium.Framework.Client.Model.Record,System.Boolean)">
+            <summary>
+            Serializes a record into a json-formatted string encoded as UTF-8
+            </summary>
+            <param name="rec">The record to serialize</param>
+            <param name="includeChildCollections">Indicates if children should be included or not</param>
+            <returns>a json-formatted string encoded as UTF-8</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Connection">
+            <summary>
+            Connection parameters for a server connection
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Connection.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the ServerConnection class using the default credentials
+            </summary>
+            <param name="server">The server to connect to</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Connection.#ctor(System.String,System.String,System.Object)">
+            <summary>
+            Initializes a new instance of the ServerConnection class
+            </summary>
+            <param name="server">The server to connect to</param>
+            <param name="user">The user to connect as</param>
+            <param name="password">The password to use when connecting</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Connection.#ctor(System.String,System.String,System.Object,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Initializes a new instance of the ServerConnection class with a proxy server
+            </summary>
+            <param name="server">The server to connect to</param>
+            <param name="user">The user to connect as</param>
+            <param name="password">The password to use when connecting</param>
+            <param name="proxyPort">The proxy port to use</param>
+            <param name="proxyServer">The proxy server to use</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Connection.#ctor(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Initializes a new instance of the ServerConnection class using the default credentials with a proxy server
+            </summary>
+            <param name="server">The server to connect to</param>
+            <param name="proxyPort">The proxy port to use</param>
+            <param name="proxyServer">The proxy server to use</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.Connection.UseDefaultCredentials">
+            <summary>
+            Get if the default credentials are being used (Windows credentials).
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Connection.Server">
+            <summary>
+            Gets the server
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Connection.User">
+            <summary>
+            Gets the user to connect as
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Connection.Password">
+            <summary>
+            Gets the password associated with the user
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Connection.ProxyServer">
+            <summary>
+            Gets the proxy server address
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Connection.ProxyPort">
+            <summary>
+            Gets the proxy server port
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Connection.Credentials">
+            <summary>
+            Gets the credentials associated with the connection
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Connection.Proxy">
+            <summary>
+            Gets the proxy associated with the connection
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Connection.NormalizeServerAddress(System.String)">
+            <summary>
+            Makes sure the server address is a valid URL
+            </summary>
+            <param name="address">The server address</param>
+            <returns>A valid server address, including protocol</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.PropertyContextInfo">
+            <summary>
+            Represents information about a property context
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.PropertyContextInfo.PropertyContextId">
+            <summary>
+            Gets the property context identifier
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.PropertyContextInfo.Name">
+            <summary>
+            Gets the name of the property context
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.PropertyContextInfo.Description">
+            <summary>
+            Gets the description of the property context
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.PropertyContextInfo.DisplayName">
+            <summary>
+            Gets the display name of the property context
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.PropertyContextInfo.FromRecord(Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Creates a <c>PropertyContextInfo</c> instance from a <c>Record</c>
+            </summary>
+            <param name="record">The record to create the <c>PropertyContextInfo</c> instance from</param>
+            <returns>A new <c>PropertyContextInfo</c> instance.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Report.ReportHelper">
+            <summary>
+            Contains utility methods for accessing report data
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Report.ReportHelper.GetReportLayouts(System.String)">
+            <summary>
+            Gets the available layouts for a specified report
+            </summary>
+            <param name="name">The name of the report</param>
+            <returns>A <c>ICollection</c> of <c>ReportLayout</c> instances</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Report.ReportLayout">
+            <summary>
+            Represents a report layout type for a report
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.ServiceCallOptions">
+            <summary>
+            Defines options that can be set when invoking a service method
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceCallOptions.None">
+            <summary>
+            No options set
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceCallOptions.IgnoreCurrentPropertyContext">
+            <summary>
+            Ignore the current property context
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceCallOptions.IncludeChildRecords">
+            <summary>
+            Whether to include the child records or not
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.ServiceInvokeParameters">
+            <summary>
+            Represents the parameters used when invoking a service method
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.ServiceInvokeParameters.#ctor">
+            <summary>
+            Initializes a new instance of the ServiceInvokeParameters class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ServiceInvokeParameters.IncludeChildren">
+            <summary>
+            Gets or sets the option to include child records in the invokation call
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ServiceInvokeParameters.Record">
+            <summary>
+            Gets or sets the record to send with the invokation method
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.ServiceMethods">
+            <summary>
+            Defines standard framework service methods
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.RecordTypeUserSetting">
+            <summary>
+            Identifies the user setting record type
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.RecordTypeNavigatorProfileEntry">
+            <summary>
+            Identifies the NavigatorProfileEntry record type
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.RecordTypeNavigatorProfileChangeItem">
+            <summary>
+            Identifies the NavigatorProfileEntryItem record type
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.RecordTypeUserReport">
+            <summary>
+            Identifies the UserReport record type
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.RecordTypeReportSendRequest">
+            <summary>
+            Identifies the ReportSendRequest record type
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.HistoryLogQueryMethod">
+            <summary>
+            Query method for getting the history logs
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.HistoryLogGetMethod">
+            <summary>
+            Get method for getting a history log entry
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.UserPropertyContextQueryMethod">
+            <summary>
+            Query method for getting the property contexts available to a user
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.UsersQueryMethod">
+            <summary>
+            Query method for retriving a list of users
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.UsersGetCurrentMethod">
+            <summary>
+            Get method for retriving the current user
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.UserSettingGetMethod">
+            <summary>
+            Get method for retriving a user setting
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.UserSettingUpdateMethod">
+            <summary>
+            Update method updating a user setting
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.GetPermissionsForUserQueryMethod">
+            <summary>
+            Query method for retriving user permissions
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.TimeZonesQueryMethod">
+            <summary>
+            Query method for getting supported time zones
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.NavigatorProfileQueryMethod">
+            <summary>
+            Query method for navigator profiles
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.NavigatorProfileGetMethod">
+            <summary>
+            Get method for navigator profiles
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.NavigatorProfileCreateMethod">
+            <summary>
+            Create method for navigator profiles
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.NavigatorProfileUpdateMethod">
+            <summary>
+            Update method for navigator profiles
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.NavigatorProfileDeleteMethod">
+            <summary>
+            Delete method for navigator profiles
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.UserNavigatorProfileGetMethod">
+            <summary>
+            Get method for current user navigator profile
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.UserNavigatorProfileUpdateMethod">
+            <summary>
+            Update method for current user navigator profile
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.ReportGetRequestDefaultsGetMethod">
+            <summary>
+            Get method for retriving a report request default values
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.ReportCreateInvokeMethod">
+            <summary>
+            Invoke method for creating a report
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.ServiceMethods.ReportGetInfoGetMethod">
+            <summary>
+            Get method for retriving information about a report type
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.ServiceMethods.HasParameters(System.String)">
+            <summary>
+            Determines whether the specified service method contains parameters
+            </summary>
+            <param name="serviceMethodUrl">The service method URL.</param>
+            <returns>True if the service method contains parameters; otherwise false</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.ServiceOperationBuffer">
+            <summary>
+            The ServiceOperationBuffer builds a buffer of multiple service operation calls and executes all at the same time.
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.ServiceOperationBuffer.ProgressChanged">
+            <summary>
+            Occurs when save progress changes.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.ServiceOperationBuffer.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the ServiceOperationBuffer class
+            </summary>
+            <param name="includeChildren">Indicates if children should be serialized or not</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.ServiceOperationBuffer.Add(System.String,Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Adds a Record with an associated service method to the buffer
+            </summary>
+            <param name="serviceMethod">The service method to invoke</param>
+            <param name="record">The Record to perform a service method on</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.ServiceOperationBuffer.Add(Cenium.Framework.Client.ServiceOperationBuffer)">
+            <summary>
+            Adds a ServiceOperationBuffer to this instance, effectively merging the two
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="M:Cenium.Framework.Client.ServiceOperationBuffer.Execute">
+            <summary>
+            Executes the service methods in the buffer
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.ServiceOperationBuffer.OnProgressChanged(System.ComponentModel.ProgressChangedEventArgs)">
+            <summary>
+            Raises the <see cref="E:ProgressChanged" /> event.
+            </summary>
+            <param name="args">The <see cref="T:System.ComponentModel.ProgressChangedEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.ServiceOperationBuffer.Validate">
+            <summary>
+            Performs validation on all items in the buffer prior to executing the service methods
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.ServiceOperationBuffer.ServiceOperation.#ctor(System.String,Cenium.Framework.Client.Model.Record)">
+            <summary>
+            Initializes a new instance of the ServiceOperation class
+            </summary>
+            <param name="method">The service operation to execute</param>
+            <param name="record">The Record to execute the service operation on</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.ServiceOperationBuffer.ServiceOperation.Method">
+            <summary>
+            Gets the service operation method to execute
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ServiceOperationBuffer.ServiceOperation.Item">
+            <summary>
+            Gets the Record the service operation method executes on
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.ServiceOperationResult">
+            <summary>
+            Represents the status of an asynchronous service operation
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.ServiceOperationResult.#ctor(System.Exception,System.Object)">
+            <summary>
+            Initializes a new instance of the ServiceOperationResultEventArgs class. Use this constructor when there is an error during service invokation
+            </summary>
+            <param name="error">The error associated with this result</param>
+            <param name="state">The state object associated with the operation</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.ServiceOperationResult.#ctor(System.Object,System.Object)">
+            <summary>
+            Initializes a new instance of the ServiceOperationResultEventArgs class.
+            </summary>
+            <param name="result">The result of the invokation</param>
+            <param name="state">The state object associated with the operation</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.ServiceOperationResult.IsError">
+            <summary>
+            Gets if there was an error during invokation
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ServiceOperationResult.Error">
+            <summary>
+            Gets the error that occured during the service operation invokation.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ServiceOperationResult.IsAuthorizationError">
+            <summary>
+            Indicates if an error is an authorization error
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ServiceOperationResult.Result">
+            <summary>
+            The result of the service operation
+            </summary>
+            <remarks>
+            Check the IsError property to determine if an error occured before accessing the result.
+            </remarks>
+        </member>
+        <member name="P:Cenium.Framework.Client.ServiceOperationResult.State">
+            <summary>
+            Gets the user object associated with the service operation
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.ServiceParameters">
+            <summary>
+            Represents the parameters used when invoking a service method
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.ServiceParameters.#ctor">
+            <summary>
+            Initializes a new instance of the ServiceParameters class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ServiceParameters.ServiceMethod">
+            <summary>
+            Gets or sets the service method to invoke
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ServiceParameters.Options">
+            <summary>
+            Gets or sets the options used when invoking the service
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ServiceParameters.ServiceMethodParameters">
+            <summary>
+            Gets or sets the parameters used when invoking the service. This can either be a Record or an object array.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ServiceParameters.UserState">
+            <summary>
+            Gets or sets the user state. This can be any object that needs to be accessed in the callback method
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.ServiceQueryParameters">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.ServiceQueryParameters.#ctor">
+            <summary>
+            Initializes a new instance of the ServiceQueryParameters class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.ServiceQueryParameters.SearchExpression">
+            <summary>
+            Gets or sets the search expression to use
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.UserContext">
+            <summary>
+            Utility class for getting data associated with the user
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserContext.UserProperties">
+            <summary>
+            Gets a collection of the property contexts available for the user
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserContext.GetUserFilters(System.String,System.String)">
+            <summary>
+            Gets the user filters for a specified type and id
+            </summary>
+            <param name="filterType">The filter type to get</param>
+            <param name="filterId">The filter identifier to get</param>
+            <returns>An <c>IAsyncEnumerable</c> of <c>IUserFilter</c> instances</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserContext.GetUserApplicationSettings(System.String,System.String,System.String)">
+            <summary>
+            Gets the users applications settings
+            </summary>
+            <param name="applicationId">The application id to get the settings for</param>
+            <param name="settingType">The settings type to get</param>
+            <param name="settingId">The settings identifier to get</param>
+            <returns>An <c>IAsyncEnumerable</c> of <c>IUserSetting</c> instances</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserContext.SaveUserApplicationSettings(System.String,System.String,System.String,System.Collections.Generic.IEnumerable{Cenium.Framework.Client.IUserSetting})">
+            <summary>
+            Saves the users settings
+            </summary>
+            <param name="applicationId">The application id to to associate with the settings</param>
+            <param name="settingType">The settings type to to associate with the settings</param>
+            <param name="settingId">The settings identifier to to associate with the settings</param>
+            <param name="settings">An <c>IEnumerable</c> of <c>IUserSetting</c> instances to save</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserContext.SaveUserFilters(System.String,System.String,System.Collections.Generic.IEnumerable{Cenium.Framework.Client.IUserFilter})">
+            <summary>
+            Saves user filters
+            </summary>
+            <param name="filterType">The filter type to get</param>
+            <param name="filterId">The filter identifier to get</param>
+            <param name="filters">An <c>IEnumerable</c> of <c>IUserFilter</c> instances to save</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserContext.CreateUserFilter">
+            <summary>
+            Creates a new <c>IUserFilter</c> instance
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserContext.Current">
+            <summary>
+            Gets the UserContext instance for the currently logged on user
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.UserInfo">
+            <summary>
+            Represents the currently logged in user
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserInfo.#ctor">
+            <summary>
+            Initializes a new instance of the UserInfo class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserInfo.UserId">
+            <summary>
+            Gets the user id
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserInfo.DisplayName">
+            <summary>
+            Gets the user display name
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserInfo.Image">
+            <summary>
+            Gets the user image
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserInfo.ImageRef">
+            <summary>
+            Gets the image ref for the user image
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserInfo.MailAddress">
+            <summary>
+            Gets the users mail address
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserInfo.HomePhoneNo">
+            <summary>
+            Gets the users home phone number
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserInfo.MobilePhoneNo">
+            <summary>
+            Gets the users mobile phone number
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserInfo.BusinessPhoneNo">
+            <summary>
+            Gets the users business phone number
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserInfo.#cctor">
+            <summary>
+            Initializes the user
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserInfo.CurrentUser">
+            <summary>
+            Gets the current user
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserInfo.OnUserLogin(System.Object,System.EventArgs)">
+            <summary>
+            Called when a user is logged in
+            </summary>
+            <param name="sender">The source of the event</param>
+            <param name="args">The event arguments</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserInfo.OnUserLogout(System.Object,System.EventArgs)">
+            <summary>
+            Called when a user logs out
+            </summary>
+            <param name="sender">The source of the event</param>
+            <param name="args">The event arguments</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserInfo.OnLoadUser">
+            <summary>
+            Called when a user logs in, retrieves user data from the server
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.UserSetting">
+            <summary>
+            Retrieves user settings from the server. User settings are retrived asyncronously
+            </summary>
+            <remarks>
+            User settings are automatically updated from the server upon login and cleared upon logout
+            </remarks>
+        </member>
+        <member name="E:Cenium.Framework.Client.UserSetting.SettingsLoaded">
+            <summary>
+            Triggered when a user setting has been loaded
+            </summary>
+        </member>
+        <member name="E:Cenium.Framework.Client.UserSetting.SettingsSaved">
+            <summary>
+            Triggered when a user setting has been unloaded
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserSetting.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the UserSettings class
+            </summary>
+            <param name="name">The name of the setting</param>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserSetting.Name">
+            <summary>
+            Gets the name of the setting
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserSetting.Value">
+            <summary>
+            Gets or sets the value of the setting
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserSetting.Load">
+            <summary>
+            Refreshes the setting from the server
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserSetting.Save">
+            <summary>
+            Saves the setting to the server
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserSetting.GetUserSetting(System.String)">
+            <summary>
+            Creates a new user setting
+            </summary>
+            <param name="name">The name of the setting</param>
+            <returns>The newly created <c>UserSetting</c> instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserSetting.Clear">
+            <summary>
+            Clears all user settings
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.UserPropertyContext">
+            <summary>
+            Represents the current property context for the logged in user
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserPropertyContext.#ctor">
+            <summary>
+            Initializes a new instance of the UserPropertyContext class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserPropertyContext.PropertyContextId">
+            <summary>
+            Gets the current property context
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserPropertyContext.Name">
+            <summary>
+            Gets the name of the property context
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserPropertyContext.Description">
+            <summary>
+            Gets the property context description
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.UserPropertyContext.Current">
+            <summary>
+            Gets the current property context
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.UserSettingManager">
+            <summary>
+            The <c>UserSettingManager</c> class contains methods to access user settings
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.UserSettingManager.UserSettingType">
+            <summary>
+            Defines the type of user setting
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.UserSettingManager.UserSettingType.Single">
+            <summary>
+            Setting is a single setting
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Client.UserSettingManager.UserSettingType.Collection">
+            <summary>
+            Setting is a collection setting
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserSettingManager.RegisterManagedSetting(Cenium.Framework.Client.UserSettingManager.UserSettingType,System.String)">
+            <summary>
+            Registers a setting group name for automatic load and save
+            </summary>
+            <param name="name">The setting name</param>
+            <param name="type">The setting type</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserSettingManager.GetUserSettingCollection(System.String)">
+            <summary>
+            Retrieves a user setting collection
+            </summary>
+            <param name="name">The name of the user setting</param>
+            <returns>The user setting collection associated with the specified name</returns>
+        </member>
+        <member name="M:Cenium.Framework.Client.UserSettingManager.GetUserSetting(System.String)">
+            <summary>
+            Retrieves a single user setting
+            </summary>
+            <param name="name">The name of the user setting</param>
+            <returns>single user setting</returns>
+        </member>
+    </members>
+</doc>

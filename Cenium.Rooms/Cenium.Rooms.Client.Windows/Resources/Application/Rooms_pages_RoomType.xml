@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ui>
+  <!-- Add panes here-->
+  <panes>
+
+  </panes>
+
+  <!-- Add dialogs here -->
+  <dialogs>
+
+    <!-- Add dialogs here -->
+
+  </dialogs>
+
+
+
+  <!-- Add pages here-->
+  <pages>
+    <page id="rooms.page.roomtype" name="roomtypes" description="Add and maintain roomtypes information"
+    model="framework.pages.listviewmodel" type="framework.griddetailpage">
+
+
+
+      <modelProperties>
+        <property id="CreateMethod" value="Rooms/RoomType/Create" />
+        <property id="QueryMethod" value="Rooms/RoomType/Query" />
+        <property id="UpdateMethod" value="Rooms/RoomType/Update" />
+        <property id="RemoveMethod" value="Rooms/RoomType/Delete" />
+        <property id="GetMethod" value="Rooms/RoomType/Get/{RoomTypeId}" />
+        <property id="IncludeChildRecords" value="true" type="Bool" />
+      </modelProperties>
+
+
+
+      <layout>
+        <section id="listView" readOnly="true">
+          <items>
+            <item id="RoomTypeName" label="RoomType Name" type="Column" width="*"/>
+            <item id="RoomTypeCode" label="RoomType Code" type="Column" width="*"/>
+            <item id="PriceCode" label="Price Code" type="Column" width="*"/>
+            <item id="MaxNoOfPersons" label="Max Number of Persons" type="Column" width="*"/>
+          </items>
+        </section>
+      </layout>
+
+
+
+    </page>
+  </pages>
+
+
+
+</ui>

@@ -1,0 +1,2858 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cenium.Framework.Data</name>
+    </assembly>
+    <members>
+        <member name="T:Cenium.Framework.Data.ChangeTrackingHelper">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.ChangeTrackingHelper.#ctor">
+            <summary>
+            Initializes a new instance of the ChangeTrackingHelper class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.ChangeTrackingSettings">
+            <summary>
+            Represents change tracking options for an entity collection
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.ChangeTrackingSettings.IsLogEnabled">
+            <summary>
+            Gets or sets whether change tracking is enabled
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.ChangeTrackingSettings.IsEntryVisible">
+            <summary>
+            Gets or sets whether the change tracking entries should be visible
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Configuration.EntityInstanceDescriptionHandler">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Configuration.EntityInstanceDescriptionHandler.#ctor(Cenium.Framework.Data.Configuration.GetEntityInstanceDescriptionHandler)">
+            <summary>
+            Initializes a new instance of the EntityInstanceDescriptionHandler class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Configuration.EntityPropertyConfiguration">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Configuration.EntityPropertyConfiguration.#ctor(System.Reflection.PropertyInfo,System.Int32)">
+            <summary>
+            Initializes a new instance of the EntityTypePropertyConfiguration class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Configuration.EntityPropertyConfiguration.QueryDisplayOrder">
+            <summary>
+            Gets the query display order for the property
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Configuration.EntityPropertyConfiguration.Property">
+            <summary>
+            Gets the <c>PropertyInfo</c> instance associated with the property configuration.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Configuration.EntityPropertyConfiguration.IsHiddenFromQuery">
+            <summary>
+            Determines if the property should be hidden from query
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Configuration.EntityPropertyConfiguration.IsHiddenFromBasicQuery">
+            <summary>
+            Determines if the property should be hidden from the basic query filter
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Configuration.EntityPropertyConfiguration.IsQueryMultiValue">
+            <summary>
+            Gets a value indicating whether this property supports a multi value query (i.e. operators Any or All)
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Configuration.EntityPropertyConfiguration.QueryOptions">
+            <summary>
+            Gets the query options associated with this property
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Configuration.EntityPropertyConfiguration.HasQueryDisplayOrder(System.Int32)">
+            <summary>
+            Sets the query display order for the property
+            </summary>
+            <param name="displayOrder">The display order.</param>
+            <returns>The same <c>EntityTypePropertyConfiguration&lt;TEntity,TProperty&gt;</c> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Configuration.EntityPropertyConfiguration.IsDefaultHiddenFromQuery(System.Nullable{System.Boolean})">
+            <summary>
+            Configures if the property should be hidden from queries
+            </summary>
+            <param name="hidden">Value indicating if the property should be hidden from queries.</param>
+            <returns>The same <c>EntityTypePropertyConfiguration&lt;TEntity,TProperty&gt;</c> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.Configuration.FacetConfiguration">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Configuration.FacetConfiguration.#ctor(System.Reflection.PropertyInfo,System.Int32)">
+            <summary>
+            Initializes a new instance of the FacetConfiguration class
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Configuration.FacetConfiguration.HasDisplayOrder(System.Int32)">
+            <summary>
+            Sets the display order for the facet
+            </summary>
+            <param name="displayOrder">The display order.</param>
+            <returns>The same <c>FacetConfiguration</c> instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.Configuration.PropertyQueryOptions">
+            <summary>
+            Defines options for the facet
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Configuration.PropertyQueryOptions.None">
+            <summary>
+            No options have been set
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Configuration.PropertyQueryOptions.HideFromBasicFilter">
+            <summary>
+            The property should be hidden from the basic filter.
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Configuration.PropertyQueryOptions.MultiValue">
+            <summary>
+            Filter on multiple values. The facet query will either be an AND or an OR operation, using the All and In operators respectively
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Configuration.FacetKind">
+            <summary>
+            Specifies the kind of facet
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Configuration.FacetKind.Lookup">
+            <summary>
+            The facet gets its values by doing a lookup
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Configuration.FacetKind.Enumeration">
+            <summary>
+            The facets gets its values from an enumeration
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Configuration.FacetKind.ServerEnumeration">
+            <summary>
+            The facets gets its values from a server-based enumeration
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Configuration.EntityTypeConfigurationBuilder.EntityType">
+            <summary>
+            Gets the type that implements the entity
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Configuration.EntityTypeConfigurationBuilder.PrimaryQueryProperty">
+            <summary>
+            Gets the <c>PropertyInfo</c> for the primary query property. The primary query property is the default query property
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Configuration.EntityTypeConfigurationBuilder.UseSearchAsPrimaryWhenAvailable">
+            <summary>
+            Specifies if a search expression is the default when search is available.
+            </summary>
+            <value><c>true</c> if primary query should be a search expression; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:Cenium.Framework.Data.Configuration.EntityTypeConfigurationBuilder`1">
+            <summary>
+            Allows configuration to be performed for an entity type. An EntityTypeConfigurationBuilder&lt;TEntityType&gt; can be obtained by using the Configure method on EntityConfiguration.
+            </summary>
+            <typeparam name="TEntity">Represents the entity type.</typeparam>
+            <seealso cref="T:Cenium.Framework.Data.EntityConfiguration" />
+        </member>
+        <member name="M:Cenium.Framework.Data.Configuration.EntityTypeConfigurationBuilder`1.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the EntityTypeConfiguration class
+            </summary>
+            <param name="entityType">The type that represents the entity.</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.Configuration.EntityTypeConfigurationBuilder`1.HasPrimaryQueryProperty``1(System.Linq.Expressions.Expression{System.Func{`0,``0}},System.Boolean)">
+            <summary>
+            Configures the primary query property for this entity type
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="propertyExpression">A lambda expression representing the property to be used as the primary query property. For example, in C# <c>t => t.Id</c>.</param>
+            <param name="useSearchWhenAvailable">if set to <c>true</c>, a search expression is primary when search is available.</param>
+            <returns>The same EntityTypeConfigurationBuilder&lt;TEntity&gt; instance so that multiple calls can be chained.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Configuration.EntityTypeConfigurationBuilder`1.Property``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Configures a property that is defined on this type
+            </summary>
+            <typeparam name="TProperty">The type of the property.</typeparam>
+            <param name="propertyExpression">A lambda expression representing the property associated with the specified entity, for example, in C# <c>t => t.Id</c>.</param>
+            <returns>A configuration object that can be used to configure the facet.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.Configuration.IEntityConfigurationElement">
+            <summary>
+            Explain the purpose of the interface here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.ConstraintHelper">
+            <summary>
+            Contains helper methods to assist with constraints
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.DatabaseExtensions">
+            <summary>
+            Contains extension methods for the <c>System.Data.Entity.Database</c> class
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.DatabaseExtensions.ColumnExists(System.Data.Entity.Database,System.String,System.String)">
+            <summary>
+            Checks if a column exists in a table
+            </summary>
+            <param name="database">The Database instance</param>
+            <param name="tableName">The name of the table to check</param>
+            <param name="columnName">The name of the column to check for</param>
+            <returns>True if the column exists; otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.DatabaseExtensions.ColumnExists``1(System.Data.Entity.Database,System.String)">
+            <summary>
+            Checks if a column exists in a database table for a given entity type
+            </summary>
+            <typeparam name="TEntity">The entity type</typeparam>
+            <param name="database">The Database instance</param>
+            <param name="columnName">The name of the column to check for</param>
+            <returns>True if the column exists; otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.DatabaseExtensions.SetDefaultValue``1(System.Data.Entity.Database,System.String,System.Object)">
+            <summary>
+            Updates an entity database table by setting a default value if the value in the column is null
+            </summary>
+            <typeparam name="TEntity">The entity type</typeparam>
+            <param name="database">The Database instance</param>
+            <param name="columnName">The name of the column (property) to update</param>
+            <param name="value">The value to set as default value</param>
+            <returns>The result returned by the database</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.DatabaseExtensions.SetNewGuid``1(System.Data.Entity.Database,System.String,System.Boolean)">
+            <summary>
+            Updates an entity database table by setting the column to a valid GUID if the value in the column is null. Each row will get a unique GUID value
+            </summary>
+            <typeparam name="TEntity">The entity type</typeparam>
+            <param name="database">The Database instance</param>
+            <param name="columnName">The name of the column (property) to update</param>
+            <param name="updateEmpty">if set to <c>true</c>, will also update rows where the column value is an empty GUID.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.DatabaseExtensions.GetEntityTableName``1">
+            <summary>
+            Gets the table name for an entity
+            </summary>
+            <typeparam name="TEntity">The entity type</typeparam>
+            <returns>The table name for the entity</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.DatabaseExtensions.GetEntityTableName(System.Type)">
+            <summary>
+            Gets the table name for an entity
+            </summary>
+            <param name="entityType">The entity type</param>
+            <returns>The table name for the entity</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.DataConfiguration">
+            <summary>
+            Provides configuration for the data access layer. This class is thread-safe
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.DataConfiguration.DefaultConnectionString">
+            <summary>
+            Gets or sets the default connection string
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.DataConfiguration.GetConnection(Cenium.Framework.Data.EntityContext)">
+            <summary>
+            Returns the connection string for a component. If the assembly to which the EntityContext belongs is not annotated
+            with a ComponentAttribute a SystemException is thrown. If there is no specific connection string for the component, the default
+            connection string is returned.
+            </summary>
+            <param name="context">The EntityContext instance to find a connection string for</param>
+            <returns>The connection string for the EntityContext</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.DataConfiguration.GetConnection(System.Type)">
+            <summary>
+            Returns the connection string for a component. If the assembly to which the type belongs is not annotated
+            with a ComponentAttribute a SystemException is thrown. If there is no specific connection string for the component, the default
+            connection string is returned.
+            </summary>
+            <param name="type">The type to find a connection string for</param>
+            <returns>The connection string for the type</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.DataConfiguration.GetConnection(System.String)">
+            <summary>
+            Returns the connection string for a component. If there is no specific connection string for the component, the default
+            connection string is returned.
+            </summary>
+            <param name="componentName">The component to find a connection string for</param>
+            <returns>The connection string for the component</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.DataConfiguration.AddComponentConnection(System.String,System.String)">
+            <summary>
+            Adds a component specific connection string
+            </summary>
+            <param name="componentName">The name of the component</param>
+            <param name="connectionString">The connection string for the given component</param>
+        </member>
+        <member name="T:Cenium.Framework.Data.DataInitializerBase`1">
+            <summary>
+            Base class for database initializers
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.DataInitializerBase`1.#ctor">
+            <summary>
+            Initializes a new instance of the DataInitializerBase class
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.DataInitializerBase`1.Initialize(System.Data.Entity.DbContext,System.Boolean)">
+            <summary>
+            Executes during database initialization.
+            </summary>
+            <param name="ctx">The DbContext instance</param>
+            <param name="isUpgrade">True if this is an upgrade, otherwise false</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.DataInitializerBase`1.OnInitialize(`0,System.Boolean)">
+            <summary>
+            Called during database initialization
+            </summary>
+            <param name="context">The entity context</param>
+            <param name="isUpgrade">True if this is an upgrade, otherwise false</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.DataInitializerBase`1.AfterInitialize(System.Boolean)">
+            <summary>
+            Called after the database initialization has completed. This method is called asyncronously.
+            </summary>
+            <param name="isUpgrade">True if this is an upgrade, otherwise false</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.DataInitializerBase`1.GetConnectionString">
+            <summary>
+            Gets the connection string for the component
+            </summary>
+            <returns>The connection string associated with the component.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.DbEntityEntryState">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.DbEntityEntryState.#ctor(System.Data.Entity.Infrastructure.DbEntityEntry)">
+            <summary>
+            Initializes a new instance of the DbEntityEntryState class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.DeployTask">
+            <summary>
+            Represents a data initialization task to be executed during deployment
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.DeployTask.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the DeployTask class
+            </summary>
+            <param name="identity">The unique task identity.</param>
+            <param name="displayName">The display name of the task.</param>
+        </member>
+        <member name="P:Cenium.Framework.Data.DeployTask.Identity">
+            <summary>
+            Gets the identity of the task
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.DeployTask.DisplayName">
+            <summary>
+            Gets the display name of the task
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.DeployTask.Register``1(System.String,System.String)">
+            <summary>
+            Creates and registers a new deployment task
+            </summary>
+            <typeparam name="TContext">The context type the task is associated with.</typeparam>
+            <param name="identity">The unique task identifier.</param>
+            <param name="displayName">The display name associated with the task.</param>
+            <returns>A new <c>DeployTask</c> instance.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.EntityBulkStatement`1">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityBulkStatement`1.#ctor">
+            <summary>
+            Initializes a new instance of the EntityBulkStatement class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.EntityContextSession">
+            <summary>
+            Represents an entity context session.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContextSession.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the EntityContextSession class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.EntityContextSession.IsSystemSession">
+            <summary>
+            Gets a value indicating whether this session is a system session, i.e. if the session is system-initiated (typically background processes).
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContextSession.GetPropertyContextDate(System.Int64)">
+            <summary>
+            Gets the <c>PropertyContextDate</c> instance for a specified property
+            </summary>
+            <param name="propertyContextId">The property context identifier.</param>
+            <returns>The <c>PropertyContextDate</c> instance associated with the propertyContextId argument.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.EntityStatement`1">
+            <summary>
+            Provides execution of entity statements, such as bulk updates or deletes
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityStatement`1.#ctor">
+            <summary>
+            Initializes a new instance of the EntityStatement class
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityStatement`1.Execute">
+            <summary>
+            Executes this statement
+            </summary>
+            <returns>The number of items affected by the update.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityStatement`1.ExecuteOnSave">
+            <summary>
+            Defers the execution until the context is being saved.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Infrastrucure.DbBulkOperation`1">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Infrastrucure.DbBulkOperation`1.#ctor(Cenium.Framework.Data.Infrastrucure.Linq.SqlEntityBulkStatement{`0})">
+            <summary>
+            Initializes a new instance of the DbBulkOperation class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Infrastrucure.DbEntityTransaction">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Infrastrucure.DbEntityTransaction.#ctor(System.Data.Entity.DbContext,System.Collections.Generic.ICollection{Cenium.Framework.Data.Infrastrucure.DbOperation})">
+            <summary>
+            Initializes a new instance of the DbEntityTransaction class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Infrastrucure.DbSqlOperation">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Infrastrucure.DbSqlOperation.#ctor(Cenium.Framework.Data.Infrastrucure.Linq.SqlStatement)">
+            <summary>
+            Initializes a new instance of the DbSqlOperation class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Infrastrucure.Linq.SqlDeleteEntityStatement`1">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Infrastrucure.Linq.SqlDeleteEntityStatement`1.#ctor(Cenium.Framework.Data.EntityContext)">
+            <summary>
+            Initializes a new instance of the DeleteEntityStatement class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Infrastrucure.Linq.SqlEntityBulkStatement`1">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Infrastrucure.Linq.SqlEntityBulkStatement`1.#ctor(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Initializes a new instance of the SqlEntityBulkStatement class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Infrastrucure.Linq.SqlEntityStatementProvider`1">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Infrastrucure.Linq.SqlEntityStatementProvider`1.#ctor">
+            <summary>
+            Initializes a new instance of the SqlEntityStatementProvider class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Infrastrucure.Linq.SqlStatement">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Infrastrucure.Linq.SqlStatement.#ctor(System.String,System.Collections.Generic.ICollection{System.Data.SqlClient.SqlParameter})">
+            <summary>
+            Initializes a new instance of the SqlStatementValue class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Infrastrucure.Linq.SqlUpdateEntityStatementProvider`1">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Infrastrucure.Linq.SqlUpdateEntityStatementProvider`1.#ctor(Cenium.Framework.Data.EntityContext,System.Linq.Expressions.Expression{System.Func{`0,`0}})">
+            <summary>
+            Initializes a new instance of the SqlUpdateEntityStatement class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Infrastrucure.Linq.SqlWhereEntityStatement`1">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Infrastrucure.Linq.SqlWhereEntityStatement`1.#ctor(Cenium.Framework.Data.Infrastrucure.Linq.SqlEntityStatementProvider{`0},Cenium.Framework.Data.Infrastrucure.Linq.SqlWhereEntityStatement{`0},System.Linq.Expressions.ExpressionType,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Initializes a new instance of the SqlEntityContext class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Infrastrucure.Linq.SqlExpressionHelper">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Infrastrucure.Linq.SqlExpressionVisitor">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Infrastrucure.Linq.SqlExpressionVisitor.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the SqlExpressionVisitor class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Infrastrucure.Linq.UpdateExpressionVisitor">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Infrastrucure.Linq.UpdateExpressionVisitor.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the UpdateExpressionVisitor class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Infrastrucure.Linq.WhereExpressionVisitor">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Infrastrucure.Linq.WhereExpressionVisitor.#ctor">
+            <summary>
+            Initializes a new instance of the WhereExpressionVisitor class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.DataInitializerExecutionMode">
+            <summary>
+            Explain the purpose of the enumeration here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.DbInitializerUtility">
+            <summary>
+            Explain the purpose of the enumeration here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.DeployLogger">
+            <summary>
+            Represents a deployment log
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.DeployLogger.#ctor(System.Type,System.String,System.String,Cenium.Framework.Data.Internal.DeployLogType)">
+            <summary>
+            Initializes a new instance of the DeployLog class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.DeployLogType">
+            <summary>
+            Explain the purpose of the enumeration here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.DeployPhase">
+            <summary>
+            Describes the different phases of a deployment
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Internal.DeployPhase.DbScript">
+            <summary>
+            Creating or updating database objects
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Internal.DeployPhase.ValidateVersion">
+            <summary>
+            Validating expected vs. deployed version
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Internal.DeployPhase.DataInitializer">
+            <summary>
+            Executing data initialization
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Internal.DeployPhase.PostDataInitializer">
+            <summary>
+            Executing post-processing of data
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.DeployTaskResult">
+            <summary>
+            Explain the purpose of the enumeration here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.IDataInitializerEx">
+            <summary>
+            Internal interface to access methods implemented by the <c>DataInitializerBase</c> class.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.DbUpdateExceptionHandler">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.DbUpdateExceptionHandler.#ctor">
+            <summary>
+            Initializes a new instance of the DbUpdateExceptionHandler class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.EdmHelper">
+            <summary>
+            Utility class for getting entity model metadata
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.EdmHelper.GetDependantForeignKeys(Cenium.Framework.Data.EntityContext,System.Type)">
+            <summary>
+            Gets the foreign key in an associated class based on a navigation property
+            </summary>
+            <typeparam name="TEntity">The entity type.</typeparam>
+            <param name="context">The entity context.</param>
+            <param name="navigationProperty">The navigation property to get the foreign key for.</param>
+            <returns>A <c>EntityPropertyInfo</c> instance representing the foreign key property, or null if no foreign key exists.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.EdmModelVersion">
+            <summary>
+            Represents an entity models current version and hash
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Internal.EdmModelVersion.ModelName">
+            <summary>
+            The name of the model
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Internal.EdmModelVersion.ComponentName">
+            <summary>
+            The name of the component the model belongs to
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Internal.EdmModelVersion.ModelVersion">
+            <summary>
+            The models version number
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Internal.EdmModelVersion.ModelHash">
+            <summary>
+            The models hash, used to compare and check if the model has changes
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.EntityInspectorImpl">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.EntityInspectorImpl.GetTableName(System.Type)">
+            <summary>
+            Gets the associated database table name for the entity
+            </summary>
+            <param name="entityType">The entity type to get the table name for</param>
+            <returns>
+            The name of the database table associated with the entity, or null if the entity is not associated with a table
+            </returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.EntityInstance`1">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.EntityInstance`1.#ctor">
+            <summary>
+            Initializes a new instance of the EntityInstance class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.EntityVersion">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.EntityVersion.#ctor">
+            <summary>
+            Initializes a new instance of the EntityVersion class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.EntityWrapper">
+            <summary>
+            Wrapper class for entities
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.EntityWrapper.#ctor(System.Type,System.Object)">
+            <summary>
+            Initializes a new instance of the EntityWrapper class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.ScriptPreProcessor">
+            <summary>
+            Loads and process a database script located in an assembly
+            </summary>
+            <remarks>
+            The script is processed by replacing script markers with real SQL statements and only including statements valid for the given version
+            </remarks>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.ScriptPreProcessor.ScriptType">
+            <summary>
+            Represents the type of scripts to process
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Internal.ScriptPreProcessor.ScriptType.CreateScript">
+            <summary>
+            Represents a create script
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Internal.ScriptPreProcessor.ScriptType.UpgradeScript">
+            <summary>
+            Represents an upgrade script
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.ScriptPreProcessor.#ctor(System.Reflection.Assembly,Cenium.Framework.Data.Internal.ScriptPreProcessor.ScriptType)">
+            <summary>
+            Initializes a new instance of the ScriptPreProcessor class
+            </summary>
+            <param name="assembly">The assembly where the script is located</param>
+            <param name="type">The script type to load</param>
+        </member>
+        <member name="P:Cenium.Framework.Data.Internal.ScriptPreProcessor.Name">
+            <summary>
+            Gets the name of the script
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Internal.ScriptPreProcessor.IsValid">
+            <summary>
+            Gets if the script is valid or not
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.ScriptPreProcessor.Process(System.String)">
+            <summary>
+            Processes a script given a version number.
+            </summary>
+            <param name="version">The version number to use when processing the script</param>
+            <returns>The processed script</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.ScriptPreProcessor.GetScriptName(System.Reflection.Assembly,Cenium.Framework.Data.Internal.ScriptPreProcessor.ScriptType)">
+            <summary>
+            Returns the script name for a given assembly
+            </summary>
+            <param name="assembly">The assembly to look for scripts in</param>
+            <param name="type">The type of script to look for</param>
+            <returns>The file name for the script type in the given assembly, or null if the assembly contains no scripts</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.DbOpenConnection">
+            <summary>
+            A disposable object that opens a connection in the constructor and disposes it in the Dispose method. This object allows using the <c>using</c> clause
+            without disposing the connection object.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.DbOpenConnection.#ctor(System.Data.Entity.Database)">
+            <summary>
+            Creates a new instance of the DbOpenConnection class, opens the database connection
+            </summary>
+            <param name="db">The database object to create open a connection for</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.DbOpenConnection.Dispose">
+            <summary>
+            Disposes the open database connection without disposing the underlying connection object
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.EdmDbHelper">
+            <summary>
+            Extension methods for the Database class
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.EdmDbHelper.CheckTableExists(System.Data.Entity.Database,System.String)">
+            <summary>
+            Checks if a table exists
+            </summary>
+            <param name="db">The Database instance to extend</param>
+            <param name="tableName">The name of the table</param>
+            <returns>True if the table exists, otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.EdmDbHelper.ExecuteSql(System.Data.Entity.Database,System.String,System.Nullable{System.Int32})">
+            <summary>
+            Executes a SQL command statement. This method opens the connection, executes the statement and closes the connection
+            </summary>
+            <param name="db">The Database instance to extend</param>
+            <param name="statement">The statement to execute</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.Internal.EdmDbHelper.GetModelVersion(System.Data.Entity.Database,System.String)">
+            <summary>
+            Retrieves the EdmModelVersion instance for a given model name. If the EdmModelVersion table does not exist in the database,
+            it will be created
+            </summary>
+            <param name="db">The Database instance to extend</param>
+            <param name="modelName">The name of the model</param>
+            <returns>An EdmModelVersion instance for the given modelName or null if the record does not exist</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.Internal.NamespaceDoc">
+            <summary>
+            Internal (infrastructure) methods for the data access layer assembly.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbColumnTypes">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbDeployLogEntry">
+            <summary>
+            Represents an entry in the deployment log
+            </summary>
+            <remarks>
+            This is an infrastructure class and should not be used outside the framework.
+            </remarks>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbDeployLogEntry.#ctor">
+            <summary>
+            Initializes a new instance of the DbDeployLogEntry class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbDeployLogEntry.Component">
+            <summary>
+            Gets the component this entry is for
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbDeployLogEntry.EntryType">
+            <summary>
+            Gets the entry type
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbDeployLogEntry.DbModelVersion">
+            <summary>
+            Gets the model version installed before deployment started
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbDeployLogEntry.CodeModelVersion">
+            <summary>
+            Gets the model version to be deployed.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbDeployLogEntry.IsUpgrade">
+            <summary>
+            Indicates if this is an upgrade from a previous version
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbDeployLogEntry.Status">
+            <summary>
+            Gets the overall deployment status
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbDeployLogEntry.DateTimeStarted">
+            <summary>
+            Gets the time when the deploy started
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbDeployLogEntry.DateTimeCompleted">
+            <summary>
+            Gets the time when the deploy was completed
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbDeployLogEntry.Steps">
+            <summary>
+            Gets the collection of steps that was logged.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbDeployLogEntryStep">
+            <summary>
+            Represents a step in a deployment log
+            </summary>
+            <remarks>
+            This is an infrastructure class and should not be used outside the framework.
+            </remarks>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbDeployLogEntryStep.#ctor">
+            <summary>
+            Initializes a new instance of the DbDeployLogEntryStep class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbDeployLogEntryStep.Name">
+            <summary>
+            Gets the name of the step.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbDeployLogEntryStep.Status">
+            <summary>
+            Gets the status of the deployment step
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbDeployLogEntryStep.StatusCode">
+            <summary>
+            Gets the status code from the deployment step
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbDeployLogEntryStep.StatusText">
+            <summary>
+            Gets the text associated with the status code
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbDeployLogEntryStep.Tasks">
+            <summary>
+            Gets the tasks associated with this step
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbDeployLogEntryStepTask">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbDeployLogEntryStepTask.#ctor">
+            <summary>
+            Initializes a new instance of the DbDeployLogEntryStepTask class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbDeployLogEntryType">
+            <summary>
+            Specifies what type of log entry in the deployment log.
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Management.DbDeployLogEntryType.Deploy">
+            <summary>
+            The log entry is a deployment log
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Management.DbDeployLogEntryType.Initializer">
+            <summary>
+            The log entry is a data initialization log
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Management.DbDeployLogEntryType.PostProcessing">
+            <summary>
+            The log entry is a post-processing log
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbDeploymentLogger">
+            <summary>
+            Explain the purpose of the enumeration here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbDeployStatus">
+            <summary>
+            Defines the status of a deployment log entry or step
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Management.DbDeployStatus.Success">
+            <summary>
+            The deployment or step was executed successfully
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Management.DbDeployStatus.DeployedWithWarnings">
+            <summary>
+            The deployment or step was executed with warnings
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Management.DbDeployStatus.DeployedWithError">
+            <summary>
+            The deployment or step was executed with errors
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Management.DbDeployStatus.NotDeployed">
+            <summary>
+            The deployment step was not executed
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Management.DbDeployStatus.Information">
+            <summary>
+            Deployment information
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbFTSCatalog">
+            <summary>
+            Represents a full-text search catalog
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbFTSCatalog.#ctor(System.String,System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the DbFTSCatalog class
+            </summary>
+            <param name="connectionId">The identity of the db connection where the catalog resides.</param>
+            <param name="name">The name of the catalog.</param>
+            <param name="catalogId">The identity of the catalog.</param>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbFTSCatalog.Identity">
+            <summary>
+            Gets the catalog identifier.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbFTSCatalog.Name">
+            <summary>
+            Gets the catalog name.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbFTSCatalog.Indexes">
+            <summary>
+            Gets the full-text search indexes that belongs to this catalog.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbFtsIndex">
+            <summary>
+            Represents a database full-search index definition
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbFtsIndex.#ctor(System.String,System.String[])">
+            <summary>
+            Initializes a new instance of the DbFtsIndex class
+            </summary>
+            <param name="tableName">The table the fts index belongs to.</param>
+            <param name="columns">The columns included in the index.</param>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbFtsIndex.TableName">
+            <summary>
+            Gets the name of the table the full-text search index belongs to.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbFtsIndex.Columns">
+            <summary>
+            Gets the columns included in the full-text search index.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbFtsIndex.IsValid(Cenium.Framework.Data.FTSEntityIndexAttribute)">
+            <summary>
+            Determines if the full-text search index is valid when compared to the definition in the <c>FTSEntityIndexAttribute</c>.
+            </summary>
+            <param name="index">The index attribute to compare to.</param>
+            <returns><c>true</c> if the specified index is valid; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbIndex">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbIndex.#ctor(System.String,System.String,System.Boolean,System.Boolean,System.String,System.String[])">
+            <summary>
+            Initializes a new instance of the DbIndex class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbIndexStats">
+            <summary>
+            Represents statistics about a database index
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbIndexStats.#ctor(System.String,System.String,System.Double,System.Boolean)">
+            <summary>
+            Initializes a new instance of the DbIndexStats class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbIndexStats.TableName">
+            <summary>
+            Gets the name of the table the index belongs to
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbIndexStats.Name">
+            <summary>
+            Gets the name of the index
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbIndexStats.AvgFragmentationPercent">
+            <summary>
+            Gets the average fragmentation percent.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbIndexStats.IsDisabled">
+            <summary>
+            Gets a whether the index is disabled.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbConnectionInfo">
+            <summary>
+            Represents information about a database
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbConnectionInfo.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the DbInfo class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbConnectionInfo.Name">
+            <summary>
+            Gets the name associated with the database connection.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbConnectionInfo.DataSource">
+            <summary>
+            Gets the data source associated with the database connection
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbConnectionInfo.Database">
+            <summary>
+            Gets the database associated with the database connection
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbConnectionInfo.ToString">
+            <summary>
+            Returns a <see cref="T:System.String" /> that represents this instance.
+            </summary>
+            <returns>
+            A <see cref="T:System.String" /> that represents this instance.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbConnectionInfo.GetDatabaseForComponent(System.String)">
+            <summary>
+            Gets the database connection info for a specified component
+            </summary>
+            <param name="component">The component.</param>
+            <returns>the database connection info for the specified component</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbConnectionInfo.GetDatabaseForConnectionName(System.String)">
+            <summary>
+            Gets the database connection info for the specified connection name
+            </summary>
+            <param name="name">The name of the connection</param>
+            <returns>the database connection info for the specified connection name</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbSequence">
+            <summary>
+            Represents a database sequence
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbSequence.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the DbSequence class
+            </summary>
+            <param name="name">The name of the database sequence.</param>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbSequence.Name">
+            <summary>
+            Gets the name of the sequence
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbTable">
+            <summary>
+            Represents metadata about a database table
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbTable.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the DbTable class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbTable.TableName">
+            <summary>
+            Gets the name of the table.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbTableColumn">
+            <summary>
+            Represents metadata about a table column
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbTableColumn.#ctor(System.String,System.Int32,System.Boolean,System.Boolean,System.Int32,System.Byte,System.Byte)">
+            <summary>
+            Initializes a new instance of the DbTableColumn class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbTableColumn.Name">
+            <summary>
+            Gets the column name.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbTableColumn.ColumnType">
+            <summary>
+            Gets the column clr type
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbTableColumn.IsRequired">
+            <summary>
+            Gets a value indicating whether the column requires a value
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbTableColumn.IsComputed">
+            <summary>
+            Gets a value indicating whether the column is computed
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbTableColumn.MaxLength">
+            <summary>
+            Gets the maximum length.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbTableColumn.Scale">
+            <summary>
+            Gets the scale.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbTableColumn.Precision">
+            <summary>
+            Gets the precision.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbUtility">
+            <summary>
+            Contains database utility methods
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Management.DbUtility.CmdTimeout">
+            <summary>
+            Default timeout = 10 min.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbUtility.Indexes">
+            <summary>
+            Gets all defined entity index attributes
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbUtility.FTSIndexes">
+            <summary>
+            Gets all defined full-text search index attributes
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbUtility.GetFullTextSearchCatalog(System.String,System.String)">
+            <summary>
+            Gets a full-text search catalog identified by its name.
+            </summary>
+            <param name="connectionId">The database connection identity to use to connect to a database.</param>
+            <param name="catalog">The catalog name.</param>
+            <returns>A DbFTSCatalog instance if the catalog exists; otherwise null.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbUtility.CreateDbCreateIndexStatement(Cenium.Framework.Data.EntityIndexAttribute,System.Boolean)">
+            <summary>
+            Creates a SQL statement to create an index based on an <c>EntityIndexAttribute</c> definition
+            </summary>
+            <param name="attr">The attribute that contains information about the index to create.</param>
+            <param name="dropIfExist">If <c>true</c>, also creatses sql statement to drop existing index.</param>
+            <returns>A SQL statement that can be used to create the index.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbUtility.CreateDbDropIndexStatement(Cenium.Framework.Data.Management.DbIndex)">
+            <summary>
+            Creates a SQL statement to drop an index.
+            </summary>
+            <param name="index">The index to drop.</param>
+            <returns>A SQL statement that can be used to drop an index.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbUtility.CreateDbCreateSequenceStatement(System.String,Cenium.Framework.Data.SequenceAttribute)">
+            <summary>
+            Creates a SQL statement to create a database sequence.
+            </summary>
+            <param name="component">The component the sequence belongs to.</param>
+            <param name="attr">The attribute that contains the sequence information.</param>
+            <returns>A SQL statement that can be used to create a database sequence.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.Management.DbModelVersion">
+            <summary>
+            Represents a component data model version
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbModelVersion.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the EdmModelVersion class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbModelVersion.Component">
+            <summary>
+            Gets the model associated with the model version
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbModelVersion.Version">
+            <summary>
+            Gets the version number
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Management.DbModelVersion.Name">
+            <summary>
+            Gets the name associated with the version
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbModelVersion.Equals(Cenium.Framework.Data.Management.DbModelVersion)">
+            <summary>
+            Indicates whether the current object is equal to another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            true if the current object is equal to the <paramref name="other" /> parameter; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbModelVersion.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <see cref="T:System.Object" />, is equal to this instance.
+            </summary>
+            <param name="obj">The <see cref="T:System.Object" /> to compare with this instance.</param>
+            <returns>
+              <c>true</c> if the specified <see cref="T:System.Object" /> is equal to this instance; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbModelVersion.GetHashCode">
+            <summary>
+            Returns a hash code for this instance.
+            </summary>
+            <returns>
+            A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbModelVersion.op_Equality(Cenium.Framework.Data.Management.DbModelVersion,Cenium.Framework.Data.Management.DbModelVersion)">
+            <summary>
+            Tests whether two DbModelVersion objects are identical
+            </summary>
+            <param name="v1">The first DbModelVersion object to compare.</param>
+            <param name="v2">The second DbModelVersion object to compare.</param>
+            <returns>True if the objects are identical; otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbModelVersion.op_Inequality(Cenium.Framework.Data.Management.DbModelVersion,Cenium.Framework.Data.Management.DbModelVersion)">
+            <summary>
+            Tests whether two DbModelVersion objects are different
+            </summary>
+            <param name="v1">The first DbModelVersion object to compare.</param>
+            <param name="v2">The second DbModelVersion object to compare.</param>
+            <returns>True if the objects are different; otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbModelVersion.GetCodeModelVersion(System.String)">
+            <summary>
+            Gets the model version associated with the code
+            </summary>
+            <param name="component">The component to get the model version for.</param>
+            <returns>The <c>DbModelVersion</c> that is associated with the component code.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Management.DbModelVersion.GetDeployedModelVersion(System.String)">
+            <summary>
+            Gets the deployed model version
+            </summary>
+            <param name="component">The component to get the deployed model version for</param>
+            <returns></returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.DeploymentManager">
+            <summary>
+            Contains methods to assist in deployment tasks
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.DeploymentManager.PerformConditionalTask``1(``0,System.String,System.String,System.Action{``0})">
+            <summary>
+            Performs an upgrade task if the task has not been performed before. Note that this performs a save after the task has been completed.
+            </summary>
+            <typeparam name="TContext">The DbContext instance type</typeparam>
+            <param name="context">The DbContextBase instance to use in the upgrade action</param>
+            <param name="taskId">The task identifier.</param>
+            <param name="name">A display friendly name for the task</param>
+            <param name="action">The action to execute.</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.DeploymentManager.IsTaskPerformed(System.String)">
+            <summary>
+            Determines whether an upgrade task has been performed or not
+            </summary>
+            <param name="taskId">The task identifier.</param>
+            <returns>true if the task has already been performed; otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.DeploymentManager.AddTask(System.String,System.String,System.DateTime)">
+            <summary>
+            Adds an upgrade task to the registry
+            </summary>
+            <param name="taskId">The task identifier</param>
+            <param name="name">A display-friendly name for the task</param>
+            <param name="date">The datetime when the task was performed</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.DeploymentManager.SetProvider(Cenium.Framework.Data.IDeploymentProvider)">
+            <summary>
+            Sets the provider that implements the underlying logic. This method is an infrastructure method and should only be called by the framework.
+            </summary>
+            <param name="provider">The provider to set.</param>
+        </member>
+        <member name="T:Cenium.Framework.Data.EntityConfiguration">
+            <summary>
+            Contains methods for configuring constraints and triggers
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.EntityConstraint">
+            <summary>
+            Base class for entity constraints
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityConstraint.#ctor">
+            <summary>
+            Initializes a new instance of the EntityConstraint class
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityConstraint.Execute(Cenium.Framework.Data.EntityContext,System.Object)">
+            <summary>
+            Executes the constraint
+            </summary>
+            <param name="ctx">The entity context that owns the constraint</param>
+            <param name="key">The entity key from the entity that executes the constraint</param>
+        </member>
+        <member name="T:Cenium.Framework.Data.EntityFunctions">
+            <summary>
+            Provides common language runtime (CLR) methods that call functions in the database in LINQ to Entities queries
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityFunctions.FTSContains(System.String)">
+            <summary>
+            Implementation of the full-text search predicate CONTAINS. Note that this function is intended for internal framework use and should never be called directly
+            </summary>
+            <remarks>
+            The underlying provider will translate this function into a contains predicate. This function then serves as a placeholder in the generated SQL statement
+            </remarks>
+            <param name="arg">The search expression</param>
+            <returns>not applicable</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Cenium.Framework.Data.EntityFunctions.FTSFreeText(System.String)" -->
+        <member name="T:Cenium.Framework.Data.EntityHelper">
+            <summary>
+            Helper class for entity classes
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityHelper.IsEntityProxy(System.Type)">
+            <summary>
+            Gets if an entity type is a proxy or not.
+            </summary>
+            <param name="entityType">The type to check</param>
+            <returns>True if the entity type is a proxy, otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityHelper.GetEntityType(System.Data.Entity.Infrastructure.DbEntityEntry)">
+            <summary>
+            Gets an entity type from a <c>DbEntityEntry</c> instance
+            </summary>
+            <param name="entry">The <c>DbEntityEntry</c> to get get the entity type from</param>
+            <returns>The entity type</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityHelper.TranslateException(System.Exception)">
+            <summary>
+            Translates the exception.
+            </summary>
+            <param name="ex">The ex.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.EntityLoadOptions">
+            <summary>
+            Explain the purpose of the enumeration here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.EntityLoader`1">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityLoader`1.#ctor(Cenium.Framework.Data.EntityContext,System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Initializes a new instance of the EntityLoader class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.EntityValues">
+            <summary>
+            Provides access to the property values of an entity
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityValues.#ctor(System.Data.Entity.Infrastructure.DbEntityEntry,System.Type,System.Data.EntityState)">
+            <summary>
+            Initializes a new instance of the EntityPropertyValues class
+            </summary>
+            <param name="entry">The entity entry containing the values.</param>
+        </member>
+        <member name="P:Cenium.Framework.Data.EntityValues.ActionType">
+            <summary>
+            Gets the type of entity action that was taken
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.EntityValues.Item(System.String)">
+            <summary>
+            Gets the value of a property with the specified name
+            </summary>
+            <param name="name">The name of the property to get the value for</param>
+            <returns>The property value, or null if the property does not exist.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityValues.GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through the collection.
+            </summary>
+            <returns>
+            An enumerator that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityValues.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+            An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.
+            </returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.EntityActionType">
+            <summary>
+            Defines entity actions
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.EntityActionType.None">
+            <summary>
+            No action was taken
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.EntityActionType.Added">
+            <summary>
+            The entity was added
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.EntityActionType.Updated">
+            <summary>
+            The entity was updated
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.EntityActionType.Deleted">
+            <summary>
+            The entity was deleted
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.IDataInitializer">
+            <summary>
+            Defines a method for adding data during database initialization.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.IDataInitializer.Initialize(System.Data.Entity.DbContext,System.Boolean)">
+            <summary>
+            Executes during database initialization.
+            </summary>
+            <remarks>
+            Use this method to add data to the database during initialization.
+            </remarks>
+            <param name="ctx">The DbContext instance</param>
+            <param name="isUpgrade">True if this is an upgrade, otherwise false</param>
+        </member>
+        <member name="T:Cenium.Framework.Data.IDeploymentProvider">
+            <summary>
+            Explain the purpose of the interface here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.IEntitySaveEvent">
+            <summary>
+            This interface provides a mechanism for performing entity actions at the time of saving
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.IEntitySaveEvent.BeforeSave">
+            <summary>
+            Called just before the entity is sent to the data storage
+            </summary>
+            <remarks>
+            This method is called before entity validation and can thus be used to ensure that the entity has valid values before doing validation. It is also useful for auto-populating empty properties
+            or doing advanced validation. Note that this method is not called upon delete.
+            </remarks>
+        </member>
+        <member name="T:Cenium.Framework.Data.SqlUtility">
+            <summary>
+            Contains SQL extension methods
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.SqlUtility.GetNullableDouble(System.Data.SqlClient.SqlDataReader,System.Int32)">
+            <summary>
+            Gets the value of the specified column as a nullable double
+            </summary>
+            <param name="reader">The data reader to use.</param>
+            <param name="index">The index of the column.</param>
+            <returns>A value as a nullable double (double?).</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.SqlUtility.GetNullableString(System.Data.SqlClient.SqlDataReader,System.Int32)">
+            <summary>
+            Gets the value of the specified column as a string, or null if the column contains DBNull
+            </summary>
+            <param name="reader">The data reader to use.</param>
+            <param name="index">The index of the column.</param>
+            <returns>A value as a string. If the value in the column is DBNull, null is returned.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.INumberSeries">
+            <summary>
+            Defines the contract for a number series
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.DbNumberSeries`1">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.DbNumberSeries`1.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the DbNumberSeries class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.DbNumberSeries`1.Name">
+            <summary>
+            Gets the name of the number series
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.NumberSeries">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.NumberSeriesType">
+            <summary>
+            Defines how a number series is implemented
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.NumberSeriesType.Predefined">
+            <summary>
+            The number series object is known at design time
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.NumberSeriesType.Dynamic">
+            <summary>
+            The number series object is not known until runtime.
+            </summary>
+            <remarks>This is typically used a user can define one or more number series.</remarks>
+        </member>
+        <member name="T:Cenium.Framework.Data.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityAddColumn">
+            <summary>
+              Looks up a localized string similar to ALTER TABLE [dbo].[{0}] ADD [{1}] {2}.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityAlterColumnNull">
+            <summary>
+              Looks up a localized string similar to ALTER TABLE [dbo].[{0}] ALTER COLUMN [{1}] {2} NULL.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityCheckTableExist">
+            <summary>
+              Looks up a localized string similar to SELECT Object_Id(&apos;[dbo].[{0}]&apos;) as [ObjectId].
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityCreateFtsCatalog">
+            <summary>
+              Looks up a localized string similar to CREATE FULLTEXT CATALOG {0}.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityCreateFtsIndex">
+             <summary>
+               Looks up a localized string similar to BEGIN
+              DECLARE @constraint_name{0} VARCHAR(500);
+              DECLARE @stmt{0}            VARCHAR(4000);
+            
+              SELECT TOP 1 @constraint_name{0} = cu.CONSTRAINT_NAME
+              FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE cu
+              WHERE EXISTS (
+                SELECT tc.*
+                FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS tc
+                WHERE tc.TABLE_NAME = &apos;{1}&apos;
+                AND tc.CONSTRAINT_TYPE = &apos;PRIMARY KEY&apos;
+                AND tc.CONSTRAINT_NAME = cu.CONSTRAINT_NAME
+              );
+            
+            
+              SET @stmt{0} = &apos;CREATE FULLTEXT INDEX ON [dbo].[{1}] ({2}) KEY INDEX [&apos; + @con [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityCreateIndex">
+            <summary>
+              Looks up a localized string similar to CREATE NONCLUSTERED INDEX [{1}] ON [dbo].[{0}] ({2}).
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityCreatePartialIndex">
+            <summary>
+              Looks up a localized string similar to CREATE NONCLUSTERED INDEX [{1}] ON [dbo].[{0}] ({2}) WHERE ({3}).
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityCreateSequence">
+            <summary>
+              Looks up a localized string similar to CREATE SEQUENCE [dbo].[{0}] AS [bigint] START WITH {1} INCREMENT BY 1 MINVALUE {1} NO MAXVALUE.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityDeleteIndex">
+             <summary>
+               Looks up a localized string similar to DROP INDEX [{1}]
+            ON [dbo].[{0}]
+            REBUILD.
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityDisableIndex">
+             <summary>
+               Looks up a localized string similar to ALTER INDEX [{1}]
+            ON [dbo].[{0}]
+            DISABLE.
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityDropFtsIndexIfExist">
+             <summary>
+               Looks up a localized string similar to IF EXISTS (SELECT 1 FROM sys.fulltext_indexes WHERE object_id = OBJECT_ID(&apos;{0}&apos;))
+            BEGIN
+              DROP FULLTEXT INDEX ON [dbo].[{0}];
+            END;.
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityDropIndexIfExist">
+            <summary>
+              Looks up a localized string similar to IF EXISTS(SELECT 1 FROM sys.indexes WHERE [Object_ID] = object_id(N&apos;{1}&apos;) AND [name] = N&apos;{0}&apos;) BEGIN DROP INDEX {0} ON [dbo].[{1}]; END;.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityEnableIndex">
+             <summary>
+               Looks up a localized string similar to ALTER INDEX [{1}]
+            ON [dbo].[{0}]
+            REBUILD.
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityGetDbModelVersion">
+             <summary>
+               Looks up a localized string similar to SELECT [ModelName], [ModelVersion]
+            FROM [dbo].[EdmModelVersion]
+            WHERE [ComponentName] = @component.
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityGetFtsIndexByCatalogId">
+             <summary>
+               Looks up a localized string similar to SELECT [TableName], [ColumnName],[TypeColumnName]
+            FROM (
+              SELECT OBJECT_NAME(cols.object_id) as [TableName],
+                     ind.fulltext_catalog_id as [CatalogId],
+                     COL_NAME(cols.object_id, cols.column_id) as [ColumnName],
+                     COL_NAME(cols.object_id, cols.type_column_id) as [TypeColumnName]
+              FROM [{0}].[sys].[fulltext_index_columns] as cols
+              INNER JOIN [{0}].[sys].[fulltext_indexes] as ind
+              ON ind.object_id = cols.object_id) as c
+            WHERE [CatalogId] = @catalogId.
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityGetFullTextCatalog">
+            <summary>
+              Looks up a localized string similar to SELECT * FROM (SELECT [fulltext_catalog_id] as [CatalogId], [name] as [Name] FROM [{0}].[sys].[fulltext_catalogs]) as c WHERE [Name] = @name.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityGetIndex">
+             <summary>
+               Looks up a localized string similar to SELECT *
+            FROM (SELECT OBJECT_NAME(ic.object_id) as [TableName],
+                   ind.name as [IndexName],
+                   COL_NAME(ic.object_id, ic.column_id) as [ColumnName],
+            	   ind.is_primary_key as [IsPrimaryKey],
+            	   ind.has_filter as [IsPartial],
+            	   ind.filter_definition as [Condition],
+            	   ic.key_ordinal as [Order]
+                FROM [{0}].sys.index_columns ic
+                INNER JOIN [{0}].sys.indexes ind
+                ON (ind.object_id = ic.object_id) AND (ind.index_id = ic.index_id)
+            ) AS i
+            .
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityGetIndexFragmentation">
+             <summary>
+               Looks up a localized string similar to SELECT * FROM (
+            SELECT object_name(ind.object_id) as [TableName], ind.name as [IndexName], ips.avg_fragmentation_in_percent as [AvgFragmentationPercent],
+               ind.is_disabled as [IsDisabled]
+            FROM sys.dm_db_index_physical_stats(db_id(&apos;{0}&apos;),NULL,NULL,NULL,&apos;LIMITED&apos;) as ips
+            RIGHT JOIN [{0}].sys.indexes as ind ON ips.index_id = ind.index_id AND ips.object_id = ind.object_id) AS q1.
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityGetIndexOrderBy">
+            <summary>
+              Looks up a localized string similar to ORDER BY [TableName], [IndexName], [Order].
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityGetSequences">
+             <summary>
+               Looks up a localized string similar to SELECT * FROM (SELECT [name] as [SequenceName]
+            FROM [{0}].[sys].[sequences]) as s.
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityGetTableColumns">
+             <summary>
+               Looks up a localized string similar to SELECT * FROM (
+              SELECT t.name as [TableName],
+                     c.name as [ColumnName],
+                     c.is_nullable as [IsNullable],
+                     c.is_computed as [IsComputed],
+                     c.user_type_id as [UserTypeId],
+                     c.max_length as [MaxLength],
+                     c.scale as [Scale],
+                     c.precision as [Precision],
+                     c.column_id as [Index]
+              FROM [{0}].[sys].[columns] as c
+              INNER JOIN [{0}].[sys].[tables] as t ON (c.object_id = t.object_id)
+            ) as columns
+            WHERE TableName IN ({1})
+            ORDER BY [TableNam [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityGetTables">
+             <summary>
+               Looks up a localized string similar to SELECT * FROM (SELECT [name] as [TableName]
+            FROM [{0}].[sys].[tables]) as t.
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityRebuildIndex">
+             <summary>
+               Looks up a localized string similar to ALTER INDEX [{1}]
+            ON [dbo].[{0}]
+            REBUILD.
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DbUtilityReorganizeIndex">
+             <summary>
+               Looks up a localized string similar to ALTER INDEX [{1}]
+            ON [dbo].[{0}]
+            REORGANIZE.
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DirectoryCreateFilePattern">
+            <summary>
+              Looks up a localized string similar to {0}.create.sql.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.DirectoryUpdateFilePattern">
+            <summary>
+              Looks up a localized string similar to {0}.*.update.sql.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.EdmGetModelVersion">
+             <summary>
+               Looks up a localized string similar to SELECT [ModelName], [ComponentName], [ModelVersion], [ModelHash]
+            FROM [dbo].[EdmModelVersion]
+            WHERE [ModelName] = @modelname.
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.EdmModelVersionCreateTable">
+             <summary>
+               Looks up a localized string similar to CREATE TABLE [dbo].[EdmModelVersion] (
+                [ModelName] [NVARCHAR](400) NOT NULL,
+                [ComponentName] [NVARCHAR](200) NOT NULL,
+                [ModelVersion] [NVARCHAR](200) NOT NULL,
+                [ModelHash] [NVARCHAR](MAX) NOT NULL,
+                PRIMARY KEY CLUSTERED ([ModelName] ASC) ON [PRIMARY]
+            ).
+             </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Properties.Resources.EdmModelVersionTablename">
+            <summary>
+              Looks up a localized string similar to EdmModelVersion.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Provider.Parser.ParserHelper">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Provider.Parser.SelectParser">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.Parser.SelectParser.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the SelectParser class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Provider.Parser.StatementNode">
+            <summary>
+            Represents a node in a SQL statement
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Data.Provider.Parser.StatementNode._index">
+            <summary>
+            Initializes a new instance of the StatementNode class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Provider.Parser.StatementNodeType">
+            <summary>
+            Explain the purpose of the enumeration here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Provider.SQLClientCommandDefinitionWrapper">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientCommandDefinitionWrapper.#ctor(System.Data.Common.DbCommandDefinition)">
+            <summary>
+            Initializes a new instance of the SQLClientCommandDefinitionWrapper class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Provider.SQLClientCommandWrapper">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientCommandWrapper.#ctor(System.Data.SqlClient.SqlCommand)">
+            <summary>
+            Initializes a new instance of the SQLClientCommandWrapper class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper">
+            <summary>
+            Provides a wrapper around a SQLConnection
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.#ctor">
+            <summary>
+            Initializes a new instance of the SQLClientConnectionWrapper class
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the SQLClientConnectionWrapper class
+            </summary>
+            <param name="connection">The connection string to use</param>
+        </member>
+        <member name="P:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.CommandTimeout">
+            <summary>
+            Gets or sets the command timeout in seconds.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.ConnectionTimeout">
+            <summary>
+            Gets the time to wait while establishing a connection before terminating the attempt and generating an error.
+            </summary>
+            <returns>The time (in seconds) to wait for a connection to open. The default value is determined by the specific type of connection that you are using.</returns>
+        </member>
+        <member name="P:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.ConnectionString">
+            <summary>
+            Gets or sets the string used to open the connection.
+            </summary>
+            <returns>The connection string used to establish the initial connection. The exact contents of the connection string depend on the specific data source for this connection. The default value is an empty string.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.ChangeDatabase(System.String)">
+            <summary>
+            Changes the current database for an open connection.
+            </summary>
+            <param name="databaseName">Specifies the name of the database for the connection to use.</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.Close">
+            <summary>
+            Closes the connection to the database. This is the preferred method of closing any open connection.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.Database">
+            <summary>
+            Gets the name of the current database after a connection is opened, or the database name specified in the connection string before the connection is opened.
+            </summary>
+            <returns>The name of the current database or the name of the database to be used after a connection is opened. The default value is an empty string.</returns>
+        </member>
+        <member name="P:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.DataSource">
+            <summary>
+            Gets the name of the database server to which to connect.
+            </summary>
+            <returns>The name of the database server to which to connect. The default value is an empty string.</returns>
+        </member>
+        <member name="P:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.ServerVersion">
+            <summary>
+            Gets a string that represents the version of the server to which the object is connected.
+            </summary>
+            <returns>The version of the database. The format of the string returned depends on the specific type of connection you are using.</returns>
+        </member>
+        <member name="P:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.Site">
+            <summary>
+            Gets or sets the <see cref="T:System.ComponentModel.ISite" /> of the <see cref="T:System.ComponentModel.Component" />.
+            </summary>
+            <returns>The <see cref="T:System.ComponentModel.ISite" /> associated with the <see cref="T:System.ComponentModel.Component" />, or null if the <see cref="T:System.ComponentModel.Component" /> is not encapsulated in an <see cref="T:System.ComponentModel.IContainer" />, the <see cref="T:System.ComponentModel.Component" /> does not have an <see cref="T:System.ComponentModel.ISite" /> associated with it, or the <see cref="T:System.ComponentModel.Component" /> is removed from its <see cref="T:System.ComponentModel.IContainer" />.</returns>
+        </member>
+        <member name="P:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.State">
+            <summary>
+            Gets a string that describes the state of the connection.
+            </summary>
+            <returns>The state of the connection. The format of the string returned depends on the specific type of connection you are using.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.EnlistTransaction(System.Transactions.Transaction)">
+            <summary>
+            Enlists in the specified transaction.
+            </summary>
+            <param name="transaction">A reference to an existing <see cref="T:System.Transactions.Transaction" /> in which to enlist.</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.GetSchema">
+            <summary>
+            Returns schema information for the data source of this <see cref="T:System.Data.Common.DbConnection" />.
+            </summary>
+            <returns>
+            A <see cref="T:System.Data.DataTable" /> that contains schema information.
+            </returns>
+            <PermissionSet>
+              <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*" />
+              </PermissionSet>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.GetSchema(System.String)">
+            <summary>
+            Returns schema information for the data source of this <see cref="T:System.Data.Common.DbConnection" /> using the specified string for the schema name.
+            </summary>
+            <param name="collectionName">Specifies the name of the schema to return.</param>
+            <returns>
+            A <see cref="T:System.Data.DataTable" /> that contains schema information.
+            </returns>
+            <PermissionSet>
+              <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*" />
+              </PermissionSet>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.GetSchema(System.String,System.String[])">
+            <summary>
+            Returns schema information for the data source of this <see cref="T:System.Data.Common.DbConnection" /> using the specified string for the schema name and the specified string array for the restriction values.
+            </summary>
+            <param name="collectionName">Specifies the name of the schema to return.</param>
+            <param name="restrictionValues">Specifies a set of restriction values for the requested schema.</param>
+            <returns>
+            A <see cref="T:System.Data.DataTable" /> that contains schema information.
+            </returns>
+            <PermissionSet>
+              <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" PathDiscovery="*AllFiles*" />
+              </PermissionSet>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.Clone">
+            <summary>
+            Creates a new object that is a copy of the current instance.
+            </summary>
+            <returns>
+            A new object that is a copy of this instance.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.CreateDbCommand">
+            <summary>
+            Creates and returns a <see cref="T:System.Data.Common.DbCommand" /> object associated with the current connection.
+            </summary>
+            <returns>
+            A <see cref="T:System.Data.Common.DbCommand" /> object.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.BeginDbTransaction(System.Data.IsolationLevel)">
+            <summary>
+            Starts a database transaction.
+            </summary>
+            <param name="isolationLevel">Specifies the isolation level for the transaction.</param>
+            <returns>
+            An object representing the new transaction.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the <see cref="T:System.ComponentModel.Component" /> and optionally releases the managed resources.
+            </summary>
+            <param name="disposing">true to release both managed and unmanaged resources; false to release only unmanaged resources.</param>
+        </member>
+        <member name="P:Cenium.Framework.Data.Provider.SQLClientConnectionWrapper.DbProviderFactory">
+            <summary>
+            Gets the <see cref="T:System.Data.Common.DbProviderFactory" /> for this <see cref="T:System.Data.Common.DbConnection" />.
+            </summary>
+            <returns>A <see cref="T:System.Data.Common.DbProviderFactory" />.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.Provider.SQLClientProviderException">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the SQLClientProviderException class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Provider.SQLClientProviderManifestWrapper">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderManifestWrapper.#ctor(System.Data.Common.DbProviderManifest)">
+            <summary>
+            Initializes a new instance of the SQLClientProviderManifestWrapper class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Provider.SQLClientProviderServicesWrapper">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderServicesWrapper.#ctor(System.Data.Common.DbProviderServices)">
+            <summary>
+            Initializes a new instance of the SQLClientProviderServicesWrapper class
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory">
+            <summary>
+            Provides a wrapper around the SQLClientFactory
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory.#ctor">
+            <summary>
+            Initializes a new instance of the SQLClientProviderWrapper class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory.CanCreateDataSourceEnumerator">
+            <summary>
+            Specifies whether the specific <see cref="T:System.Data.Common.DbProviderFactory" /> supports the <see cref="T:System.Data.Common.DbDataSourceEnumerator" /> class.
+            </summary>
+            <returns>true if the instance of the <see cref="T:System.Data.Common.DbProviderFactory" /> supports the <see cref="T:System.Data.Common.DbDataSourceEnumerator" /> class; otherwise false.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory.CreateCommand">
+            <summary>
+            Returns a new instance of the provider's class that implements the <see cref="T:System.Data.Common.DbCommand" /> class.
+            </summary>
+            <returns>
+            A new instance of <see cref="T:System.Data.Common.DbCommand" />.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory.CreateCommandBuilder">
+            <summary>
+            Returns a new instance of the provider's class that implements the <see cref="T:System.Data.Common.DbCommandBuilder" /> class.
+            </summary>
+            <returns>
+            A new instance of <see cref="T:System.Data.Common.DbCommandBuilder" />.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory.CreateConnection">
+            <summary>
+            Returns a new instance of the provider's class that implements the <see cref="T:System.Data.Common.DbConnection" /> class.
+            </summary>
+            <returns>
+            A new instance of <see cref="T:System.Data.Common.DbConnection" />.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory.CreateConnectionStringBuilder">
+            <summary>
+            Returns a new instance of the provider's class that implements the <see cref="T:System.Data.Common.DbConnectionStringBuilder" /> class.
+            </summary>
+            <returns>
+            A new instance of <see cref="T:System.Data.Common.DbConnectionStringBuilder" />.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory.CreateDataAdapter">
+            <summary>
+            Returns a new instance of the provider's class that implements the <see cref="T:System.Data.Common.DbDataAdapter" /> class.
+            </summary>
+            <returns>
+            A new instance of <see cref="T:System.Data.Common.DbDataAdapter" />.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory.CreateDataSourceEnumerator">
+            <summary>
+            Returns a new instance of the provider's class that implements the <see cref="T:System.Data.Common.DbDataSourceEnumerator" /> class.
+            </summary>
+            <returns>
+            A new instance of <see cref="T:System.Data.Common.DbDataSourceEnumerator" />.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory.CreateParameter">
+            <summary>
+            Returns a new instance of the provider's class that implements the <see cref="T:System.Data.Common.DbParameter" /> class.
+            </summary>
+            <returns>
+            A new instance of <see cref="T:System.Data.Common.DbParameter" />.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory.CreatePermission(System.Security.Permissions.PermissionState)">
+            <summary>
+            Returns a new instance of the provider's class that implements the provider's version of the <see cref="T:System.Security.CodeAccessPermission" /> class.
+            </summary>
+            <param name="state">One of the <see cref="T:System.Security.Permissions.PermissionState" /> values.</param>
+            <returns>
+            A <see cref="T:System.Security.CodeAccessPermission" /> object for the specified <see cref="T:System.Security.Permissions.PermissionState" />.
+            </returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory.GetService(System.Type)">
+            <summary>
+            Gets the service object of the specified type.
+            </summary>
+            <param name="serviceType">An object that specifies the type of service object to get.</param>
+            <returns>
+            A service object of type <paramref name="serviceType" />.-or- null if there is no service object of type <paramref name="serviceType" />.
+            </returns>
+        </member>
+        <member name="F:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory.Instance">
+            <summary>
+            Gets an instance of the SqlClientFactoryWrapper. This can be used to retrieve strongly typed data objects
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory.Register">
+            <summary>
+            Registers the provider
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.Provider.SQLClientProviderWrapperFactory.RegisterProvider(System.String,System.String,System.String,System.Type)">
+            <summary>
+            Registers the specified <see cref="T:System.Data.Common.DbProviderFactory"/> type, overwriting any existing registration.
+            </summary>
+            <param name="name">The friendly name of the provider factory.</param>
+            <param name="invariantName">The invariant name of the provider factory. This must be unique.</param>
+            <param name="description">The description of the provider factory.</param>
+            <param name="factoryType">The type of the provider factory. This must be derived from <see cref="T:System.Data.Common.DbProviderFactory"/>.</param>
+            <returns><c>true</c> if the registration succeeded; <c>false</c> if the registration failed.</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.Provider.StatementParser">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.RestrictDeleteConstraint`3">
+            <summary>
+            Represents a restricted delete constraint
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.RestrictDeleteConstraint`3.#ctor(System.Linq.Expressions.Expression{System.Func{`1,`2}})">
+            <summary>
+            Initializes a new instance of the RestrictDeleteConstraint class
+            </summary>
+            <param name="parentEntity">The identity of the entity being referenced</param>
+            <param name="foreignKey">A function that defines the foreign key</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.RestrictDeleteConstraint`3.Execute(Cenium.Framework.Data.EntityContext,System.Object)">
+            <summary>
+            Executes the constraint
+            </summary>
+            <param name="ctx">The entity context that owns the constraint</param>
+            <param name="key">The entity key from the entity that executes the constraint</param>
+        </member>
+        <member name="T:Cenium.Framework.Data.RestrictDeleteConstraintException">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.ScriptDatabaseInitializer`1">
+            <summary>
+            An implementation of IDatabaseInitializer that will create or update the database based on external scripts. The location of the scripts is
+            set in the Cenium.config file.
+            </summary>
+            <remarks>
+            Scripts are named according to the following standard:
+            <list type="table">
+            <listheader>
+            <term>Script type</term><description>Name</description>
+            </listheader>
+            <item><term>Create</term><description>[component].create.sql</description></item>
+            <item><term>Update</term><description>[component].[version].create.sql</description></item>
+            </list>
+            <para>
+            If the database is "empty" (i.e. the component has not yet been deployed), the initializer will run the create script. If the tables exist, but
+            changes in the model is detected the initializer will locate and execute all the update scripts with a version number higher that the version number
+            found in the database.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Cenium.Framework.Data.ScriptDatabaseInitializer`1.#ctor">
+            <summary>
+            Initializes a new instance of the CeniumDatabaseInitializer class
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.ScriptDatabaseInitializer`1.InitializeDatabase(`0)">
+            <summary>
+            Executes the strategy to initialize the database for the given context
+            </summary>
+            <param name="context">The context to initialize the database for</param>
+            <exception cref="T:System.SystemException">A SystemException is raised if the database doesn't exist, if the data access layer assembly is missing the ComponentAttribute,
+            If no create or update files are found or if there is a mismatch between the model hash and the hash set by the scripts after execution.</exception>
+        </member>
+        <member name="T:Cenium.Framework.Data.DbContextBase">
+            <summary>
+            Base db context class. This implementation is empty, but is included for future enhancements without having to update
+            data access layer assemblies
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.DbContextBase.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the DbContextBase class
+            </summary>
+            <param name="connection">Database connection string</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.DbContextBase.GetObjectContext">
+            <summary>
+            Returns an ObjectContext instance
+            </summary>
+            <returns>An ObjectContext instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.DbContextBase.BulkDelete``1(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Performs a bulk delete operation against the database
+            </summary>
+            <typeparam name="T">The type to perform a bulk delete on</typeparam>
+            <param name="properties">The properties to use as conditions</param>
+            <returns>The number of items deleted</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.DbContextBase.ExecuteSqlCommand(System.String,System.Data.SqlClient.SqlParameter[])">
+            <summary>
+            Execeutes a T-SQL statement
+            </summary>
+            <param name="stmt">The statement to execute</param>
+            <param name="param">Parameters for the statement</param>
+            <returns>Number of rows processed by the statement</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.DbContextBase.GetTableName(System.Type)">
+            <summary>
+            Returns the table name for an entity
+            </summary>
+            <param name="entityType">The entity to find the table name for</param>
+            <returns>The table name</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.DbContextBase.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            This method is called when the model for a derived context has been initialized, but before the model has been locked down and used to initialize the context. The default implementation of this method does nothing, but it can be overridden in a derived class such that the model can be further configured before it is locked down
+            </summary>
+            <param name="modelBuilder">The builder that defines the model for the context being created</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.DbContextBase.Configure(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            Called by OnModelCreating.
+            </summary>
+            <remarks>This is an infrastructure method, used by the framework when auto-generating. Developers should override the OnModelCreating method instead</remarks>
+            <param name="modelBuilder">The builder that defines the model for the context being created</param>
+        </member>
+        <member name="T:Cenium.Framework.Data.EdmModelMetadata">
+            <summary>
+            Represents metadata about an entity data model
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EdmModelMetadata.#ctor(System.Data.Entity.DbContext)">
+            <summary>
+            Initializes a new instance of the EdmModelMetadata class
+            </summary>
+            <param name="context">The DbContext instance to get the metadata for</param>
+        </member>
+        <member name="P:Cenium.Framework.Data.EdmModelMetadata.Name">
+            <summary>
+            Gets the name of the model
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.EdmModelMetadata.ModelHash">
+            <summary>
+            Gets the model hash which is used to check whether the model has changed since the database was created from it.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.EdmModelMetadata.Script">
+            <summary>
+            Generates a data definition language (DDL) script that creates schema objects (tables, primary keys, foreign keys) based on metadata from store schema definition language (SSDL) files.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.EdmModelMetadata.Version">
+            <summary>
+            Gets the version number for the model. The version number is the same as the assembly version
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Data.EntityCollection`1">
+            <summary>
+            Represents a typed entity set that is used to perform create, read, update and delete operations (CRUD).
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.#ctor(Cenium.Framework.Data.EntityContext)">
+            <summary>
+            Initializes a new instance of the EntityCollection class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.EntityCollection`1.IsLogEnabled">
+            <summary>
+            Gets or sets if change tracking log is enabled for the entity collection
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.Query">
+            <summary>
+            Returns a new queryable where the entities returned will be tracked for changes
+            </summary>
+            <returns>a new queryable instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.Query(System.String[])">
+            <summary>
+            Returns a new queryable where the entities returned will be tracked for changes. The include parameter tells the method not to lazy load the
+            included properties.
+            </summary>
+            <param name="include">list of properties to include in query</param>
+            <returns>a new queryable instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.ReadOnlyQuery">
+            <summary>
+            Returns a new queryable where the entities returned will not be tracked for changes
+            </summary>
+            <returns>a new queryable instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.ReadOnlyQuery(System.String[])">
+            <summary>
+            Returns a new queryable where the entities returned will not be tracked for changes. The include parameter tells the method not to lazy load the
+            included properties.
+            </summary>
+            <param name="include">list of properties to include in query</param>
+            <returns>a new queryable instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.Create">
+            <summary>
+            Creates a new instance of an entity for the type of this set. This instance is not added or attached to the set.
+            </summary>
+            <returns>A new entity instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.Add(`0)">
+            <summary>
+            Adds the given entity to the context the Added state. When the changes are being saved, the entities in the Added
+            states are inserted into the database. After the changes are saved, the object state changes to Unchanged
+            </summary>
+            <param name="entity">The entity to add</param>
+            <returns>The added entity with any changes</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.BulkAdd(System.Collections.Generic.IEnumerable{`0},System.Func{`0,System.Object}[])">
+            <summary>
+            Adds the entities to the context as a bulk operation.
+            </summary>
+            <param name="entities">An enumerable of entities to add</param>
+            <param name="selectors">Selectors which specifies which navigation properties to include.</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.BulkAdd(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Adds the entities to the context as a bulk operation.
+            </summary>
+            <param name="entities">An enumerable of entities to add</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.FastAdd(`0)">
+            <summary>
+            Obsolete, do not use!!!!
+            </summary>
+            <param name="entity">The entity.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.Modify(`0)">
+            <summary>
+            Marks the given entity as Modified. When the changes are saved, the entity is updated in the database.
+            If the entity does not exist in the context it will be automatically added
+            </summary>
+            <param name="entity">The entity to update</param>
+            <returns>The updated entity</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.Remove(`0)">
+            <summary>
+            Marks the given entity as Deleted. When the changes are saved, the entity is deleted from the database.
+            If the entity does not exist in the context it will be automatically added
+            </summary>
+            <param name="entity">The entity to remove</param>
+            <returns>The removed entity</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.RemoveByKeys(System.Object[])">
+            <summary>
+            Marks an entity identified by its keys as Deleted. When the changes are saved, the entity is deleted from the database.
+            If the entity does not exist in the context it will be automatically added
+            </summary>
+            <param name="keys">The keys for the entity to remove</param>
+            <returns>The removed entity</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.RemoveAll(System.Func{`0,System.Boolean})">
+            <summary>
+            Removes all entities for a given predivate
+            </summary>
+            <param name="predicate">The predicate that identifies the entities to remove</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.Update(System.Linq.Expressions.Expression{System.Func{`0,`0}})">
+            <summary>
+            Creates a new update statement for the entity
+            </summary>
+            <param name="setExpression">An expression that sets the values to update.</param>
+            <returns>A new update <c>EntityStatement</c> instance.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.Delete">
+            <summary>
+            Creates a new delete statement for the entity
+            </summary>
+            <returns>A new delete <c>EntityStatement</c> instance.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.Detach(`0)">
+            <summary>
+            Removes an entity from the context, i.e. the entity is no longer tracked for changes
+            </summary>
+            <param name="entity">The entity to detach</param>
+            <returns>The detached entity</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.FindByKeys(System.Object[])">
+            <summary>
+            Uses the primary key value to attempt to find an entity tracked by the context. If the entity is not in the context
+            then a query will be executed and evaluated against the data in the data source, and null is returned if the entity is
+            not found in the context or in the data source. Note that the FindByKeys also returns entities that have
+            been added to the context but have not yet been saved to the database.
+            </summary>
+            <param name="keys">The entity keys</param>
+            <returns>The entity found, or null if the entity does not exist</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.BulkDelete(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Performs a bulk delete.
+            </summary>
+            <param name="properties">Key-value pairs of the entities that should be deleted</param>
+            <returns>The number of items deleted</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.Dispose">
+            <summary>
+            Disposes the entity collection
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.AttachChildCollection``1(`0,System.String)">
+            <summary>
+            Attaches a child collection to the context. Items that have a key defined will be set to EntityState.Modified while items with a null or 0 key will be set to EntityState.Added
+            </summary>
+            <typeparam name="TChildEntity">The child collection type</typeparam>
+            <param name="entity">The entity that contains the child collection</param>
+            <param name="propertyName">The property that refers to the child collection</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.AttachChildCollection``1(`0,System.String,System.Boolean)">
+            <summary>
+            Attaches a child collection to the context. Items that have a key defined will be set to EntityState.Modified while items with a null or 0 key will be set to EntityState.Added
+            </summary>
+            <typeparam name="TChildEntity">The child collection type</typeparam>
+            <param name="entity">The entity that contains the child collection</param>
+            <param name="propertyName">The property that refers to the child collection</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.Merge(`0,`0,System.String[])">
+            <summary>
+            Performs a merge operation for two entities
+            </summary>
+            <param name="dbEntity">An entity with the current database values.</param>
+            <param name="sourceEntity">The entity to merge with the database entity.</param>
+            <param name="includeProperties">The navigation properties to include.</param>
+            <returns>The merged entity.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.Copy(`0,System.String[])">
+            <summary>
+            Copies the values of an entity to another entity.
+            </summary>
+            <param name="source">The entity to copy</param>
+            <param name="includeProperties">The navigation properties to include.</param>
+            <returns>A copy of the source entity.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.SynchronizeChildCollection``1(`0,System.String)">
+            <summary>
+            Synchronizes the child collection with the database. Items that are not in the current child collection will be deleted
+            </summary>
+            <remarks>
+            Note that the entity must be attached to the entity context (using the Add or Modify methods), or this method will raise an exception.
+            </remarks>
+            <typeparam name="TChildEntity">The type of the child entity.</typeparam>
+            <param name="entity">The entity.</param>
+            <param name="propertyName">Name of the property.</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.CheckIsPropertyValueUnique``1(`0,System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Checks if the property value in an entity is unique or not
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <param name="entity">The entity to check</param>
+            <param name="member">An expression representing the field to check</param>
+            <returns>True if the property is unique; otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.CheckIsPropertyValueUniqueByPropertyContext``1(`0,System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Checks if the property value in an entity is unique or not per property
+            </summary>
+            <typeparam name="TKey"></typeparam>
+            <param name="entity">The entity to check</param>
+            <param name="member">An expression representing the field to check</param>
+            <returns>True if the property is unique; otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityCollection`1.Include(System.Data.Entity.Infrastructure.DbQuery{`0},System.String[])">
+            <summary>
+            Specifies properties to include
+            </summary>
+            <param name="qry">The query object to apply the includes to</param>
+            <param name="includes">The properties to include</param>
+            <returns>A DbQuery instance with includes applied</returns>
+        </member>
+        <member name="T:Cenium.Framework.Data.EntityContext">
+            <summary>
+            Creates a wrapper around DbContext. All derived classes must implement the CreateDbContext method
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.#ctor">
+            <summary>
+            Initializes a new instance of the EntityContext class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Data.EntityContext.Session">
+            <summary>
+            Gets the current <c>EntityContextSession</c> instance.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.SaveChanges">
+            <summary>
+            Saves all changes made in this context to the underlying database
+            </summary>
+            <returns>The number of objects written to the underlying database</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.SaveChanges(System.String,System.String,System.String)">
+            <summary>
+            Saves all changes made in this context to the underlying database
+            </summary>
+            <returns>The number of objects written to the underlying database</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.DetectChanges">
+            <summary>
+            Detects changes made to the properties and relationships of POCO entities.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.Dispose">
+            <summary>
+            Disposes the context
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.GetEntityCollection``1">
+            <summary>
+            Retrieves a strongly typed EntityCollection
+            </summary>
+            <typeparam name="TEntity">The entity type</typeparam>
+            <returns>An strongly typed EntityCollection</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.GetNextValueFromSequence(System.String)">
+            <summary>
+            Gets the next value from a defined sequence.
+            </summary>
+            <param name="identity">The identity of the sequence</param>
+            <returns>A <c>long</c>value that is the next number in the sequence.</returns>
+        </member>
+        <member name="P:Cenium.Framework.Data.EntityContext.IsTriggersEnabled">
+            <summary>
+            Gets or sets whether triggers are enabled
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.AddContext(Cenium.Framework.Data.ISaveContext)">
+            <summary>
+            Adds a save context to the entity context
+            </summary>
+            <param name="context">The context to add</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.GetContext``1">
+            <summary>
+            Gets a save context that has been stored with the entity context
+            </summary>
+            <typeparam name="TContext">The type of the save context</typeparam>
+            <returns>The save context that was previously added, or null if the context has not been added.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.CreateDbContext(System.String)">
+            <summary>
+            Creates the underlying DbContext instance. The implementation of this method is empty, derived classes must implement this method
+            </summary>
+            <param name="connection">The database connection string</param>
+            <returns>A new DbContext instance</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.BeforeSave">
+            <summary>
+            Called just before the context changes are saved
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.GetEntityState``1(``0)">
+            <summary>
+            Returns the state of an entity
+            </summary>
+            <typeparam name="TEntity">The entity type</typeparam>
+            <param name="entity">The entity instance</param>
+            <returns>The EntityState of the specified entity</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.SetModified``1(``0)">
+            <summary>
+            Sets an entity to modified state
+            </summary>
+            <typeparam name="TEntity">The entity type</typeparam>
+            <param name="entity">The entity to set to modified</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.SetDetached``1(``0)">
+            <summary>
+            Detaches an entity
+            </summary>
+            <typeparam name="TEntity">The entity type</typeparam>
+            <param name="entity">The entity instance to detach</param>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.Entry``1(``0)">
+            <summary>
+            Gets a DbEntityEntry&lt;TEntity&gt; object for the given entity providing access to information about the entity and the ability to perform actions on the entity
+            </summary>
+            <typeparam name="TEntity">The entity type</typeparam>
+            <param name="entry">The entity</param>
+            <returns>An entry for the entity.</returns>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.CheckIsDisposed">
+            <summary>
+            Checkes if the context has been disposed
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.EntityContext.SynchronizeChildren``1(System.Linq.IQueryable{``0},System.Collections.Generic.ICollection{``0},Cenium.Framework.Data.EntityContext.Compare{``0})">
+            <summary>
+            Synchronizes a child collection with what exists in the storage
+            </summary>
+            <typeparam name="T">The entity type</typeparam>
+            <param name="orgChildren">An IQueryable to retrieve the original children</param>
+            <param name="children">The new collection of children</param>
+            <param name="compare">A comparer method</param>
+        </member>
+        <member name="T:Cenium.Framework.Data.FixupCollection`1">
+            <summary>
+            An System.Collections.ObjectModel.ObservableCollection that raises
+            individual item removal notifications on clear and prevents adding duplicates.
+            </summary>
+            <remarks>
+            This class is used internally by the entity classes generated from the data model.
+            </remarks>
+        </member>
+        <member name="M:Cenium.Framework.Data.FixupCollection`1.#ctor">
+            <summary>
+            Initializes a new instance of the FixupCollection class
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.FixupCollection`1.ClearItems">
+            <summary>
+            Removes all items from the collection
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Data.FixupCollection`1.InsertItem(System.Int32,`0)">
+            <summary>
+            Inserts an item into the collection at the specified index
+            </summary>
+            <param name="index">The zero-based index at which the item should be inserted</param>
+            <param name="item">The object to insert</param>
+        </member>
+        <member name="T:Cenium.Framework.Data.NamespaceDoc">
+            <summary>
+            Contains classes that provide access to the core functionality of the data access layer. These classes are wrappers around
+            the .NET Entity Framwork and enables you to query, insert, update and delete data against a data store (such as a database).
+            </summary>
+        </member>
+        <member name="T:LinqKit.ExpandableQuery`1">
+            <summary>
+            An IQueryable wrapper that allows us to visit the query's expression tree just before LINQ to SQL gets to it.
+            This is based on the excellent work of Tomas Petricek: http://tomasp.net/blog/linq-expand.aspx
+            </summary>
+        </member>
+        <member name="T:LinqKit.ExpressionExpander">
+            <summary>
+            Custom expresssion visitor for ExpandableQuery. This expands calls to Expression.Compile() and
+            collapses captured lambda references in subqueries which LINQ to SQL can't otherwise handle.
+            </summary>
+        </member>
+        <member name="M:LinqKit.ExpressionExpander.VisitInvocation(System.Linq.Expressions.InvocationExpression)">
+            <summary>
+            Flatten calls to Invoke so that Entity Framework can understand it. Calls to Invoke are generated
+            by PredicateBuilder.
+            </summary>
+        </member>
+        <member name="T:LinqKit.ExpressionVisitor">
+            <summary>
+            This comes from Matt Warren's sample:
+            http://blogs.msdn.com/mattwar/archive/2007/07/31/linq-building-an-iqueryable-provider-part-ii.aspx
+            </summary>
+        </member>
+        <member name="T:LinqKit.Extensions">
+            <summary>Refer to http://www.albahari.com/nutshell/linqkit.html and
+            http://tomasp.net/blog/linq-expand.aspx for more information.</summary>
+        </member>
+        <member name="T:LinqKit.PredicateBuilder">
+            <summary>
+            See http://www.albahari.com/expressions for information and examples.
+            </summary>
+        </member>
+        <member name="T:System.Linq.LinqExtensions">
+            <summary>
+            Provides LINQ extensions for use with LINQ to entities
+            </summary>
+        </member>
+        <member name="M:System.Linq.LinqExtensions.FreetextSearch``1(System.Linq.IQueryable{``0},System.String)">
+            <summary>
+            Filters a sequence of values based on a search expression. This is the equivalent of the FREETEXT predicate
+            </summary>
+            <typeparam name="TSource">The type of the elements of source</typeparam>
+            <param name="source">An IQueryable&lt;TSource&gt; to filter</param>
+            <param name="expression">The search expression to use in the filter</param>
+            <returns>An IQueryable&lt;TSource&gt; that contains elements from the input sequence that satisfy the search expression</returns>
+        </member>
+        <member name="M:System.Linq.LinqExtensions.Search``1(System.Linq.IQueryable{``0},System.String)">
+            <summary>
+            Filters a sequence of values based on a search expression
+            </summary>
+            <typeparam name="TSource">The type of the elements of source</typeparam>
+            <param name="source">An IQueryable&lt;TSource&gt; to filter</param>
+            <param name="expression">The search expression to use in the filter</param>
+            <returns>An IQueryable&lt;TSource&gt; that contains elements from the input sequence that satisfy the search expression</returns>
+        </member>
+        <member name="M:System.Linq.LinqExtensions.Search``1(System.Linq.IQueryable{``0},System.String,System.String)">
+            <summary>
+            Filters a sequence of values based on a search expression
+            </summary>
+            <typeparam name="TSource">The type of the elements of source</typeparam>
+            <param name="source">An IQueryable&lt;TSource&gt; to filter</param>
+            <param name="expression">The search expression to use in the filter</param>
+            <returns>An IQueryable&lt;TSource&gt; that contains elements from the input sequence that satisfy the search expression</returns>
+        </member>
+        <member name="M:System.Linq.LinqExtensions.TokenSearch``1(System.Linq.IQueryable{``0},System.String)">
+            <summary>
+            Filters a sequence of values based on a search expression. The search expression is parsed into tokens before applying the expression
+            </summary>
+            <typeparam name="T">The type of the elements of source</typeparam>
+            <param name="source">An IQueryable&lt;TSource&gt; to filter</param>
+            <param name="expression">The search expression to use in the filter</param>
+            <returns>An IQueryable&lt;TSource&gt; that contains elements from the input sequence that satisfy the search expression</returns>
+        </member>
+        <member name="M:System.Linq.LinqExtensions.TokenSearch``1(System.Linq.IQueryable{``0},System.String,System.Linq.SearchMode)">
+            <summary>
+            Filters a sequence of values based on a search expression. The search expression is parsed into tokens before applying the expression
+            </summary>
+            <typeparam name="T">The type of the elements of source</typeparam>
+            <param name="source">An IQueryable&lt;TSource&gt; to filter</param>
+            <param name="expression">The search expression to use in the filter</param>
+            <param name="mode">Defines how the token search works</param>
+            <returns>An IQueryable&lt;TSource&gt; that contains elements from the input sequence that satisfy the search expression</returns>
+        </member>
+        <member name="T:System.Linq.Predicate">
+            <summary>
+            Contains methods for building LINQ predicates
+            </summary>
+        </member>
+        <member name="M:System.Linq.Predicate.Builder``1">
+            <summary>
+            Creates a new predicate builder
+            </summary>
+            <typeparam name="T">The type of the elements of predicate.</typeparam>
+            <returns>A new predicate builder</returns>
+        </member>
+        <member name="M:System.Linq.Predicate.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Adds an Or predicate to a predicate expression
+            </summary>
+            <typeparam name="T">The type of the elements of query</typeparam>
+            <param name="expr1">the predicate to add an Or condition to.</param>
+            <param name="expr2">A function to test each element for a condition</param>
+            <returns>An IQueryable&lt;T&gt; that contains elements from the input sequence that satisfy the condition specified by predicate.</returns>
+        </member>
+        <member name="M:System.Linq.Predicate.WhereOr``1(System.Linq.IQueryable{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Filters a sequence of values based on a predicate
+            </summary>
+            <typeparam name="T">The type of the elements of query</typeparam>
+            <param name="query">An IQueryable&lt;T&gt; to filter</param>
+            <param name="predicate">A function to test each element for a condition</param>
+            <returns>An IQueryable&lt;T&gt; that contains elements from the input sequence that satisfy the condition specified by predicate.</returns>
+        </member>
+        <member name="T:System.Linq.SearchMode">
+            <summary>
+            Defines how a token search is done
+            </summary>
+        </member>
+        <member name="F:System.Linq.SearchMode.Default">
+            <summary>
+            Default mode
+            </summary>
+        </member>
+        <member name="F:System.Linq.SearchMode.ApplyWildcardToLastToken">
+            <summary>
+            Applies the wildcard operator to the last token
+            </summary>
+        </member>
+        <member name="F:System.Linq.SearchMode.ApplyWildcardToAllTokens">
+            <summary>
+            Applies the wildcard operators to all tokens
+            </summary>
+        </member>
+    </members>
+</doc>

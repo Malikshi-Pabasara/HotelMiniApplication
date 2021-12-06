@@ -1,0 +1,569 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cenium.Framework.Service.Metadata</name>
+    </assembly>
+    <members>
+        <member name="T:Cenium.Framework.Service.Metadata.ComponentInfo">
+            <summary>
+            Represents a collection of service methods for a specific component
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Service.Metadata.ComponentInfo.#ctor">
+            <summary>
+            Initializes a new instance of the ComponentInfo class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ComponentInfo.Id">
+            <summary>
+            Gets the identifier of the component
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ComponentInfo.Name">
+            <summary>
+            Gets the name of the component
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ComponentInfo.Description">
+            <summary>
+            Gets the description of the component
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ComponentInfo.Remarks">
+            <summary>
+            Gets the remarks of the component
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ComponentInfo.Version">
+            <summary>
+            Gets the version of the component
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ComponentInfo.Methods">
+            <summary>
+            Gets the service methods that belongs to the component
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityInfoFlags.HasRowVersion">
+            <summary>
+            The entity has a RowVersion property
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityInfoFlags.HasTenantId">
+            <summary>
+            The entity has a TenantId property
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Service.Metadata.EntityInfo">
+            <summary>
+            Represents the meta data about an entity
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Service.Metadata.EntityInfo.#ctor">
+            <summary>
+            Initializes a new instance of the EntityInfo class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityInfo.Id">
+            <summary>
+            Gets the id of the entity
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityInfo.Component">
+            <summary>
+            Gets the component name the entity belongs to
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityInfo.Name">
+            <summary>
+            Gets the friendly name of the entity
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityInfo.ValueListProperties">
+            <summary>
+            Gets the properties to include in a value list
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityInfo.Properties">
+            <summary>
+            Gets the property metadata for the entity
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityInfo.PropertyCount">
+            <summary>
+            Gets the number of properties in the entity
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityInfo.Item(System.String)">
+            <summary>
+            Gets the property by name, or null if the property doesn't exist
+            </summary>
+            <param name="name">The property name</param>
+            <returns>The property metadata</returns>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityInfo.Key">
+            <summary>
+            Gets the key property for the entity
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityInfo.PrimaryDisplayProperty">
+            <summary>
+            Gets the primary display property.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Service.Metadata.EntityInfo.Add(Cenium.Framework.Service.Metadata.EntityPropertyInfo)">
+            <summary>
+            Adds a new property to the entity
+            </summary>
+            <param name="property">The property to add</param>
+        </member>
+        <member name="T:Cenium.Framework.Service.Metadata.EntityPropertyAttribute">
+            <summary>
+            Defines property attribute flags
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.None">
+            <summary>
+            No attributes
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.Key">
+            <summary>
+            Property is a key
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.Required">
+            <summary>
+            Property is required to have a value
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.ReadOnly">
+            <summary>
+            Property is read-only
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.Hidden">
+            <summary>
+            Property is hidden
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.Sortable">
+            <summary>
+            Property is sortable
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.Extension">
+            <summary>
+            Property is an entity extension property.
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.Queryable">
+            <summary>
+            Property is queryable
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.IsRowVersion">
+            <summary>
+            Property is a rowversion identifier
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.IsTenantId">
+            <summary>
+            Property is a tenant identifier
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.IsPrimaryDisplayProperty">
+            <summary>
+            The property is the primary display property
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.IsDynamic">
+            <summary>
+            The property contains dynamic data
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.IsJsonRecord">
+            <summary>
+            Reserved for future use
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.IsEnumeration">
+            <summary>
+            The property is a server enumeration
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.Reserved14">
+            <summary>
+            Reserved for future use
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.Reserved15">
+            <summary>
+            Reserved for future use
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyAttribute.PropertyContext">
+            <summary>
+            Property is a property context property
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Service.Metadata.EntityPropertyInfo">
+            <summary>
+            Represents the property metadata
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Service.Metadata.EntityPropertyInfo.#ctor">
+            <summary>
+            Initializes a new instance of the EntityPropertyInfo class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.Name">
+            <summary>
+            Gets the name of the property
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.DataType">
+            <summary>
+            Gets the data type of the property
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.PropertyType">
+            <summary>
+            Gets the type of the property
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.IsRequired">
+            <summary>
+            Gets if the property is required or not
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.IsKey">
+            <summary>
+            Gets if the property is a key property
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.IsReadOnly">
+            <summary>
+            Gets if the property is a read-only property
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.IsHidden">
+            <summary>
+            Gets if the property should be hidden from display
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.IsJsonRecord">
+            <summary>
+            Gets or sets a value indicating whether this instance is json record.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.IsForeignKey">
+            <summary>
+            Gets a value indicating whether this instance property is a foreign key property.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.MaxLength">
+            <summary>
+            Gets the max length of the property
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.Order">
+            <summary>
+            Gets the serialization/deserialization order of the property
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.Reference">
+            <summary>
+            Gets the reference to other entity types of the property is a reference property
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.Attributes">
+            <summary>
+            Gets the attribute flags for the property
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.IsSearchable">
+            <summary>
+            Gets if the property is searchable
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Service.Metadata.EntityPropertyInfo.GetPropertyType">
+            <summary>
+            Returns the CLR type of the type is a simple type
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Cenium.Framework.Service.Metadata.EntityPropertyInfo.IsAttributeSet(Cenium.Framework.Service.Metadata.EntityPropertyAttribute)">
+            <summary>
+            Returns true if the attribute is set; otherwise false
+            </summary>
+            <param name="attribute">The attribute to check for</param>
+            <returns>true if the attribute is set; otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Service.Metadata.EntityPropertyInfo.SetAttribute(Cenium.Framework.Service.Metadata.EntityPropertyAttribute)">
+            <summary>
+            Sets a flag value for the attributes
+            </summary>
+            <param name="attribute">The attribute flag to set</param>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.EntityPropertyInfo.Index">
+            <summary>
+            Gets the index of the property.
+            </summary>
+            <remarks>
+            This value is unique and sequential within an EntityInfo class. The Index value is typically used to perform array based lookups within a structure of entity data
+            </remarks>
+        </member>
+        <member name="T:Cenium.Framework.Service.Metadata.EntityPropertyType">
+            <summary>
+            Indicates if the property is a simple type, a reference to another entity or a collection of entities
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyType.Simple">
+            <summary>
+            The property is a simple data type
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyType.Reference">
+            <summary>
+            The property is a reference to another entity type
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyType.ReferenceCollection">
+            <summary>
+            The property is a collection of entities
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyType.Enumeration">
+            <summary>
+            The property is an enumeration
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyType.Binary">
+            <summary>
+            The property is a byte array
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyType.Extension">
+            <summary>
+            The property is an extension
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyType.UserField">
+            <summary>
+            The property is a user-defined field (client only)
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.EntityPropertyType.DynamicExtension">
+            <summary>
+            The property is a dynamic extension
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Service.Metadata.IDynamicMetadataProvider">
+            <summary>
+            Represents a provider of dynamic metadata (ie. metadata that is loaded on demand)
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Service.Metadata.MetadataCollection">
+            <summary>
+            Represents a collection of components and entities. Used for serializing and deserializing
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.MetadataCollection.Components">
+            <summary>
+            An array of component metadata
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.MetadataCollection.Entities">
+            <summary>
+            An array of entity metadata
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.MetadataCollection.HelpBaseUrl">
+            <summary>
+            Base url for help
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.MetadataCollection.TimeZoneId">
+            <summary>
+            The default time zone identifier user by the server
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.MetadataCollection.ServiceMethods">
+            <summary>
+            Gets an enumerable of all service methods
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Service.Metadata.MetadataHelper">
+            <summary>
+            Contains helper methods for handling metadata
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Service.Metadata.NamespaceDoc">
+            <summary>
+            Contains classes that describe services methods and service parameters. The classes in this namespace may be used for serializing and deserializing
+            metadata over a network (e.g. through HTTP). All classes in this namespace are serializable.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Service.Metadata.ServiceMethodInfo">
+            <summary>
+            Describes the signature and parameters of a service method
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Service.Metadata.ServiceMethodInfo.#ctor">
+            <summary>
+            Initializes a new instance of the EntityPropertyInfo class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ServiceMethodInfo.Component">
+            <summary>
+            Gets the component name for the service method
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ServiceMethodInfo.Name">
+            <summary>
+            Gets the name of the service method
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ServiceMethodInfo.MethodType">
+            <summary>
+            Gets the method type
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ServiceMethodInfo.ReturnType">
+            <summary>
+            Gets the method return type
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ServiceMethodInfo.NavigationProperties">
+            <summary>
+            Gets or sets the navigation properties that is included in the return value
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ServiceMethodInfo.SecureResourceTypes">
+            <summary>
+            Gets or sets the secure resource types this method required access to
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ServiceMethodInfo.Options">
+            <summary>
+            Gets the options for the service method
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ServiceMethodInfo.IsDefault">
+            <summary>
+            Gets whether the method is default for the specified method type
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ServiceMethodInfo.IsSearchable">
+            <summary>
+            Gets whether the methods supports search
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Service.Metadata.ServiceMethodInfo.IsCacheable">
+            <summary>
+            Gets whether the method result can be cached
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Service.Metadata.ServiceMethodInfo.IsAttributeSet(Cenium.Framework.Service.Metadata.ServiceMethodOptions)">
+            <summary>
+            Returns true if the attribute is set; otherwise false
+            </summary>
+            <param name="attribute">The attribute to check for</param>
+            <returns>true if the attribute is set; otherwise false</returns>
+        </member>
+        <member name="M:Cenium.Framework.Service.Metadata.ServiceMethodInfo.SetAttribute(Cenium.Framework.Service.Metadata.ServiceMethodOptions)">
+            <summary>
+            Sets a flag value for the attributes
+            </summary>
+            <param name="attribute">The attribute flag to set</param>
+        </member>
+        <member name="M:Cenium.Framework.Service.Metadata.ServiceMethodInfo.SetAttribute(Cenium.Framework.Service.Metadata.ServiceMethodOptions,System.Boolean)">
+            <summary>
+            Sets or unsetrs a flag value for the attributes
+            </summary>
+            <param name="attribute">The attribute flag to set or unset</param>
+            <param name="isEnabled">True to set; false to unset</param>
+        </member>
+        <member name="T:Cenium.Framework.Service.Metadata.ServiceMethodResultInfo">
+            <summary>
+            Represents information about navigation properties included in service methods
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Service.Metadata.ServiceMethodResultOptions">
+            <summary>
+            Represents options set for a <c>ServiceMethodResultInfo</c> instance
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.ServiceMethodResultOptions.None">
+            <summary>
+            No options are set
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.ServiceMethodResultOptions.Validate">
+            <summary>
+            The result should be validated
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Service.Metadata.ServiceMethodOptions">
+            <summary>
+            Defines the options for a service method
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.ServiceMethodOptions.None">
+            <summary>
+            No options are set
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.ServiceMethodOptions.IsDefaultMethod">
+            <summary>
+            Defines the method as the default method within the activity for the specified method type
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.ServiceMethodOptions.IsSearchable">
+            <summary>
+            Defines that the method is searchable
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.ServiceMethodOptions.IsCacheable">
+            <summary>
+            Defines that the method result is cacheable
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Service.Metadata.ServiceMethodType">
+            <summary>
+            Describes the function of a service method.
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.ServiceMethodType.Query">
+            <summary>
+            A method that allows queries and returns multiple results
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.ServiceMethodType.Get">
+            <summary>
+            A method that returns a single result
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.ServiceMethodType.Create">
+            <summary>
+            A method that creates a new entity
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.ServiceMethodType.Update">
+            <summary>
+            A method that updates an existing entity
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.ServiceMethodType.Delete">
+            <summary>
+            A method that deletes an existing entity
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Service.Metadata.ServiceMethodType.Invoke">
+            <summary>
+            Any method not covered by Query, Get, Create, Update and Delete.
+            </summary>
+        </member>
+    </members>
+</doc>

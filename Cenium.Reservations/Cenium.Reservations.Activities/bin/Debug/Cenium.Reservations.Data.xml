@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cenium.Reservations.Data</name>
+    </assembly>
+    <members>
+        <member name="T:Cenium.Reservations.Data.NamespaceDoc">
+            <summary>
+            Contains entity classes that comprise the data access layer of the component Reservations
+            </summary>
+        </member>
+        <member name="P:Cenium.Reservations.Data.Reservation.TenantId">
+            <summary>
+            Tenant identifier, for internal framework usage only
+            </summary>
+        </member>
+        <member name="P:Cenium.Reservations.Data.Reservation.RowVersion">
+            <summary>
+            Concurrency control version number
+            </summary>
+        </member>
+        <member name="T:Cenium.Reservations.Data.ReservationsEntitiesContext">
+            <summary>
+            Provides facilities for querying and working with entities as objects
+            </summary>
+        </member>
+        <member name="M:Cenium.Reservations.Data.ReservationsEntitiesContext.#ctor">
+            <summary>
+            Creates a new instance of the <c>ReservationsEntitiesContext</c> class.
+            </summary>
+        </member>
+        <member name="P:Cenium.Reservations.Data.ReservationsEntitiesContext.Reservations">
+            <summary>
+            Returns a typed EntityCollection of Reservation that is used to perform create, read, update, delete (CRUD) operations.
+            </summary>
+        </member>
+        <member name="M:Cenium.Reservations.Data.ReservationsEntitiesContext.CreateDbContext(System.String)">
+            <summary>
+            Creates the underlying DbContext instance. 
+            </summary>
+            <param name="connection">The database connection string</param>
+            <returns>A new ReservationsEntitiesDbContext instance</returns>
+        </member>
+        <member name="T:Cenium.Reservations.Data.ReservationsEntitiesDbContext">
+            <summary>
+            Provides facilities for querying and working with entities as objects.
+            </summary>
+            <remarks>
+            This is an internal infrastructure class and should not be called directly by the developer.
+            </remarks>
+        </member>
+        <member name="M:Cenium.Reservations.Data.ReservationsEntitiesDbContext.#ctor(System.String)">
+            <summary>
+            Creates a new instance of the ReservationsEntitiesDbContext class
+            </summary>
+            <param name="connection">The connection string to use when creating the context.</param>
+        </member>
+        <member name="P:Cenium.Reservations.Data.ReservationsEntitiesDbContext.Reservations">
+            <summary>
+            Returns a typed entity set of Reservation that is used to perform create, read, update, delete (CRUD) operations.
+            </summary>
+        </member>
+    </members>
+</doc>

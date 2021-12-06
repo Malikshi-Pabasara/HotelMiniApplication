@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{190DC7D1-1BCF-4B5D-9A7B-82CA567904D0}</ProjectGuid>
+    <OutputType>library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cenium.Rooms.Client.Windows</RootNamespace>
+    <AssemblyName>Cenium.Rooms.Client.Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Cenium.Framework.Client, Version=4.24.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cenium.EF.Desktop.4.24.0\lib\Cenium.Framework.Client.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cenium.Framework.Client.Engine, Version=4.24.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cenium.EF.Desktop.4.24.0\lib\Cenium.Framework.Client.Engine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cenium.Framework.Client.Windows.Core, Version=4.24.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cenium.EF.Desktop.4.24.0\lib\Cenium.Framework.Client.Windows.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cenium.Framework.Client.Windows.Wizards, Version=4.24.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cenium.EF.Desktop.4.24.0\lib\Cenium.Framework.Client.Windows.Wizards.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cenium.Framework.CoreLib, Version=4.24.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cenium.EF.Desktop.4.24.0\lib\Cenium.Framework.CoreLib.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cenium.Framework.Logging, Version=4.24.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cenium.EF.Desktop.4.24.0\lib\Cenium.Framework.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Cenium.Framework.Service.Metadata, Version=4.24.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cenium.EF.Desktop.4.24.0\lib\Cenium.Framework.Service.Metadata.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Cenium.EF.Desktop.4.24.0\lib\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dependencies.cs" />
+    <Compile Include="RoomsClientInitializer.cs" />
+    <Compile Include="NamespaceDoc.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <!--<AppDesigner Include="Properties\" />-->
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Application\Rooms_metadata.xml" />
+    <EmbeddedResource Include="Resources\Application\Rooms_navigator.xml" />
+    <EmbeddedResource Include="Resources\Application\Rooms_pages_Room.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Rooms.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Application\Rooms_pages_Feature.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Application\Rooms_pages_RoomType.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>SET DST_DIR=C:\Program Files (x86)\Cenium\MiniDevClient\Plugins
+IF EXIST "%25DST_DIR%25" copy "$(TargetPath)" "%25DST_DIR%25" /Y</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

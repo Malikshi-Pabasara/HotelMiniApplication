@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cenium.Framework.Logging</name>
+    </assembly>
+    <members>
+        <member name="T:Cenium.Framework.Logging.LogManager">
+            <summary>
+            Exposes API for managing application wide logging.
+            Default logging provider is set to NLog.
+            </summary>
+        </member>
+        <member name="F:Cenium.Framework.Logging.LogManager.s_locker">
+            <summary>
+            Used to synchronize access into utility methods.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Logging.LogManager.DisableLogging">
+            <summary>
+            Disables logging.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Logging.LogManager.EnableLogging">
+            <summary>
+            Enables logging.
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Logging.LogManager.IsLoggingEnabled">
+            <summary>
+            Returns current status of logging service.
+            </summary>
+            <returns>true if logging is enabled otherwise false</returns>
+        </member>
+    </members>
+</doc>

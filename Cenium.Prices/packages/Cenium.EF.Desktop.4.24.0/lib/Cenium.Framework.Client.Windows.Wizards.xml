@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cenium.Framework.Client.Windows.Wizards</name>
+    </assembly>
+    <members>
+        <member name="T:Cenium.Framework.Client.Windows.Wizards.CWizardDialog">
+            <summary>
+            The CWizardDialog provides a standard window for displaying wizards
+            </summary>
+            <summary>
+            CWizardDialog
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Windows.Wizards.CWizardDialog.#ctor">
+            <summary>
+            Creates a new instance of the CWizardDialog class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Windows.Wizards.CWizardDialog.Model">
+            <summary>
+            Gets or sets a WizardModel instance for the wizard
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Windows.Wizards.CWizardDialog.SelectedPane">
+            <summary>
+            Gets or sets the currently showing wizard pane
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Windows.Wizards.CWizardDialog.AddChildPane(System.Windows.FrameworkElement)">
+            <summary>
+            Adds a pane to the wizard
+            </summary>
+            <param name="pane"></param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Windows.Wizards.CWizardDialog.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Windows.Wizards.CWizardConfirmationPane">
+            <summary>
+            Wizard pane used to show a confirmation of the job
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Windows.Wizards.CWizardConfirmationPane.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Windows.Wizards.CWizardWelcomePane">
+            <summary>
+            Internal Wizard pane that shows a welcome message
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Windows.Wizards.CWizardWelcomePane.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Windows.Wizards.CWizardWorkingPane">
+            <summary>
+            Wizard pane that is displayed when the wizard executes a job
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Windows.Wizards.CWizardWorkingPane.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Windows.Wizards.OpenWizardAction">
+            <summary>
+            Action that opens a Wizard
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Windows.Wizards.OpenWizardAction.#ctor">
+            <summary>
+            Initializes a new instance of the CISExportWizardAction class
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Windows.Wizards.OpenWizardAction.WizardId">
+            <summary>
+            Gets or sets the wizard identifier
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Windows.Wizards.OpenWizardAction.OnExecute">
+            <summary>
+            Called when the action handler is executed.
+            </summary>
+            <remarks>
+            This method creates and displays the wizard window
+            </remarks>
+        </member>
+        <member name="M:Cenium.Framework.Client.Windows.Wizards.OpenWizardAction.EvaluateConditions">
+            <summary>
+            Evaluates the conditions when the ActionItem property is set.
+            </summary>
+            <returns>true if the conditions are fullfilled; otherwise false</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Windows.Wizards.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Windows.Wizards.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Cenium.Framework.Client.Windows.Wizards.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Cenium.Framework.Client.Windows.Wizards.WizardHelper">
+            <summary>
+            The WizardHelper contains methods to aid in the registration and publishing of Wizards
+            </summary>
+        </member>
+        <member name="M:Cenium.Framework.Client.Windows.Wizards.WizardHelper.RegisterWizard(System.String,System.Type,System.Type[])">
+            <summary>
+            Creates a wizard and associates the wizard with an identifier
+            </summary>
+            <param name="id">The wizard identifier</param>
+            <param name="wizardModel">The model for the wizard</param>
+            <param name="wizardPanes">The wizard panes</param>
+        </member>
+        <member name="M:Cenium.Framework.Client.Windows.Wizards.WizardHelper.CreateWizardInstance(System.String,System.Windows.DependencyObject)">
+            <summary>
+            Creates a new wizard dialog
+            </summary>
+            <param name="id">The wizard identifier</param>
+            <param name="owner">The owner of the wizard</param>
+            <returns>A wizard dialog</returns>
+        </member>
+        <member name="T:Cenium.Framework.Client.Windows.Wizards.WizardLanguageConstants">
+            <summary>
+            Contains language constants for the Wizard controls
+            </summary>
+        </member>
+    </members>
+</doc>

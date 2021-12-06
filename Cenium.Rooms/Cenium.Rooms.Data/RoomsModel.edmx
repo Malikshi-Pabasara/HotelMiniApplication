@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RoomsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="RoomsModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RoomsModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false"  xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="RoomsEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" >
+          <EntitySet Name="Rooms" EntityType="RoomsModel.Room" />
+          <EntitySet Name="RoomTypes" EntityType="RoomsModel.RoomType" />
+          <EntitySet Name="Features" EntityType="RoomsModel.Feature" />
+          <AssociationSet Name="RoomRoomType" Association="RoomsModel.RoomRoomType">
+            <End Role="Room" EntitySet="Rooms" />
+            <End Role="RoomType" EntitySet="RoomTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FeatureRoomType" Association="RoomsModel.FeatureRoomType">
+            <End Role="Feature" EntitySet="Features" />
+            <End Role="RoomType" EntitySet="RoomTypes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="RoomId" />
+          </Key>
+          <Property Name="RoomId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="RoomType" Relationship="RoomsModel.RoomRoomType" FromRole="Room" ToRole="RoomType" />
+          <Property Name="RoomNumber" Type="String" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoomType">
+          <Key>
+            <PropertyRef Name="RoomTypeId" />
+          </Key>
+          <Property Name="RoomTypeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Rooms" Relationship="RoomsModel.RoomRoomType" FromRole="RoomType" ToRole="Room" />
+          <NavigationProperty Name="Features" Relationship="RoomsModel.FeatureRoomType" FromRole="RoomType" ToRole="Feature" />
+          <Property Name="RoomTypeName" Type="String" Nullable="false" />
+          <Property Name="RoomTypeCode" Type="String" Nullable="false" />
+          <Property Name="PriceCode" Type="String" Nullable="false" />
+          <Property Name="MaxNoOfPersons" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feature">
+          <Key>
+            <PropertyRef Name="FeatureId" />
+          </Key>
+          <Property Name="FeatureId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="RoomTypes" Relationship="RoomsModel.FeatureRoomType" FromRole="Feature" ToRole="RoomType" />
+          <Property Name="FeatureName" Type="String" Nullable="false" />
+          <Property Name="FeatureCode" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <Property Name="PriceCode" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="RoomRoomType">
+          <End Type="RoomsModel.Room" Role="Room" Multiplicity="*" />
+          <End Type="RoomsModel.RoomType" Role="RoomType" Multiplicity="1" />
+        </Association>
+        <Association Name="FeatureRoomType">
+          <End Type="RoomsModel.Feature" Role="Feature" Multiplicity="*" />
+          <End Type="RoomsModel.RoomType" Role="RoomType" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RoomsModelStoreContainer" CdmEntityContainer="RoomsEntities" />
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="ComponentModel" DisplayType="true" >
+        <EntityTypeShape EntityType="RoomsModel.Room" Width="1.5" PointX="1.25" PointY="1" />
+        <EntityTypeShape EntityType="RoomsModel.RoomType" Width="1.5" PointX="4" PointY="1" />
+        <EntityTypeShape EntityType="RoomsModel.Feature" Width="1.5" PointX="6.75" PointY="1" />
+        <AssociationConnector Association="RoomsModel.RoomRoomType" />
+        <AssociationConnector Association="RoomsModel.FeatureRoomType" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

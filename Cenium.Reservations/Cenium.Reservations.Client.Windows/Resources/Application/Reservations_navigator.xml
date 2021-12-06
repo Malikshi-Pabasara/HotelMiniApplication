@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<navigator>
+  <categories>
+    <!-- Add zero or more categories in this section.-->
+    <!--<category id="mycomponent" name="My Component" description="Sample component category" icon="mycomponent.icon.component" order="999" />-->
+  </categories>
+
+  <entries>
+    <!-- Add zero or more entries here -->
+    <!--<entry id="mycomponent.first" category="mycomponent" name="First sample" description="Sample page description" page="mycomponent.page.first" />-->
+    <entry id="backoffice.reservations" category="backoffice" name="Manage Reservations" description="Management of reservations" />
+    <entry id="backoffice.reservations.reservation" category="backoffice" name="Reservations" page="reservations.page.reservation" />
+  </entries>
+</navigator>

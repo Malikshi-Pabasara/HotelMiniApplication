@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<metadata>
+  <enumerations>
+    <!--<enumeration id="mycomponent.enumeration.myenum" values="1=One^2=Two^3=Three" />-->
+  </enumerations>
+
+
+  <entities>
+    
+    <!-- Add entity metadata here. 
+    Use the properties section to set default values
+    Use the extensions section to add property extensions
+    -->
+    <!--<entity id="MyComponent.MyEntity">
+      <properties>
+        <property id="MyProperty" value="[No value]" />
+      </properties>
+      <extensions>
+        <extension property="MyPropertyDisplayText" type="MyComponent.Extensions.MyExtension" >
+          <parameters>
+            <parameter id="PropertyName" value="MyProperty" />
+          </parameters>
+        </extension>
+      </extensions>
+    </entity>-->
+
+  </entities>
+
+</metadata>
+

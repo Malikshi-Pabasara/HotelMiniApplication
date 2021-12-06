@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Cenium.Properties.Activities</name>
+    </assembly>
+    <members>
+        <member name="T:Cenium.Properties.Activities.NamespaceDoc">
+            <summary>
+            Contains activity classes that comprise the application processing layer of the component Properties
+            </summary>
+        </member>
+        <member name="T:Cenium.Properties.Activities.PropertiesActivity">
+            <summary>
+            The PropertiesActivity class is an activity class that exposes data operation methods to the service layer. This class is responsible for applying business logic prior to making
+            updates in the data store.
+            </summary>
+            <seealso cref="T:Cenium.Properties.Data.Property"/>
+            <seealso cref="T:Cenium.Properties.Data.PropertiesEntitiesContext"/>
+        </member>
+        <member name="M:Cenium.Properties.Activities.PropertiesActivity.#ctor">
+            <summary>
+            Initializes a new instance of the PropertiesActivity class
+            </summary>
+        </member>
+        <member name="M:Cenium.Properties.Activities.PropertiesActivity.#ctor(Cenium.Properties.Data.PropertiesEntitiesContext)">
+            <summary>
+            Initializes a new instance of the PropertiesActivity class, sharing the context with other activities
+            </summary>
+            <param name="ctx">The shared context</param>
+        </member>
+        <member name="M:Cenium.Properties.Activities.PropertiesActivity.Query">
+            <summary>
+            Activity query method that returns an IEnumerable&lt;Property&gt; instance. 
+            </summary>
+            <returns>A strongly type IEnumerable instance </returns>
+        </member>
+        <member name="M:Cenium.Properties.Activities.PropertiesActivity.Get(System.Int64)">
+            <summary>
+            Gets a Property instance from the datastore based on Property keys.
+            </summary>
+            <param name="propertyId">The key for Property</param>
+            <returns>A Property instance, or null if there is no entities with the given key</returns>
+        </member>
+        <member name="M:Cenium.Properties.Activities.PropertiesActivity.Create(Cenium.Properties.Data.Property)">
+            <summary>
+            Adds a new instance of Property to the data store
+            </summary>
+            <param name="property">The instance to add</param>
+            <returns>The created instance</returns>
+        </member>
+        <member name="M:Cenium.Properties.Activities.PropertiesActivity.Update(Cenium.Properties.Data.Property)">
+            <summary>
+            Updates a Property instance in the data store
+            </summary>
+            <param name="property">The instance to update</param>
+            <returns>The updated instance</returns>
+        </member>
+        <member name="M:Cenium.Properties.Activities.PropertiesActivity.Delete(Cenium.Properties.Data.Property)">
+            <summary>
+            Deletes a Property instance from the data store
+            </summary>
+            <param name="property">The instance to delete</param>
+        </member>
+        <member name="M:Cenium.Properties.Activities.PropertiesActivity.GetFromDatastore(System.Int64)">
+            <summary>
+            Retrieves a single entity instance from the data store
+            </summary>
+            <param name="propertyId">The key for Property</param>
+            <returns>A single Property instance, or null if the instance doesn't exist</returns>
+        </member>
+        <member name="M:Cenium.Properties.Activities.PropertiesActivity.Dispose">
+            <summary>
+            Releases all resources used by this PropertiesActivity instance.
+            </summary>
+        </member>
+    </members>
+</doc>
