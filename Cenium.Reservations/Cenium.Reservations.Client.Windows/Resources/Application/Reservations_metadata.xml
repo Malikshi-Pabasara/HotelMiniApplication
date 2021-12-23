@@ -23,8 +23,33 @@
         </extension>
       </extensions>
     </entity>-->
-
+    <entity id="Reservations.Reservation">
+      <properties>
+        <property id="ArrivalDate" value="$SYSDATE$"/>
+        <property id="DepartureDate" value="$SYSDATE$"/>
+        <property id="ReservationStatus" value="CREATED"/>
+      </properties>
+      <extensions>
+        <extension property="StatusColor" type="CodeExtension" >
+              <parameters>
+                <parameter id="Source" >
+                  <![CDATA[
+                      if (record == null) 
+                        return "Gray";
+                
+                      if(string.Equals(record["ReservationStatus"], "CONFIRMED"))
+                        return "Blue";
+                      if(string.Equals(record["ReservationStatus"], "CHECKED-IN"))
+                        return "Green";
+                      if(string.Equals(record["ReservationStatus"], "CHECKED-OUT"))
+                        return "Red";
+                      return "Gray";
+                    ]]>
+                </parameter>
+              </parameters>
+            </extension>
+      </extensions>
+    </entity>
   </entities>
-
 </metadata>
 

@@ -44,8 +44,7 @@ namespace Cenium.Rooms.Data
         private string _featureName;
         private string _featureCode;
         private string _description;
-        private string _priceCode;
-        private ICollection<RoomType> _roomTypes;
+        private ICollection<RoomTypeFeature> _roomTypeFeatures;
         private Guid _tenantId = Guid.Empty;
 
         #endregion
@@ -86,25 +85,17 @@ namespace Cenium.Rooms.Data
             set { _description = value; }
         }
 
-        [Required]
-        [EntityMember(IsReadOnly = false, Order = 4, IsPrivate = false, IsQueryable = true, IsSortable = true)]
-        public virtual string PriceCode
-        {
-            get { return _priceCode; }
-            set { _priceCode = value; }
-        }
-
 
         #endregion
 
 
         #region Navigation Properties
 
-        [EntityMember(IsReadOnly = false, Order = 5)]
-        public virtual ICollection<RoomType> RoomTypes
+        [EntityMember(IsReadOnly = false, Order = 4)]
+        public virtual ICollection<RoomTypeFeature> RoomTypeFeatures
         {
-            get { return _roomTypes; }
-            set { _roomTypes = value; }
+            get { return _roomTypeFeatures; }
+            set { _roomTypeFeatures = value; }
         }
 
 
@@ -116,7 +107,7 @@ namespace Cenium.Rooms.Data
         /// <summary>
         /// Tenant identifier, for internal framework usage only
         /// </summary>
-        [EntityMember(IsReadOnly = true, IsHidden = true, Order = 6, IsQueryable = false, IsSortable = false)]
+        [EntityMember(IsReadOnly = true, IsHidden = true, Order = 5, IsQueryable = false, IsSortable = false)]
         public virtual Guid TenantId
         {
             get { return _tenantId; }
@@ -128,7 +119,7 @@ namespace Cenium.Rooms.Data
         /// </summary>
         [Timestamp]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [EntityMember(IsReadOnly = true, Order = 7, IsHidden = true, IsQueryable = false, IsSortable = false)]
+        [EntityMember(IsReadOnly = true, Order = 6, IsHidden = true, IsQueryable = false, IsSortable = false)]
         public virtual byte[] RowVersion
         {
             get;

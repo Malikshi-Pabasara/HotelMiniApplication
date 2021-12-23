@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <metadata>
   <enumerations>
+    <enumeration id="rooms.enumeration.room.status" values="Clean^Dirty" />
     <!--<enumeration id="mycomponent.enumeration.myenum" values="1=One^2=Two^3=Three" />-->
   </enumerations>
 

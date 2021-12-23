@@ -1,10 +1,93 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ui>
   <!-- Add panes here-->
+  
   <panes>
+    <pane id="rooms.pane.room.details" type="standard.pane.grouplayout" columns="2">
+      <layout>
+        <section id="general" label="General" constraints="column=0">
+          <items>
+            <item id="dummy" type="rooms.pane.room.general.top" labelVisibility="Collapsed" />
+          </items>
+        </section>
+        <section id="priceDetails" label="Price Details" constraints="column=1" >
+          <items>
+            <item id="dummy" type="rooms.pane.room.price" labelVisibility="Collapsed">
+              <properties>
+                <property id="Height" value="50" type="Double" />
+              </properties>
+            </item>
+          </items>
+        </section>
+        <section id="capacity" label="Capacity" constraints="column=1">
+          <items>
+            <item id="dummy" type="rooms.pane.room.capacity.top" labelVisibility="Collapsed" />
+          </items>
+        </section>
+        
+        
+      </layout>
+    </pane>
 
+
+    <pane id="rooms.pane.room.general.top" type="standard.pane.grouplayout" >
+      <layout>
+        
+        <section id="column1">
+          <items>
+            <item id="RoomNumber" label="Room Number :" type="TextBox" column="0" />
+            <item id="RoomTypeId" label="Room Type:" type="framework.controls.data.ReferenceComboBox" readOnly="false" valueList="Rooms/RoomType/Query"  column="1">
+              <properties>
+                <property id="DisplayPropertyName" value="RoomTypeName" />
+                <property id="SelectedValuePath" value="RoomTypeId"/>
+              </properties>
+            </item>
+            <item id="Status" label="Status :" type="ComboBox" valueList="enum:rooms.enumeration.room.status" column="0" />
+            <!--<item id="PriceGroupId" label="!prices.price.pricecode" type="framework.controls.data.ReferenceComboBox" readOnly="false" valueList="Prices/Price/Query" column="1">
+              <properties>
+                <property id="DisplayPropertyName" value="PriceCode" />
+              </properties>
+            </item>-->
+            <item id="Property" label="!rooms.room.property" type="textbox" readOnly="false" column="1"  />
+            <item id="Name" label="!rooms.room.name" type="textbox" readOnly="false" colspan="2" />
+            <item id="Description" label="Description:" type="specialized.multilinetextbox" readOnly="false" colspan="2"/>
+
+          </items>
+        </section>
+      </layout>
+    </pane>
+
+    <pane id="rooms.pane.room.price" type="standard.pane.grouplayout" >
+      <layout>
+        <section id="column1">
+          <items>
+            <item id="PriceCode" label="!prices.price.pricecode" type="standard.controls.data.valuelistlookup" readOnly="false" valueList="Prices/Price/Query" column="0" colspan="2">
+              <properties>
+                <property id="CopyPropertyNames" value="PriceId=PriceCode^PriceCode" />
+              </properties>
+              <bindings>
+                <binding property="DisplayValue" bindTo="PriceCode" readOnly="true" />
+              </bindings>
+            </item>
+          </items>
+        </section>
+      </layout>
+    </pane>
+
+    <pane id="rooms.pane.room.capacity.top" type="standard.pane.grouplayout" >
+      <layout>
+        <section id ="column2">
+          <items>
+            <item id="RoomWidth" label="Room width" type="NumberTextBox" format="ShortDecimal" readOnly="false" column="0" />
+            <item id="RoomLength" label="Rroom Length" type="NumberTextBox" format="ShortDecimal" readOnly="false" column="0" />
+            <item id="SquareMeters" label="Area" type="NumberTextBox" format="ShortDecimal" readOnly="false" column="1" />
+            <item id="CeilingHeight" label="Ceiling Height" type="NumberTextBox" format="ShortDecimal" readOnly="false" column="1" />
+          </items>
+        </section>
+      </layout>
+    </pane>
   </panes>
-
+  
   <!-- Add dialogs here -->
   <dialogs>
 
@@ -16,8 +99,7 @@
 
   <!-- Add pages here-->
   <pages>
-    <page id="rooms.page.room" name="Rooms" description="Add and maintain rooms information"
-    model="framework.pages.listviewmodel" type="framework.griddetailpage">
+    <page id="rooms.page.room" name="Rooms" description="Add and maintain rooms information" model="framework.pages.listviewmodel" type="standard.pagetype.list">
 
 
 
@@ -33,22 +115,39 @@
 
 
       <layout>
-        <section id="listView" readOnly="true">
+        <section id="griditem" readOnly="true">
           <items>
             <item id="RoomNumber" label="Room Number" type="Column" width="*"/>
             <item id="Status" label="Status" type="Column" width="*"/>
-            <item id="RoomTypeId" label="RoomType Id" type="Column" width="*"/>
-            <!--<item id="RoomTypeId" label="Room Type:" type="Column" width="*" valueList="Rooms/RoomType/Query">
-              <properties>
-                <property id="DisplayPropertyName" value="RoomTypeCode" />
-                <property id="SelectedValuePath" value="RoomTypeId"/>
-              </properties>
-            </item>-->
+            <item id="Name" label="Name" type="Column" width="*"/>
+            <item id="PriceCode" label="Price Code" type="Column" width="*" />
+
           </items>
         </section>
+
+      <section id="summary">
+        <items>
+          <item id="pane" labelVisibility="Collapsed" type="rooms.pane.room.details" />
+        </items>
+      </section>
+
       </layout>
 
 
+      <actions>
+        <action id="clear" type="framework.ClearAction" />
+        <action id="refresh" type="framework.RefreshAction" />
+        <action id="save" type="framework.SaveAction" />
+        <action id="add" type="framework.CreateAction">
+        </action>
+
+        <action id="delete" type="framework.DeleteAction" >
+          <properties>
+            <property id="IsAutoSave" value="true" type="Bool" />
+            <property id="IsUserConfirmationRequired" value="true" type="Bool" />
+          </properties>
+        </action>
+      </actions>
 
     </page>
   </pages>

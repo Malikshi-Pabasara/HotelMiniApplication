@@ -19,3 +19,4 @@ c:\users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Prices\Cenium.P
 c:\users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Prices\Cenium.Prices.Client.Windows\obj\Debug\Cenium.Prices.Client.Windows.g.resources
 c:\users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Prices\Cenium.Prices.Client.Windows\obj\Debug\Cenium.Prices.Client.Windows.dll
 c:\users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Prices\Cenium.Prices.Client.Windows\obj\Debug\Cenium.Prices.Client.Windows.pdb
+C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Prices\Cenium.Prices.Client.Windows\obj\Debug\Cenium.Prices.Client.Windows.csprojResolveAssemblyReference.cache

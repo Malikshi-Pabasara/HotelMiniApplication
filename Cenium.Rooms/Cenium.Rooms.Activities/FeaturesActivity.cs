@@ -64,7 +64,6 @@ namespace Cenium.Rooms.Activities
         /// </summary>
         /// <returns>A strongly type IEnumerable instance </returns>
         [ActivityMethod("Query", MethodType.Query, IsDefault = true)]
-        [ActivityResult("RoomTypes")]
         [SecureResource("features.administration", SecureResourcePermissionLevel.Read)]
         public IEnumerable<Feature> Query()
         {
@@ -82,7 +81,6 @@ namespace Cenium.Rooms.Activities
         /// <param name="featureId">The key for Feature</param>
         /// <returns>A Feature instance, or null if there is no entities with the given key</returns>
         [ActivityMethod("Get", MethodType.Get, IsDefault = true)]
-        [ActivityResult("RoomTypes")]
         [SecureResource("features.administration", SecureResourcePermissionLevel.Read)]
         public Feature Get(long featureId)
         {
@@ -102,7 +100,6 @@ namespace Cenium.Rooms.Activities
         /// <param name="feature">The instance to add</param>
         /// <returns>The created instance</returns>
         [ActivityMethod("Create", MethodType.Create, IsDefault = true)]
-        [ActivityResult("RoomTypes")]
         [SecureResource("features.administration", SecureResourcePermissionLevel.Write)]
         public Cenium.Rooms.Data.Feature Create(Feature feature)
         {
@@ -121,18 +118,16 @@ namespace Cenium.Rooms.Activities
         /// <param name="feature">The instance to update</param>
         /// <returns>The updated instance</returns>
         [ActivityMethod("Update", MethodType.Update, IsDefault = true)]
-        [ActivityResult("RoomTypes")]
         [SecureResource("features.administration", SecureResourcePermissionLevel.Write)]
         public Cenium.Rooms.Data.Feature Update(Feature feature)
         {
             Logger.TraceMethodEnter(feature);
 
-            _ctx.Features.AttachChildCollection<RoomType>(feature, "RoomTypes");
             feature = _ctx.Features.Modify(feature);
-            _ctx.Features.SynchronizeChildCollection<RoomType>(feature, "RoomTypes");
             _ctx.SaveChanges();
 
             return Logger.TraceMethodExit(GetFromDatastore(feature.FeatureId)) as Feature;
+
         }
 
 

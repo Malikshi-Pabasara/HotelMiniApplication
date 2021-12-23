@@ -83,7 +83,9 @@
     <Compile Include="Component.cs" />
     <Compile Include="ContactsActivity.cs" />
     <Compile Include="Dependencies.cs" />
+    <Compile Include="EmailsActivity.cs" />
     <Compile Include="NamespaceDoc.cs" />
+    <Compile Include="PhonesActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

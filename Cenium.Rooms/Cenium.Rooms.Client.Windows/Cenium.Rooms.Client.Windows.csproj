@@ -93,8 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Application\Rooms_metadata.xml" />
-    <EmbeddedResource Include="Resources\Application\Rooms_navigator.xml" />
-    <EmbeddedResource Include="Resources\Application\Rooms_pages_Room.xml" />
+    <EmbeddedResource Include="Resources\Application\Rooms_navigator.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Application\Rooms_pages_Room.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\Rooms.png" />
@@ -108,7 +112,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Application\Rooms_pages_RoomType.xml" />
+    <EmbeddedResource Include="Resources\Application\Rooms_pages_RoomType.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Icons\Page\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

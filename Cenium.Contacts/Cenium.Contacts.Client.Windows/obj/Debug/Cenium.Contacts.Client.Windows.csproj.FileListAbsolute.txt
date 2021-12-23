@@ -19,3 +19,4 @@ C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Contacts\Cenium
 C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Contacts\Cenium.Contacts.Client.Windows\obj\Debug\Cenium.Contacts.Client.Windows.g.resources
 C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Contacts\Cenium.Contacts.Client.Windows\obj\Debug\Cenium.Contacts.Client.Windows.dll
 C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Contacts\Cenium.Contacts.Client.Windows\obj\Debug\Cenium.Contacts.Client.Windows.pdb
+C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Contacts\Cenium.Contacts.Client.Windows\obj\Debug\Cenium.Contacts.Client.Windows.csprojResolveAssemblyReference.cache

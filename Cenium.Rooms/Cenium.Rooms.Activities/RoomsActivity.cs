@@ -23,6 +23,7 @@ using Cenium.Framework.Core.Attributes;
 using Cenium.Framework.Logging;
 using Cenium.Rooms.Data;
 using Cenium.Framework.Security;
+using Cenium.Rooms.Activities.Helpers.Reservations;
 
 namespace Cenium.Rooms.Activities
 {
@@ -64,6 +65,8 @@ namespace Cenium.Rooms.Activities
         /// </summary>
         /// <returns>A strongly type IEnumerable instance </returns>
         [ActivityMethod("Query", MethodType.Query, IsDefault = true)]
+        [ActivityResult("RoomTypes")]
+        [ActivityResult("Features")]
         [SecureResource("rooms.administration", SecureResourcePermissionLevel.Read)]
         public IEnumerable<Room> Query()
         {
@@ -81,6 +84,8 @@ namespace Cenium.Rooms.Activities
         /// <param name="roomId">The key for Room</param>
         /// <returns>A Room instance, or null if there is no entities with the given key</returns>
         [ActivityMethod("Get", MethodType.Get, IsDefault = true)]
+        [ActivityResult("RoomTypes")]
+        [ActivityResult("Features")]
         [SecureResource("rooms.administration", SecureResourcePermissionLevel.Read)]
         public Room Get(long roomId)
         {
@@ -98,6 +103,8 @@ namespace Cenium.Rooms.Activities
         /// <param name="room">The instance to add</param>
         /// <returns>The created instance</returns>
         [ActivityMethod("Create", MethodType.Create, IsDefault = true)]
+        [ActivityResult("RoomTypes")]
+        [ActivityResult("Features")]
         [SecureResource("rooms.administration", SecureResourcePermissionLevel.Write)]
         public Cenium.Rooms.Data.Room Create(Room room)
         {
@@ -116,6 +123,8 @@ namespace Cenium.Rooms.Activities
         /// <param name="room">The instance to update</param>
         /// <returns>The updated instance</returns>
         [ActivityMethod("Update", MethodType.Update, IsDefault = true)]
+        [ActivityResult("RoomTypes")]
+        [ActivityResult("Features")]
         [SecureResource("rooms.administration", SecureResourcePermissionLevel.Write)]
         public Cenium.Rooms.Data.Room Update(Room room)
         {
@@ -133,6 +142,8 @@ namespace Cenium.Rooms.Activities
         /// </summary>
         /// <param name="room">The instance to delete</param>
         [ActivityMethod("Delete", MethodType.Delete, IsDefault = true)]
+        [ActivityResult("RoomTypes")]
+        [ActivityResult("Features")]
         [SecureResource("rooms.administration", SecureResourcePermissionLevel.Write)]
         public void Delete(Room room)
         {
@@ -150,6 +161,8 @@ namespace Cenium.Rooms.Activities
         /// <param name="room">The instance to update</param>
         /// <returns>The updated instance</returns>
         [ActivityMethod("UpdateRoomReservationInfo", MethodType.Invoke, IsDefault = true)]
+        [ActivityResult("RoomTypes")]
+        [ActivityResult("Features")]
         [SecureResource("rooms.administration", SecureResourcePermissionLevel.Write)]
         public void UpdateRoomReservationInfo(Room room)
         {
@@ -164,9 +177,23 @@ namespace Cenium.Rooms.Activities
                 room = _ctx.Rooms.Modify(room);
                 _ctx.SaveChanges();
             }
-            
-            
+        }
 
+        [ActivityMethod("GetAvailable", MethodType.Query)]
+        [SecureResource("rooms.administration", SecureResourcePermissionLevel.Read)]
+        public IEnumerable<Room> GetAvailable(long reservationId)
+        {
+            Logger.TraceMethodEnter();
+
+            var reservation = ReservationHelper.GetReservationById(reservationId);
+            DateTime startDate = reservation.ArrivalDate;
+            DateTime endDate = reservation.DepartureDate;
+
+            var reservedRoomIdList = ReservationHelper.GetReservedRoomIdList(reservationId);
+
+            var result = _ctx.Rooms.ReadOnlyQuery().Where(r => r.RoomTypeId == reservation.RoomTypeId && r.Status != "DIRTY" && !reservedRoomIdList.Contains(r.RoomId));
+
+            return Logger.TraceMethodExit(result) as IEnumerable<Room>;
         }
 
         /// <summary>

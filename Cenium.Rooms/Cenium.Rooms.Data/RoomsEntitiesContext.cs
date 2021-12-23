@@ -78,6 +78,14 @@ namespace Cenium.Rooms.Data
             get { return GetEntityCollection<Feature>(); }
         }
 
+        /// <summary>
+        /// Returns a typed EntityCollection of RoomTypeFeature that is used to perform create, read, update, delete (CRUD) operations.
+        /// </summary>
+        public virtual EntityCollection<RoomTypeFeature> RoomTypeFeatures
+        {
+            get { return GetEntityCollection<RoomTypeFeature>(); }
+        }
+
 
         #endregion
 

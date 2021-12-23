@@ -20,12 +20,19 @@
           </Key>
           <Property Name="ReservationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Number" Type="String" Nullable="false" />
-          <Property Name="PropertyId" Type="Int64" Nullable="false" />
+          <Property Name="PropertyContextId" Type="Int64" Nullable="false" />
           <Property Name="RoomId" Type="Int64" Nullable="false" />
           <Property Name="ContactId" Type="Int64" Nullable="false" />
-          <Property Name="ArrivalDate" Type="DateTime" Nullable="true" />
-          <Property Name="DepartureDate" Type="DateTime" Nullable="true" />
-          <Property Name="ReservationStatus" Type="String" Nullable="true" />
+          <Property Name="ArrivalDate" Type="DateTime" Nullable="false" />
+          <Property Name="DepartureDate" Type="DateTime" Nullable="false" />
+          <Property Name="ReservationStatus" Type="String" Nullable="false" DefaultValue="Confirmed" />
+          <Property Name="RoomNumber" Type="String" Nullable="true" />
+          <Property Name="Price" Type="String" Nullable="true" />
+          <Property Name="PaymentDone" Type="Boolean" Nullable="false" />
+          <Property Name="ContactName" Type="String" Nullable="true" />
+          <Property Name="RoomTypeId" Type="Int64" Nullable="true" />
+          <Property Name="RoomTypeCode" Type="String" Nullable="true" />
+          <Property Name="PropertyContextName" Type="String" Nullable="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -54,7 +61,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="ComponentModel" DisplayType="true" >
-        <EntityTypeShape EntityType="ReservationsModel.Reservation" Width="2.125" PointX="3.25" PointY="0.875" />
+        <EntityTypeShape EntityType="ReservationsModel.Reservation" Width="2.75" PointX="3.25" PointY="0.875" />
       </Diagram>
     </Diagrams>
   </Designer>

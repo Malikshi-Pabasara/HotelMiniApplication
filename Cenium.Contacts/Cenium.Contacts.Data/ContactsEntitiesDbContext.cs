@@ -67,6 +67,24 @@ namespace Cenium.Contacts.Data
             set;
         }
 
+        /// <summary>
+        /// Returns a typed entity set of Phone that is used to perform create, read, update, delete (CRUD) operations.
+        /// </summary>
+        public virtual DbSet<Phone> Phones
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Returns a typed entity set of Email that is used to perform create, read, update, delete (CRUD) operations.
+        /// </summary>
+        public virtual DbSet<Email> Emails
+        {
+            get;
+            set;
+        }
+
 
         #endregion
 

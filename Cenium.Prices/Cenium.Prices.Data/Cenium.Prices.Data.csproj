@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dependencies.cs" />
+    <Compile Include="Entities\Price.partial.cs" />
     <Compile Include="Price.cs">
       <DependentUpon>PricesModel.tt</DependentUpon>
     </Compile>

@@ -1,28 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <metadata>
   <enumerations>
-    <!--<enumeration id="mycomponent.enumeration.myenum" values="1=One^2=Two^3=Three" />-->
+    <enumeration id="contacts.enumeration.contact.gender" values="Male^Female" />
   </enumerations>
 
 
   <entities>
-    
-    <!-- Add entity metadata here. 
-    Use the properties section to set default values
-    Use the extensions section to add property extensions
-    -->
-    <!--<entity id="MyComponent.MyEntity">
+    <entity id="Contacts.ContactInfo">
       <properties>
-        <property id="MyProperty" value="[No value]" />
+        <!--<property id="ContactNo" value="[Auto]" />
+        <property id="IsActive" value="true" type="Bool" />-->
+        <property id="PrimaryImageRef" value="$GUID$" />
       </properties>
-      <extensions>
-        <extension property="MyPropertyDisplayText" type="MyComponent.Extensions.MyExtension" >
-          <parameters>
-            <parameter id="PropertyName" value="MyProperty" />
-          </parameters>
-        </extension>
-      </extensions>
-    </entity>-->
+    </entity>
 
   </entities>
 

@@ -19,9 +19,14 @@
             <End Role="Room" EntitySet="Rooms" />
             <End Role="RoomType" EntitySet="RoomTypes" />
           </AssociationSet>
-          <AssociationSet Name="FeatureRoomType" Association="RoomsModel.FeatureRoomType">
-            <End Role="Feature" EntitySet="Features" />
+          <EntitySet Name="RoomTypeFeatures" EntityType="RoomsModel.RoomTypeFeature" />
+          <AssociationSet Name="RoomTypeRoomTypeFeature" Association="RoomsModel.RoomTypeRoomTypeFeature">
             <End Role="RoomType" EntitySet="RoomTypes" />
+            <End Role="RoomTypeFeature" EntitySet="RoomTypeFeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FeatureRoomTypeFeature" Association="RoomsModel.FeatureRoomTypeFeature">
+            <End Role="Feature" EntitySet="Features" />
+            <End Role="RoomTypeFeature" EntitySet="RoomTypeFeatures" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Room">
@@ -32,6 +37,15 @@
           <NavigationProperty Name="RoomType" Relationship="RoomsModel.RoomRoomType" FromRole="Room" ToRole="RoomType" />
           <Property Name="RoomNumber" Type="String" Nullable="false" />
           <Property Name="Status" Type="String" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="true" />
+          <Property Name="Description" Type="String" Nullable="true" />
+          <Property Name="RoomWidth" Type="Double" Nullable="true" />
+          <Property Name="RoomLength" Type="Double" Nullable="true" />
+          <Property Name="PriceCode" Type="String" Nullable="false" />
+          <Property Name="PropertyContextId" Type="Int64" Nullable="false" />
+          <Property Name="SquareMeters" Type="Double" Nullable="true" />
+          <Property Name="CeilingHeight" Type="Double" Nullable="true" />
+          <Property Name="Property" Type="String" Nullable="false" />
         </EntityType>
         <EntityType Name="RoomType">
           <Key>
@@ -39,30 +53,42 @@
           </Key>
           <Property Name="RoomTypeId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="Rooms" Relationship="RoomsModel.RoomRoomType" FromRole="RoomType" ToRole="Room" />
-          <NavigationProperty Name="Features" Relationship="RoomsModel.FeatureRoomType" FromRole="RoomType" ToRole="Feature" />
           <Property Name="RoomTypeName" Type="String" Nullable="false" />
           <Property Name="RoomTypeCode" Type="String" Nullable="false" />
           <Property Name="PriceCode" Type="String" Nullable="false" />
           <Property Name="MaxNoOfPersons" Type="Int32" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="true" />
+          <NavigationProperty Name="RoomTypeFeatures" Relationship="RoomsModel.RoomTypeRoomTypeFeature" FromRole="RoomType" ToRole="RoomTypeFeature" />
         </EntityType>
         <EntityType Name="Feature">
           <Key>
             <PropertyRef Name="FeatureId" />
           </Key>
           <Property Name="FeatureId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="RoomTypes" Relationship="RoomsModel.FeatureRoomType" FromRole="Feature" ToRole="RoomType" />
           <Property Name="FeatureName" Type="String" Nullable="false" />
           <Property Name="FeatureCode" Type="String" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="false" />
-          <Property Name="PriceCode" Type="String" Nullable="false" />
+          <NavigationProperty Name="RoomTypeFeatures" Relationship="RoomsModel.FeatureRoomTypeFeature" FromRole="Feature" ToRole="RoomTypeFeature" />
         </EntityType>
         <Association Name="RoomRoomType">
           <End Type="RoomsModel.Room" Role="Room" Multiplicity="*" />
           <End Type="RoomsModel.RoomType" Role="RoomType" Multiplicity="1" />
         </Association>
-        <Association Name="FeatureRoomType">
-          <End Type="RoomsModel.Feature" Role="Feature" Multiplicity="*" />
-          <End Type="RoomsModel.RoomType" Role="RoomType" Multiplicity="*" />
+        <EntityType Name="RoomTypeFeature">
+          <Key>
+            <PropertyRef Name="RoomTypeFeatureId" />
+          </Key>
+          <Property Name="RoomTypeFeatureId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="RoomType" Relationship="RoomsModel.RoomTypeRoomTypeFeature" FromRole="RoomTypeFeature" ToRole="RoomType" />
+          <NavigationProperty Name="Feature" Relationship="RoomsModel.FeatureRoomTypeFeature" FromRole="RoomTypeFeature" ToRole="Feature" />
+        </EntityType>
+        <Association Name="RoomTypeRoomTypeFeature">
+          <End Type="RoomsModel.RoomType" Role="RoomType" Multiplicity="1" />
+          <End Type="RoomsModel.RoomTypeFeature" Role="RoomTypeFeature" Multiplicity="*" />
+        </Association>
+        <Association Name="FeatureRoomTypeFeature">
+          <End Type="RoomsModel.Feature" Role="Feature" Multiplicity="1" />
+          <End Type="RoomsModel.RoomTypeFeature" Role="RoomTypeFeature" Multiplicity="*" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -91,11 +117,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="ComponentModel" DisplayType="true" >
-        <EntityTypeShape EntityType="RoomsModel.Room" Width="1.5" PointX="1.25" PointY="1" />
-        <EntityTypeShape EntityType="RoomsModel.RoomType" Width="1.5" PointX="4" PointY="1" />
-        <EntityTypeShape EntityType="RoomsModel.Feature" Width="1.5" PointX="6.75" PointY="1" />
+        <EntityTypeShape EntityType="RoomsModel.Room" Width="2.125" PointX="1.25" PointY="1" />
+        <EntityTypeShape EntityType="RoomsModel.RoomType" Width="2" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RoomsModel.Feature" Width="1.75" PointX="7.625" PointY="4.625" />
         <AssociationConnector Association="RoomsModel.RoomRoomType" />
-        <AssociationConnector Association="RoomsModel.FeatureRoomType" />
+        <EntityTypeShape EntityType="RoomsModel.RoomTypeFeature" Width="2.75" PointX="7.75" PointY="1.75" />
+        <AssociationConnector Association="RoomsModel.RoomTypeRoomTypeFeature" />
+        <AssociationConnector Association="RoomsModel.FeatureRoomTypeFeature" />
       </Diagram>
     </Diagrams>
   </Designer>

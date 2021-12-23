@@ -22,5 +22,7 @@ using Cenium.Framework.Security;
 [assembly: ComponentDescription("Contacts", "Provide a description of what the component does here.", "")]
 [assembly: ComponentVersion("1.0.0.0", "")]
 [assembly: SecureResourceType("contacts.administration", "Full Administration", "Full administration of contacts.")]
+[assembly: SecureResourceType("emails.administration", "Full Administration", "Full administration of emails.")]
+[assembly: SecureResourceType("phones.administration", "Full Administration", "Full administration of phones.")]
 
 

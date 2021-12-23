@@ -97,6 +97,13 @@
       <DependentUpon>ContactsModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Dependencies.cs" />
+    <Compile Include="Email.cs">
+      <DependentUpon>ContactsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Contact.partial.cs" />
+    <Compile Include="Phone.cs">
+      <DependentUpon>ContactsModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NamespaceDoc.cs" />
     <Compile Include="Component.cs" />

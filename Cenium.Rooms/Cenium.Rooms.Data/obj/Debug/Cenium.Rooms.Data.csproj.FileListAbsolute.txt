@@ -20,3 +20,4 @@ c:\users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Rooms\Cenium.Ro
 c:\users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Rooms\Cenium.Rooms.Data\bin\Debug\NLog.xml
 c:\users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Rooms\Cenium.Rooms.Data\obj\Debug\Cenium.Rooms.Data.dll
 c:\users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Rooms\Cenium.Rooms.Data\obj\Debug\Cenium.Rooms.Data.pdb
+C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Rooms\Cenium.Rooms.Data\obj\Debug\Cenium.Rooms.Data.csprojResolveAssemblyReference.cache

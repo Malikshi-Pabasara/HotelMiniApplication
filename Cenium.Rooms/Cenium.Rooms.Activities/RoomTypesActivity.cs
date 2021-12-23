@@ -64,7 +64,9 @@ namespace Cenium.Rooms.Activities
         /// </summary>
         /// <returns>A strongly type IEnumerable instance </returns>
         [ActivityMethod("Query", MethodType.Query, IsDefault = true)]
-        [ActivityResult("Features")]
+        [ActivityResult("RoomTypeFeatures")]
+        [ActivityResult("RoomTypeFeatures.Feature")]
+        [ActivityResult("Rooms")]
         [SecureResource("roomtypes.administration", SecureResourcePermissionLevel.Read)]
         public IEnumerable<RoomType> Query()
         {
@@ -82,6 +84,9 @@ namespace Cenium.Rooms.Activities
         /// <param name="roomTypeId">The key for RoomType</param>
         /// <returns>A RoomType instance, or null if there is no entities with the given key</returns>
         [ActivityMethod("Get", MethodType.Get, IsDefault = true)]
+        [ActivityResult("RoomTypeFeatures")]
+        [ActivityResult("RoomTypeFeatures.Feature")]
+        [ActivityResult("Rooms")]
         [SecureResource("roomtypes.administration", SecureResourcePermissionLevel.Read)]
         public RoomType Get(long roomTypeId)
         {
@@ -99,15 +104,21 @@ namespace Cenium.Rooms.Activities
         /// <param name="roomType">The instance to add</param>
         /// <returns>The created instance</returns>
         [ActivityMethod("Create", MethodType.Create, IsDefault = true)]
+        [ActivityResult("RoomTypeFeatures")]
+        [ActivityResult("RoomTypeFeatures.Feature")]
         [SecureResource("roomtypes.administration", SecureResourcePermissionLevel.Write)]
         public Cenium.Rooms.Data.RoomType Create(RoomType roomType)
         {
             Logger.TraceMethodEnter(roomType);
 
+            _ctx.RoomTypes.AttachChildCollection<RoomTypeFeature>(roomType, "RoomTypeFeatures");
             roomType = _ctx.RoomTypes.Add(roomType);
+            _ctx.RoomTypes.SynchronizeChildCollection<RoomTypeFeature>(roomType, "RoomTypeFeatures");
             _ctx.SaveChanges();
 
             return Logger.TraceMethodExit(GetFromDatastore(roomType.RoomTypeId)) as RoomType;
+            
+
         }
 
 
@@ -117,15 +128,21 @@ namespace Cenium.Rooms.Activities
         /// <param name="roomType">The instance to update</param>
         /// <returns>The updated instance</returns>
         [ActivityMethod("Update", MethodType.Update, IsDefault = true)]
+        [ActivityResult("Rooms")]
+        [ActivityResult("RoomTypeFeatures")]
+        [ActivityResult("RoomTypeFeatures.Feature")]
         [SecureResource("roomtypes.administration", SecureResourcePermissionLevel.Write)]
         public Cenium.Rooms.Data.RoomType Update(RoomType roomType)
         {
             Logger.TraceMethodEnter(roomType);
-            _ctx.RoomTypes.AttachChildCollection<Feature>(roomType, "Features");
+
+            _ctx.RoomTypes.AttachChildCollection<RoomTypeFeature>(roomType, "RoomTypeFeatures");
             roomType = _ctx.RoomTypes.Modify(roomType);
-            _ctx.RoomTypes.SynchronizeChildCollection<Feature>(roomType, "Features");
+            _ctx.RoomTypes.SynchronizeChildCollection<RoomTypeFeature>(roomType, "RoomTypeFeatures");
             _ctx.SaveChanges();
+
             return Logger.TraceMethodExit(GetFromDatastore(roomType.RoomTypeId)) as RoomType;
+            
         }
 
 
@@ -134,6 +151,9 @@ namespace Cenium.Rooms.Activities
         /// </summary>
         /// <param name="roomType">The instance to delete</param>
         [ActivityMethod("Delete", MethodType.Delete, IsDefault = true)]
+        [ActivityResult("RoomTypeFeatures")]
+        [ActivityResult("RoomTypeFeatures.Feature")]
+        [ActivityResult("Rooms")]
         [SecureResource("roomtypes.administration", SecureResourcePermissionLevel.Write)]
         public void Delete(RoomType roomType)
         {

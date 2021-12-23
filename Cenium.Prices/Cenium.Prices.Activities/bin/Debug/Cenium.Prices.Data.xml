@@ -4,6 +4,11 @@
         <name>Cenium.Prices.Data</name>
     </assembly>
     <members>
+        <member name="T:Cenium.Prices.Data.Price">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
         <member name="P:Cenium.Prices.Data.Price.TenantId">
             <summary>
             Tenant identifier, for internal framework usage only

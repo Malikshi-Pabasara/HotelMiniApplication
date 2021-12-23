@@ -4,6 +4,11 @@
         <name>Cenium.Contacts.Data</name>
     </assembly>
     <members>
+        <member name="T:Cenium.Contacts.Data.Contact">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
         <member name="P:Cenium.Contacts.Data.Contact.TenantId">
             <summary>
             Tenant identifier, for internal framework usage only
@@ -27,6 +32,16 @@
         <member name="P:Cenium.Contacts.Data.ContactsEntitiesContext.Contacts">
             <summary>
             Returns a typed EntityCollection of Contact that is used to perform create, read, update, delete (CRUD) operations.
+            </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Data.ContactsEntitiesContext.Phones">
+            <summary>
+            Returns a typed EntityCollection of Phone that is used to perform create, read, update, delete (CRUD) operations.
+            </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Data.ContactsEntitiesContext.Emails">
+            <summary>
+            Returns a typed EntityCollection of Email that is used to perform create, read, update, delete (CRUD) operations.
             </summary>
         </member>
         <member name="M:Cenium.Contacts.Data.ContactsEntitiesContext.CreateDbContext(System.String)">
@@ -53,6 +68,46 @@
         <member name="P:Cenium.Contacts.Data.ContactsEntitiesDbContext.Contacts">
             <summary>
             Returns a typed entity set of Contact that is used to perform create, read, update, delete (CRUD) operations.
+            </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Data.ContactsEntitiesDbContext.Phones">
+            <summary>
+            Returns a typed entity set of Phone that is used to perform create, read, update, delete (CRUD) operations.
+            </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Data.ContactsEntitiesDbContext.Emails">
+            <summary>
+            Returns a typed entity set of Email that is used to perform create, read, update, delete (CRUD) operations.
+            </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Data.Email.ContactId">
+            <summary>
+            Foreign key property for Contact
+            </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Data.Email.TenantId">
+            <summary>
+            Tenant identifier, for internal framework usage only
+            </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Data.Email.RowVersion">
+            <summary>
+            Concurrency control version number
+            </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Data.Phone.ContactId">
+            <summary>
+            Foreign key property for Contact
+            </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Data.Phone.TenantId">
+            <summary>
+            Tenant identifier, for internal framework usage only
+            </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Data.Phone.RowVersion">
+            <summary>
+            Concurrency control version number
             </summary>
         </member>
         <member name="T:Cenium.Contacts.Data.NamespaceDoc">

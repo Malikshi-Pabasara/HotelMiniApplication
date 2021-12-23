@@ -11,37 +11,38 @@
  * 
  * User        Date          Comment
  * ----------- ------------- --------------------------------------------------------------------------------------------
- * Malikshi.P  11/03/2021    Created
+ * Malikshi.P  12/20/2021    Created
  */
 
 
-
 using Cenium.Framework.Data;
-using Cenium.Reservations.Data;
+using System;
 using System.Collections.Generic;
 
-namespace Cenium.Reservations.Activities.Entities
+namespace Cenium.Contacts.Activities.Entities.Extentions
 {
     /// <summary>
     /// Explain the purpose of the class here
     /// </summary>
+    /// 
     [Entity]
-    public class Result
+    public class ContactReservationExtension
     {
 
         /// <summary>
-        /// Initializes a new instance of the ReservationsResult class
+        /// Initializes a new instance of the OrderContactExtension class
         /// </summary>
-        public Result()
+        public ContactReservationExtension()
         {
-            Reservations = new List<Reservation>();
+
         }
 
         /// <summary>
-        /// Gets and sets list of Reservation objects
+        ///
         /// </summary>
         [EntityMember(Order = 0)]
-        public ICollection<Reservation> Reservations { get; set; }
+        public ICollection<ContactReservationExtensionItem> Items { get; set; }
+
 
     }
 

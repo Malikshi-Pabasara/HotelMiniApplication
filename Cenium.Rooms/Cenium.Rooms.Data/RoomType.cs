@@ -45,8 +45,9 @@ namespace Cenium.Rooms.Data
         private string _roomTypeCode;
         private string _priceCode;
         private int _maxNoOfPersons;
+        private string _description;
         private ICollection<Room> _rooms;
-        private ICollection<Feature> _features;
+        private ICollection<RoomTypeFeature> _roomTypeFeatures;
         private Guid _tenantId = Guid.Empty;
 
         #endregion
@@ -95,24 +96,31 @@ namespace Cenium.Rooms.Data
             set { _maxNoOfPersons = value; }
         }
 
+        [EntityMember(IsReadOnly = false, Order = 5, IsPrivate = false, IsQueryable = true, IsSortable = true)]
+        public virtual string Description
+        {
+            get { return _description; }
+            set { _description = value; }
+        }
+
 
         #endregion
 
 
         #region Navigation Properties
 
-        [EntityMember(IsReadOnly = false, Order = 5)]
+        [EntityMember(IsReadOnly = false, Order = 6)]
         public virtual ICollection<Room> Rooms
         {
             get { return _rooms; }
             set { _rooms = value; }
         }
 
-        [EntityMember(IsReadOnly = false, Order = 6)]
-        public virtual ICollection<Feature> Features
+        [EntityMember(IsReadOnly = false, Order = 7)]
+        public virtual ICollection<RoomTypeFeature> RoomTypeFeatures
         {
-            get { return _features; }
-            set { _features = value; }
+            get { return _roomTypeFeatures; }
+            set { _roomTypeFeatures = value; }
         }
 
 
@@ -124,7 +132,7 @@ namespace Cenium.Rooms.Data
         /// <summary>
         /// Tenant identifier, for internal framework usage only
         /// </summary>
-        [EntityMember(IsReadOnly = true, IsHidden = true, Order = 7, IsQueryable = false, IsSortable = false)]
+        [EntityMember(IsReadOnly = true, IsHidden = true, Order = 8, IsQueryable = false, IsSortable = false)]
         public virtual Guid TenantId
         {
             get { return _tenantId; }
@@ -136,7 +144,7 @@ namespace Cenium.Rooms.Data
         /// </summary>
         [Timestamp]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [EntityMember(IsReadOnly = true, Order = 8, IsHidden = true, IsQueryable = false, IsSortable = false)]
+        [EntityMember(IsReadOnly = true, Order = 9, IsHidden = true, IsQueryable = false, IsSortable = false)]
         public virtual byte[] RowVersion
         {
             get;

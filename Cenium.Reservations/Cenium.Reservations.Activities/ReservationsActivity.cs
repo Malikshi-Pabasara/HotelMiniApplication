@@ -24,6 +24,7 @@ using Cenium.Framework.Logging;
 using Cenium.Reservations.Data;
 using Cenium.Framework.Security;
 using Cenium.Reservations.Activities.Helpers.Rooms;
+using Cenium.Framework.Data;
 
 namespace Cenium.Reservations.Activities
 {
@@ -202,6 +203,76 @@ namespace Cenium.Reservations.Activities
             RoomHelper.UpdateRoomReservationInfo(room_proxy);
             return Logger.TraceMethodExit(GetFromDatastore(reservation.ReservationId)) as Reservation;
 
+        }
+
+
+        /// <summary>
+        /// Returns a list
+        /// </summary>
+        /// <param name="reservationId">The instance to delete</param>
+        //[ActivityMethod("GetReservedRoomIdList", MethodType.Invoke, IsDefault = false)]
+        //[SecureResource("reservations.administration", SecureResourcePermissionLevel.Read)]
+        //public List<long?> GetReservedRoomIdList(long reservationId)
+        //{
+        //    Logger.TraceMethodEnter(reservationId);
+
+        //    // Get reservation
+        //    var reservation = _ctx.Reservations.ReadOnlyQuery().Where(o => o.ReservationId == reservationId).FirstOrDefault();
+
+        //    DateTime reservationStartDate = reservation.ArrivalDate;
+        //    DateTime reservationEndDate = reservation.DepartureDate;
+
+        //    // Update status
+        //    var result = _ctx.Reservations.ReadOnlyQuery().Where(o => o.RoomId != null && (o.ReservationStatus == "CHECKED-IN" || (o.ReservationStatus == "CONFIRMED" && !(EntityFunctions.TruncateTime( o.ArrivalDate) > EntityFunctions.TruncateTime(reservationEndDate) || EntityFunctions.TruncateTime(o.DepartureDate) < EntityFunctions.TruncateTime(reservationStartDate))))).Select(o => o.RoomId).ToList();
+
+        //    return Logger.TraceMethodExit(result) as List<long?>;
+
+        //}
+
+        /// <summary>
+        /// Confirms a Reservation instance from the data store
+        /// </summary>
+        /// <param name="reservation">The instance to delete</param>
+        [ActivityMethod("Confirm", MethodType.Invoke, IsDefault = false)]
+        [SecureResource("reservations.administration", SecureResourcePermissionLevel.Write)]
+        public Reservation Confirm(Reservation reservation)
+        {
+            Logger.TraceMethodEnter(reservation);
+
+            // Refresh Order
+            reservation = _ctx.Reservations.ReadOnlyQuery().Where(o => o.ReservationId == reservation.ReservationId).FirstOrDefault();
+
+            // Update status
+            reservation.ReservationStatus = "CONFIRMED";
+            reservation = _ctx.Reservations.Modify(reservation);
+            _ctx.SaveChanges();
+
+            return Logger.TraceMethodExit(GetFromDatastore(reservation.ReservationId)) as Reservation;
+
+        }
+        /// <summary>
+        /// Tries to assign a room to the reservation / used to manually assign or move
+        /// </summary>
+        /// <param name="reservation"></param>
+        /// <returns> Return Reservation  </returns>
+        [ActivityMethod("AssignRoom", MethodType.Invoke, IsDefault = false)]
+        [SecureResource("reservations.administration", SecureResourcePermissionLevel.Write)]
+        public Reservation AssignRoom(Reservation reservation)
+        {
+            Logger.TraceMethodEnter(reservation);
+
+            var requestRoomNo = reservation.RoomNumber;
+            var requestRoomId = reservation.RoomId;
+
+            // Refresh Reservation
+            reservation = _ctx.Reservations.ReadOnlyQuery().Where(o => o.ReservationId == reservation.ReservationId).FirstOrDefault();
+
+            reservation.RoomNumber = requestRoomNo;
+            reservation.RoomId = requestRoomId;
+            reservation = _ctx.Reservations.Modify(reservation);
+            _ctx.SaveChanges();
+
+            return Logger.TraceMethodExit(GetFromDatastore(reservation.ReservationId)) as Reservation;
         }
 
 

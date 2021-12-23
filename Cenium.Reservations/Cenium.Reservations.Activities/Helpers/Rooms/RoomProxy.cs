@@ -62,8 +62,7 @@ namespace Cenium.Reservations.Activities.Helpers.Rooms
             set { SetValue("Status", value); }
         }
 
-        
+
     }
 
 }
-

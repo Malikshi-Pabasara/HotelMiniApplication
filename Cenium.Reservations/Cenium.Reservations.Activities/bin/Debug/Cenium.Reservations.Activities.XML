@@ -4,20 +4,71 @@
         <name>Cenium.Reservations.Activities</name>
     </assembly>
     <members>
-        <member name="T:Cenium.Reservations.Activities.Entities.Result">
+        <member name="T:Cenium.Contacts.Activities.Entities.Extentions.ContactReservationExtension">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+            
+        </member>
+        <member name="M:Cenium.Contacts.Activities.Entities.Extentions.ContactReservationExtension.#ctor">
+            <summary>
+            Initializes a new instance of the OrderContactExtension class
+            </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Activities.Entities.Extentions.ContactReservationExtension.Items">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="T:Cenium.Contacts.Activities.Entities.Extentions.ContactReservationExtensionItem">
             <summary>
             Explain the purpose of the class here
             </summary>
         </member>
-        <member name="M:Cenium.Reservations.Activities.Entities.Result.#ctor">
+        <member name="M:Cenium.Contacts.Activities.Entities.Extentions.ContactReservationExtensionItem.#ctor">
             <summary>
-            Initializes a new instance of the ReservationsResult class
+            Initializes a new instance of the OrderContactExtensionItem class
             </summary>
         </member>
-        <member name="P:Cenium.Reservations.Activities.Entities.Result.Reservations">
-            <summary>
-            Gets and sets list of Reservation objects
-            </summary>
+        <member name="P:Cenium.Contacts.Activities.Entities.Extentions.ContactReservationExtensionItem.ReservationId">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Activities.Entities.Extentions.ContactReservationExtensionItem.Number">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Activities.Entities.Extentions.ContactReservationExtensionItem.ArrivalDate">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Activities.Entities.Extentions.ContactReservationExtensionItem.DepartureDate">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Activities.Entities.Extentions.ContactReservationExtensionItem.ReservationStatus">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Activities.Entities.Extentions.ContactReservationExtensionItem.RoomNumber">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Activities.Entities.Extentions.ContactReservationExtensionItem.PropertyId">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="P:Cenium.Contacts.Activities.Entities.Extentions.ContactReservationExtensionItem.RoomId">
+             <summary>
+            
+             </summary>
         </member>
         <member name="T:Cenium.Reservations.Activities.Helpers.ProxyWrapperBase">
             <summary>
@@ -134,6 +185,19 @@
             </summary>
             <param name="reservation">The instance to delete</param>
         </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.Confirm(Cenium.Reservations.Data.Reservation)">
+            <summary>
+            Confirms a Reservation instance from the data store
+            </summary>
+            <param name="reservation">The instance to delete</param>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.AssignRoom(Cenium.Reservations.Data.Reservation)">
+            <summary>
+            Tries to assign a room to the reservation / used to manually assign or move
+            </summary>
+            <param name="reservation"></param>
+            <returns> Return Reservation  </returns>
+        </member>
         <member name="M:Cenium.Reservations.Activities.ReservationsActivity.GetFromDatastore(System.Int64)">
             <summary>
             Retrieves a single entity instance from the data store
@@ -144,6 +208,27 @@
         <member name="M:Cenium.Reservations.Activities.ReservationsActivity.Dispose">
             <summary>
             Releases all resources used by this ReservationsActivity instance.
+            </summary>
+        </member>
+        <member name="T:Cenium.Reservations.Activities.ResourceHelpers.ContactResultHandlerFactory">
+            <summary>
+            Table hook to Rewards.RewardContact table.
+            </summary>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ResourceHelpers.ContactResultHandlerFactory.#ctor">
+            <summary>
+            Initializes a new instance of the ContactInfoResultHandlerFactory class
+            </summary>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ResourceHelpers.ContactResultHandlerFactory.CreateHandler">
+             <summary>
+            
+             </summary>
+             <returns></returns>
+        </member>
+        <member name="T:Cenium.Reservations.Activities.ResourceHelpers.ReservationResultHandler">
+            <summary>
+            Explain the purpose of the class here
             </summary>
         </member>
     </members>

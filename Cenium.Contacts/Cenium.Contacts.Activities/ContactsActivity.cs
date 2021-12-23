@@ -64,6 +64,8 @@ namespace Cenium.Contacts.Activities
         /// </summary>
         /// <returns>A strongly type IEnumerable instance </returns>
         [ActivityMethod("Query", MethodType.Query, IsDefault = true)]
+        [ActivityResult("Emails")]
+        [ActivityResult("Phones")]
         [SecureResource("contacts.administration", SecureResourcePermissionLevel.Read)]
         public IEnumerable<Contact> Query()
         {
@@ -81,6 +83,8 @@ namespace Cenium.Contacts.Activities
         /// <param name="contactId">The key for Contact</param>
         /// <returns>A Contact instance, or null if there is no entities with the given key</returns>
         [ActivityMethod("Get", MethodType.Get, IsDefault = true)]
+        [ActivityResult("Emails")]
+        [ActivityResult("Phones")]
         [SecureResource("contacts.administration", SecureResourcePermissionLevel.Read)]
         public Contact Get(long contactId)
         {
@@ -98,6 +102,8 @@ namespace Cenium.Contacts.Activities
         /// <param name="contact">The instance to add</param>
         /// <returns>The created instance</returns>
         [ActivityMethod("Create", MethodType.Create, IsDefault = true)]
+        [ActivityResult("Emails")]
+        [ActivityResult("Phones")]
         [SecureResource("contacts.administration", SecureResourcePermissionLevel.Write)]
         public Cenium.Contacts.Data.Contact Create(Contact contact)
         {
@@ -116,12 +122,18 @@ namespace Cenium.Contacts.Activities
         /// <param name="contact">The instance to update</param>
         /// <returns>The updated instance</returns>
         [ActivityMethod("Update", MethodType.Update, IsDefault = true)]
+        [ActivityResult("Emails")]
+        [ActivityResult("Phones")]
         [SecureResource("contacts.administration", SecureResourcePermissionLevel.Write)]
         public Cenium.Contacts.Data.Contact Update(Contact contact)
         {
             Logger.TraceMethodEnter(contact);
 
+            _ctx.Contacts.AttachChildCollection<Email>(contact, "Emails");
+            _ctx.Contacts.AttachChildCollection<Phone>(contact, "Phones");
             contact = _ctx.Contacts.Modify(contact);
+            _ctx.Contacts.SynchronizeChildCollection<Email>(contact, "Emails");
+            _ctx.Contacts.SynchronizeChildCollection<Phone>(contact, "Phones");
             _ctx.SaveChanges();
 
             return Logger.TraceMethodExit(GetFromDatastore(contact.ContactId)) as Contact;
@@ -133,6 +145,8 @@ namespace Cenium.Contacts.Activities
         /// </summary>
         /// <param name="contact">The instance to delete</param>
         [ActivityMethod("Delete", MethodType.Delete, IsDefault = true)]
+        [ActivityResult("Emails")]
+        [ActivityResult("Phones")]
         [SecureResource("contacts.administration", SecureResourcePermissionLevel.Write)]
         public void Delete(Contact contact)
         {

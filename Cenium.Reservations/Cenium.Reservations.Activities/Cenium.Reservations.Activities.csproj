@@ -82,16 +82,21 @@
   <ItemGroup>
     <Compile Include="Component.cs" />
     <Compile Include="Dependencies.cs" />
-    <Compile Include="Entities\Result.cs" />
+    <Compile Include="Extentions\ContactReservationExtension.cs" />
+    <Compile Include="Extentions\ContactReservationExtensionItem.cs" />
     <Compile Include="Helpers\ProxyWrapperBase.cs" />
     <Compile Include="Helpers\Rooms\RoomHelper.cs" />
     <Compile Include="Helpers\Rooms\RoomProxy.cs" />
     <Compile Include="NamespaceDoc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReservationsActivity.cs" />
+    <Compile Include="ResourceHelpers\ContactResultHandler.cs" />
+    <Compile Include="ResourceHelpers\ReservationResultHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

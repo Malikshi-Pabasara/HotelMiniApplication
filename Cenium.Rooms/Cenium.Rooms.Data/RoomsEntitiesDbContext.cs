@@ -85,6 +85,15 @@ namespace Cenium.Rooms.Data
             set;
         }
 
+        /// <summary>
+        /// Returns a typed entity set of RoomTypeFeature that is used to perform create, read, update, delete (CRUD) operations.
+        /// </summary>
+        public virtual DbSet<RoomTypeFeature> RoomTypeFeatures
+        {
+            get;
+            set;
+        }
+
 
         #endregion
 

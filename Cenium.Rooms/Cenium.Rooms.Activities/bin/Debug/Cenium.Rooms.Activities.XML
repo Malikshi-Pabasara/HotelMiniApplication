@@ -68,6 +68,54 @@
             Releases all resources used by this FeaturesActivity instance.
             </summary>
         </member>
+        <member name="T:Cenium.Rooms.Activities.Helpers.ProxyWrapperBase">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.Helpers.ProxyWrapperBase.#ctor(Cenium.Framework.Component.Interface.IEntityProxy)">
+            <summary>
+            Initializes a new instance of the ProxyWrapperBase class
+            </summary>
+            <param name="proxy">The entity proxy to wrap</param>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.Helpers.ProxyWrapperBase.#ctor">
+            <summary>
+            Initializes a new instance of the ProxyWrapperBase class
+            </summary>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.Helpers.ProxyWrapperBase.GetValue``1(System.String)">
+            <summary>
+            Gets a strongly typed value from the proxy entity, if the property is available
+            </summary>
+            <typeparam name="T">The value type</typeparam>
+            <param name="name">The name of the property</param>
+            <returns>The value of the property, or default(T) if the property does not exist, is the wrong type or is null</returns>
+        </member>
+        <member name="T:Cenium.Rooms.Activities.Helpers.Reservations.ReservationHelper">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.Helpers.Reservations.ReservationHelper.GetReservationById(System.Int64)">
+            <summary>
+            Get reservation by reservation id.
+            </summary>
+            <param name="reservationId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.Helpers.Reservations.ReservationHelper.GetReservedRoomIdList(System.Int64)">
+            <summary>
+            Get reservation by reservation.
+            </summary>
+            <param name="reservationId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cenium.Rooms.Activities.Helpers.Reservations.ReservationRoomProxy">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
         <member name="T:Cenium.Rooms.Activities.NamespaceDoc">
             <summary>
             Contains activity classes that comprise the application processing layer of the component Rooms

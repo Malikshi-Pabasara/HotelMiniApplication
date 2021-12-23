@@ -2,7 +2,162 @@
 <ui>
   <!-- Add panes here-->
   <panes>
+    <pane id="contact.pane.contacts.details" type="standard.pane.grouplayout" columns="2">
+      <layout>
+        <section id="general" label="General" constraints="column=0">
+          <items>
+            <item id="dummy" type="contacts.pane.contact.general" labelVisibility="Collapsed">
+              <properties>
+                <property id="Height" value="130" type="Double" />
+              </properties>
+             </item>
+          </items>
+        </section>
+        <section id="address" label="Address" constraints="column=0">
+          <items>
+            <item id="dummy" type="contacts.pane.contact.address" labelVisibility="Collapsed" column="0" colspan="2" >
+              <properties>
+                <property id="Height" value="100" type="Double" />
+              </properties>
+            </item>
+          </items>
+        </section>
+        <section id="identity" label="Identity" constraints="column=1">
+          <items>
+            <item id="dummy" type="contacts.pane.contact.identity" labelVisibility="Collapsed" column="0">
+               <properties>
+                <property id="Height" value="130" type="Double" />
+              </properties>
+            </item>
+          </items>
+       </section>
+        
+        <section id="communication" label="Communication" constraints="column=2">
+          <items>
+            <item id="Emails" type="contacts.pane.contact.email" labelVisibility="Collapsed" column="0" >
+              <properties>
+                <property id="Height" value="200" type="Double" />
+              </properties>
+            </item>
+            <item id="Emails" label="" type="framework.controls.data.DataCollectionCommandBar" >
+              <properties>
+                <property id="ParentControlName" value="EmailAddress" />
+              </properties>
+            </item>
+            <item id="Phones" type="contacts.pane.contact.phone" labelVisibility="Collapsed" column="1" >
+              <properties>
+                <property id="Height" value="200" type="Double" />
+              </properties>
+            </item>
+            <item id="Phones" label="" type="framework.controls.data.DataCollectionCommandBar" column="1" >
+              <properties>
+                <property id="ParentControlName" value="PhoneNumber" />
+              </properties>
+            </item>
+          </items>
+        </section>
+        <section id="reservations" label="Reservations" constraints="column=0">
+          <items>
+            <item id="ReservationExtension.Items" type="contacts.pane.contact.reservation" labelVisibility="Collapsed" column="0"/>
+          </items>
+        </section>
+        
+      </layout>
+    </pane>
 
+
+    <pane id="contacts.pane.contact.general" type="standard.pane.grouplayout" >
+      <layout>
+        <section id="left">
+          <items>
+            <item id="PrimaryImageRef" label="" type="standard.controls.data.imagebox" width="100" labelVisibility="Collapsed" column="0">
+              <properties>
+                <property id="IsScaleToFit" value="true" type="Bool" />
+                <property id="EmptyHelpText" value="Click to select a main image or drop a main image here." />
+                <property id="Height" value="100" type="Double" />
+                <property id="VerticalAlignment" value="Top" />
+                <property id="HorizontalAlignment" value="Left" />
+              </properties>
+            </item>
+          </items>
+        </section>
+        <section id="top">
+          <items>
+            <item id="Name" label="First/Middle/Last :" type="standard.controls.namebox"  column="0" colspan="2" >
+              <bindings>
+                <binding property="FirstName" bindTo="FirstName" />
+                <binding property="MiddleName" bindTo="MiddleName" />
+                <binding property="LastName" bindTo="LastName" />
+              </bindings>
+            </item>
+            <item id="Name" label="!contacts.contact.name" type="TextBox"  column="0" colspan="2" >
+            <properties>
+              <property id="Height" value="80" type="Double" />
+            </properties>
+            </item>
+          </items>
+          </section>
+      </layout>
+    </pane>
+
+    <pane id="contacts.pane.contact.address" type="standard.pane.grouplayout">
+      <layout>
+      <section id="column3" >
+        <items>
+          <item id="Address1" label="!contacts.contact.address1" type="TextBox" readOnly="false" column="0" colspan="2" />
+          <item id="Address2" label="!contacts.contact.address2" type="TextBox"  readOnly="false" column="0" colspan="2"/>
+          <item id="City" label="!contacts.contact.city" type="TextBox" readOnly="false" column="0" colspan="2" />
+        </items>
+      </section>
+     </layout>
+    </pane>
+
+    <pane id="contacts.pane.contact.identity" type="standard.pane.grouplayout">
+      <layout>
+        <section id="column4" >
+          <items>
+            <item id="DateOfBirth" label="!contacts.contact.dateofbirth" type="DatePicker" readOnly="false" column="0" colspan="2"  />
+            <item id="PassportNo" label="!contacts.contact.passportno" type="TextBox"  readOnly="false" column="0" colspan="2"/>
+            <item id="IdNumber" label="!contacts.contact.idnumber" type="TextBox"  readOnly="false" column="0" colspan="2" />
+            <item id="Gender" label="!contacts.contact.gender" type="ComboBox" valueList="enum:contacts.enumeration.contact.gender" readOnly="false" column="0" colspan="2" />
+          </items>
+         
+        </section>
+      </layout>
+    </pane>
+
+    <pane id="contacts.pane.contact.email" type="framework.pane.DataGridPane">
+      <layout>
+        <section id="gridview" readOnly="false">
+          <items>
+            <item id="EmailAddress" label="!contacts.email.emailaddress" type="Column" readOnly="false" width="1*" />
+          </items>
+        </section>
+      </layout>
+    </pane>
+
+    <pane id="contacts.pane.contact.phone" type="framework.pane.DataGridPane">
+      <layout>
+        <section id="gridview" >
+          <items>
+            <item id="PhoneNumber" label="!contacts.phone.phonenumber" type="Column" readOnly="false" width="1*" />
+          </items>
+        </section>
+      </layout>
+    </pane>
+
+    <pane id="contacts.pane.contact.reservation" type="framework.pane.DataGridPane">
+      <layout>
+        <section id="gridview" >
+          <items>
+            <item id="Number" label="Reservation Number" type="Column" readOnly="true" width="1*" />
+            <item id="ReservationStatus" label="Status" type="Column" readOnly="true" width="1*" />
+            <item id="RoomNumber" label="Room Number" type="Column" readOnly="true" width="1*" />
+          </items>
+        </section>
+      </layout>
+    </pane>
+      
   </panes>
   
   <!-- Add dialogs here -->
@@ -17,7 +172,7 @@
   <!-- Add pages here-->
   <pages>
     <page id="contacts.page.contact" name="Contacts" description="Add and maintain contacts information"
-    model="framework.pages.listviewmodel" type="framework.griddetailpage">
+    model="framework.pages.listviewmodel" type="standard.pagetype.list">
 
 
 
@@ -33,16 +188,43 @@
 
 
       <layout>
-        <section id="listView" readOnly="true">
+        <section id="griditem" readOnly="true">
           <items>
             <item id="Name" label="Contacts Name" type="Column" width="*"/>
-            <item id="Email" label="Email" type="Column" width="*"/>
-            <item id="PhoneNumber" label="Phone Number" type="Column" width="*"/>
-            <item id="IDNumber" label="ID Number" type="Column" width="*"/>
-            <item id="DoB" label="Date of birth" type="Column" format="ShortDate" width="*"/>
+            <item id="Address1" label="Address1" type="Column" width="*"/>
+            <item id="Address2" label="Address2" type="Column" width="*"/>
+            <item id="City" label="City" type="Column" width="*"/>
+            <item id="Gender" label="Gender" type="Column" width="*"/>
+            <item id="PassportNo" label="Passport Number" type="Column" width="*"/>
+            <item id="IdNumber" label="ID Number" type="Column" width="*"/>
+            <item id="DateOfBirth" label="Date of birth" type="Column" format="ShortDate" width="*"/>
           </items>
         </section>
+        
+        <section id="summary">
+          <items>
+            <item id="pane" labelVisibility="Collapsed" type="contact.pane.contacts.details" />
+          </items>
+        </section>
+        
       </layout>
+      
+      
+      <actions>
+        <action id="clear" type="framework.ClearAction" />
+        <action id="refresh" type="framework.RefreshAction" />
+        <action id="save" type="framework.SaveAction" />
+        <action id="add" type="framework.CreateAction">
+        </action>
+
+        <action id="delete" type="framework.DeleteAction" >
+          <properties>
+            <property id="IsAutoSave" value="true" type="Bool" />
+            <property id="IsUserConfirmationRequired" value="true" type="Bool" />
+          </properties>
+        </action>
+      </actions>
+        
     </page>
   </pages>
 </ui>

@@ -17,7 +17,7 @@
   <!-- Add pages here-->
   <pages>
     <page id="reservations.page.reservation" name="Reservations" description="Add and maintain reservations information"
-    model="framework.pages.listviewmodel" type="framework.griddetailpage">
+    model="framework.pages.listviewmodel" type="framework.listitempage">
 
       <modelProperties>
         <property id="CreateMethod" value="Reservations/Reservation/Create" />
@@ -30,18 +30,111 @@
 
 
       <layout>
+        
         <section id="listView" readOnly="true">
           <items>
-            <item id="Number" label="Number" type="Column" width="*"/>
-            <item id="PropertyId" label="Property Id" type="Column" width="*"/>
-            <item id="RoomId" label="Room Id" type="Column" width="*"/>
-            <item id="ContactId" label="Contact Id" type="Column" width="*"/>
-            <item id="ArrivalDate" label="Arrival Date" type="Column" width="*"/>
-            <item id="DepartureDate" label="Departure Date" type="Column" width="*"/>
-            <item id="ReservationStatus" label="Reservation Status" type="Column" width="*"/>
+            <item id="ContactName" row="0"  column="0" colspan="2" type="TextBlock" labelVisibility="Collapsed">
+              <properties>
+                <property id="TextStyle" value="TitleText" />
+              </properties>
+            </item>
+            <!--<item id="PropertyContextName" row="1"  column="0" type="textblock" labelVisibility="Collapsed">
+              <properties>
+                <property id="textstyle" value="subtletext" />
+              </properties>
+            </item>-->
+            <item id="ReservationStatus" row="1"  column="1"  type="TextBlock" labelVisibility="Collapsed" >
+              <properties>
+                <property id="TextStyle" value="SubtleText" />
+                <property id="HorizontalAlignment" value="Right" />
+              </properties>
+              <bindings>
+                <binding property="Foreground" bindTo="StatusColor" readOnly="true" />
+              </bindings>
+            </item>
           </items>
         </section>
+        
+        <section id="general" label="General" >
+          <items>
+            <item id="PropertyContextId" label="@PropertyContext" type="framework.controls.data.ReferenceComboBox" valueList="Framework/PropertyContext/Query" >
+              <properties>
+                <property id="DisplayPropertyName" value="Name" />
+                <property id="CopyPropertyNames" value="Name=PropertyContextName" />
+                <property id="IsEnabled" value="True" />
+              </properties>
+            </item>
+            <item id="Number" label="Number :" type="TextBox" column="1"/>
+            <item id="ReservationStatus" label="Status:" type="TextBox" readOnly="true" />
+            
+            
+            <item id="ContactId" label="Contact :" type="standard.controls.data.valuelistlookup" readOnly="false" valueList="Contacts/Contact/Query" column="1" >
+              <properties>
+                <property id="CopyPropertyNames" value="ContactId=ContactId^Name=ContactName" />
+              </properties>
+              <bindings>
+                <binding property="DisplayValue" bindTo="ContactName" readOnly="true" />
+              </bindings>
+            </item>
+          </items>
+        </section>
+        <section id="reservationroom" label="Room Details" constraints="column=0">
+          
+          <items>
+            <item id="ArrivalDate" label="Arrival Date:" type="DatePicker" readOnly="false" column="0" />
+            <item id="DepartureDate" label="Departure Date:" type="DatePicker" readOnly="false" column="1" />
+            <item id="RoomTypeId" label="Room Type:" type="standard.controls.data.valuelistlookup" valueList="Rooms/RoomType/Query">
+              <properties>
+                <property id="CopyPropertyNames" value="RoomTypeId=RoomTypeId^RoomTypeCode=RoomTypeCode" />
+              </properties>
+              <bindings>
+                <binding property="DisplayValue" bindTo="RoomTypeCode" readOnly="true" />
+              </bindings>
+            </item>
+            <item id="RoomId" label="Room Number:" type="standard.controls.data.valuelistlookup" valueList="Rooms/Room/Query" column="1">
+              <!--valueList="Rooms/Room/GetAvailable/{ReservationId}"-->
+              <properties>
+                <property id="CopyPropertyNames" value="RoomId=RoomId^RoomNumber=RoomNumber" />
+              </properties>
+              <bindings>
+                <binding property="DisplayValue" bindTo="RoomNumber" readOnly="true" />
+              </bindings>
+            </item>
+          </items>
+        </section>
+        <section id="reservationpayment" label="Payment Details" >
+          
+          <items>
+            <item id="Price" label="Price:" type="TextBox" readOnly="false" />
+            <item id="PaymentDone" label="Has Payment Done:" type="CheckBox" readOnly="false"/>
+          </items>
+        </section>
+
       </layout>
+      <actions>
+        <action id="clear" type="framework.ClearAction" />
+        <action id="refresh" type="framework.RefreshAction" />
+        <action id="save" type="framework.SaveAction" />
+        <action id="add" type="framework.CreateAction">
+        </action>
+
+        <action id="delete" type="framework.DeleteAction" >
+          <properties>
+            <property id="IsAutoSave" value="true" type="Bool" />
+            <property id="IsUserConfirmationRequired" value="true" type="Bool" />
+          </properties>
+        </action>
+
+        <action id="checkin"  label="Check In" description="Check In" type="framework.EditDialogAction"
+                displayType="#home" group="Actions" icon="rooms.icon.rooms" iconSize="Large">
+          <properties>
+            <property id="DialogId" value="reservations.dlg.reservation.checkin" />
+            <property id="ActionMethod" value="Reservations/Reservation/CheckIn" />
+            <property id="IncludeChildRecords" value="true" type="Bool" />
+          </properties>
+        </action>
+        
+      </actions>
     </page>
   </pages>
 </ui>

@@ -2,7 +2,66 @@
 <ui>
   <!-- Add panes here-->
   <panes>
+    <pane id="rooms.pane.feature.details" type="standard.pane.grouplayout" columns="1">
+      <layout>
+        <section id="items" label="Feature Items" constraints="column=0">
+          <items>
+            <item id="Features" type="rooms.pane.feature.featureitems"  labelVisibility="Collapsed">
+            <properties>
+              <property id="Height" value="350" />
+            </properties>
+            </item>
+            <item id="Features" label="" type="framework.controls.data.DataCollectionCommandBar">
+            <properties>
+              <property id="ParentControlName" value="FeatureItems" />
+            </properties>
+            </item>
+          </items>
+        </section>
+      </layout>
+    </pane>
 
+    <!--<pane id="rooms.pane.feature.general.top" type="standard.pane.grouplayout" >
+      <layout>
+        <section id="column1">
+          <items>
+            <item id="FeatureName" label="Name:" type="TextBox" readOnly="false" />
+            <item id="Description" label="Description:" type="specialized.multilinetextbox" readOnly="false"/>
+          </items>
+        </section>
+      </layout>
+    </pane>-->
+    <!--<pane id="rooms.pane.feature.featureitems.top" type="standard.pane.grouplayout" >
+      <layout>
+        <section id="column1">
+          <items>
+            <item id="dummy" type="conference.pane.featuretype.featureitems" labelVisibility="Collapsed" >
+              <properties>
+                <property id="Height" value="350" type="Double" />
+                <property id="Name" value="FeatureItems" />
+              </properties>
+            </item>
+            <item id="Features" label="" type="framework.controls.data.DataCollectionCommandBar" >
+              <properties>
+                <property id="ParentControlName" value="FeatureItems" />
+              </properties>
+            </item>
+          </items>
+        </section>
+      </layout>
+    </pane>-->
+    
+    <pane id="rooms.pane.feature.featureitems" type="framework.pane.DataGridPane">
+      <layout>
+        <section id="griditem" readOnly="false">
+          <items>
+            <item id="FeatureName" label="Name" type="Column" width="120" />
+            <item id="Description" label="Description" type="Column" width="*" />
+            <item id="FeatureCode" label="Code" type="Column" width="100" />
+          </items>
+        </section>
+      </layout>
+    </pane>
   </panes>
 
   <!-- Add dialogs here -->
@@ -16,9 +75,12 @@
 
   <!-- Add pages here-->
   <pages>
-    <page id="rooms.page.feature" name="Features" description="Add and maintain features information"
-    model="framework.pages.listviewmodel" type="framework.griddetailpage">
-
+    <page id="rooms.page.feature" name="Features" description="Add and maintain features information" model="framework.pages.listviewmodel" type="framework.listitempage">
+    
+      <properties>
+        <property id="Columns" value="2" type="Int" />
+        <property id="ColumnLayout" value="WideFirstColumn" />
+      </properties>
 
 
       <modelProperties>
@@ -33,15 +95,48 @@
 
 
       <layout>
-        <section id="listView" readOnly="true">
+        <!--<section id="griditem" readOnly="true">
           <items>
             <item id="FeatureName" label="Feature Name" type="Column" width="*"/>
             <item id="FeatureCode" label="Feature Code" type="Column" width="*"/>
             <item id="Description" label="Description" type="Column" width="*"/>
-            <item id="PriceCode" label="Price Code" type="Column" width="*"/>
+          </items>
+        </section>-->
+        
+          <section id="listView" readOnly="true" >
+            <items>
+              <item id="FeatureName" type="TextBlock" labelVisibility="Collapsed">
+                <properties>
+                  <property id="TextStyle" value="TitleText" />
+                </properties>
+              </item>
+            </items>
+          </section>
+
+
+        <section id="general" label="General" readOnly="false" constraints="column=0">
+          <items>
+            <item id="FeatureName" label="Name:" type="TextBox" readOnly="false" />
+            <item id="FeatureCode" label="Code:" type="TextBox" readOnly="false" />
+            <item id="Description" label="Description:" type="specialized.multilinetextbox" readOnly="false"/>
           </items>
         </section>
       </layout>
+      
+      <actions>
+        <action id="clear" type="framework.ClearAction" />
+        <action id="refresh" type="framework.RefreshAction" />
+        <action id="save" type="framework.SaveAction" />
+        <action id="add" type="framework.CreateAction">
+        </action>
+
+        <action id="delete" type="framework.DeleteAction" >
+          <properties>
+            <property id="IsAutoSave" value="true" type="Bool" />
+            <property id="IsUserConfirmationRequired" value="true" type="Bool" />
+          </properties>
+        </action>
+      </actions>
       
     </page>
   </pages>

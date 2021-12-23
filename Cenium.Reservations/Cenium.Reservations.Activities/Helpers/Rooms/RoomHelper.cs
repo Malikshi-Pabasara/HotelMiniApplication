@@ -19,7 +19,7 @@
 
 using Cenium.Framework.Component;
 using Cenium.Framework.Component.Interface;
-using Cenium.Reservations.Activities.Entities;
+using Cenium.Reservations.Data;
 using System;
 
 namespace Cenium.Reservations.Activities.Helpers.Rooms
@@ -52,6 +52,15 @@ namespace Cenium.Reservations.Activities.Helpers.Rooms
             var result = ((activity == null) || (!activity.IsMethodAvailable("UpdateRoomReservationInfo"))) ? null : activity.Invoke("UpdateRoomReservationInfo", roomProxy.EntityProxy);
             
         }
+
+        //public static void AvailableRoomsInfo(Reservation reservation)
+        //{
+        //    var activity = _roomActivityFactory.Create("Room");
+        //    var result = ((activity == null) || (!activity.IsMethodAvailable("Query"))) ? null : activity.Query("Query");
+
+        //    var availableRooms = db.Rooms.Where(m => m.result.All(r => r.Departure <= reservation.ArrivalDate || r.Arrival >= reservation.DepartureDate)
+
+        //}
 
         //create a proxy for room
         public static IEntityProxy CreateRoomProxy()

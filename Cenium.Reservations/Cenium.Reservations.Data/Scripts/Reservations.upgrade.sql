@@ -19,16 +19,24 @@
 create table [dbo].[Reservations_Reservations] (
 	[ReservationId] [bigint] not null identity,
 	[Number] [nvarchar](max) not null,
-	[PropertyId] [bigint] not null,
+	[PropertyContextId] [bigint] not null,
 	[RoomId] [bigint] not null,
 	[ContactId] [bigint] not null,
-	[ArrivalDate] [datetime] null,
-	[DepartureDate] [datetime] null,
+	[ArrivalDate] [datetime] not null,
+	[DepartureDate] [datetime] not null,
 	[ReservationStatus] [nvarchar](max) null,
+	[RoomNumber][nvarchar](max) null,
+	[Price][nvarchar](max) null,
+	[PaymentDone] [bit] not null,
+	[ContactName] [nvarchar](max) not null,
+    [RoomTypeId] [bigint] null,
+    [RoomTypeCode] [nvarchar](max) null,
+	[PropertyContextName] [nvarchar](max) null,
 	[TenantId] [uniqueidentifier] not null,
 	[RowVersion] [rowversion] not null,
 	primary key ([ReservationId])
 );
+
 
 #SetVersion([Cenium.Reservations.Data.ReservationsEntitiesDbContext], [Reservations], [1.0.0.0], [8545E7F9867B90F80BA2AF3F4DE3BAC6F72B012375DEB36422C92AEBC2E804FD])
 

@@ -62,6 +62,22 @@ namespace Cenium.Contacts.Data
             get { return GetEntityCollection<Contact>(); }
         }
 
+        /// <summary>
+        /// Returns a typed EntityCollection of Phone that is used to perform create, read, update, delete (CRUD) operations.
+        /// </summary>
+        public virtual EntityCollection<Phone> Phones
+        {
+            get { return GetEntityCollection<Phone>(); }
+        }
+
+        /// <summary>
+        /// Returns a typed EntityCollection of Email that is used to perform create, read, update, delete (CRUD) operations.
+        /// </summary>
+        public virtual EntityCollection<Email> Emails
+        {
+            get { return GetEntityCollection<Email>(); }
+        }
+
 
         #endregion
 

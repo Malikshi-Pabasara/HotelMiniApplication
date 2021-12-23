@@ -13,6 +13,16 @@
       <Schema Namespace="ContactsModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false"  xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="ContactsEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" >
           <EntitySet Name="Contacts" EntityType="ContactsModel.Contact" />
+          <EntitySet Name="Phones" EntityType="ContactsModel.Phone" />
+          <EntitySet Name="Emails" EntityType="ContactsModel.Email" />
+          <AssociationSet Name="ContactPhone" Association="ContactsModel.ContactPhone">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Phone" EntitySet="Phones" />
+          </AssociationSet>
+          <AssociationSet Name="ContactEmail" Association="ContactsModel.ContactEmail">
+            <End Role="Contact" EntitySet="Contacts" />
+            <End Role="Email" EntitySet="Emails" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Contact">
           <Key>
@@ -20,11 +30,44 @@
           </Key>
           <Property Name="ContactId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="DoB" Type="DateTime" Nullable="false" />
-          <Property Name="Email" Type="String" Nullable="false" />
-          <Property Name="PhoneNumber" Type="String" Nullable="false" />
-          <Property Name="IDNumber" Type="String" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="true" />
+          <Property Name="IdNumber" Type="String" Nullable="true" />
+          <Property Name="Address1" Type="String" Nullable="true" />
+          <Property Name="Address2" Type="String" Nullable="true" />
+          <Property Name="City" Type="String" Nullable="true" />
+          <Property Name="Gender" Type="String" Nullable="true" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="PassportNo" Type="String" Nullable="true" />
+          <NavigationProperty Name="Phones" Relationship="ContactsModel.ContactPhone" FromRole="Contact" ToRole="Phone" />
+          <NavigationProperty Name="Emails" Relationship="ContactsModel.ContactEmail" FromRole="Contact" ToRole="Email" />
+          <Property Name="MiddleName" Type="String" Nullable="true" />
+          <Property Name="PrimaryImageRef" Type="Guid" Nullable="true" />
         </EntityType>
+        <EntityType Name="Phone">
+          <Key>
+            <PropertyRef Name="PhoneId" />
+          </Key>
+          <Property Name="PhoneId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" />
+          <NavigationProperty Name="Contact" Relationship="ContactsModel.ContactPhone" FromRole="Phone" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="EmailId" />
+          </Key>
+          <Property Name="EmailId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmailAddress" Type="String" Nullable="false" />
+          <NavigationProperty Name="Contact" Relationship="ContactsModel.ContactEmail" FromRole="Email" ToRole="Contact" />
+        </EntityType>
+        <Association Name="ContactPhone">
+          <End Type="ContactsModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="ContactsModel.Phone" Role="Phone" Multiplicity="*" />
+        </Association>
+        <Association Name="ContactEmail">
+          <End Type="ContactsModel.Contact" Role="Contact" Multiplicity="1" />
+          <End Type="ContactsModel.Email" Role="Email" Multiplicity="*" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -53,6 +96,10 @@
     <Diagrams>
       <Diagram Name="ComponentModel" DisplayType="true" >
         <EntityTypeShape EntityType="ContactsModel.Contact" Width="2" PointX="2.25" PointY="0.5" />
+        <EntityTypeShape EntityType="ContactsModel.Phone" Width="1.875" PointX="5.75" PointY="1.125" />
+        <EntityTypeShape EntityType="ContactsModel.Email" Width="1.5" PointX="6.25" PointY="3.5" />
+        <AssociationConnector Association="ContactsModel.ContactPhone" />
+        <AssociationConnector Association="ContactsModel.ContactEmail" />
       </Diagram>
     </Diagrams>
   </Designer>

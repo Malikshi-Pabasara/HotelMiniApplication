@@ -61,6 +61,7 @@ namespace Cenium.Prices.Data
         }
 
         [Required]
+        [Description("Code")]
         [EntityMember(IsReadOnly = false, Order = 1, IsPrivate = false, IsQueryable = true, IsSortable = true)]
         public virtual string PriceCode
         {

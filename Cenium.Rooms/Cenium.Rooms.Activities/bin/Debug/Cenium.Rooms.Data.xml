@@ -19,9 +19,9 @@
             Concurrency control version number
             </summary>
         </member>
-        <member name="T:Cenium.Rooms.Data.NamespaceDoc">
+        <member name="T:Cenium.Rooms.Data.Room">
             <summary>
-            Contains entity classes that comprise the data access layer of the component Rooms
+            Explain the purpose of the class here
             </summary>
         </member>
         <member name="P:Cenium.Rooms.Data.Room.RoomTypeId">
@@ -37,6 +37,21 @@
         <member name="P:Cenium.Rooms.Data.Room.RowVersion">
             <summary>
             Concurrency control version number
+            </summary>
+        </member>
+        <member name="P:Cenium.Rooms.Data.RoomType.TenantId">
+            <summary>
+            Tenant identifier, for internal framework usage only
+            </summary>
+        </member>
+        <member name="P:Cenium.Rooms.Data.RoomType.RowVersion">
+            <summary>
+            Concurrency control version number
+            </summary>
+        </member>
+        <member name="T:Cenium.Rooms.Data.NamespaceDoc">
+            <summary>
+            Contains entity classes that comprise the data access layer of the component Rooms
             </summary>
         </member>
         <member name="T:Cenium.Rooms.Data.RoomsEntitiesContext">
@@ -62,6 +77,11 @@
         <member name="P:Cenium.Rooms.Data.RoomsEntitiesContext.Features">
             <summary>
             Returns a typed EntityCollection of Feature that is used to perform create, read, update, delete (CRUD) operations.
+            </summary>
+        </member>
+        <member name="P:Cenium.Rooms.Data.RoomsEntitiesContext.RoomTypeFeatures">
+            <summary>
+            Returns a typed EntityCollection of RoomTypeFeature that is used to perform create, read, update, delete (CRUD) operations.
             </summary>
         </member>
         <member name="M:Cenium.Rooms.Data.RoomsEntitiesContext.CreateDbContext(System.String)">
@@ -100,12 +120,27 @@
             Returns a typed entity set of Feature that is used to perform create, read, update, delete (CRUD) operations.
             </summary>
         </member>
-        <member name="P:Cenium.Rooms.Data.RoomType.TenantId">
+        <member name="P:Cenium.Rooms.Data.RoomsEntitiesDbContext.RoomTypeFeatures">
+            <summary>
+            Returns a typed entity set of RoomTypeFeature that is used to perform create, read, update, delete (CRUD) operations.
+            </summary>
+        </member>
+        <member name="P:Cenium.Rooms.Data.RoomTypeFeature.RoomTypeId">
+            <summary>
+            Foreign key property for RoomType
+            </summary>
+        </member>
+        <member name="P:Cenium.Rooms.Data.RoomTypeFeature.FeatureId">
+            <summary>
+            Foreign key property for Feature
+            </summary>
+        </member>
+        <member name="P:Cenium.Rooms.Data.RoomTypeFeature.TenantId">
             <summary>
             Tenant identifier, for internal framework usage only
             </summary>
         </member>
-        <member name="P:Cenium.Rooms.Data.RoomType.RowVersion">
+        <member name="P:Cenium.Rooms.Data.RoomTypeFeature.RowVersion">
             <summary>
             Concurrency control version number
             </summary>
