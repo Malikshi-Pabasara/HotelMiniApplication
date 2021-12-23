@@ -91,8 +91,7 @@
                 <binding property="DisplayValue" bindTo="RoomTypeCode" readOnly="true" />
               </bindings>
             </item>
-            <item id="RoomId" label="Room Number:" type="standard.controls.data.valuelistlookup" valueList="Rooms/Room/Query" column="1">
-              <!--valueList="Rooms/Room/GetAvailable/{ReservationId}"-->
+            <item id="RoomId" label="Room Number:" type="standard.controls.data.valuelistlookup" valueList="Rooms/Room/GetAvailable/{ReservationId}" column="1">
               <properties>
                 <property id="CopyPropertyNames" value="RoomId=RoomId^RoomNumber=RoomNumber" />
               </properties>

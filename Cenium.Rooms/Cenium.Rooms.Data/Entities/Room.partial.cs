@@ -24,12 +24,9 @@ namespace Cenium.Rooms.Data
     /// <summary>
     /// Explain the purpose of the class here
     /// </summary>
-    [EntityInfo(ValueListProperties = "RoomNumber,Status,RoomType", PrimaryDisplayProperty = "RoomNumber")]
+    [EntityInfo(ValueListProperties = "RoomNumber,Status", PrimaryDisplayProperty = "RoomNumber")]
     public partial class Room
     {
-        //[NotMapped]
-        //[EntityMember(Order = 101)]
-        //public string PriceCode { get; set; }
     }
 
 }

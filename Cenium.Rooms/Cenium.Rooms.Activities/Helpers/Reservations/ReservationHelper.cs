@@ -61,7 +61,7 @@ namespace Cenium.Rooms.Activities.Helpers.Reservations
         /// </summary>
         /// <param name="reservationId"></param>
         /// <returns></returns>
-        public static List<long?> GetReservedRoomIdList(long reservationId)
+        public static List<long> GetReservedRoomIdList(long reservationId)
         {
             if (!_isReservationAvailable)
                 return null;
@@ -73,7 +73,7 @@ namespace Cenium.Rooms.Activities.Helpers.Reservations
             if (result == null)
                 return null;
 
-            return (List<long?>)(result);
+            return (List<long>)(result);
         }
     }
 

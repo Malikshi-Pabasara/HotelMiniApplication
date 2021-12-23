@@ -76,7 +76,20 @@ namespace Cenium.Rooms.Activities
 
             return Logger.TraceMethodExit(result) as IEnumerable<Room>;
         }
+        /// <summary>
+        /// Activity query method that returns an IEnumerable&lt;Room&gt; instance. 
+        /// </summary>
+        /// <returns>A strongly type IEnumerable instance </returns>
+        [ActivityMethod("TestQuery", MethodType.Query, IsDefault = false)]
+        [SecureResource("rooms.administration", SecureResourcePermissionLevel.Read)]
+        public IEnumerable<Room>TestQuery()
+        {
+            Logger.TraceMethodEnter();
 
+            var result = _ctx.Rooms.ReadOnlyQuery().OrderBy(p => p.RoomId);
+
+            return Logger.TraceMethodExit(result) as IEnumerable<Room>;
+        }
 
         /// <summary>
         /// Gets a Room instance from the datastore based on Room keys.
@@ -178,7 +191,11 @@ namespace Cenium.Rooms.Activities
                 _ctx.SaveChanges();
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="reservationId"></param>
+        /// <returns></returns>
         [ActivityMethod("GetAvailable", MethodType.Query)]
         [SecureResource("rooms.administration", SecureResourcePermissionLevel.Read)]
         public IEnumerable<Room> GetAvailable(long reservationId)

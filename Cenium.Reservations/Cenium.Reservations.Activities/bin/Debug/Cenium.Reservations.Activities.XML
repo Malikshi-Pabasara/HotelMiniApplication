@@ -185,6 +185,12 @@
             </summary>
             <param name="reservation">The instance to delete</param>
         </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.GetReservedRoomIdList(System.Int64)">
+            <summary>
+            Returns a list
+            </summary>
+            <param name="reservationId">The instance to delete</param>
+        </member>
         <member name="M:Cenium.Reservations.Activities.ReservationsActivity.Confirm(Cenium.Reservations.Data.Reservation)">
             <summary>
             Confirms a Reservation instance from the data store

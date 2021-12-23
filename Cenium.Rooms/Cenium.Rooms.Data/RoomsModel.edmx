@@ -116,8 +116,8 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="ComponentModel" DisplayType="true" >
-        <EntityTypeShape EntityType="RoomsModel.Room" Width="2.125" PointX="1.25" PointY="1" />
+      <Diagram Name="ComponentModel" DisplayType="true" ZoomLevel="70" >
+        <EntityTypeShape EntityType="RoomsModel.Room" Width="2.875" PointX="1.25" PointY="1" />
         <EntityTypeShape EntityType="RoomsModel.RoomType" Width="2" PointX="4.75" PointY="0.75" />
         <EntityTypeShape EntityType="RoomsModel.Feature" Width="1.75" PointX="7.625" PointY="4.625" />
         <AssociationConnector Association="RoomsModel.RoomRoomType" />

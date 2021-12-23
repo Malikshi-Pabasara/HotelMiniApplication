@@ -34,7 +34,6 @@ namespace Cenium.Rooms.Data
 
     [Entity]
     [Table("Rooms_Rooms")]
-    [PropertyContextEntity("PropertyContextId")]
     public partial class Room
     {
 

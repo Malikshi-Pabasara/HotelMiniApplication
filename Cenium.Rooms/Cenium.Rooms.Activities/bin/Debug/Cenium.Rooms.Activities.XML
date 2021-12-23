@@ -146,6 +146,12 @@
             </summary>
             <returns>A strongly type IEnumerable instance </returns>
         </member>
+        <member name="M:Cenium.Rooms.Activities.RoomsActivity.TestQuery">
+            <summary>
+            Activity query method that returns an IEnumerable&lt;Room&gt; instance. 
+            </summary>
+            <returns>A strongly type IEnumerable instance </returns>
+        </member>
         <member name="M:Cenium.Rooms.Activities.RoomsActivity.Get(System.Int64)">
             <summary>
             Gets a Room instance from the datastore based on Room keys.
@@ -179,6 +185,13 @@
             </summary>
             <param name="room">The instance to update</param>
             <returns>The updated instance</returns>
+        </member>
+        <member name="M:Cenium.Rooms.Activities.RoomsActivity.GetAvailable(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="reservationId"></param>
+            <returns></returns>
         </member>
         <member name="M:Cenium.Rooms.Activities.RoomsActivity.GetFromDatastore(System.Int64)">
             <summary>

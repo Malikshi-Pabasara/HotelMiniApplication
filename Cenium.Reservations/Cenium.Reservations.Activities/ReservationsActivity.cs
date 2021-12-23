@@ -210,24 +210,24 @@ namespace Cenium.Reservations.Activities
         /// Returns a list
         /// </summary>
         /// <param name="reservationId">The instance to delete</param>
-        //[ActivityMethod("GetReservedRoomIdList", MethodType.Invoke, IsDefault = false)]
-        //[SecureResource("reservations.administration", SecureResourcePermissionLevel.Read)]
-        //public List<long?> GetReservedRoomIdList(long reservationId)
-        //{
-        //    Logger.TraceMethodEnter(reservationId);
+        [ActivityMethod("GetReservedRoomIdList", MethodType.Invoke, IsDefault = false)]
+        [SecureResource("reservations.administration", SecureResourcePermissionLevel.Read)]
+        public List<long> GetReservedRoomIdList(long reservationId)
+        {
+            Logger.TraceMethodEnter(reservationId);
 
-        //    // Get reservation
-        //    var reservation = _ctx.Reservations.ReadOnlyQuery().Where(o => o.ReservationId == reservationId).FirstOrDefault();
+            // Get reservation
+            var reservation = _ctx.Reservations.ReadOnlyQuery().Where(o => o.ReservationId == reservationId).FirstOrDefault();
 
-        //    DateTime reservationStartDate = reservation.ArrivalDate;
-        //    DateTime reservationEndDate = reservation.DepartureDate;
+            DateTime reservationStartDate = reservation.ArrivalDate;
+            DateTime reservationEndDate = reservation.DepartureDate;
 
-        //    // Update status
-        //    var result = _ctx.Reservations.ReadOnlyQuery().Where(o => o.RoomId != null && (o.ReservationStatus == "CHECKED-IN" || (o.ReservationStatus == "CONFIRMED" && !(EntityFunctions.TruncateTime( o.ArrivalDate) > EntityFunctions.TruncateTime(reservationEndDate) || EntityFunctions.TruncateTime(o.DepartureDate) < EntityFunctions.TruncateTime(reservationStartDate))))).Select(o => o.RoomId).ToList();
+            // Update status
+            var result = _ctx.Reservations.ReadOnlyQuery().Where(o => o.RoomId != 0 && (o.ReservationStatus == "CHECKED-IN" || (o.ReservationStatus == "CONFIRMED" && !(o.ArrivalDate > reservationEndDate || o.DepartureDate < reservationStartDate)))).Select(o => o.RoomId).ToList();
 
-        //    return Logger.TraceMethodExit(result) as List<long?>;
+            return Logger.TraceMethodExit(result);
 
-        //}
+        }
 
         /// <summary>
         /// Confirms a Reservation instance from the data store
