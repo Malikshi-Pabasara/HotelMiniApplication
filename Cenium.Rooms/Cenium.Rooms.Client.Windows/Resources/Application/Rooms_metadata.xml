@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <metadata>
   <enumerations>
-    <enumeration id="rooms.enumeration.room.status" values="Clean^Dirty" />
+    
     <!--<enumeration id="mycomponent.enumeration.myenum" values="1=One^2=Two^3=Three" />-->
   </enumerations>
 
@@ -12,18 +12,11 @@
     Use the properties section to set default values
     Use the extensions section to add property extensions
     -->
-    <!--<entity id="MyComponent.MyEntity">
+    <entity id="Rooms.Room">
       <properties>
-        <property id="MyProperty" value="[No value]" />
+        <property id="Status" value="Clean"/>
       </properties>
-      <extensions>
-        <extension property="MyPropertyDisplayText" type="MyComponent.Extensions.MyExtension" >
-          <parameters>
-            <parameter id="PropertyName" value="MyProperty" />
-          </parameters>
-        </extension>
-      </extensions>
-    </entity>-->
+    </entity>
 
   </entities>
 

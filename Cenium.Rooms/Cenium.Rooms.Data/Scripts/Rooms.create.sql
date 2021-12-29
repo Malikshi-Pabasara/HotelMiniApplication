@@ -45,7 +45,7 @@ create table [dbo].[Rooms_Rooms] (
 	[RoomLength] [float] null,
 	[SquareMeters] [float] null,
     [CeilingHeight] [float] null,
-	[PriceCode] [nvarchar](max) not null,
+	[PriceCode] [nvarchar](max) null,
 	[Property][nvarchar](max) not null,
 	[PropertyContextId] [bigint] not null,
     [RoomTypeId] [bigint] not null,

@@ -84,6 +84,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\CheckInAction.cs" />
+    <Compile Include="Actions\ConfirmAction.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="ReservationsClientInitializer.cs" />
     <Compile Include="NamespaceDoc.cs" />
@@ -111,6 +112,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\ManageCategories.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\ActionCheckIn32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\ActionCheckOut32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\ActionCreateAndConfirm32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

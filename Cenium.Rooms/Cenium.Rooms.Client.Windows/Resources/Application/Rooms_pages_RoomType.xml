@@ -44,8 +44,7 @@
         <section id="column1">
           <items>
             <item id="RoomTypeCode" label="Code :" type="TextBox" column="0"/>
-            <item id="RoomTypeName" label="Name :" type="TextBox" column="0" />
-            <item id="PriceCode" label="Estimated day price :" type="TextBox" column="1"/>
+            <item id="RoomTypeName" label="Name :" type="TextBox" column="0" colspan="2"/>
             <item id="MaxNoOfPersons" label="Capacity :" type="TextBox" column="1" />
             <item id="Description" label="Description :" type="specialized.multilinetextbox" column="0"  colspan="2" />
           </items>

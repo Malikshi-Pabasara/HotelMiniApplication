@@ -114,7 +114,6 @@ namespace Cenium.Rooms.Data
             set { _roomLength = value; }
         }
 
-        [Required]
         [EntityMember(IsReadOnly = false, Order = 7, IsPrivate = false, IsQueryable = true, IsSortable = true)]
         public virtual string PriceCode
         {

@@ -19,3 +19,4 @@ C:\Users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Properties\Ceni
 C:\Users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Properties\Cenium.Properties.Client.Windows1\obj\Debug\Cenium.Properties.Client.Windows1.g.resources
 C:\Users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Properties\Cenium.Properties.Client.Windows1\obj\Debug\Cenium.Properties.Client.Windows1.dll
 C:\Users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Properties\Cenium.Properties.Client.Windows1\obj\Debug\Cenium.Properties.Client.Windows1.pdb
+C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Properties\Cenium.Properties.Client.Windows1\obj\Debug\Cenium.Properties.Client.Windows.csprojResolveAssemblyReference.cache

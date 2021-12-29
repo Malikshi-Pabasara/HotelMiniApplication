@@ -7,8 +7,8 @@
 
   <entries>
     <!-- Add zero or more entries here -->
-    <!--<entry id="mycomponent.first" category="mycomponent" name="First sample" description="Sample page description" page="mycomponent.page.first" />-->
+    <!--<entry id="mycomponent.first" category="mycomponent" name="First sample" description="Sample page description" page="mycomponent.page.first" />--><!--
     <entry id="backoffice.properties" category="backoffice" name="Manage Properties" description="Management of properties" />
-    <entry id="backoffice.properties.property" category="backoffice" name="Properties" description="Properties" page="properties.page.property" />
+    <entry id="backoffice.properties.property" category="backoffice" name="Properties" description="Properties" page="properties.page.property" />-->
   </entries>
 </navigator>

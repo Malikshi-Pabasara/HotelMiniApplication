@@ -40,8 +40,9 @@ namespace Cenium.Reservations.Client.Windows
             //ControlManager.RegisterLayoutControl("Reservations.controls.mycontrol", new MyControlLayoutControlFactory());
 
             // Icons
-            IconManager.Register("Reservations.icon.component", string.Format(IconPath, "ManageCategories"));
-
+            IconManager.Register("Reservations.icon.checkIn", string.Format(IconPath, "ActionCheckIn32"));
+            IconManager.Register("Reservations.icon.checkOut", string.Format(IconPath, "ActionCheckOut32"));
+            IconManager.Register("Reservations.icon.confirm", string.Format(IconPath, "ActionCreateAndConfirm32"));
         }
 
     }

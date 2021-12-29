@@ -58,6 +58,7 @@
     <page id="reservations.page.reservation" name="Reservations" description="Add and maintain reservations information"
     model="framework.pages.listviewmodel" type="framework.listitempage">
 
+      
       <modelProperties>
         <property id="CreateMethod" value="Reservations/Reservation/Create" />
         <property id="QueryMethod" value="Reservations/Reservation/Query" />
@@ -159,21 +160,22 @@
             <property id="IsUserConfirmationRequired" value="true" type="Bool" />
           </properties>
         </action>
-        <action id="checkin" label="Check In" description="Check In" type="reservations.checkinaction" group="#actions">
-          <conditions>
-            <condition property="ReservationStatus" operator="In" value="CONFIRMED" />
-          </conditions>
-        </action>
+        
         <!--<action id="checkout" label="Check Out" description="Check Out" type="reservations.checkoutaction"  group="#actions">
           <conditions>
             <condition property="ReservationStatus" operator="In" value="CHECKED-IN" />
           </conditions>
         </action>-->
-        <!--<action id="confirm" label="confirm" description="confirm" type="reservations.confirmaction" group="#actions">
+        <action id="confirm" label="Confirm" description="confirm" type="reservations.confirmaction" group="#actions" displayType="#home" icon="Reservations.icon.confirm" iconSize="Large">
           <conditions>
-            <condition property="reservationstatus" operator="in" value="created" />
+            <condition property="ReservationStatus" operator="In" value="CREATED" />
           </conditions>
-        </action>-->
+        </action>
+        <action id="checkin" label="Check In" description="Check In" type="reservations.checkinaction" group="#actions" displayType="#home" icon="Reservations.icon.checkIn" iconSize="Large">
+          <conditions>
+            <condition property="ReservationStatus" operator="In" value="CONFIRMED" />
+          </conditions>
+        </action>
       </actions>
     </page>
   </pages>

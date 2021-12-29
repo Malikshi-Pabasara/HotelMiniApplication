@@ -19,4 +19,3 @@ c:\users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Rooms\Cenium.Ro
 c:\users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Rooms\Cenium.Rooms.Client.Windows\obj\Debug\Cenium.Rooms.Client.Windows.g.resources
 c:\users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Rooms\Cenium.Rooms.Client.Windows\obj\Debug\Cenium.Rooms.Client.Windows.dll
 c:\users\malikshi.p\documents\visual studio 2015\Projects\Cenium.Rooms\Cenium.Rooms.Client.Windows\obj\Debug\Cenium.Rooms.Client.Windows.pdb
-C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Rooms\Cenium.Rooms.Client.Windows\obj\Debug\Cenium.Rooms.Client.Windows.csprojResolveAssemblyReference.cache

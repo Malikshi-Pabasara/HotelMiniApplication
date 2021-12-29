@@ -34,13 +34,15 @@
                 <property id="SelectedValuePath" value="RoomTypeId"/>
               </properties>
             </item>
-            <item id="Status" label="Status :" type="ComboBox" valueList="enum:rooms.enumeration.room.status" column="0" />
-            <!--<item id="PriceGroupId" label="!prices.price.pricecode" type="framework.controls.data.ReferenceComboBox" readOnly="false" valueList="Prices/Price/Query" column="1">
-              <properties>
-                <property id="DisplayPropertyName" value="PriceCode" />
-              </properties>
-            </item>-->
-            <item id="Property" label="!rooms.room.property" type="textbox" readOnly="false" column="1"  />
+            <item id="Status" label="Status :" type="TextBox" column="0" />
+            
+            <item id="PropertyContextId" label="@PropertyContext" type="framework.controls.data.ReferenceComboBox" valueList="Framework/PropertyContext/Query" column="1" >
+                <properties>
+                  <property id="DisplayPropertyName" value="Name" />
+                  <property id="CopyPropertyNames" value="Name=Property" />
+                  <property id="IsEnabled" value="True" />
+                </properties>
+              </item>
             <item id="Name" label="!rooms.room.name" type="textbox" readOnly="false" colspan="2" />
             <item id="Description" label="Description:" type="specialized.multilinetextbox" readOnly="false" colspan="2"/>
 
