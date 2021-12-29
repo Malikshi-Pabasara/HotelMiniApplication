@@ -10,15 +10,7 @@
             <item id="dummy" type="rooms.pane.room.general.top" labelVisibility="Collapsed" />
           </items>
         </section>
-        <section id="priceDetails" label="Price Details" constraints="column=1" >
-          <items>
-            <item id="dummy" type="rooms.pane.room.price" labelVisibility="Collapsed">
-              <properties>
-                <property id="Height" value="50" type="Double" />
-              </properties>
-            </item>
-          </items>
-        </section>
+        
         <section id="capacity" label="Capacity" constraints="column=1">
           <items>
             <item id="dummy" type="rooms.pane.room.capacity.top" labelVisibility="Collapsed" />
@@ -57,31 +49,16 @@
       </layout>
     </pane>
 
-    <pane id="rooms.pane.room.price" type="standard.pane.grouplayout" >
-      <layout>
-        <section id="column1">
-          <items>
-            <item id="PriceCode" label="!prices.price.pricecode" type="standard.controls.data.valuelistlookup" readOnly="false" valueList="Prices/Price/Query" column="0" colspan="2">
-              <properties>
-                <property id="CopyPropertyNames" value="PriceId=PriceCode^PriceCode" />
-              </properties>
-              <bindings>
-                <binding property="DisplayValue" bindTo="PriceCode" readOnly="true" />
-              </bindings>
-            </item>
-          </items>
-        </section>
-      </layout>
-    </pane>
+    
 
     <pane id="rooms.pane.room.capacity.top" type="standard.pane.grouplayout" >
       <layout>
         <section id ="column2">
           <items>
-            <item id="RoomWidth" label="Room width" type="NumberTextBox" format="ShortDecimal" readOnly="false" column="0" />
-            <item id="RoomLength" label="Rroom Length" type="NumberTextBox" format="ShortDecimal" readOnly="false" column="0" />
-            <item id="SquareMeters" label="Area" type="NumberTextBox" format="ShortDecimal" readOnly="false" column="1" />
-            <item id="CeilingHeight" label="Ceiling Height" type="NumberTextBox" format="ShortDecimal" readOnly="false" column="1" />
+            <item id="RoomWidth" label="Room width" type="NumberTextBox" format="ShortDecimal" readOnly="false" />
+            <item id="RoomLength" label="Rroom Length" type="NumberTextBox" format="ShortDecimal" readOnly="false" />
+            <item id="SquareMeters" label="Area" type="NumberTextBox" format="ShortDecimal" readOnly="false" />
+            <item id="CeilingHeight" label="Ceiling Height" type="NumberTextBox" format="ShortDecimal" readOnly="false" />
           </items>
         </section>
       </layout>
@@ -99,7 +76,7 @@
 
   <!-- Add pages here-->
   <pages>
-    <page id="rooms.page.room" name="Rooms" description="Add and maintain rooms information" model="framework.pages.listviewmodel" type="standard.pagetype.list">
+    <page id="rooms.page.room" name="Rooms" description="Add and maintain rooms information" model="framework.pages.listviewmodel" type="standard.pagetype.list" >
 
 
 

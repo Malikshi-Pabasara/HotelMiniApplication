@@ -44,6 +44,7 @@ namespace Cenium.Prices.Data
         private string _priceCode;
         private string _description;
         private double _amount;
+        private string _name;
         private Guid _tenantId = Guid.Empty;
 
         #endregion
@@ -61,7 +62,6 @@ namespace Cenium.Prices.Data
         }
 
         [Required]
-        [Description("Code")]
         [EntityMember(IsReadOnly = false, Order = 1, IsPrivate = false, IsQueryable = true, IsSortable = true)]
         public virtual string PriceCode
         {
@@ -84,6 +84,13 @@ namespace Cenium.Prices.Data
             set { _amount = value; }
         }
 
+        [EntityMember(IsReadOnly = false, Order = 4, IsPrivate = false, IsQueryable = true, IsSortable = true)]
+        public virtual string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
 
         #endregion
 
@@ -93,7 +100,7 @@ namespace Cenium.Prices.Data
         /// <summary>
         /// Tenant identifier, for internal framework usage only
         /// </summary>
-        [EntityMember(IsReadOnly = true, IsHidden = true, Order = 4, IsQueryable = false, IsSortable = false)]
+        [EntityMember(IsReadOnly = true, IsHidden = true, Order = 5, IsQueryable = false, IsSortable = false)]
         public virtual Guid TenantId
         {
             get { return _tenantId; }
@@ -105,7 +112,7 @@ namespace Cenium.Prices.Data
         /// </summary>
         [Timestamp]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [EntityMember(IsReadOnly = true, Order = 5, IsHidden = true, IsQueryable = false, IsSortable = false)]
+        [EntityMember(IsReadOnly = true, Order = 6, IsHidden = true, IsQueryable = false, IsSortable = false)]
         public virtual byte[] RowVersion
         {
             get;

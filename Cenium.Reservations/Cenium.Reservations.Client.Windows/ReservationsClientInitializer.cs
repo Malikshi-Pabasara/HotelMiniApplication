@@ -40,7 +40,7 @@ namespace Cenium.Reservations.Client.Windows
             //ControlManager.RegisterLayoutControl("Reservations.controls.mycontrol", new MyControlLayoutControlFactory());
 
             // Icons
-            IconManager.Register("Reservations.icon.component", string.Format(IconPath, "Reservations"));
+            IconManager.Register("Reservations.icon.component", string.Format(IconPath, "ManageCategories"));
 
         }
 

@@ -9,6 +9,15 @@
             <item id="dummy" type="rooms.pane.roomtype.general.top" labelVisibility="Collapsed" />
           </items>
         </section>
+        <section id="priceDetails" label="Price Details" constraints="column=1" >
+          <items>
+            <item id="dummy" type="rooms.pane.room.price" labelVisibility="Collapsed">
+              <properties>
+                <property id="Height" value="50" type="Double" />
+              </properties>
+            </item>
+          </items>
+        </section>
         <section id="rooms" label="Rooms" constraints="column=1">
           <items>
             <item id="Rooms" type="rooms.pane.room.rooms.top" labelVisibility="Collapsed" column="0" >
@@ -44,6 +53,23 @@
       </layout>
     </pane>
 
+    <pane id="rooms.pane.room.price" type="standard.pane.grouplayout" >
+      <layout>
+        <section id="column1">
+          <items>
+            <item id="PriceCode" label="!prices.price.pricecode" type="standard.controls.data.valuelistlookup" readOnly="false" valueList="Prices/Price/Query" column="0" colspan="2">
+              <properties>
+                <property id="CopyPropertyNames" value="PriceId=PriceCode^PriceCode" />
+              </properties>
+              <bindings>
+                <binding property="DisplayValue" bindTo="PriceCode" readOnly="true" />
+              </bindings>
+            </item>
+          </items>
+        </section>
+      </layout>
+    </pane>
+
     <pane id="rooms.pane.room.rooms.top" type="framework.pane.DataGridPane">
       <layout>
         <section id="gridview" readOnly="false">
@@ -74,7 +100,7 @@
   <dialogs>
     <dialog id="rooms.dlg.roomtype.features" name="Edit Features"
               description="Edit features for the selected room type."
-              icon="rooms.icon.rooms"
+              icon="rooms.icon.categories"
               contentPanel="framework.ItemDialog" applyButton="false" showHeader="true" readOnly="false">
       <layout>
         <section id="categories" readOnly="false" label="">
@@ -149,7 +175,7 @@
         </action>
         
         <action id="managefeatures" label="Manage Features" description="Manage features for the selected room type." type="framework.EditDialogAction"
-                displayType="#home" group="Actions" icon="rooms.icon.rooms" iconSize="Large">
+                displayType="#home" group="Actions" icon="rooms.icon.categories" iconSize="Large">
           <properties>
             <property id="DialogId" value="rooms.dlg.roomtype.features" />
             <property id="ActionMethod" value="Rooms/RoomType/Update" />

@@ -39,7 +39,7 @@
                 <property id="Height" value="200" type="Double" />
               </properties>
             </item>
-            <item id="Emails" label="" type="framework.controls.data.DataCollectionCommandBar" >
+            <item id="Emails" label="" type="framework.controls.data.DataCollectionCommandBar" labelVisibility="Collapsed">
               <properties>
                 <property id="ParentControlName" value="EmailAddress" />
               </properties>
@@ -126,9 +126,9 @@
       </layout>
     </pane>
 
-    <pane id="contacts.pane.contact.email" type="framework.pane.DataGridPane">
+    <pane id="contacts.pane.contact.email" type="framework.pane.datagridpane">
       <layout>
-        <section id="gridview" readOnly="false">
+        <section id="emails" readOnly="false">
           <items>
             <item id="EmailAddress" label="!contacts.email.emailaddress" type="Column" readOnly="false" width="1*" />
           </items>
@@ -138,7 +138,7 @@
 
     <pane id="contacts.pane.contact.phone" type="framework.pane.DataGridPane">
       <layout>
-        <section id="gridview" >
+        <section id="phonenumbers" >
           <items>
             <item id="PhoneNumber" label="!contacts.phone.phonenumber" type="Column" readOnly="false" width="1*" />
           </items>

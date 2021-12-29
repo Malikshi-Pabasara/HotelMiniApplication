@@ -83,6 +83,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\CheckInAction.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="ReservationsClientInitializer.cs" />
     <Compile Include="NamespaceDoc.cs" />
@@ -107,6 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\ManageCategories.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

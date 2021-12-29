@@ -8,7 +8,46 @@
   <!-- Add dialogs here -->
   <dialogs>
 
-    <!-- Add dialogs here -->
+    <dialog id="Reservations.dialog.NewReservation.create" name="Create Reservation"
+            description="Create a new reservation."
+            icon="Reservations.icon.component"
+            contentPanel="framework.ItemDialog" applyButton="false" showHeader="true">
+      <layout>
+        <section id="create" readOnly="false">
+          <items>
+            <item id="PropertyContextId" label="@PropertyContext" type="framework.controls.data.ReferenceComboBox" valueList="Framework/PropertyContext/Query" >
+              <properties>
+                <property id="DisplayPropertyName" value="Name" />
+                <property id="CopyPropertyNames" value="Name=PropertyContextName" />
+                <property id="IsEnabled" value="True" />
+              </properties>
+            </item>
+            <!--<item id="Number" label="Number :" type="TextBox" column="1"/>-->
+            <item id="ReservationStatus" label="Status:" type="TextBox" readOnly="true" />
+
+
+            <item id="ContactId" label="Contact :" type="standard.controls.data.valuelistlookup" readOnly="false" valueList="Contacts/Contact/Query" column="1" >
+              <properties>
+                <property id="CopyPropertyNames" value="ContactId=ContactId^Name=ContactName" />
+              </properties>
+              <bindings>
+                <binding property="DisplayValue" bindTo="ContactName" readOnly="true" />
+              </bindings>
+            </item>
+            <item id="ArrivalDate" label="Arrival Date:" type="DatePicker" readOnly="false" column="0" />
+            <item id="DepartureDate" label="Departure Date:" type="DatePicker" readOnly="false" column="1" />
+            <item id="RoomTypeId" label="Room Type:" type="standard.controls.data.valuelistlookup" valueList="Rooms/RoomType/Query">
+              <properties>
+                <property id="CopyPropertyNames" value="RoomTypeId=RoomTypeId^RoomTypeCode=RoomTypeCode" />
+              </properties>
+              <bindings>
+                <binding property="DisplayValue" bindTo="RoomTypeCode" readOnly="true" />
+              </bindings>
+            </item>
+          </items>
+        </section>
+      </layout>
+    </dialog>
 
   </dialogs>
 
@@ -38,11 +77,6 @@
                 <property id="TextStyle" value="TitleText" />
               </properties>
             </item>
-            <!--<item id="PropertyContextName" row="1"  column="0" type="textblock" labelVisibility="Collapsed">
-              <properties>
-                <property id="textstyle" value="subtletext" />
-              </properties>
-            </item>-->
             <item id="ReservationStatus" row="1"  column="1"  type="TextBlock" labelVisibility="Collapsed" >
               <properties>
                 <property id="TextStyle" value="SubtleText" />
@@ -66,8 +100,6 @@
             </item>
             <item id="Number" label="Number :" type="TextBox" column="1"/>
             <item id="ReservationStatus" label="Status:" type="TextBox" readOnly="true" />
-            
-            
             <item id="ContactId" label="Contact :" type="standard.controls.data.valuelistlookup" readOnly="false" valueList="Contacts/Contact/Query" column="1" >
               <properties>
                 <property id="CopyPropertyNames" value="ContactId=ContactId^Name=ContactName" />
@@ -78,8 +110,8 @@
             </item>
           </items>
         </section>
+        
         <section id="reservationroom" label="Room Details" constraints="column=0">
-          
           <items>
             <item id="ArrivalDate" label="Arrival Date:" type="DatePicker" readOnly="false" column="0" />
             <item id="DepartureDate" label="Departure Date:" type="DatePicker" readOnly="false" column="1" />
@@ -101,8 +133,8 @@
             </item>
           </items>
         </section>
+        
         <section id="reservationpayment" label="Payment Details" >
-          
           <items>
             <item id="Price" label="Price:" type="TextBox" readOnly="false" />
             <item id="PaymentDone" label="Has Payment Done:" type="CheckBox" readOnly="false"/>
@@ -114,7 +146,11 @@
         <action id="clear" type="framework.ClearAction" />
         <action id="refresh" type="framework.RefreshAction" />
         <action id="save" type="framework.SaveAction" />
-        <action id="add" type="framework.CreateAction">
+        <action id="add" type="framework.AddDialogAction">
+          <properties>
+            <property id="DialogId" value="Reservations.dialog.NewReservation.create" />
+            <property id="ActionMethod" value="Reservations/Reservation/Create" />
+          </properties>
         </action>
 
         <action id="delete" type="framework.DeleteAction" >
@@ -123,16 +159,21 @@
             <property id="IsUserConfirmationRequired" value="true" type="Bool" />
           </properties>
         </action>
-
-        <action id="checkin"  label="Check In" description="Check In" type="framework.EditDialogAction"
-                displayType="#home" group="Actions" icon="rooms.icon.rooms" iconSize="Large">
-          <properties>
-            <property id="DialogId" value="reservations.dlg.reservation.checkin" />
-            <property id="ActionMethod" value="Reservations/Reservation/CheckIn" />
-            <property id="IncludeChildRecords" value="true" type="Bool" />
-          </properties>
+        <action id="checkin" label="Check In" description="Check In" type="reservations.checkinaction" group="#actions">
+          <conditions>
+            <condition property="ReservationStatus" operator="In" value="CONFIRMED" />
+          </conditions>
         </action>
-        
+        <!--<action id="checkout" label="Check Out" description="Check Out" type="reservations.checkoutaction"  group="#actions">
+          <conditions>
+            <condition property="ReservationStatus" operator="In" value="CHECKED-IN" />
+          </conditions>
+        </action>-->
+        <!--<action id="confirm" label="confirm" description="confirm" type="reservations.confirmaction" group="#actions">
+          <conditions>
+            <condition property="reservationstatus" operator="in" value="created" />
+          </conditions>
+        </action>-->
       </actions>
     </page>
   </pages>

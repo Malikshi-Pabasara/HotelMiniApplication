@@ -23,7 +23,7 @@ namespace Cenium.Prices.Data
     /// <summary>
     /// Explain the purpose of the class here
     /// </summary>
-    [EntityInfo(ValueListProperties = "PriceCode,Description,Amount", PrimaryDisplayProperty = "PriceCode")]
+    [EntityInfo(ValueListProperties = "Name,PriceCode,Description,Amount", PrimaryDisplayProperty = "PriceCode")]
     public partial class Price
     {
 

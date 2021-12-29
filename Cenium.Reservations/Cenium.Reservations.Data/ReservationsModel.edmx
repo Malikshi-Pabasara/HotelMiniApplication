@@ -19,7 +19,6 @@
             <PropertyRef Name="ReservationId" />
           </Key>
           <Property Name="ReservationId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Number" Type="String" Nullable="false" />
           <Property Name="PropertyContextId" Type="Int64" Nullable="false" />
           <Property Name="RoomId" Type="Int64" Nullable="false" />
           <Property Name="ContactId" Type="Int64" Nullable="false" />
@@ -28,11 +27,15 @@
           <Property Name="ReservationStatus" Type="String" Nullable="false" DefaultValue="Confirmed" />
           <Property Name="RoomNumber" Type="String" Nullable="true" />
           <Property Name="Price" Type="String" Nullable="true" />
-          <Property Name="PaymentDone" Type="Boolean" Nullable="false" />
+          <Property Name="PaymentDone" Type="Boolean" Nullable="true" />
           <Property Name="ContactName" Type="String" Nullable="true" />
-          <Property Name="RoomTypeId" Type="Int64" Nullable="true" />
+          <Property Name="RoomTypeId" Type="Int64" Nullable="false" />
           <Property Name="RoomTypeCode" Type="String" Nullable="true" />
           <Property Name="PropertyContextName" Type="String" Nullable="true" />
+          <Property Name="Balance" Type="String" Nullable="true" />
+          <Property Name="Discount" Type="String" Nullable="true" />
+          <Property Name="PaymentNumber" Type="String" Nullable="true" />
+          <Property Name="Number" Type="String" Nullable="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>

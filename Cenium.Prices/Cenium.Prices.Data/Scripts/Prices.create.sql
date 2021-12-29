@@ -20,6 +20,7 @@ create table [dbo].[Prices_Prices] (
 	[PriceId] [bigint] not null identity,
 	[PriceCode] [nvarchar](max) not null,
     [Description] [nvarchar](max) null,
+	[Name] [nvarchar](max) null,
     [Amount] [float] not null,
 	[TenantId] [uniqueidentifier] not null,
 	[RowVersion] [rowversion] not null,

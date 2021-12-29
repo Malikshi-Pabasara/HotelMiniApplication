@@ -94,7 +94,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\Application\Prices_metadata.xml" />
     <EmbeddedResource Include="Resources\Application\Prices_navigator.xml" />
-    <EmbeddedResource Include="Resources\Application\Prices_pages_Price.xml" />
+    <EmbeddedResource Include="Resources\Application\Prices_pages_Price.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\Prices.png" />

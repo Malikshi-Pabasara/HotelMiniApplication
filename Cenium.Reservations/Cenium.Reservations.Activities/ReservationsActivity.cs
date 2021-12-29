@@ -25,6 +25,7 @@ using Cenium.Reservations.Data;
 using Cenium.Framework.Security;
 using Cenium.Reservations.Activities.Helpers.Rooms;
 using Cenium.Framework.Data;
+using System.Text.RegularExpressions;
 
 namespace Cenium.Reservations.Activities
 {
@@ -105,8 +106,27 @@ namespace Cenium.Reservations.Activities
         {
             Logger.TraceMethodEnter(reservation);
 
+            if (string.IsNullOrEmpty(reservation.Number))
+            {
+                var maxReservation = _ctx.Reservations.ReadOnlyQuery().OrderByDescending(x => x.Number).FirstOrDefault();
+                string maxReservationNumber = maxReservation.Number;
+
+                string digits = new string(maxReservationNumber.Where(char.IsDigit).ToArray());
+                string letters = new string(maxReservationNumber.Where(char.IsLetter).ToArray());
+
+                int number;
+                if (!int.TryParse(digits, out number)) //int.Parse would do the job since only digits are selected
+                {
+                    Console.WriteLine("Something weired happened");
+                }
+                String newString = String.Format("AB{0}", (number + 1).ToString("D6"));
+
+                reservation.Number = newString;
+
+            }
             reservation = _ctx.Reservations.Add(reservation);
-            _ctx.SaveChanges();
+                _ctx.SaveChanges();
+            
 
             return Logger.TraceMethodExit(GetFromDatastore(reservation.ReservationId)) as Reservation;
         }

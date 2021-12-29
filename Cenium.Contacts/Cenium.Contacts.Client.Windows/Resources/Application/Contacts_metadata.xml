@@ -6,10 +6,8 @@
 
 
   <entities>
-    <entity id="Contacts.ContactInfo">
+    <entity id="Contacts.Contact">
       <properties>
-        <!--<property id="ContactNo" value="[Auto]" />
-        <property id="IsActive" value="true" type="Bool" />-->
         <property id="PrimaryImageRef" value="$GUID$" />
       </properties>
     </entity>

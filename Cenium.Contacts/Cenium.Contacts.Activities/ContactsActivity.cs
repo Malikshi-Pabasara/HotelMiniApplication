@@ -23,6 +23,8 @@ using Cenium.Framework.Core.Attributes;
 using Cenium.Framework.Logging;
 using Cenium.Contacts.Data;
 using Cenium.Framework.Security;
+using Cenium.Framework;
+using Cenium.Framework.Data;
 
 namespace Cenium.Contacts.Activities
 {
@@ -109,8 +111,14 @@ namespace Cenium.Contacts.Activities
         {
             Logger.TraceMethodEnter(contact);
 
+            ValidateNameExists(contact);
+            if (contact.PrimaryImageRef == null || contact.PrimaryImageRef == Guid.Empty)
+                contact.PrimaryImageRef = Guid.NewGuid();
+
             contact = _ctx.Contacts.Add(contact);
             _ctx.SaveChanges();
+
+            ImageStorageManager.Claim(contact.PrimaryImageRef.Value);
 
             return Logger.TraceMethodExit(GetFromDatastore(contact.ContactId)) as Contact;
         }
@@ -129,12 +137,18 @@ namespace Cenium.Contacts.Activities
         {
             Logger.TraceMethodEnter(contact);
 
+            ValidateNameExists(contact);
+            if (contact.PrimaryImageRef == null || contact.PrimaryImageRef == Guid.Empty)
+                contact.PrimaryImageRef = Guid.NewGuid();
+
             _ctx.Contacts.AttachChildCollection<Email>(contact, "Emails");
             _ctx.Contacts.AttachChildCollection<Phone>(contact, "Phones");
             contact = _ctx.Contacts.Modify(contact);
             _ctx.Contacts.SynchronizeChildCollection<Email>(contact, "Emails");
             _ctx.Contacts.SynchronizeChildCollection<Phone>(contact, "Phones");
             _ctx.SaveChanges();
+
+            ImageStorageManager.Claim(contact.PrimaryImageRef.Value);
 
             return Logger.TraceMethodExit(GetFromDatastore(contact.ContactId)) as Contact;
         }
@@ -154,6 +168,7 @@ namespace Cenium.Contacts.Activities
 
             _ctx.Contacts.Remove(contact);
             _ctx.SaveChanges();
+            
 
             Logger.TraceMethodExit();
         }
@@ -179,7 +194,16 @@ namespace Cenium.Contacts.Activities
             _ctx = null;
         }
 
-
+        private void ValidateNameExists(Contact contact)
+        {
+            var result = contact.ContactId != 0 ?
+                _ctx.Contacts.ReadOnlyQuery().Where(i => i.Name == contact.Name && i.ContactId != contact.ContactId).FirstOrDefault() :
+                _ctx.Contacts.ReadOnlyQuery().Where(i => i.Name == contact.Name).FirstOrDefault();
+            if (result != null)
+            {
+                throw new FrameworkException("crs.contactnameexists", "Contact name {0} already exists.", new object[] { contact.Name });
+            }
+        }
 
     }
 

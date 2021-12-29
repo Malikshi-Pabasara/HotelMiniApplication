@@ -18,7 +18,7 @@
 
 create table [dbo].[Reservations_Reservations] (
 	[ReservationId] [bigint] not null identity,
-	[Number] [nvarchar](max) not null,
+	[Number] [nvarchar](max) null,
 	[PropertyContextId] [bigint] not null,
 	[RoomId] [bigint] not null,
 	[ContactId] [bigint] not null,
@@ -27,11 +27,14 @@ create table [dbo].[Reservations_Reservations] (
 	[ReservationStatus] [nvarchar](max) null,
 	[RoomNumber][nvarchar](max) null,
 	[Price][nvarchar](max) null,
-	[PaymentDone] [bit] not null,
+	[PaymentDone] [bit] null,
 	[ContactName] [nvarchar](max) not null,
-    [RoomTypeId] [bigint] null,
+    [RoomTypeId] [bigint] not null,
     [RoomTypeCode] [nvarchar](max) null,
 	[PropertyContextName] [nvarchar](max) null,
+	[Balance] [nvarchar](max) null,
+	[Discount] [nvarchar](max) null,
+	[PaymentNumber] [nvarchar](max) null,
 	[TenantId] [uniqueidentifier] not null,
 	[RowVersion] [rowversion] not null,
 	primary key ([ReservationId])

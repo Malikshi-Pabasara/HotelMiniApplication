@@ -22,6 +22,7 @@
           <Property Name="PriceCode" Type="String" Nullable="false" />
           <Property Name="Description" Type="String" Nullable="true" />
           <Property Name="Amount" Type="Double" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -50,7 +51,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="ComponentModel" DisplayType="true" >
-        <EntityTypeShape EntityType="PricesModel.Price" Width="2.125" PointX="1.5" PointY="1.125" />
+        <EntityTypeShape EntityType="PricesModel.Price" Width="2.125" PointX="3.125" PointY="1.125" />
       </Diagram>
     </Diagrams>
   </Designer>

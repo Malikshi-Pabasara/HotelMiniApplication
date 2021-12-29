@@ -40,7 +40,7 @@ namespace Cenium.Rooms.Client.Windows
             //ControlManager.RegisterLayoutControl("Rooms.controls.mycontrol", new MyControlLayoutControlFactory());
 
             // Icons
-            IconManager.Register("Rooms.icon.component", string.Format(IconPath, "Rooms"));
+            IconManager.Register("rooms.icon.categories", string.Format(IconPath, "ManageCategories"));
 
         }
 
