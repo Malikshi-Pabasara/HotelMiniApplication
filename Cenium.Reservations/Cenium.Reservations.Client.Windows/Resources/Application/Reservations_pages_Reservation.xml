@@ -2,12 +2,146 @@
 <ui>
   <!-- Add panes here-->
   <panes>
+    <pane id="resrvations.pane.resrvation.details" type="standard.pane.grouplayout" columns="2">
+      <layout>
+        <section id="general" label="General" constraints="column=0">
+          <items>
+            <item id="dummy" type="resrvations.pane.resrvation.general" labelVisibility="Collapsed" >
+              <properties>
+                <property id="Height" value="100" type="Double" />
+              </properties>
+            </item>
+          </items>
+        </section>
+        <section id="contact" label="Contact Details" constraints="column=0">
+          <items>
+            <item id="dummy" type="resrvations.pane.resrvation.contact" labelVisibility="Collapsed" >
+              <properties>
+                <property id="Height" value="50" type="Double" />
+              </properties>
+            </item>
+          </items>
+        </section>
+        <section id="reservationroom" label="Room Details" constraints="column=0">
+          <items>
+            <item id="dummy" type="resrvations.pane.resrvation.reservationroom" labelVisibility="Collapsed">
+              <properties>
+                <property id="Height" value="200" type="Double" />
+              </properties>
+            </item>
+          </items>
+        </section>
 
+        <section id="pricedetails" label="Price" constraints="column=1">
+          <items>
+            <item id="dummy" type="resrvations.pane.resrvation.price" labelVisibility="Collapsed" column="0">
+              <properties>
+                <property id="Height" value="100" type="Double" />
+              </properties>
+            </item>
+          </items>
+        </section>
+        <section id="paymentdetails" label="Payment Details" constraints="column=1">
+          <items>
+            <item id="dummy" type="resrvations.pane.resrvation.payment" labelVisibility="Collapsed" column="0">
+              <properties>
+                <property id="Height" value="100" type="Double" />
+              </properties>
+            </item>
+          </items>
+        </section>
+      </layout>
+    </pane>
+
+    <pane id="resrvations.pane.resrvation.general" type="standard.pane.grouplayout" >
+      <layout>
+        <section id="column1">
+          <items>
+            <item id="PropertyContextId" label="@PropertyContext" type="framework.controls.data.ReferenceComboBox" valueList="Framework/PropertyContext/Query" colspan="2" >
+              <properties>
+                <property id="DisplayPropertyName" value="Name" />
+                <property id="CopyPropertyNames" value="Name=PropertyContextName" />
+                <property id="IsEnabled" value="True" />
+              </properties>
+            </item>
+            <item id="Number" label="Number :" type="TextBox" colspan="2" />
+            <item id="ReservationStatus" label="Status:" type="TextBox" readOnly="true" colspan="2"/>
+          </items>
+        </section>
+      </layout>
+    </pane>
+
+    <pane id="resrvations.pane.resrvation.contact" type="standard.pane.grouplayout" >
+      <layout>
+        <section id="column1">
+          <items>
+            <item id="ContactId" label="Contact :" type="standard.controls.data.valuelistlookup" readOnly="false" valueList="Contacts/Contact/Query" colspan="2" >
+              <properties>
+                <property id="CopyPropertyNames" value="ContactId=ContactId^Name=ContactName" />
+              </properties>
+              <bindings>
+                <binding property="DisplayValue" bindTo="ContactName" readOnly="true" />
+              </bindings>
+            </item>
+          </items>
+        </section>
+      </layout>
+    </pane>
+
+    <pane id="resrvations.pane.resrvation.reservationroom" type="standard.pane.grouplayout" >
+      <layout>
+        <section id="column2">
+          <items>
+            <item id="ArrivalDate" label="Arrival Date:" type="DatePicker" readOnly="false" colspan="2"/>
+            <item id="DepartureDate" label="Departure Date:" type="DatePicker" readOnly="false" colspan="2" />
+            <item id="RoomTypeId" label="Room Type:" type="standard.controls.data.valuelistlookup" valueList="Rooms/RoomType/Query" colspan="2">
+              <properties>
+                <property id="CopyPropertyNames" value="RoomTypeId=RoomTypeId^RoomTypeCode=RoomTypeCode" />
+              </properties>
+              <bindings>
+                <binding property="DisplayValue" bindTo="RoomTypeCode" readOnly="true" />
+              </bindings>
+            </item>
+            <item id="RoomId" label="Room Number:" type="standard.controls.data.valuelistlookup" valueList="Rooms/Room/GetAvailable/{ReservationId}" colspan="2">
+              <properties>
+                <property id="CopyPropertyNames" value="RoomId=RoomId^RoomNumber=RoomNumber" />
+              </properties>
+              <bindings>
+                <binding property="DisplayValue" bindTo="RoomNumber" readOnly="true" />
+              </bindings>
+            </item>
+          </items>
+        </section>
+      </layout>
+    </pane>
+
+    <pane id="resrvations.pane.resrvation.price" type="standard.pane.grouplayout" >
+      <layout>
+        <section id="column3">
+          <items>
+            <item id="Price" label="Price per day:" type="TextBox" readOnly="false" colspan="2" />
+            <item id="TotalDays" label="Total Days:" type="TextBox" readOnly="false" colspan="2" />
+            <item id="TotalAmount" label="Total Amount:" type="TextBox" readOnly="false" colspan="2"/>
+          </items>
+        </section>
+      </layout>
+    </pane>
+
+    <pane id="resrvations.pane.resrvation.payment" type="standard.pane.grouplayout" >
+      <layout>
+        <section id="column3">
+          <items>
+            <item id="PaymentMethod" label="!reservations.reservation.paymentmethod" type="ComboBox" valueList="enum:reservations.enumeration.reservation.paymentmethod" readOnly="false" column="0" colspan="2" />
+            <item id="PaymentStatus" label="Payment Status:" type="TextBox"  readOnly="true" colspan="2" />
+          </items>
+        </section>
+      </layout>
+    </pane>
+    
   </panes>
 
   <!-- Add dialogs here -->
   <dialogs>
-
     <dialog id="Reservations.dialog.NewReservation.create" name="Create Reservation"
             description="Create a new reservation."
             icon="Reservations.icon.component"
@@ -49,6 +183,23 @@
       </layout>
     </dialog>
 
+    <dialog id="reservations.dlg.reservation.cardpayment" name="Card Payment"
+              description="Card Payment"
+              icon="Reservations.icon.creditcardpayment"
+              contentPanel="framework.ItemDialog" applyButton="false" showHeader="true" readOnly="false">
+      <layout>
+        <section id="column3">
+          <items>
+            <item id="NameOnCard" label="Name On Card:" type="TextBox" readOnly="false" colspan="2" />
+            <item id="CreditCardNumber" label="Credit Card Number:" type="TextBox" readOnly="false" colspan="2" />
+            <item id="CVV" label="CVV:" type="TextBox" readOnly="false" colspan="2"/>
+            <item id="ExpiryDate" label="Expiry Date:" type="TextBox" readOnly="false" colspan="2"/>
+          </items>
+        </section>
+      </layout>
+    </dialog>
+
+    
   </dialogs>
 
 
@@ -56,9 +207,8 @@
   <!-- Add pages here-->
   <pages>
     <page id="reservations.page.reservation" name="Reservations" description="Add and maintain reservations information"
-    model="framework.pages.listviewmodel" type="framework.listitempage">
+    model="framework.pages.listviewmodel" type="standard.pagetype.list">
 
-      
       <modelProperties>
         <property id="CreateMethod" value="Reservations/Reservation/Create" />
         <property id="QueryMethod" value="Reservations/Reservation/Query" />
@@ -67,78 +217,44 @@
         <property id="RemoveMethod" value="Reservations/Reservation/Delete" />
         <property id="IncludeChildRecords" value="true" type="Bool" />
       </modelProperties>
-
-
+      
       <layout>
-        
-        <section id="listView" readOnly="true">
+        <section id="griditem" readOnly="true">
           <items>
-            <item id="ContactName" row="0"  column="0" colspan="2" type="TextBlock" labelVisibility="Collapsed">
-              <properties>
-                <property id="TextStyle" value="TitleText" />
-              </properties>
-            </item>
-            <item id="ReservationStatus" row="1"  column="1"  type="TextBlock" labelVisibility="Collapsed" >
-              <properties>
-                <property id="TextStyle" value="SubtleText" />
-                <property id="HorizontalAlignment" value="Right" />
-              </properties>
-              <bindings>
-                <binding property="Foreground" bindTo="StatusColor" readOnly="true" />
-              </bindings>
-            </item>
+            <item id="Number" label="Number" type="Column" width="*"/>
+            <item id="ContactName" label="Name" type="Column" width="*"/>
+            <item id="ReservationStatus" label="Reservation Status" type="Column" width="*"/>
           </items>
         </section>
         
-        <section id="general" label="General" >
+      <section id="listitem" readOnly="true">
+        <items>
+          <item id="ContactName" row="0"  column="0" colspan="2" type="TextBlock" labelVisibility="Collapsed">
+            <properties>
+              <property id="TextStyle" value="TitleText" />
+            </properties>
+          </item>
+          <item id="Number" type="TextBlock" labelVisibility="Collapsed">
+            <properties>
+              <property id="TextStyle" value="SubtleText" />
+            </properties>
+          </item>
+          <item id="ReservationStatus" row="1"  column="1"  type="TextBlock" labelVisibility="Collapsed" >
+            <properties>
+              <property id="TextStyle" value="SubtleText" />
+              <property id="HorizontalAlignment" value="Right" />
+            </properties>
+            <bindings>
+              <binding property="Foreground" bindTo="StatusColor" readOnly="true" />
+            </bindings>
+          </item>
+        </items>
+      </section>
+      
+      
+        <section id="summary">
           <items>
-            <item id="PropertyContextId" label="@PropertyContext" type="framework.controls.data.ReferenceComboBox" valueList="Framework/PropertyContext/Query" >
-              <properties>
-                <property id="DisplayPropertyName" value="Name" />
-                <property id="CopyPropertyNames" value="Name=PropertyContextName" />
-                <property id="IsEnabled" value="True" />
-              </properties>
-            </item>
-            <item id="Number" label="Number :" type="TextBox" column="1"/>
-            <item id="ReservationStatus" label="Status:" type="TextBox" readOnly="true" />
-            <item id="ContactId" label="Contact :" type="standard.controls.data.valuelistlookup" readOnly="false" valueList="Contacts/Contact/Query" column="1" >
-              <properties>
-                <property id="CopyPropertyNames" value="ContactId=ContactId^Name=ContactName" />
-              </properties>
-              <bindings>
-                <binding property="DisplayValue" bindTo="ContactName" readOnly="true" />
-              </bindings>
-            </item>
-          </items>
-        </section>
-        
-        <section id="reservationroom" label="Room Details" constraints="column=0">
-          <items>
-            <item id="ArrivalDate" label="Arrival Date:" type="DatePicker" readOnly="false" column="0" />
-            <item id="DepartureDate" label="Departure Date:" type="DatePicker" readOnly="false" column="1" />
-            <item id="RoomTypeId" label="Room Type:" type="standard.controls.data.valuelistlookup" valueList="Rooms/RoomType/Query">
-              <properties>
-                <property id="CopyPropertyNames" value="RoomTypeId=RoomTypeId^RoomTypeCode=RoomTypeCode" />
-              </properties>
-              <bindings>
-                <binding property="DisplayValue" bindTo="RoomTypeCode" readOnly="true" />
-              </bindings>
-            </item>
-            <item id="RoomId" label="Room Number:" type="standard.controls.data.valuelistlookup" valueList="Rooms/Room/GetAvailable/{ReservationId}" column="1">
-              <properties>
-                <property id="CopyPropertyNames" value="RoomId=RoomId^RoomNumber=RoomNumber" />
-              </properties>
-              <bindings>
-                <binding property="DisplayValue" bindTo="RoomNumber" readOnly="true" />
-              </bindings>
-            </item>
-          </items>
-        </section>
-        
-        <section id="reservationpayment" label="Payment Details" >
-          <items>
-            <item id="Price" label="Price:" type="TextBox" readOnly="false" />
-            <item id="PaymentDone" label="Has Payment Done:" type="CheckBox" readOnly="false"/>
+            <item id="pane" labelVisibility="Collapsed" type="resrvations.pane.resrvation.details" />
           </items>
         </section>
 
@@ -160,12 +276,7 @@
             <property id="IsUserConfirmationRequired" value="true" type="Bool" />
           </properties>
         </action>
-        
-        <!--<action id="checkout" label="Check Out" description="Check Out" type="reservations.checkoutaction"  group="#actions">
-          <conditions>
-            <condition property="ReservationStatus" operator="In" value="CHECKED-IN" />
-          </conditions>
-        </action>-->
+       
         <action id="confirm" label="Confirm" description="confirm" type="reservations.confirmaction" group="#actions" displayType="#home" icon="Reservations.icon.confirm" iconSize="Large">
           <conditions>
             <condition property="ReservationStatus" operator="In" value="CREATED" />
@@ -174,6 +285,35 @@
         <action id="checkin" label="Check In" description="Check In" type="reservations.checkinaction" group="#actions" displayType="#home" icon="Reservations.icon.checkIn" iconSize="Large">
           <conditions>
             <condition property="ReservationStatus" operator="In" value="CONFIRMED" />
+          </conditions>
+        </action>
+        <action id="checkout" label="Check Out" description="Check Out" type="reservations.checkoutaction"  group="#actions" displayType="#home" icon="Reservations.icon.checkOut" iconSize="Large">
+          <conditions>
+            <condition property="ReservationStatus" operator="In" value="CHECKED-IN" />
+          </conditions>
+        </action>
+      <action id="cancel" label="Cancel" description="Cancel" type="reservations.cancelaction"  group="#actions" displayType="#home" icon="Reservations.icon.cancel" iconSize="Large">
+        <conditions>
+          <condition property="ReservationStatus" operator="In" value="CONFIRMED;CONFIRMED;CHECKED-IN" />
+        </conditions>
+      </action>
+        <action id="cash" label="Cash Payment" description="Cash Payment" type="reservations.cashpaymentaction"  group="Payment" displayType="#home" icon="Reservations.icon.payment" iconSize="Large">
+          <conditions>
+            <condition property="PaymentStatus" operator="In" value="Not Paid" />
+            <condition property="PaymentMethod" operator="In" value="Cash Payment" />
+          </conditions>
+        </action>
+        
+        <action id="Card" label="Card Payment" description="Card Payment." type="framework.EditDialogAction"
+                displayType="#home" group="Payment" icon="Reservations.icon.creditcardpayment" iconSize="Large">
+          <properties>
+            <property id="DialogId" value="reservations.dlg.reservation.cardpayment" />
+            <property id="ActionMethod" value="Reservations/Reservation/CardPayment" />
+            <property id="IncludeChildRecords" value="true" type="Bool" />
+          </properties>
+          <conditions>
+            <condition property="PaymentStatus" operator="In" value="Not Paid" />
+            <condition property="PaymentMethod" operator="In" value="Card Payment" />
           </conditions>
         </action>
       </actions>

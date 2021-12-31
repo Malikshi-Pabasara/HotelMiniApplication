@@ -70,6 +70,28 @@
             
              </summary>
         </member>
+        <member name="T:Cenium.Reservations.Activities.Helpers.Price.PriceHelper">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.Helpers.Price.PriceHelper.GetPriceById(System.Int64)">
+            <summary>
+            Get reservation by reservation id.
+            </summary>
+            <param name="roomTypeId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cenium.Reservations.Activities.Helpers.Price.PriceReservationProxy">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.Helpers.Price.PriceReservationProxy.#ctor(Cenium.Framework.Component.Interface.IEntityProxy)">
+            <summary>
+            Initializes a new instance of the RoomReservationProxy class
+            </summary>
+        </member>
         <member name="T:Cenium.Reservations.Activities.Helpers.ProxyWrapperBase">
             <summary>
             Explain the purpose of the class here
@@ -192,6 +214,24 @@
             <param name="reservationId">The instance to delete</param>
         </member>
         <member name="M:Cenium.Reservations.Activities.ReservationsActivity.Confirm(Cenium.Reservations.Data.Reservation)">
+            <summary>
+            Confirms a Reservation instance from the data store
+            </summary>
+            <param name="reservation">The instance to delete</param>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.Cancel(Cenium.Reservations.Data.Reservation)">
+            <summary>
+            Confirms a Reservation instance from the data store
+            </summary>
+            <param name="reservation">The instance to delete</param>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.CashPayment(Cenium.Reservations.Data.Reservation)">
+            <summary>
+            Confirms a Reservation instance from the data store
+            </summary>
+            <param name="reservation">The instance to delete</param>
+        </member>
+        <member name="M:Cenium.Reservations.Activities.ReservationsActivity.CardPayment(Cenium.Reservations.Data.Reservation)">
             <summary>
             Confirms a Reservation instance from the data store
             </summary>

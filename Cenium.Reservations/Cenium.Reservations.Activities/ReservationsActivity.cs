@@ -26,6 +26,7 @@ using Cenium.Framework.Security;
 using Cenium.Reservations.Activities.Helpers.Rooms;
 using Cenium.Framework.Data;
 using System.Text.RegularExpressions;
+using Cenium.Reservations.Activities.Helpers.Price;
 
 namespace Cenium.Reservations.Activities
 {
@@ -72,7 +73,7 @@ namespace Cenium.Reservations.Activities
         {
             Logger.TraceMethodEnter();
 
-            var result = _ctx.Reservations.ReadOnlyQuery().OrderBy(p => p.ReservationId);
+            var result = _ctx.Reservations.ReadOnlyQuery().OrderByDescending(p => p.ReservationId);
 
             return Logger.TraceMethodExit(result) as IEnumerable<Reservation>;
         }
@@ -124,6 +125,18 @@ namespace Cenium.Reservations.Activities
                 reservation.Number = newString;
 
             }
+            if (string.IsNullOrEmpty(reservation.Price))
+            {
+                var price = PriceHelper.GetPriceById(reservation.RoomTypeId);
+
+                double Price = price.Amount;
+                reservation.Price = Price.ToString();
+            }
+            double TotalDays = (reservation.DepartureDate-reservation.ArrivalDate).TotalDays + 1;
+            reservation.TotalDays = Convert.ToInt64(TotalDays);
+            double TotalAmount = (Convert.ToDouble(reservation.Price) * TotalDays);
+            reservation.TotalAmount = TotalAmount.ToString();
+
             reservation = _ctx.Reservations.Add(reservation);
                 _ctx.SaveChanges();
             
@@ -142,6 +155,16 @@ namespace Cenium.Reservations.Activities
         public Reservation Update(Reservation reservation)
         {
             Logger.TraceMethodEnter(reservation);
+            
+            var price = PriceHelper.GetPriceById(reservation.RoomTypeId);
+
+            double Price = price.Amount;
+            reservation.Price = Price.ToString();
+            double TotalDays = (reservation.DepartureDate - reservation.ArrivalDate).TotalDays + 1;
+            reservation.TotalDays = Convert.ToInt64(TotalDays);
+            double TotalAmount = (Price * Convert.ToDouble(reservation.TotalDays));
+            reservation.TotalAmount = TotalAmount.ToString();
+
 
             reservation = _ctx.Reservations.Modify(reservation);
             _ctx.SaveChanges();
@@ -270,6 +293,72 @@ namespace Cenium.Reservations.Activities
             return Logger.TraceMethodExit(GetFromDatastore(reservation.ReservationId)) as Reservation;
 
         }
+        /// <summary>
+        /// Confirms a Reservation instance from the data store
+        /// </summary>
+        /// <param name="reservation">The instance to delete</param>
+        [ActivityMethod("Cancel", MethodType.Invoke, IsDefault = false)]
+        [SecureResource("reservations.administration", SecureResourcePermissionLevel.Write)]
+        public Reservation Cancel(Reservation reservation)
+        {
+            Logger.TraceMethodEnter(reservation);
+
+            // Refresh Order
+            reservation = _ctx.Reservations.ReadOnlyQuery().Where(o => o.ReservationId == reservation.ReservationId).FirstOrDefault();
+
+            // Update status
+            reservation.ReservationStatus = "CANCEL";
+            reservation = _ctx.Reservations.Modify(reservation);
+            _ctx.SaveChanges();
+
+            return Logger.TraceMethodExit(GetFromDatastore(reservation.ReservationId)) as Reservation;
+
+        }
+
+        /// <summary>
+        /// Confirms a Reservation instance from the data store
+        /// </summary>
+        /// <param name="reservation">The instance to delete</param>
+        [ActivityMethod("CashPayment", MethodType.Invoke, IsDefault = false)]
+        [SecureResource("reservations.administration", SecureResourcePermissionLevel.Write)]
+        public Reservation CashPayment(Reservation reservation)
+        {
+            Logger.TraceMethodEnter(reservation);
+
+            // Refresh Order
+            reservation = _ctx.Reservations.ReadOnlyQuery().Where(o => o.ReservationId == reservation.ReservationId).FirstOrDefault();
+
+            // Update status
+            reservation.PaymentStatus = "Payment Done";
+            reservation = _ctx.Reservations.Modify(reservation);
+            _ctx.SaveChanges();
+
+            return Logger.TraceMethodExit(GetFromDatastore(reservation.ReservationId)) as Reservation;
+
+        }
+
+        /// <summary>
+        /// Confirms a Reservation instance from the data store
+        /// </summary>
+        /// <param name="reservation">The instance to delete</param>
+        [ActivityMethod("CardPayment", MethodType.Invoke, IsDefault = false)]
+        [SecureResource("reservations.administration", SecureResourcePermissionLevel.Write)]
+        public Reservation CardPayment(Reservation reservation)
+        {
+            Logger.TraceMethodEnter(reservation);
+
+            // Refresh Order
+            reservation = _ctx.Reservations.ReadOnlyQuery().Where(o => o.ReservationId == reservation.ReservationId).FirstOrDefault();
+
+            // Update status
+            reservation.PaymentStatus = "Payment Done";
+            reservation = _ctx.Reservations.Modify(reservation);
+            _ctx.SaveChanges();
+
+            return Logger.TraceMethodExit(GetFromDatastore(reservation.ReservationId)) as Reservation;
+
+        }
+
         /// <summary>
         /// Tries to assign a room to the reservation / used to manually assign or move
         /// </summary>

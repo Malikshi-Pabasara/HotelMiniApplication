@@ -73,7 +73,7 @@ namespace Cenium.Contacts.Activities
         {
             Logger.TraceMethodEnter();
 
-            var result = _ctx.Contacts.ReadOnlyQuery().OrderBy(p => p.ContactId);
+            var result = _ctx.Contacts.ReadOnlyQuery().OrderByDescending(p => p.ContactId);
 
             return Logger.TraceMethodExit(result) as IEnumerable<Contact>;
         }

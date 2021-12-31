@@ -41,6 +41,7 @@ namespace Cenium.Rooms.Client.Windows
 
             // Icons
             IconManager.Register("rooms.icon.categories", string.Format(IconPath, "ManageCategories"));
+            IconManager.Register("rooms.icon.clean", string.Format(IconPath, "ActionAutoAssignRoom32"));
 
         }
 

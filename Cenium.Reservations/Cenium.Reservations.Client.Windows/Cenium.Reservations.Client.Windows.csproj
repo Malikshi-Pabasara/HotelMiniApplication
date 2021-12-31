@@ -83,7 +83,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\CancelAction.cs" />
+    <Compile Include="Actions\CashPaymentAction.cs" />
     <Compile Include="Actions\CheckInAction.cs" />
+    <Compile Include="Actions\CheckOutAction.cs" />
     <Compile Include="Actions\ConfirmAction.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="ReservationsClientInitializer.cs" />
@@ -121,6 +124,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\ActionCreateAndConfirm32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\ActionCancel32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\ActionCreditCardPayment32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\ActionButtonStoredCreditCardPurchase40.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

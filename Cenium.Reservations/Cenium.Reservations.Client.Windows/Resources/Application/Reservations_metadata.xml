@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <metadata>
-  <enumerations>
-    <!--<enumeration id="mycomponent.enumeration.myenum" values="1=One^2=Two^3=Three" />-->
-  </enumerations>
+    <enumerations>
+      <enumeration id="reservations.enumeration.reservation.paymentmethod" values="Cash Payment^Card Payment" />
+    </enumerations>
 
 
   <entities>
@@ -28,6 +28,7 @@
         <property id="ArrivalDate" value="$SYSDATE$"/>
         <property id="DepartureDate" value="$SYSDATE$"/>
         <property id="ReservationStatus" value="CREATED"/>
+        <property id="PaymentStatus" value="Not Paid"/>
       </properties>
       <extensions>
         <extension property="StatusColor" type="CodeExtension" >

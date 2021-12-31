@@ -10,9 +10,11 @@
       <properties>
         <property id="PrimaryImageRef" value="$GUID$" />
       </properties>
+      <extensions>
+        <extension property="AgeYears" type="contacts.entityextension.ageyears" />
+        <extension property="AgeMonths" type="contacts.entityextension.agemonths" />
+      </extensions>
     </entity>
-
   </entities>
-
 </metadata>
 

@@ -214,6 +214,29 @@ namespace Cenium.Rooms.Activities
         }
 
         /// <summary>
+        /// Confirms a Reservation instance from the data store
+        /// </summary>
+        /// <param name="room">The instance to delete</param>
+        [ActivityMethod("Clean", MethodType.Invoke, IsDefault = false)]
+        [SecureResource("rooms.administration", SecureResourcePermissionLevel.Write)]
+        public Room Clean(Room room)
+        {
+            Logger.TraceMethodEnter(room);
+
+            // Refresh Order
+            room = _ctx.Rooms.ReadOnlyQuery().Where(o => o.RoomId == room.RoomId).FirstOrDefault();
+
+            // Update status
+            room.Status = "Clean";
+            room = _ctx.Rooms.Modify(room);
+            _ctx.SaveChanges();
+
+            return Logger.TraceMethodExit(GetFromDatastore(room.RoomId)) as Room;
+
+        }
+        /// 
+        /// 
+        /// <summary>
         /// Retrieves a single entity instance from the data store
         /// </summary>
         /// <param name="roomId">The key for Room</param>

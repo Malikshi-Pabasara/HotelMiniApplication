@@ -34,7 +34,7 @@
                 <property id="SelectedValuePath" value="RoomTypeId"/>
               </properties>
             </item>
-            <item id="Status" label="Status :" type="TextBox" column="0" />
+            <item id="Status" label="Status :" type="TextBox" readOnly="true" column="0" />
             
             <item id="PropertyContextId" label="@PropertyContext" type="framework.controls.data.ReferenceComboBox" valueList="Framework/PropertyContext/Query" column="1" >
                 <properties>
@@ -98,9 +98,22 @@
           <items>
             <item id="RoomNumber" label="Room Number" type="Column" width="*"/>
             <item id="Status" label="Status" type="Column" width="*"/>
-            <item id="Name" label="Name" type="Column" width="*"/>
-            <item id="PriceCode" label="Price Code" type="Column" width="*" />
 
+          </items>
+        </section>
+
+        <section id="listitem" readOnly="true">
+          <items>
+            <item id="RoomNumber" row="0"  column="0" colspan="2" type="TextBlock" labelVisibility="Collapsed">
+              <properties>
+                <property id="TextStyle" value="TitleText" />
+              </properties>
+            </item>
+            <item id="Status" type="TextBlock" labelVisibility="Collapsed">
+              <properties>
+                <property id="TextStyle" value="SubtleText" />
+              </properties>
+            </item>
           </items>
         </section>
 
@@ -125,6 +138,12 @@
             <property id="IsAutoSave" value="true" type="Bool" />
             <property id="IsUserConfirmationRequired" value="true" type="Bool" />
           </properties>
+        </action>
+
+        <action id="clean" label="Clean" description="Clean" type="rooms.cleanaction" group="#actions" displayType="#home" icon="rooms.icon.clean" iconSize="Large">
+          <conditions>
+            <condition property="Status" operator="In" value="DIRTY" />
+          </conditions>
         </action>
       </actions>
 

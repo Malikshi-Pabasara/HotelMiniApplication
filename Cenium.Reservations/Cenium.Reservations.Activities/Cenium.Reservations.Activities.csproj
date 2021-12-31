@@ -84,6 +84,8 @@
     <Compile Include="Dependencies.cs" />
     <Compile Include="Extentions\ContactReservationExtension.cs" />
     <Compile Include="Extentions\ContactReservationExtensionItem.cs" />
+    <Compile Include="Helpers\Price\PriceHelper.cs" />
+    <Compile Include="Helpers\Price\PriceReservationProxy.cs" />
     <Compile Include="Helpers\ProxyWrapperBase.cs" />
     <Compile Include="Helpers\Rooms\RoomHelper.cs" />
     <Compile Include="Helpers\Rooms\RoomProxy.cs" />

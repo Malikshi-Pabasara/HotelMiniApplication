@@ -36,6 +36,14 @@
           <Property Name="Discount" Type="String" Nullable="true" />
           <Property Name="PaymentNumber" Type="String" Nullable="true" />
           <Property Name="Number" Type="String" Nullable="true" />
+          <Property Name="PaymentMethod" Type="String" Nullable="true" />
+          <Property Name="TotalAmount" Type="String" Nullable="true" />
+          <Property Name="TotalDays" Type="Int64" Nullable="true" />
+          <Property Name="NameOnCard" Type="String" Nullable="true" />
+          <Property Name="CreditCardNumber" Type="String" Nullable="true" />
+          <Property Name="CVV" Type="String" Nullable="true" />
+          <Property Name="ExpiryDate" Type="DateTime" Nullable="true" />
+          <Property Name="PaymentStatus" Type="String" Nullable="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -63,7 +71,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="ComponentModel" DisplayType="true" >
+      <Diagram Name="ComponentModel" DisplayType="true" ZoomLevel="92" >
         <EntityTypeShape EntityType="ReservationsModel.Reservation" Width="2.75" PointX="3.25" PointY="0.875" />
       </Diagram>
     </Diagrams>

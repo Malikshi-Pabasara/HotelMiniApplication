@@ -23,6 +23,7 @@ using Cenium.Framework.Core.Attributes;
 using Cenium.Framework.Logging;
 using Cenium.Prices.Data;
 using Cenium.Framework.Security;
+using Cenium.Prices.Activities.Helper.RoomType;
 
 namespace Cenium.Prices.Activities
 {
@@ -69,7 +70,7 @@ namespace Cenium.Prices.Activities
         {
             Logger.TraceMethodEnter();
 
-            var result = _ctx.Prices.ReadOnlyQuery().OrderBy(p => p.PriceId);
+            var result = _ctx.Prices.ReadOnlyQuery().OrderByDescending(p => p.PriceId);
 
             return Logger.TraceMethodExit(result) as IEnumerable<Price>;
         }
@@ -142,6 +143,24 @@ namespace Cenium.Prices.Activities
             _ctx.SaveChanges();
 
             Logger.TraceMethodExit();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="roomTypeId"></param>
+        /// <returns></returns>
+        [ActivityMethod("GetPrice", MethodType.Get)]
+        [SecureResource("prices.administration", SecureResourcePermissionLevel.Read)]
+        public Price GetPrice(long roomTypeId)
+        {
+            Logger.TraceMethodEnter();
+
+            var roomtype = RoomTypeHelper.GetPriceCodeById(roomTypeId);
+            //var pricecode = roomtype.PriceCode;
+
+            var result = _ctx.Prices.ReadOnlyQuery().FirstOrDefault(r => r.PriceCode == roomtype.PriceCode);
+
+            return Logger.TraceMethodExit(result) as Price;
         }
 
 

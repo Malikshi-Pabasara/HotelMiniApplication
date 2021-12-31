@@ -20,3 +20,4 @@ C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Reservations\Ce
 C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Reservations\Cenium.Reservations.Data\bin\Debug\NLog.xml
 C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Reservations\Cenium.Reservations.Data\obj\Debug\Cenium.Reservations.Data.dll
 C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Reservations\Cenium.Reservations.Data\obj\Debug\Cenium.Reservations.Data.pdb
+C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Reservations\Cenium.Reservations.Data\obj\Debug\Cenium.Reservations.Data.csprojResolveAssemblyReference.cache

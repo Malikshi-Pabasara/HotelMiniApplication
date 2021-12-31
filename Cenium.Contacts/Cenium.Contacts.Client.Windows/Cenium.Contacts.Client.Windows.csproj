@@ -85,6 +85,8 @@
   <ItemGroup>
     <Compile Include="ContactsClientInitializer.cs" />
     <Compile Include="Dependencies.cs" />
+    <Compile Include="Extentions\AgeMonthsEntityExtension.cs" />
+    <Compile Include="Extentions\AgeYearsEntityExtension.cs" />
     <Compile Include="NamespaceDoc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

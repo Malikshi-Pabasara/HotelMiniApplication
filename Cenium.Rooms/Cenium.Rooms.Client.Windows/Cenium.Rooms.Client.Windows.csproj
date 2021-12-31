@@ -83,6 +83,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\CleanAction.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="RoomsClientInitializer.cs" />
     <Compile Include="NamespaceDoc.cs" />
@@ -92,7 +93,9 @@
     <!--<AppDesigner Include="Properties\" />-->
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Application\Rooms_metadata.xml" />
+    <EmbeddedResource Include="Resources\Application\Rooms_metadata.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Application\Rooms_navigator.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -118,6 +121,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\ManageCategories.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\ActionAutoAssignRoom32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

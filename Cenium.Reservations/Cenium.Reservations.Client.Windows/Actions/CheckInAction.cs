@@ -102,6 +102,15 @@ namespace Cenium.Reservations.Client.Windows.Actions
             }
             else
             {
+                // CheckOut is not Equal to CheckOut Date
+                DateTime startDate = (DateTime)rec["ArrivalDate"];
+
+                if (!DateTime.Equals(startDate.Date, System.DateTime.Today.Date))
+                {
+                    MessageBox.Show("Can not be checked in before or after arrival date.", "Early Check In Not Allowed", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+
                 CheckInProcess(rec);
             }
 

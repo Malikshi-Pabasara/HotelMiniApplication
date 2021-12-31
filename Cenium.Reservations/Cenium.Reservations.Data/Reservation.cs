@@ -58,6 +58,14 @@ namespace Cenium.Reservations.Data
         private string _discount;
         private string _paymentNumber;
         private string _number;
+        private string _paymentMethod;
+        private string _totalAmount;
+        private Nullable<long> _totalDays;
+        private string _nameOnCard;
+        private string _creditCardNumber;
+        private string _cVV;
+        private Nullable<System.DateTime> _expiryDate;
+        private string _paymentStatus;
         private Guid _tenantId = Guid.Empty;
 
         #endregion
@@ -202,6 +210,63 @@ namespace Cenium.Reservations.Data
             set { _number = value; }
         }
 
+        [EntityMember(IsReadOnly = false, Order = 18, IsPrivate = false, IsQueryable = true, IsSortable = true)]
+        public virtual string PaymentMethod
+        {
+            get { return _paymentMethod; }
+            set { _paymentMethod = value; }
+        }
+
+        [EntityMember(IsReadOnly = false, Order = 19, IsPrivate = false, IsQueryable = true, IsSortable = true)]
+        public virtual string TotalAmount
+        {
+            get { return _totalAmount; }
+            set { _totalAmount = value; }
+        }
+
+        [EntityMember(IsReadOnly = false, Order = 20, IsPrivate = false, IsQueryable = true, IsSortable = true)]
+        public virtual Nullable<long> TotalDays
+        {
+            get { return _totalDays; }
+            set { _totalDays = value; }
+        }
+
+        [EntityMember(IsReadOnly = false, Order = 21, IsPrivate = false, IsQueryable = true, IsSortable = true)]
+        public virtual string NameOnCard
+        {
+            get { return _nameOnCard; }
+            set { _nameOnCard = value; }
+        }
+
+        [EntityMember(IsReadOnly = false, Order = 22, IsPrivate = false, IsQueryable = true, IsSortable = true)]
+        public virtual string CreditCardNumber
+        {
+            get { return _creditCardNumber; }
+            set { _creditCardNumber = value; }
+        }
+
+        [EntityMember(IsReadOnly = false, Order = 23, IsPrivate = false, IsQueryable = true, IsSortable = true)]
+        public virtual string CVV
+        {
+            get { return _cVV; }
+            set { _cVV = value; }
+        }
+
+        [EntityMember(IsReadOnly = false, Order = 24, IsPrivate = false, IsQueryable = true, IsSortable = true)]
+        [DateTimeFormat(DateTimeFormat.DateTime)]
+        public virtual Nullable<System.DateTime> ExpiryDate
+        {
+            get { return _expiryDate; }
+            set { _expiryDate = value; }
+        }
+
+        [EntityMember(IsReadOnly = false, Order = 25, IsPrivate = false, IsQueryable = true, IsSortable = true)]
+        public virtual string PaymentStatus
+        {
+            get { return _paymentStatus; }
+            set { _paymentStatus = value; }
+        }
+
 
         #endregion
 
@@ -211,7 +276,7 @@ namespace Cenium.Reservations.Data
         /// <summary>
         /// Tenant identifier, for internal framework usage only
         /// </summary>
-        [EntityMember(IsReadOnly = true, IsHidden = true, Order = 18, IsQueryable = false, IsSortable = false)]
+        [EntityMember(IsReadOnly = true, IsHidden = true, Order = 26, IsQueryable = false, IsSortable = false)]
         public virtual Guid TenantId
         {
             get { return _tenantId; }
@@ -223,7 +288,7 @@ namespace Cenium.Reservations.Data
         /// </summary>
         [Timestamp]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [EntityMember(IsReadOnly = true, Order = 19, IsHidden = true, IsQueryable = false, IsSortable = false)]
+        [EntityMember(IsReadOnly = true, Order = 27, IsHidden = true, IsQueryable = false, IsSortable = false)]
         public virtual byte[] RowVersion
         {
             get;

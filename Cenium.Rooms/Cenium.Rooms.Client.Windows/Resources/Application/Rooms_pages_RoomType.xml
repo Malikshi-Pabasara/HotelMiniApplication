@@ -151,6 +151,20 @@
             <item id="MaxNoOfPersons" label="Max Number of Persons" type="Column" width="*"/>
           </items>
         </section>
+        <section id="listitem" readOnly="true">
+          <items>
+            <item id="RoomTypeName" type="TextBlock" labelVisibility="Collapsed">
+              <properties>
+                <property id="TextStyle" value="TitleText" />
+              </properties>
+            </item>
+            <item id="RoomTypeCode" type="TextBlock" labelVisibility="Collapsed">
+              <properties>
+                <property id="TextStyle" value="SubtleText" />
+              </properties>
+            </item>
+          </items>
+        </section>
 
         <section id="summary">
           <items>

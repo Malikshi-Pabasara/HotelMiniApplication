@@ -82,6 +82,9 @@
   <ItemGroup>
     <Compile Include="Component.cs" />
     <Compile Include="Dependencies.cs" />
+    <Compile Include="Helper\ProxyWrapperBase.cs" />
+    <Compile Include="Helper\RoomType\RoomTypeHelper.cs" />
+    <Compile Include="Helper\RoomType\RoomTypePriceProxy.cs" />
     <Compile Include="NamespaceDoc.cs" />
     <Compile Include="PricesActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

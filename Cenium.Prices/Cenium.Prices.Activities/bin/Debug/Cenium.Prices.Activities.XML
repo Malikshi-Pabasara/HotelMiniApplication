@@ -4,6 +4,47 @@
         <name>Cenium.Prices.Activities</name>
     </assembly>
     <members>
+        <member name="T:Cenium.Prices.Activities.Helper.ProxyWrapperBase">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Prices.Activities.Helper.ProxyWrapperBase.#ctor(Cenium.Framework.Component.Interface.IEntityProxy)">
+            <summary>
+            Initializes a new instance of the ProxyWrapperBase class
+            </summary>
+            <param name="proxy">The entity proxy to wrap</param>
+        </member>
+        <member name="M:Cenium.Prices.Activities.Helper.ProxyWrapperBase.#ctor">
+            <summary>
+            Initializes a new instance of the ProxyWrapperBase class
+            </summary>
+        </member>
+        <member name="M:Cenium.Prices.Activities.Helper.ProxyWrapperBase.GetValue``1(System.String)">
+            <summary>
+            Gets a strongly typed value from the proxy entity, if the property is available
+            </summary>
+            <typeparam name="T">The value type</typeparam>
+            <param name="name">The name of the property</param>
+            <returns>The value of the property, or default(T) if the property does not exist, is the wrong type or is null</returns>
+        </member>
+        <member name="T:Cenium.Prices.Activities.Helper.RoomType.RoomTypeHelper">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
+        <member name="M:Cenium.Prices.Activities.Helper.RoomType.RoomTypeHelper.GetPriceCodeById(System.Int64)">
+            <summary>
+            Get reservation by reservation id.
+            </summary>
+            <param name="roomTypeId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Cenium.Prices.Activities.Helper.RoomType.RoomTypePriceProxy">
+            <summary>
+            Explain the purpose of the class here
+            </summary>
+        </member>
         <member name="T:Cenium.Prices.Activities.NamespaceDoc">
             <summary>
             Contains activity classes that comprise the application processing layer of the component Prices
@@ -60,6 +101,13 @@
             Deletes a Price instance from the data store
             </summary>
             <param name="price">The instance to delete</param>
+        </member>
+        <member name="M:Cenium.Prices.Activities.PricesActivity.GetPrice(System.Int64)">
+            <summary>
+            
+            </summary>
+            <param name="roomTypeId"></param>
+            <returns></returns>
         </member>
         <member name="M:Cenium.Prices.Activities.PricesActivity.GetFromDatastore(System.Int64)">
             <summary>

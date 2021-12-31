@@ -43,6 +43,10 @@ namespace Cenium.Reservations.Client.Windows
             IconManager.Register("Reservations.icon.checkIn", string.Format(IconPath, "ActionCheckIn32"));
             IconManager.Register("Reservations.icon.checkOut", string.Format(IconPath, "ActionCheckOut32"));
             IconManager.Register("Reservations.icon.confirm", string.Format(IconPath, "ActionCreateAndConfirm32"));
+            IconManager.Register("Reservations.icon.cancel", string.Format(IconPath, "ActionCancel32"));
+            IconManager.Register("Reservations.icon.payment", string.Format(IconPath, "ActionCreditCardPayment32"));
+            IconManager.Register("Reservations.icon.creditcardpayment", string.Format(IconPath, "ActionButtonStoredCreditCardPurchase40"));
+
         }
 
     }

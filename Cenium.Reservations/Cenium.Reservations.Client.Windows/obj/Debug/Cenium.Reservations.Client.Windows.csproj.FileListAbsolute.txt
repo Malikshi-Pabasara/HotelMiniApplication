@@ -19,3 +19,4 @@ C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Reservations\Ce
 C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Reservations\Cenium.Reservations.Client.Windows\obj\Debug\Cenium.Reservations.Client.Windows.g.resources
 C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Reservations\Cenium.Reservations.Client.Windows\obj\Debug\Cenium.Reservations.Client.Windows.dll
 C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Reservations\Cenium.Reservations.Client.Windows\obj\Debug\Cenium.Reservations.Client.Windows.pdb
+C:\Users\malikshi.p\Documents\Visual Studio 2015\Projects\Cenium.Reservations\Cenium.Reservations.Client.Windows\obj\Debug\Cenium.Reservations.Client.Windows.csprojResolveAssemblyReference.cache

@@ -13,16 +13,16 @@
              </item>
           </items>
         </section>
-        <section id="address" label="Address" constraints="column=0">
+        <section id="address" label="Address" constraints="column=1">
           <items>
             <item id="dummy" type="contacts.pane.contact.address" labelVisibility="Collapsed" column="0" colspan="2" >
               <properties>
-                <property id="Height" value="100" type="Double" />
+                <property id="Height" value="130" type="Double" />
               </properties>
             </item>
           </items>
         </section>
-        <section id="identity" label="Identity" constraints="column=1">
+        <section id="identity" label="Identity" constraints="column=0">
           <items>
             <item id="dummy" type="contacts.pane.contact.identity" labelVisibility="Collapsed" column="0">
                <properties>
@@ -56,12 +56,6 @@
             </item>
           </items>
         </section>
-        <section id="reservations" label="Reservations" constraints="column=0">
-          <items>
-            <item id="ReservationExtension.Items" type="contacts.pane.contact.reservation" labelVisibility="Collapsed" column="0"/>
-          </items>
-        </section>
-        
       </layout>
     </pane>
 
@@ -117,11 +111,12 @@
         <section id="column4" >
           <items>
             <item id="DateOfBirth" label="!contacts.contact.dateofbirth" type="DatePicker" readOnly="false" column="0" colspan="2"  />
+            <item id="AgeYears" label="Age Years/Months:" type="TextBox" readOnly="true" width="35" column="0" row="1" />
+            <item id="AgeMonths" labelVisibility="Collapsed" label="" type="TextBox" width="35" readOnly="true" column="1" row="1" />
             <item id="PassportNo" label="!contacts.contact.passportno" type="TextBox"  readOnly="false" column="0" colspan="2"/>
             <item id="IdNumber" label="!contacts.contact.idnumber" type="TextBox"  readOnly="false" column="0" colspan="2" />
             <item id="Gender" label="!contacts.contact.gender" type="ComboBox" valueList="enum:contacts.enumeration.contact.gender" readOnly="false" column="0" colspan="2" />
           </items>
-         
         </section>
       </layout>
     </pane>
@@ -157,23 +152,33 @@
         </section>
       </layout>
     </pane>
-      
   </panes>
   
   <!-- Add dialogs here -->
   <dialogs>
-
-<!-- Add dialogs here -->
-
+    <dialog id="Contacts.dlg.contact.reservations" name="Reservations"
+              description="Reservation List."
+              icon=""
+              contentPanel="framework.ItemDialog" applyButton="false" showHeader="true" readOnly="false">
+      <layout>
+        <section id="reservations" label="Reservations" constraints="column=0">
+          <items>
+            <item id="ReservationExtension.Items" type="contacts.pane.contact.reservation" labelVisibility="Collapsed" column="0">
+            <properties>
+              <property id="Width" value="500" type="Double" />
+              <property id="Height" value="300" type="Double" />
+            </properties>
+            </item>
+          </items>
+        </section>
+      </layout>
+    </dialog>
   </dialogs>
-
-
 
   <!-- Add pages here-->
   <pages>
     <page id="contacts.page.contact" name="Contacts" description="Add and maintain contacts information"
-    model="framework.pages.listviewmodel" type="standard.pagetype.list">
-
+      model="framework.pages.listviewmodel" type="standard.pagetype.list">
 
 
       <modelProperties>
@@ -184,8 +189,6 @@
         <property id="RemoveMethod" value="Contacts/Contact/Delete" />
         <property id="IncludeChildRecords" value="true" type="Bool" />
       </modelProperties>
-
-
 
       <layout>
         <section id="griditem" readOnly="true">
@@ -200,13 +203,27 @@
             <item id="DateOfBirth" label="Date of birth" type="Column" format="ShortDate" width="*"/>
           </items>
         </section>
+
+        <section id="listitem" readOnly="true">
+          <items>
+            <item id="Name" type="TextBlock" labelVisibility="Collapsed">
+              <properties>
+                <property id="TextStyle" value="TitleText" />
+              </properties>
+            </item>
+            <item id="Name" type="TextBlock" labelVisibility="Collapsed">
+              <properties>
+                <property id="TextStyle" value="SubtleText" />
+              </properties>
+            </item>
+          </items>
+        </section>
         
         <section id="summary">
           <items>
             <item id="pane" labelVisibility="Collapsed" type="contact.pane.contacts.details" />
           </items>
         </section>
-        
       </layout>
       
       
@@ -221,6 +238,12 @@
           <properties>
             <property id="IsAutoSave" value="true" type="Bool" />
             <property id="IsUserConfirmationRequired" value="true" type="Bool" />
+          </properties>
+        </action>
+        <action id="reservations" label="Reservations" description="Reservation list" type="framework.ViewDialogAction"
+                displayType="#home" group="Actions" icon="" iconSize="Large">
+          <properties>
+            <property id="DialogId" value="Contacts.dlg.contact.reservations" />
           </properties>
         </action>
       </actions>

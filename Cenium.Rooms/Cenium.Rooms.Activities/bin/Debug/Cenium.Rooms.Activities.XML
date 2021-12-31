@@ -193,7 +193,15 @@
             <param name="reservationId"></param>
             <returns></returns>
         </member>
+        <member name="M:Cenium.Rooms.Activities.RoomsActivity.Clean(Cenium.Rooms.Data.Room)">
+            <summary>
+            Confirms a Reservation instance from the data store
+            </summary>
+            <param name="room">The instance to delete</param>
+        </member>
         <member name="M:Cenium.Rooms.Activities.RoomsActivity.GetFromDatastore(System.Int64)">
+            
+            
             <summary>
             Retrieves a single entity instance from the data store
             </summary>
