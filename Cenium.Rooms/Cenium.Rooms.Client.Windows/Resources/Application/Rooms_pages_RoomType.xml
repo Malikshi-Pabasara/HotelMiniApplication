@@ -30,9 +30,9 @@
         <section id="features" label="Features" constraints="column=0">
           <items>
             <item id="RoomTypeFeatures" type="rooms.pane.room.features" labelVisibility="Collapsed" column="0">
-            <properties>
-              <property id="Height" value="200" type="Double" />
-            </properties>
+              <properties>
+                <property id="Height" value="200" type="Double" />
+              </properties>
             </item>
           </items>
         </section>
@@ -89,10 +89,7 @@
           </items>
         </section>
       </layout>
-    </pane>
-
-    
-    
+    </pane>   
   </panes>
 
   <!-- Add dialogs here -->
@@ -120,16 +117,12 @@
       </layout>
     </dialog>
     <!-- Add dialogs here -->
-
   </dialogs>
-
 
 
   <!-- Add pages here-->
   <pages>
     <page id="rooms.page.roomtype" name="roomtypes" description="Add and maintain roomtypes information" model="framework.pages.listviewmodel" type="standard.pagetype.list">
-
-
 
       <modelProperties>
         <property id="CreateMethod" value="Rooms/RoomType/Create" />
@@ -139,8 +132,6 @@
         <property id="GetMethod" value="Rooms/RoomType/Get/{RoomTypeId}" />
         <property id="IncludeChildRecords" value="true" type="Bool" />
       </modelProperties>
-
-
 
       <layout>
         <section id="griditem" readOnly="true">

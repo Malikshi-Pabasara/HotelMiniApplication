@@ -46,6 +46,7 @@ create table [dbo].[Rooms_Rooms] (
 	[SquareMeters] [float] null,
     [CeilingHeight] [float] null,
 	[PriceCode] [nvarchar](max) null,
+	[ColorCode] [nvarchar](max) null,
 	[Property][nvarchar](max) not null,
 	[PropertyContextId] [bigint] not null,
     [RoomTypeId] [bigint] not null,
@@ -70,4 +71,4 @@ alter table [dbo].[Rooms_RoomTypeFeatures] add constraint [Room_RoomType] foreig
 alter table [dbo].[Rooms_RoomTypeFeatures] add constraint [Room_Feature] foreign key ([FeatureId]) references [dbo].[Rooms_Features]([FeatureId]) on delete cascade;
 
 
-#SetVersion([Cenium.Rooms.Data.RoomsEntitiesDbContext], [Rooms], [1.0.0.0], [8545E7F9867B90F80BA2AF3F4DE3BAC6F72B012375DEB36422C92AEBC2E804FD])
+#SetVersion([Cenium.Rooms.Data.RoomsEntitiesDbContext], [Rooms], [1.0.0.1], [8545E7F9867B90F80BA2AF3F4DE3BAC6F72B012375DEB36422C92AEBC2E804FD])

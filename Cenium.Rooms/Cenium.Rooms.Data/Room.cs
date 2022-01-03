@@ -52,6 +52,7 @@ namespace Cenium.Rooms.Data
         private Nullable<double> _squareMeters;
         private Nullable<double> _ceilingHeight;
         private string _property;
+        private string _colorCode;
         private long _roomTypeId;
         private RoomType _roomType;
         private Guid _tenantId = Guid.Empty;
@@ -151,6 +152,13 @@ namespace Cenium.Rooms.Data
             set { _property = value; }
         }
 
+        [EntityMember(IsReadOnly = false, Order = 12, IsPrivate = false, IsQueryable = true, IsSortable = true)]
+        public virtual string ColorCode
+        {
+            get { return _colorCode; }
+            set { _colorCode = value; }
+        }
+
 
         #endregion
 
@@ -162,14 +170,14 @@ namespace Cenium.Rooms.Data
         /// </summary>
         [Required]
         [ForeignKey("RoomType")]
-        [EntityMember(IsReadOnly = false, Order = 12, Reference = "RoomType", IsQueryable = false, IsSortable = false)]
+        [EntityMember(IsReadOnly = false, Order = 13, Reference = "RoomType", IsQueryable = false, IsSortable = false)]
         public virtual long RoomTypeId
         {
             get { return _roomTypeId; }
             set { _roomTypeId = value; }
         }
 
-        [EntityMember(IsReadOnly = false, Order = 13)]
+        [EntityMember(IsReadOnly = false, Order = 14)]
         public virtual RoomType RoomType
         {
             get { return _roomType; }
@@ -185,7 +193,7 @@ namespace Cenium.Rooms.Data
         /// <summary>
         /// Tenant identifier, for internal framework usage only
         /// </summary>
-        [EntityMember(IsReadOnly = true, IsHidden = true, Order = 14, IsQueryable = false, IsSortable = false)]
+        [EntityMember(IsReadOnly = true, IsHidden = true, Order = 15, IsQueryable = false, IsSortable = false)]
         public virtual Guid TenantId
         {
             get { return _tenantId; }
@@ -197,7 +205,7 @@ namespace Cenium.Rooms.Data
         /// </summary>
         [Timestamp]
         [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
-        [EntityMember(IsReadOnly = true, Order = 15, IsHidden = true, IsQueryable = false, IsSortable = false)]
+        [EntityMember(IsReadOnly = true, Order = 16, IsHidden = true, IsQueryable = false, IsSortable = false)]
         public virtual byte[] RowVersion
         {
             get;

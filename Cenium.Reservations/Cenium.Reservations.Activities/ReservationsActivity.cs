@@ -27,6 +27,7 @@ using Cenium.Reservations.Activities.Helpers.Rooms;
 using Cenium.Framework.Data;
 using System.Text.RegularExpressions;
 using Cenium.Reservations.Activities.Helpers.Price;
+using Cenium.Framework;
 
 namespace Cenium.Reservations.Activities
 {
@@ -107,6 +108,20 @@ namespace Cenium.Reservations.Activities
         {
             Logger.TraceMethodEnter(reservation);
 
+            if ((reservation.DepartureDate - reservation.ArrivalDate).TotalDays < 0)
+            {
+                throw new FrameworkException("Arrival date should be less than departure date. Please enter correctly");
+            }
+
+            var price = PriceHelper.GetPriceById(reservation.RoomTypeId);
+
+            double Price = price.Amount;
+            reservation.Price = Price.ToString();
+            double TotalDays = (reservation.DepartureDate - reservation.ArrivalDate).TotalDays + 1;
+            reservation.TotalDays = Convert.ToInt64(TotalDays);
+            double TotalAmount = (Price * Convert.ToDouble(reservation.TotalDays));
+            reservation.TotalAmount = TotalAmount.ToString();
+
             if (string.IsNullOrEmpty(reservation.Number))
             {
                 var maxReservation = _ctx.Reservations.ReadOnlyQuery().OrderByDescending(x => x.Number).FirstOrDefault();
@@ -120,22 +135,11 @@ namespace Cenium.Reservations.Activities
                 {
                     Console.WriteLine("Something weired happened");
                 }
-                String newString = String.Format("AB{0}", (number + 1).ToString("D6"));
+                String newString = String.Format("RE{0}", (number + 1).ToString("D6"));
 
                 reservation.Number = newString;
 
             }
-            if (string.IsNullOrEmpty(reservation.Price))
-            {
-                var price = PriceHelper.GetPriceById(reservation.RoomTypeId);
-
-                double Price = price.Amount;
-                reservation.Price = Price.ToString();
-            }
-            double TotalDays = (reservation.DepartureDate-reservation.ArrivalDate).TotalDays + 1;
-            reservation.TotalDays = Convert.ToInt64(TotalDays);
-            double TotalAmount = (Convert.ToDouble(reservation.Price) * TotalDays);
-            reservation.TotalAmount = TotalAmount.ToString();
 
             reservation = _ctx.Reservations.Add(reservation);
                 _ctx.SaveChanges();
@@ -155,7 +159,12 @@ namespace Cenium.Reservations.Activities
         public Reservation Update(Reservation reservation)
         {
             Logger.TraceMethodEnter(reservation);
-            
+
+            if ((reservation.DepartureDate - reservation.ArrivalDate).TotalDays < 0)
+            {
+                throw new FrameworkException("Arrival date should be less than departure date. Please enter correctly");
+            }
+
             var price = PriceHelper.GetPriceById(reservation.RoomTypeId);
 
             double Price = price.Amount;
@@ -404,9 +413,5 @@ namespace Cenium.Reservations.Activities
                 _ctx.Dispose();
             _ctx = null;
         }
-
-
-
     }
-
 }

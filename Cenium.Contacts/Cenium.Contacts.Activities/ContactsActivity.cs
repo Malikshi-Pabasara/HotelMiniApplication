@@ -18,7 +18,7 @@
 using System;
 using System.Linq;
 using System.Collections.Generic;
-
+using System.ComponentModel.DataAnnotations;
 using Cenium.Framework.Core.Attributes;
 using Cenium.Framework.Logging;
 using Cenium.Contacts.Data;
@@ -111,7 +111,36 @@ namespace Cenium.Contacts.Activities
         {
             Logger.TraceMethodEnter(contact);
 
+            if (string.IsNullOrEmpty(contact.Number))
+            {
+                var maxContact = _ctx.Contacts.ReadOnlyQuery().OrderByDescending(x => x.Number).FirstOrDefault();
+                string maxContactNumber = maxContact.Number;
+
+                string digits = new string(maxContactNumber.Where(char.IsDigit).ToArray());
+                string letters = new string(maxContactNumber.Where(char.IsLetter).ToArray());
+
+                int number;
+                if (!int.TryParse(digits, out number)) //int.Parse would do the job since only digits are selected
+                {
+                    Console.WriteLine("Something weired happened");
+                }
+                String newString = String.Format("CO{0}", (number + 1).ToString("D6"));
+
+                contact.Number = newString;
+
+            }
+
+            //foreach (var EmailAddress in contact.Emails)
+            //{
+            //    if (!new emailaddressattribute().isvalid(EmailAddress))
+            //    {
+            //        throw new frameworkexception("please enter email correctly");
+            //    }
+            //}
+
+
             ValidateNameExists(contact);
+
             if (contact.PrimaryImageRef == null || contact.PrimaryImageRef == Guid.Empty)
                 contact.PrimaryImageRef = Guid.NewGuid();
 

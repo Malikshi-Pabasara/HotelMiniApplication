@@ -6,23 +6,6 @@
 
 
   <entities>
-    
-    <!-- Add entity metadata here. 
-    Use the properties section to set default values
-    Use the extensions section to add property extensions
-    -->
-    <!--<entity id="MyComponent.MyEntity">
-      <properties>
-        <property id="MyProperty" value="[No value]" />
-      </properties>
-      <extensions>
-        <extension property="MyPropertyDisplayText" type="MyComponent.Extensions.MyExtension" >
-          <parameters>
-            <parameter id="PropertyName" value="MyProperty" />
-          </parameters>
-        </extension>
-      </extensions>
-    </entity>-->
     <entity id="Reservations.Reservation">
       <properties>
         <property id="ArrivalDate" value="$SYSDATE$"/>
@@ -44,6 +27,8 @@
                         return "Green";
                       if(string.Equals(record["ReservationStatus"], "CHECKED-OUT"))
                         return "Red";
+                        if(string.Equals(record["ReservationStatus"], "CANCEL"))
+                        return "Black";
                       return "Gray";
                     ]]>
                 </parameter>

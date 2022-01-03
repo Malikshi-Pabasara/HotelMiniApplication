@@ -34,6 +34,7 @@ namespace Cenium.Reservations.Data
 
     [Entity]
     [Table("Reservations_Reservations")]
+    [PropertyContextEntity("PropertyContextId")]
     public partial class Reservation
     {
 

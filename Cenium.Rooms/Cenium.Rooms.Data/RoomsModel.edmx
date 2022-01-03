@@ -46,6 +46,7 @@
           <Property Name="SquareMeters" Type="Double" Nullable="true" />
           <Property Name="CeilingHeight" Type="Double" Nullable="true" />
           <Property Name="Property" Type="String" Nullable="false" />
+          <Property Name="ColorCode" Type="String" Nullable="true" />
         </EntityType>
         <EntityType Name="RoomType">
           <Key>

@@ -19,5 +19,5 @@ using Cenium.Framework;
 using Cenium.Framework.Data;
 
 [assembly: Component("Contacts")]
-[assembly: ModelVersion("1.0.0.0")]
+[assembly: ModelVersion("1.0.0.1")]
 

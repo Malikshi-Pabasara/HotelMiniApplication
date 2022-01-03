@@ -43,6 +43,7 @@
           <NavigationProperty Name="Emails" Relationship="ContactsModel.ContactEmail" FromRole="Contact" ToRole="Email" />
           <Property Name="MiddleName" Type="String" Nullable="true" />
           <Property Name="PrimaryImageRef" Type="Guid" Nullable="true" />
+          <Property Name="Number" Type="String" Nullable="true" />
         </EntityType>
         <EntityType Name="Phone">
           <Key>

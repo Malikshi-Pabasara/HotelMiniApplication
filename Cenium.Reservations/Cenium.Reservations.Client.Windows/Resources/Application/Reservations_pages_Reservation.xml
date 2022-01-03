@@ -92,8 +92,8 @@
       <layout>
         <section id="column2">
           <items>
-            <item id="ArrivalDate" label="Arrival Date:" type="DatePicker" readOnly="false" colspan="2"/>
-            <item id="DepartureDate" label="Departure Date:" type="DatePicker" readOnly="false" colspan="2" />
+            <item id="ArrivalDate" label="!reservations.reservation.arrivaldate" type="DatePicker" readOnly="false" colspan="2"/>
+            <item id="DepartureDate" label="!reservations.reservation.departuredate" type="DatePicker" readOnly="false" colspan="2" />
             <item id="RoomTypeId" label="Room Type:" type="standard.controls.data.valuelistlookup" valueList="Rooms/RoomType/Query" colspan="2">
               <properties>
                 <property id="CopyPropertyNames" value="RoomTypeId=RoomTypeId^RoomTypeCode=RoomTypeCode" />
@@ -121,7 +121,7 @@
           <items>
             <item id="Price" label="Price per day:" type="TextBox" readOnly="false" colspan="2" />
             <item id="TotalDays" label="Total Days:" type="TextBox" readOnly="false" colspan="2" />
-            <item id="TotalAmount" label="Total Amount:" type="TextBox" readOnly="false" colspan="2"/>
+            <item id="TotalAmount" label="!reservations.reservation.totalamount" type="TextBox" readOnly="false" colspan="2"/>
           </items>
         </section>
       </layout>
@@ -132,7 +132,7 @@
         <section id="column3">
           <items>
             <item id="PaymentMethod" label="!reservations.reservation.paymentmethod" type="ComboBox" valueList="enum:reservations.enumeration.reservation.paymentmethod" readOnly="false" column="0" colspan="2" />
-            <item id="PaymentStatus" label="Payment Status:" type="TextBox"  readOnly="true" colspan="2" />
+            <item id="PaymentStatus" label="!reservations.reservation.paymentstatus" type="TextBox"  readOnly="true" colspan="2" />
           </items>
         </section>
       </layout>
@@ -198,8 +198,6 @@
         </section>
       </layout>
     </dialog>
-
-    
   </dialogs>
 
 
@@ -208,6 +206,10 @@
   <pages>
     <page id="reservations.page.reservation" name="Reservations" description="Add and maintain reservations information"
     model="framework.pages.listviewmodel" type="standard.pagetype.list">
+      
+      <properties>
+        <property id="StatusColorMemberPath" value="StatusColor" />
+      </properties>
 
       <modelProperties>
         <property id="CreateMethod" value="Reservations/Reservation/Create" />
@@ -251,12 +253,11 @@
         </items>
       </section>
       
-      
-        <section id="summary">
-          <items>
-            <item id="pane" labelVisibility="Collapsed" type="resrvations.pane.resrvation.details" />
-          </items>
-        </section>
+      <section id="summary">
+        <items>
+          <item id="pane" labelVisibility="Collapsed" type="resrvations.pane.resrvation.details" />
+        </items>
+      </section>
 
       </layout>
       <actions>
@@ -282,21 +283,25 @@
             <condition property="ReservationStatus" operator="In" value="CREATED" />
           </conditions>
         </action>
+        
         <action id="checkin" label="Check In" description="Check In" type="reservations.checkinaction" group="#actions" displayType="#home" icon="Reservations.icon.checkIn" iconSize="Large">
           <conditions>
             <condition property="ReservationStatus" operator="In" value="CONFIRMED" />
           </conditions>
         </action>
+        
         <action id="checkout" label="Check Out" description="Check Out" type="reservations.checkoutaction"  group="#actions" displayType="#home" icon="Reservations.icon.checkOut" iconSize="Large">
           <conditions>
             <condition property="ReservationStatus" operator="In" value="CHECKED-IN" />
           </conditions>
         </action>
-      <action id="cancel" label="Cancel" description="Cancel" type="reservations.cancelaction"  group="#actions" displayType="#home" icon="Reservations.icon.cancel" iconSize="Large">
-        <conditions>
-          <condition property="ReservationStatus" operator="In" value="CONFIRMED;CONFIRMED;CHECKED-IN" />
-        </conditions>
-      </action>
+        
+        <action id="cancel" label="Cancel" description="Cancel" type="reservations.cancelaction"  group="#actions" displayType="#home" icon="Reservations.icon.cancel" iconSize="Large">
+          <conditions>
+            <condition property="ReservationStatus" operator="In" value="CONFIRMED;CONFIRMED;CHECKED-IN" />
+          </conditions>
+        </action>
+        
         <action id="cash" label="Cash Payment" description="Cash Payment" type="reservations.cashpaymentaction"  group="Payment" displayType="#home" icon="Reservations.icon.payment" iconSize="Large">
           <conditions>
             <condition property="PaymentStatus" operator="In" value="Not Paid" />

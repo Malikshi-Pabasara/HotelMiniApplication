@@ -19,6 +19,7 @@
 create table [dbo].[Contacts_Contacts] (
 	[ContactId] [bigint] not null identity,
 	[Name] [nvarchar](max) not null,
+	[Number] [nvarchar](max) null,
 	[DateOfBirth] [datetime] null,
 	[IdNumber] [nvarchar](max) null,
 	[Address1] [nvarchar](max) null,
@@ -54,6 +55,10 @@ create table [dbo].[Contacts_Phones] (
 alter table [dbo].[Contacts_Emails] add constraint [Email_Contact] foreign key ([ContactId]) references [dbo].[Contacts_Contacts]([ContactId]) on delete cascade;
 alter table [dbo].[Contacts_Phones] add constraint [Phone_Contact] foreign key ([ContactId]) references [dbo].[Contacts_Contacts]([ContactId]) on delete cascade;
 
-
 #SetVersion([Cenium.Contacts.Data.ContactsEntitiesDbContext], [Contacts], [1.0.0.0], [8545E7F9867B90F80BA2AF3F4DE3BAC6F72B012375DEB36422C92AEBC2E804FD])
+
+#Version([1.0.0.1])
+#AddColumn([Contacts_Contacts], [Number], [nvarchar(255) null ])
+
+#SetVersion([Cenium.Contacts.Data.ContactsEntitiesDbContext], [Contacts], [1.0.0.1], [8545E7F9867B90F80BA2AF3F4DE3BAC6F72B012375DEB36422C92AEBC2E804FD])
 

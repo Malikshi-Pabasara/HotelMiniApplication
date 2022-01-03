@@ -2,23 +2,35 @@
 <metadata>
   <enumerations>
     
-    <!--<enumeration id="mycomponent.enumeration.myenum" values="1=One^2=Two^3=Three" />-->
   </enumerations>
 
 
   <entities>
-    
-    <!-- Add entity metadata here. 
-    Use the properties section to set default values
-    Use the extensions section to add property extensions
-    -->
     <entity id="Rooms.Room">
       <properties>
         <property id="Status" value="Clean"/>
       </properties>
+      <extensions>
+        <extension property="StatusColor" type="CodeExtension" >
+          <parameters>
+            <parameter id="Source" >
+              <![CDATA[
+                      if (record == null) 
+                        return "Gray";
+                
+                      if(string.Equals(record["Status"], "Clean"))
+                        return "Green";
+                      if(string.Equals(record["Status"], "OCCUPIED"))
+                        return "Orange";
+                      if(string.Equals(record["Status"], "DIRTY"))
+                        return "Red";
+                      return "Gray";
+                    ]]>
+            </parameter>
+          </parameters>
+        </extension>
+      </extensions>
     </entity>
-
   </entities>
-
 </metadata>
 

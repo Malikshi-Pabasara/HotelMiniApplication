@@ -67,8 +67,6 @@
   <!-- Add dialogs here -->
   <dialogs>
 
-    <!-- Add dialogs here -->
-
   </dialogs>
 
 
@@ -82,7 +80,6 @@
         <property id="ColumnLayout" value="WideFirstColumn" />
       </properties>
 
-
       <modelProperties>
         <property id="CreateMethod" value="Rooms/Feature/Create" />
         <property id="QueryMethod" value="Rooms/Feature/Query" />
@@ -92,27 +89,17 @@
         <property id="IncludeChildRecords" value="true" type="Bool" />
       </modelProperties>
 
-
-
       <layout>
-        <!--<section id="griditem" readOnly="true">
-          <items>
-            <item id="FeatureName" label="Feature Name" type="Column" width="*"/>
-            <item id="FeatureCode" label="Feature Code" type="Column" width="*"/>
-            <item id="Description" label="Description" type="Column" width="*"/>
-          </items>
-        </section>-->
         
-          <section id="listView" readOnly="true" >
-            <items>
-              <item id="FeatureName" type="TextBlock" labelVisibility="Collapsed">
-                <properties>
-                  <property id="TextStyle" value="TitleText" />
-                </properties>
-              </item>
-            </items>
-          </section>
-
+        <section id="listView" readOnly="true" >
+          <items>
+            <item id="FeatureName" type="TextBlock" labelVisibility="Collapsed">
+              <properties>
+                <property id="TextStyle" value="TitleText" />
+              </properties>
+            </item>
+          </items>
+        </section>
 
         <section id="general" label="General" readOnly="false" constraints="column=0">
           <items>
@@ -137,7 +124,6 @@
           </properties>
         </action>
       </actions>
-      
     </page>
   </pages>
 </ui>

@@ -23,6 +23,8 @@ using Cenium.Framework.Core.Attributes;
 using Cenium.Framework.Logging;
 using Cenium.Contacts.Data;
 using Cenium.Framework.Security;
+using System.ComponentModel.DataAnnotations;
+using Cenium.Framework;
 
 namespace Cenium.Contacts.Activities
 {
@@ -103,6 +105,10 @@ namespace Cenium.Contacts.Activities
         {
             Logger.TraceMethodEnter(email);
 
+            if(! new EmailAddressAttribute().IsValid(email.EmailAddress))
+            {
+                throw new FrameworkException("Please enter email correctly");
+            }
             email = _ctx.Emails.Add(email);
             _ctx.SaveChanges();
 
@@ -121,6 +127,10 @@ namespace Cenium.Contacts.Activities
         {
             Logger.TraceMethodEnter(email);
 
+            if (!new EmailAddressAttribute().IsValid(email.EmailAddress))
+            {
+                throw new FrameworkException("Please enter email correctly");
+            }
             email = _ctx.Emails.Modify(email);
             _ctx.SaveChanges();
 

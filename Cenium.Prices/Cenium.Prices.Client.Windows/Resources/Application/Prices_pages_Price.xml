@@ -12,8 +12,6 @@
 
   </dialogs>
 
-
-
   <!-- Add pages here-->
   <pages>
     <page id="prices.page.price" name="Prices" description="Add and maintain prices information" model="framework.pages.listviewmodel" type="framework.listitempage">
@@ -35,13 +33,6 @@
 
 
       <layout>
-        <!--<section id="listView" readOnly="true">
-          <items>
-            <item id="PriceCode" label="Price Code" type="Column" width="*"/>
-            <item id="Description" label="Description" type="Column" width="*"/>
-            <item id="Amount" label="Amount" type="Column" width="*"/>
-          </items>
-        </section>-->
         <section id="listView" readOnly="true" >
           <items>
             <item id="Name" type="TextBlock" labelVisibility="Collapsed">

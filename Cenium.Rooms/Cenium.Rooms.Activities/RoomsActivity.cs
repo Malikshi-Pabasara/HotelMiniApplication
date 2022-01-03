@@ -65,8 +65,9 @@ namespace Cenium.Rooms.Activities
         /// </summary>
         /// <returns>A strongly type IEnumerable instance </returns>
         [ActivityMethod("Query", MethodType.Query, IsDefault = true)]
-        [ActivityResult("RoomTypes")]
-        [ActivityResult("Features")]
+        [ActivityResult("RoomType")]
+        [ActivityResult("RoomType.RoomTypeFeatures")]
+        [ActivityResult("RoomType.RoomTypeFeatures.Feature")]
         [SecureResource("rooms.administration", SecureResourcePermissionLevel.Read)]
         public IEnumerable<Room> Query()
         {
@@ -76,29 +77,16 @@ namespace Cenium.Rooms.Activities
 
             return Logger.TraceMethodExit(result) as IEnumerable<Room>;
         }
-        /// <summary>
-        /// Activity query method that returns an IEnumerable&lt;Room&gt; instance. 
-        /// </summary>
-        /// <returns>A strongly type IEnumerable instance </returns>
-        [ActivityMethod("TestQuery", MethodType.Query, IsDefault = false)]
-        [SecureResource("rooms.administration", SecureResourcePermissionLevel.Read)]
-        public IEnumerable<Room>TestQuery()
-        {
-            Logger.TraceMethodEnter();
-
-            var result = _ctx.Rooms.ReadOnlyQuery().OrderBy(p => p.RoomId);
-
-            return Logger.TraceMethodExit(result) as IEnumerable<Room>;
-        }
-
+        
         /// <summary>
         /// Gets a Room instance from the datastore based on Room keys.
         /// </summary>
         /// <param name="roomId">The key for Room</param>
         /// <returns>A Room instance, or null if there is no entities with the given key</returns>
         [ActivityMethod("Get", MethodType.Get, IsDefault = true)]
-        [ActivityResult("RoomTypes")]
-        [ActivityResult("Features")]
+        [ActivityResult("RoomType")]
+        [ActivityResult("RoomType.RoomTypeFeatures")]
+        [ActivityResult("RoomType.RoomTypeFeatures.Feature")]
         [SecureResource("rooms.administration", SecureResourcePermissionLevel.Read)]
         public Room Get(long roomId)
         {

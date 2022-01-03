@@ -9,69 +9,85 @@
           <items>
             <item id="dummy" type="rooms.pane.room.general.top" labelVisibility="Collapsed" />
           </items>
-        </section>
-        
+        </section>        
         <section id="capacity" label="Capacity" constraints="column=1">
           <items>
             <item id="dummy" type="rooms.pane.room.capacity.top" labelVisibility="Collapsed" />
           </items>
         </section>
-        
-        
+        <section id="features" label="Features" constraints="column=1">
+          <items>
+            <item id="RoomType.RoomTypeFeatures" labelVisibility="Collapsed" type="rooms.pane.room.featuresdetails"  readOnly="false" column="0" >
+              <properties>
+                <property id="Height" value="200" type="Double" />
+              </properties>
+            </item>
+          </items>
+        </section>
       </layout>
     </pane>
 
-
     <pane id="rooms.pane.room.general.top" type="standard.pane.grouplayout" >
       <layout>
-        
         <section id="column1">
           <items>
-            <item id="RoomNumber" label="Room Number :" type="TextBox" column="0" />
-            <item id="RoomTypeId" label="Room Type:" type="framework.controls.data.ReferenceComboBox" readOnly="false" valueList="Rooms/RoomType/Query"  column="1">
+            <item id="RoomNumber" label="!rooms.room.roomnumber" type="TextBox" column="0" />
+            <item id="PropertyContextId" label="@PropertyContext" type="framework.controls.data.ReferenceComboBox" valueList="Framework/PropertyContext/Query" column="1" >
+              <properties>
+                <property id="DisplayPropertyName" value="Name" />
+                <property id="CopyPropertyNames" value="Name=Property" />
+                <property id="IsEnabled" value="True" />
+              </properties>
+            </item>
+            <item id="Name" label="!rooms.room.name" type="textbox" readOnly="false" column="0"  />
+            <item id="ColorCode" label="!rooms.room.colorcode" type="telerik.controls.colorpicker" readOnly="false" column="1"   >
+              <properties>
+                <property id="HorizontalAlignment" value="Left" type="Enum"/>
+                <property id="Width" value="100" />
+              </properties>
+            </item>
+            <item id="Status" label="!rooms.room.status" type="TextBox" readOnly="true" column="0" colspan="2" />
+            <item id="RoomTypeId" label="Room Type:" type="framework.controls.data.ReferenceComboBox" readOnly="false" valueList="Rooms/RoomType/Query"  column="0" colspan="2" >
               <properties>
                 <property id="DisplayPropertyName" value="RoomTypeName" />
                 <property id="SelectedValuePath" value="RoomTypeId"/>
               </properties>
             </item>
-            <item id="Status" label="Status :" type="TextBox" readOnly="true" column="0" />
-            
-            <item id="PropertyContextId" label="@PropertyContext" type="framework.controls.data.ReferenceComboBox" valueList="Framework/PropertyContext/Query" column="1" >
-                <properties>
-                  <property id="DisplayPropertyName" value="Name" />
-                  <property id="CopyPropertyNames" value="Name=Property" />
-                  <property id="IsEnabled" value="True" />
-                </properties>
-              </item>
-            <item id="Name" label="!rooms.room.name" type="textbox" readOnly="false" colspan="2" />
-            <item id="Description" label="Description:" type="specialized.multilinetextbox" readOnly="false" colspan="2"/>
-
+            <item id="Description" label="!rooms.room.description" type="specialized.multilinetextbox" readOnly="false" colspan="2"/>
           </items>
         </section>
       </layout>
     </pane>
-
-    
 
     <pane id="rooms.pane.room.capacity.top" type="standard.pane.grouplayout" >
       <layout>
         <section id ="column2">
           <items>
-            <item id="RoomWidth" label="Room width" type="NumberTextBox" format="ShortDecimal" readOnly="false" />
-            <item id="RoomLength" label="Rroom Length" type="NumberTextBox" format="ShortDecimal" readOnly="false" />
+            <item id="RoomWidth" label="!rooms.room.roomwidth" type="NumberTextBox" format="ShortDecimal" readOnly="false" />
+            <item id="RoomLength" label="!rooms.room.roomlength" type="NumberTextBox" format="ShortDecimal" readOnly="false" />
             <item id="SquareMeters" label="Area" type="NumberTextBox" format="ShortDecimal" readOnly="false" />
-            <item id="CeilingHeight" label="Ceiling Height" type="NumberTextBox" format="ShortDecimal" readOnly="false" />
+            <item id="CeilingHeight" label="!rooms.room.ceilingheight" type="NumberTextBox" format="ShortDecimal" readOnly="false" />
           </items>
         </section>
       </layout>
     </pane>
+
+    <pane id="rooms.pane.room.featuresdetails" type="framework.pane.DataGridPane">
+      <layout>
+        <section id="gridview" >
+          <items>
+            <item id="Feature.FeatureName" label="Name" type="Column" readOnly="false" width="1*" />
+            <item id="Feature.FeatureCode" label="Feature Code" type="Column" readOnly="false" width="1*" />
+            <item id="Feature.Description" label="Description" type="Column" readOnly="false" width="1*" />
+          </items>
+        </section>
+      </layout>
+    </pane>
+    
   </panes>
   
   <!-- Add dialogs here -->
   <dialogs>
-
-    <!-- Add dialogs here -->
-
   </dialogs>
 
 
@@ -79,8 +95,9 @@
   <!-- Add pages here-->
   <pages>
     <page id="rooms.page.room" name="Rooms" description="Add and maintain rooms information" model="framework.pages.listviewmodel" type="standard.pagetype.list" >
-
-
+      <properties>
+        <property id="StatusColorMemberPath" value="StatusColor" />
+      </properties>
 
       <modelProperties>
         <property id="CreateMethod" value="Rooms/Room/Create" />
@@ -91,15 +108,12 @@
         <property id="IncludeChildRecords" value="true" type="Bool" />
       </modelProperties>
 
-
-
       <layout>
         <section id="griditem" readOnly="true">
           <items>
             <item id="RoomNumber" label="Room Number" type="Column" width="*"/>
             <item id="Status" label="Status" type="Column" width="*"/>
-
-          </items>
+         </items>
         </section>
 
         <section id="listitem" readOnly="true">
@@ -109,22 +123,29 @@
                 <property id="TextStyle" value="TitleText" />
               </properties>
             </item>
-            <item id="Status" type="TextBlock" labelVisibility="Collapsed">
+            <item id="RoomType.RoomTypeName" type="TextBlock" labelVisibility="Collapsed">
               <properties>
                 <property id="TextStyle" value="SubtleText" />
               </properties>
             </item>
+            <item id="Status" row="1"  column="1"  type="TextBlock" labelVisibility="Collapsed" >
+              <properties>
+                <property id="TextStyle" value="SubtleText" />
+                <property id="HorizontalAlignment" value="Right" />
+              </properties>
+              <bindings>
+                <binding property="Foreground" bindTo="StatusColor" readOnly="true" />
+              </bindings>
+            </item>
           </items>
         </section>
 
-      <section id="summary">
-        <items>
-          <item id="pane" labelVisibility="Collapsed" type="rooms.pane.room.details" />
-        </items>
-      </section>
-
+        <section id="summary">
+          <items>
+            <item id="pane" labelVisibility="Collapsed" type="rooms.pane.room.details" />
+          </items>
+        </section>
       </layout>
-
 
       <actions>
         <action id="clear" type="framework.ClearAction" />
@@ -146,10 +167,6 @@
           </conditions>
         </action>
       </actions>
-
     </page>
   </pages>
-
-
-
 </ui>

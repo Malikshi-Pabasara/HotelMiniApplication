@@ -206,7 +206,7 @@
 
         <section id="listitem" readOnly="true">
           <items>
-            <item id="Name" type="TextBlock" labelVisibility="Collapsed">
+            <item id="Number" type="TextBlock" labelVisibility="Collapsed">
               <properties>
                 <property id="TextStyle" value="TitleText" />
               </properties>
@@ -247,7 +247,6 @@
           </properties>
         </action>
       </actions>
-        
     </page>
   </pages>
 </ui>
