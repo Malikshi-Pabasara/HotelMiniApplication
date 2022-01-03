@@ -69,7 +69,7 @@ namespace Cenium.Rooms.Activities
         {
             Logger.TraceMethodEnter();
 
-            var result = _ctx.Features.ReadOnlyQuery().OrderBy(p => p.FeatureId);
+            var result = _ctx.Features.ReadOnlyQuery().OrderByDescending(p => p.FeatureId);
 
             return Logger.TraceMethodExit(result) as IEnumerable<Feature>;
         }
